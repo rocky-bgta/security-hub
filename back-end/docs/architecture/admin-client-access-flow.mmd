@@ -1,0 +1,26 @@
+flowchart TD
+    LOGIN[Admin logs in] --> TOKEN[JWT / CurrentUserContext]
+    TOKEN --> TYPE{userType}
+
+    TYPE -->|SUPER_ADMIN / ASPIRE_ADMIN| ALL[Can query client list broadly]
+    TYPE -->|MSP| MSP[Can query clients scoped by mspId or clientAdminIds]
+    TYPE -->|CLIENT_ADMIN| CLIENT[Scoped to own clientAdminId]
+
+    ALL --> PICK[Select clientAdminId]
+    MSP --> PICK
+    CLIENT --> PICK
+
+    PICK --> QUERY[Repository/service queries]
+    QUERY --> CA[client_admins by id]
+    QUERY --> USERS[aspire_user where clientAdminId = selected client]
+    QUERY --> PRODUCTS[client_products where clientAdminId = selected client]
+    QUERY --> LICENCES[user_licences where clientAdminId = selected client]
+    QUERY --> PACKAGES[end_user_packages where clientAdminId = selected client]
+    QUERY --> DEPTS[departments where clientAdminId = selected client]
+
+    CA --> VIEW[Admin sees client profile + related data]
+    USERS --> VIEW
+    PRODUCTS --> VIEW
+    LICENCES --> VIEW
+    PACKAGES --> VIEW
+    DEPTS --> VIEW

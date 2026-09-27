@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: asat-ingress
+  namespace: uat
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /registration
+        pathType: Prefix
+        backend:
+          service:
+            name: asat-registration
+            port:
+              number: 9090
+      - path: /cms
+        pathType: Prefix
+        backend:
+          service:
+            name: asat-cms
+            port:
+              number: 5050
+      - path: /sesame
+        pathType: Prefix
+        backend:
+          service:
+            name: asat-sesame
+            port:
+              number: 9010

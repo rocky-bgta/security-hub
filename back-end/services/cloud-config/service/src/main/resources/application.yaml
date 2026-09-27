@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://dev.azure.com/Aspire-Prod/ASAT-V2/_git/asat-cloud-config
+server:
+  port: 9010

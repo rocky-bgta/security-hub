@@ -1,0 +1,115 @@
+erDiagram
+    PRODUCT_PACKAGE {
+        string id PK
+        string productId
+        string packageId
+    }
+
+    SUB_PACKAGE {
+        string id PK
+        string productId
+        string packageId
+    }
+
+    BUNDLE {
+        string id PK
+        string name
+    }
+
+    CONTENT {
+        string id PK
+        string contentType
+        string title
+    }
+
+    TOPIC {
+        string id PK
+        string name
+    }
+
+    QUESTION {
+        string id PK
+        string topicId FK
+    }
+
+    EXAM {
+        string id PK
+        string topicId FK
+    }
+
+    EXAM_SETTING {
+        string id PK
+        string examId FK
+    }
+
+    EXAM_QUESTION {
+        string id PK
+        string examId FK
+    }
+
+    USER_COURSE {
+        string id PK
+        string userId FK
+        string clientAdminId FK
+        string courseId
+    }
+
+    USER_COURSE_PROGRESS {
+        string id PK
+        string userId FK
+        string courseId FK
+    }
+
+    USER_TOPIC_PROGRESS {
+        string id PK
+        string userId FK
+        string topicId FK
+    }
+
+    USER_CONTENT_STATUS {
+        string id PK
+        string userId FK
+        string contentId FK
+    }
+
+    USER_CERTIFICATE {
+        string id PK
+        string userId FK
+        string courseId FK
+    }
+
+    CLIENT_DASHBOARD {
+        string id PK
+        string clientAdminId FK
+    }
+
+    CLIENT_PRODUCT_REPLICA {
+        string id PK
+        string clientAdminId FK
+        string productId
+    }
+
+    CERTIFICATE_TEMPLATE {
+        string id PK
+        string name
+    }
+
+    CLIENT_CERTIFICATE_TEMPLATE {
+        string id PK
+        string clientAdminId FK
+        string templateId FK
+    }
+
+    PRODUCT_PACKAGE ||--o{ SUB_PACKAGE : "contains"
+    SUB_PACKAGE ||--o{ TOPIC : "topics"
+    TOPIC ||--o{ CONTENT : "content"
+    TOPIC ||--o{ QUESTION : "questions"
+    TOPIC ||--o{ EXAM : "exam"
+    EXAM ||--o| EXAM_SETTING : "settings"
+    EXAM ||--o{ EXAM_QUESTION : "questions"
+    USER_COURSE ||--o{ USER_COURSE_PROGRESS : "progress"
+    TOPIC ||--o{ USER_TOPIC_PROGRESS : "topic progress"
+    CONTENT ||--o{ USER_CONTENT_STATUS : "content status"
+    USER_COURSE ||--o{ USER_CERTIFICATE : "certificates"
+    CLIENT_DASHBOARD ||--o{ CLIENT_PRODUCT_REPLICA : "client products"
+    CERTIFICATE_TEMPLATE ||--o{ CLIENT_CERTIFICATE_TEMPLATE : "client templates"

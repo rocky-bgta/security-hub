@@ -1,0 +1,16 @@
+package com.aspire.asat.cms.dto.news;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class NewsReactionRequestDto {
+    private String userId;
+    private String newsId;
+    private NewsReaction reaction;
+}

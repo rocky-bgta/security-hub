@@ -1,0 +1,6 @@
+Name: "নাম"
+Email: "ইমেইল"
+Phone Number: "ফোন নম্বর"
+Address: "ঠিকানা"
+menu.code.exists: "Menu code already exists"
+menu.code.not.found: "Menu with this id not found"

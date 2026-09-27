@@ -1,0 +1,275 @@
+{
+  "description": "JSON Request Body Examples for Manual Payment API: POST /billing/api/v1/payment/manual-entry",
+  "examples": {
+    "bank_transfer_payment": {
+      "description": "Example for Bank Transfer payment method",
+      "request": {
+        "clientId": "0fffee97-008d-41fb-8283-7cbb5b71a3d1",
+        "invoiceId": "INV-1765092233130",
+        "amount": 5100.00,
+        "currency": "USD",
+        "date": "2025-12-07T10:30:00.000Z",
+        "notes": "Payment via bank transfer - Transaction TXN-123456",
+        "packageItems": [
+          {
+            "productId": "224b847c-f2cc-4ded-95f7-74fc14f61d05",
+            "packageId": "1fe8b111-3b42-4b43-adfe-b840286b3c04",
+            "licenseCount": 25,
+            "pricePerLicense": 199.99,
+            "validityPeriod": 12,
+            "validityUnit": "MONTH",
+            "productName": "Enterprise Security Suite",
+            "packageName": "GOLD"
+          }
+        ],
+        "paymentSources": [
+          {
+            "method": "BANK_TRANSFER",
+            "amount": 5100.00,
+            "transactionId": null,
+            "online": false,
+            "metadata": {
+              "bankName": "Chase Bank",
+              "accountNumber": "123456789",
+              "bankBranchName": "Main Branch",
+              "transactionNumber": "TXN-123456",
+              "paymentDate": "2025-12-07",
+              "paymentAmount": 5100.00,
+              "transactionReceiptUrl": "https://s3.amazonaws.com/receipts/txn-123456.pdf"
+            }
+          }
+        ],
+        "subtotal": 4999.75,
+        "vatAmount": 100.25,
+        "discountPercentage": 0.0,
+        "couponId": null,
+        "couponCode": null,
+        "clientRegion": "US"
+      }
+    },
+    "check_payment": {
+      "description": "Example for Check Payment method",
+      "request": {
+        "clientId": "0fffee97-008d-41fb-8283-7cbb5b71a3d1",
+        "invoiceId": "INV-1765092233130",
+        "amount": 5100.00,
+        "currency": "USD",
+        "date": "2025-12-07T10:30:00.000Z",
+        "notes": "Payment via check - Check number CHK-789012",
+        "packageItems": [
+          {
+            "productId": "224b847c-f2cc-4ded-95f7-74fc14f61d05",
+            "packageId": "1fe8b111-3b42-4b43-adfe-b840286b3c04",
+            "licenseCount": 25,
+            "pricePerLicense": 199.99,
+            "validityPeriod": 12,
+            "validityUnit": "MONTH",
+            "productName": "Enterprise Security Suite",
+            "packageName": "GOLD"
+          }
+        ],
+        "paymentSources": [
+          {
+            "method": "CHECK_PAYMENT",
+            "amount": 5100.00,
+            "transactionId": null,
+            "online": false,
+            "metadata": {
+              "checkNumber": "CHK-789012",
+              "bankName": "Bank of America",
+              "branchName": "Downtown Branch",
+              "paymentDate": "2025-12-07",
+              "checkImageUrl": "https://s3.amazonaws.com/checks/chk-789012.jpg"
+            }
+          }
+        ],
+        "subtotal": 4999.75,
+        "vatAmount": 100.25,
+        "discountPercentage": 0.0,
+        "couponId": null,
+        "couponCode": null,
+        "clientRegion": "US"
+      }
+    },
+    "credit_payment": {
+      "description": "Example for Credit payment method (using available credits)",
+      "request": {
+        "clientId": "0fffee97-008d-41fb-8283-7cbb5b71a3d1",
+        "invoiceId": "INV-1765092233130",
+        "amount": 5100.00,
+        "currency": "USD",
+        "date": "2025-12-07T10:30:00.000Z",
+        "notes": "Payment using available credits",
+        "packageItems": [
+          {
+            "productId": "224b847c-f2cc-4ded-95f7-74fc14f61d05",
+            "packageId": "1fe8b111-3b42-4b43-adfe-b840286b3c04",
+            "licenseCount": 25,
+            "pricePerLicense": 199.99,
+            "validityPeriod": 12,
+            "validityUnit": "MONTH",
+            "productName": "Enterprise Security Suite",
+            "packageName": "GOLD"
+          }
+        ],
+        "paymentSources": [
+          {
+            "method": "CREDIT",
+            "amount": 5100.00,
+            "transactionId": null,
+            "online": false,
+            "metadata": null
+          }
+        ],
+        "subtotal": 4999.75,
+        "vatAmount": 100.25,
+        "discountPercentage": 0.0,
+        "couponId": null,
+        "couponCode": null,
+        "clientRegion": "US"
+      }
+    },
+    "mixed_payment_bank_and_credit": {
+      "description": "Example for mixed payment - Bank Transfer + Credit",
+      "request": {
+        "clientId": "0fffee97-008d-41fb-8283-7cbb5b71a3d1",
+        "invoiceId": "INV-1765092233130",
+        "amount": 5100.00,
+        "currency": "USD",
+        "date": "2025-12-07T10:30:00.000Z",
+        "notes": "Partial payment: $3000 via bank transfer + $2100 from credits",
+        "packageItems": [
+          {
+            "productId": "224b847c-f2cc-4ded-95f7-74fc14f61d05",
+            "packageId": "1fe8b111-3b42-4b43-adfe-b840286b3c04",
+            "licenseCount": 25,
+            "pricePerLicense": 199.99,
+            "validityPeriod": 12,
+            "validityUnit": "MONTH",
+            "productName": "Enterprise Security Suite",
+            "packageName": "GOLD"
+          }
+        ],
+        "paymentSources": [
+          {
+            "method": "BANK_TRANSFER",
+            "amount": 3000.00,
+            "transactionId": null,
+            "online": false,
+            "metadata": {
+              "bankName": "Chase Bank",
+              "accountNumber": "123456789",
+              "bankBranchName": "Main Branch",
+              "transactionNumber": "TXN-123456",
+              "paymentDate": "2025-12-07",
+              "paymentAmount": 3000.00,
+              "transactionReceiptUrl": "https://s3.amazonaws.com/receipts/txn-123456.pdf"
+            }
+          },
+          {
+            "method": "CREDIT",
+            "amount": 2100.00,
+            "transactionId": null,
+            "online": false,
+            "metadata": null
+          }
+        ],
+        "subtotal": 4999.75,
+        "vatAmount": 100.25,
+        "discountPercentage": 0.0,
+        "couponId": null,
+        "couponCode": null,
+        "clientRegion": "US"
+      }
+    },
+    "payment_with_coupon": {
+      "description": "Example for payment with coupon code applied",
+      "request": {
+        "clientId": "0fffee97-008d-41fb-8283-7cbb5b71a3d1",
+        "invoiceId": "INV-1765092233130",
+        "amount": 4590.00,
+        "currency": "USD",
+        "date": "2025-12-07T10:30:00.000Z",
+        "notes": "Payment via bank transfer with coupon SUMMER10 applied",
+        "packageItems": [
+          {
+            "productId": "224b847c-f2cc-4ded-95f7-74fc14f61d05",
+            "packageId": "1fe8b111-3b42-4b43-adfe-b840286b3c04",
+            "licenseCount": 25,
+            "pricePerLicense": 199.99,
+            "validityPeriod": 12,
+            "validityUnit": "MONTH",
+            "productName": "Enterprise Security Suite",
+            "packageName": "GOLD"
+          }
+        ],
+        "paymentSources": [
+          {
+            "method": "BANK_TRANSFER",
+            "amount": 4590.00,
+            "transactionId": null,
+            "online": false,
+            "metadata": {
+              "bankName": "Chase Bank",
+              "accountNumber": "123456789",
+              "bankBranchName": "Main Branch",
+              "transactionNumber": "TXN-123456",
+              "paymentDate": "2025-12-07",
+              "paymentAmount": 4590.00,
+              "transactionReceiptUrl": "https://s3.amazonaws.com/receipts/txn-123456.pdf"
+            }
+          }
+        ],
+        "subtotal": 4499.75,
+        "vatAmount": 90.25,
+        "discountPercentage": 10.0,
+        "couponId": "6800ed5fb3e461092ce0d076",
+        "couponCode": "SUMMER10",
+        "clientRegion": "US"
+      }
+    }
+  },
+  "notes": {
+    "required_fields": [
+      "clientId",
+      "invoiceId",
+      "amount",
+      "currency",
+      "date",
+      "packageItems",
+      "paymentSources",
+      "subtotal"
+    ],
+    "payment_methods": [
+      "BANK_TRANSFER - Requires metadata with bank transfer details",
+      "CHECK_PAYMENT - Requires metadata with check payment details",
+      "CREDIT - Uses available credits, metadata can be null"
+    ],
+    "metadata_structure": {
+      "BANK_TRANSFER": {
+        "bankName": "string (required)",
+        "accountNumber": "string (required)",
+        "bankBranchName": "string (required)",
+        "transactionNumber": "string (required)",
+        "paymentDate": "YYYY-MM-DD (required)",
+        "paymentAmount": "number (required)",
+        "transactionReceiptUrl": "string (required)"
+      },
+      "CHECK_PAYMENT": {
+        "checkNumber": "string (required)",
+        "bankName": "string (required)",
+        "branchName": "string (required)",
+        "paymentDate": "YYYY-MM-DD (required)",
+        "checkImageUrl": "string (required)"
+      }
+    },
+    "important_points": [
+      "The 'amount' field should equal the sum of all paymentSources amounts",
+      "For BANK_TRANSFER and CHECK_PAYMENT, metadata is required and must match the invoice payment details",
+      "The transactionNumber (for bank transfer) or checkNumber (for check payment) must match what was stored in the invoice during onboarding",
+      "Date format: ISO 8601 format (e.g., '2025-12-07T10:30:00.000Z')",
+      "Payment date in metadata should be in LocalDate format (YYYY-MM-DD)"
+    ]
+  }
+}
+

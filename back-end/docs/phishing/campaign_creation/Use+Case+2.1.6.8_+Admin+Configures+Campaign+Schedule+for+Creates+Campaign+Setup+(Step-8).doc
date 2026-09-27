@@ -1,0 +1,1296 @@
+Date: Mon, 1 Dec 2025 14:44:27 +0000 (UTC)
+Message-ID: <1911807672.293.1764600267842@5a24d0d7bf27>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_292_596609855.1764600267842"
+
+------=_Part_292_596609855.1764600267842
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Use Case 2.1.6.8: Admin Configures Campaign Schedule for Creates=
+ Campaign Setup (Step-8)</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Use Case 2.1.6.8: Admin Configures Campaign Schedule for Creates Ca=
+mpaign Setup (Step-8)</h1>
+    <div class=3D"Section1">
+        <p><strong>User Story</strong></p>
+<p>As an <strong>Admin</strong>, I want to set the schedule and frequency f=
+or delivering phishing emails in a campaign, including choosing the deliver=
+y method, campaign frequency, and expiration date, so that the campaign ema=
+ils are delivered according to the planned timeline and frequency.</p>
+<p>&nbsp;</p>
+<p><strong>Description</strong></p>
+<p>In <strong>Step 8</strong> of the campaign setup, the <strong>Admin</str=
+ong> configures the <strong>Schedule &amp; Frequency</strong> for the phish=
+ing simulation campaign. The <strong>Admin</strong> can specify:</p>
+<ul>
+<li>
+<p><strong>Phishing Delivery Method</strong> (e.g., instant, scheduled, or =
+schedule later),</p></li>
+<li>
+<p><strong>Campaign Frequency</strong> (one-off, weekly, monthly, or quarte=
+rly),</p></li>
+<li>
+<p><strong>Campaign Expiry Date</strong> (defines when the campaign will au=
+tomatically end).</p></li>
+</ul>
+<p>The <strong>Admin</strong> can also choose whether to deliver the first =
+batch of phishing emails immediately or schedule them for later. Additional=
+ly, the <strong>Admin</strong> has the option to send a <strong>Test Email<=
+/strong> to verify the configuration before finalizing the campaign. This s=
+tep ensures the correct timing and delivery configuration for the campaign.=
+</p>
+<p>&nbsp;</p>
+<p><strong>Actors</strong></p>
+<ul>
+<li>
+<p><strong>Admin</strong>: Selects the delivery method, campaign frequency,=
+ expiry date, and test email configuration.</p></li>
+<li>
+<p><strong>System</strong>: Displays available options for delivery method,=
+ frequency, expiry date, and test email functionality. Verifies and confirm=
+s the settings.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Preconditions</strong></p>
+<ul>
+<li>
+<p>The&nbsp;<strong>Admin</strong> is logged in and has completed previous =
+steps in the Create New Campaign wizard.</p></li>
+<li>
+<p>The system is operational and can display the&nbsp;<strong>Schedule &amp=
+; Frequency</strong> settings for the campaign.</p></li>
+<li>
+<p>The&nbsp;<strong>Admin</strong> has selected a Mail Server in Step 4.</p=
+></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Postconditions</strong></p>
+<ul>
+<li>
+<p>The campaign&nbsp;<strong>schedule and frequency settings</strong> are s=
+aved and ready for the next steps in the campaign creation process.</p></li=
+>
+<li>
+<p>The system will automatically trigger the first batch of phishing emails=
+ based on the specified schedule and frequency.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Main Flow (Normal Success Scenario)</strong></p>
+<p><strong>Step 1: Set Phishing Delivery Method</strong></p>
+<ol start=3D"1">
+<li>
+<p><strong>System presents the&nbsp;Admin with the option to select the&nbs=
+p;Phishing Delivery Method.</strong></p>
+<ul>
+<li>
+<p><strong>Options:&nbsp;Immediate Delivery,&nbsp;Scheduled Delivery, or&nb=
+sp;Schedule Later.</strong></p></li>
+</ul></li>
+<li>
+<p>The&nbsp;<strong>Admin</strong> selects&nbsp;<strong>Scheduled Delivery<=
+/strong> to specify the exact time and date of email delivery.</p>
+<ul>
+<li>
+<p>If&nbsp;<strong>Immediate Delivery</strong> is selected, emails are deli=
+vered as soon as the campaign is activated.</p></li>
+</ul></li>
+<li>
+<p>When&nbsp;<strong>Scheduled Delivery</strong> is selected, the system re=
+quires the&nbsp;<strong>Admin</strong> to set:</p>
+<ul>
+<li>
+<p><strong>First Batch Delivery Date</strong>: The specific date and time f=
+or the first batch of phishing emails.</p></li>
+<li>
+<p><strong>Campaign Expiry Date</strong>: The date when the campaign should=
+ automatically end.</p></li>
+</ul></li>
+<li>
+<p>The&nbsp;<strong>Admin</strong> selects&nbsp;<strong>Weekly Campaign Fre=
+quency</strong>.</p>
+<ul>
+<li>
+<p><strong>System</strong> calculates and enforces the minimum required&nbs=
+p;<strong>Campaign Expiry Date</strong> (7 days from the&nbsp;<strong>First=
+ Batch Delivery Date</strong>).</p></li>
+</ul></li>
+<li>
+<p>The&nbsp;<strong>Admin</strong> sets the&nbsp;<strong>First Batch Delive=
+ry Date</strong> to &nbsp;<strong>December 01, 2025</strong>.</p>
+<ul>
+<li>
+<p><strong>System</strong> records the start date and displays it.</p></li>
+</ul></li>
+<li>
+<p>The&nbsp;<strong>Admin</strong> sets the&nbsp;<strong>Campaign Expiry Da=
+te</strong> to&nbsp;<strong>January 15, 2026</strong>.</p>
+<ul>
+<li>
+<p><strong>System</strong> validates that the date is after the minimum req=
+uired expiry date (<strong>December 08, 2025</strong>).</p></li>
+<li>
+<p><strong>System</strong> records and displays the selected&nbsp;<strong>C=
+ampaign Expiry Date</strong>.</p></li>
+</ul></li>
+<li>
+<p><strong>System enforces rules for other frequencies:</strong></p>
+<ul>
+<li>
+<p><strong>Weekly:&nbsp;Start Date + 7 days minimum.</strong></p></li>
+<li>
+<p><strong>Monthly:&nbsp;Start Date + 1 calendar month minimum.</strong></p=
+></li>
+<li>
+<p><strong>Quarterly:&nbsp;Start Date + 3 calendar months minimum.</strong>=
+</p></li>
+</ul></li>
+</ol>
+<p><strong>Step 2: Configure Campaign Frequency</strong></p>
+<ol start=3D"1">
+<li>
+<p><strong>System prompts the&nbsp;Admin to select the&nbsp;Campaign Freque=
+ncy.</strong></p>
+<ul>
+<li>
+<p><strong>Available options:</strong></p>
+<ul>
+<li>
+<p><strong>One-off: Campaign will be delivered once.</strong></p></li>
+<li>
+<p><strong>Weekly: Campaign will be delivered every week.</strong></p></li>
+<li>
+<p><strong>Monthly: Campaign will be delivered every month.</strong></p></l=
+i>
+<li>
+<p><strong>Quarterly: Campaign will be delivered every three months.</stron=
+g></p></li>
+</ul></li>
+</ul></li>
+<li>
+<p>The&nbsp;<strong>Admin</strong> selects&nbsp;<strong>Weekly</strong> as =
+the campaign frequency.</p></li>
+<li>
+<p><strong>System displays the selected frequency next to the&nbsp;Campaign=
+ Frequency field.</strong></p></li>
+</ol>
+<p><strong>Step 3: Set Campaign Expiry Date</strong></p>
+<ol start=3D"1">
+<li>
+<p><strong>System prompts the&nbsp;Admin to select the&nbsp;Campaign Expiry=
+ Date.</strong></p>
+<ul>
+<li>
+<p><strong>The&nbsp;Admin clicks the&nbsp;Pick an expiry date button to cho=
+ose the expiry date.</strong></p></li>
+</ul></li>
+<li>
+<p>The&nbsp;<strong>Admin</strong> selects the&nbsp;<strong>Campaign Expiry=
+ Date</strong> of&nbsp;<strong>January 15, 2026</strong>.</p></li>
+<li>
+<p><strong>System displays the selected&nbsp;Campaign Expiry Date below the=
+ field.</strong></p></li>
+</ol>
+<p><strong>Step 4: First Batch Delivery Configuration</strong></p>
+<ol start=3D"1">
+<li>
+<p>The&nbsp;<strong>Admin</strong> can select whether the&nbsp;<strong>Firs=
+t Batch Delivery</strong> will be&nbsp;<strong>Scheduled</strong> or&nbsp;<=
+strong>Immediate</strong>.</p>
+<ul>
+<li>
+<p>If the&nbsp;<strong>Admin</strong> chooses&nbsp;<strong>Scheduled Delive=
+ry</strong>, the system displays the selected&nbsp;<strong>First Batch Deli=
+very Date</strong>.</p></li>
+<li>
+<p>If the&nbsp;<strong>Admin</strong> chooses&nbsp;<strong>Immediate Delive=
+ry</strong>, the first batch of emails is sent immediately after the campai=
+gn is activated.</p></li>
+</ul></li>
+</ol>
+<p><strong>Step 5: Test Email Delivery</strong></p>
+<ol start=3D"1">
+<li>
+<p>The&nbsp;<strong>Admin</strong> can check the box labeled&nbsp;<strong>T=
+est Email Delivery</strong> to send a test email and verify the campaign co=
+nfiguration.</p></li>
+<li>
+<p>The&nbsp;<strong>Admin</strong> enters a&nbsp;<strong>Test Email Address=
+</strong> (e.g., "<a class=3D"external-link" href=3D"mailto:your.email@comp=
+any.com" rel=3D"nofollow">your.email@company.com</a>").</p></li>
+<li>
+<p>The&nbsp;<strong>Admin</strong> clicks&nbsp;<strong>Send Test Email</str=
+ong> to receive the test message and ensure the campaign setup is correct.<=
+/p></li>
+</ol>
+<p><strong>Step 6: Save &amp; Continue</strong></p>
+<ol start=3D"1">
+<li>
+<p>After configuring the&nbsp;<strong>Delivery Method</strong>,&nbsp;<stron=
+g>Campaign Frequency</strong>, &nbsp;<strong>Expiry Date</strong>, and&nbsp=
+;<strong>First Batch Delivery</strong>, and optionally testing the email de=
+livery, the&nbsp;<strong>Admin</strong> clicks&nbsp;<strong>Save &amp; Cont=
+inue</strong>.</p></li>
+<li>
+<p><strong>System validates the inputs and confirms the settings.</strong><=
+/p></li>
+<li>
+<p>The&nbsp;<strong>Admin</strong> is directed to the next step in the camp=
+aign setup process.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Frontend Form Validation</strong></p>
+<p><strong>Field Validation Rules</strong></p>
+<ul>
+<li>
+<p><strong>Campaign Frequency Field</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory.</p></li>
+<li>
+<p><strong>Validation</strong>: The&nbsp;<strong>Admin</strong> must select=
+ a frequency (One-off, Weekly, Monthly, Quarterly).</p></li>
+<li>
+<p><strong>Error Message</strong>: "Please select a valid campaign frequenc=
+y."</p></li>
+</ul></li>
+<li>
+<p><strong>Campaign Expiry Date</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is optional.</p></li>
+<li>
+<p><strong>Validation</strong>: If an expiry date is selected, it must be a=
+ valid future date.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Please select a valid campaign expiry d=
+ate."</p></li>
+</ul></li>
+<li>
+<p><strong>Test Email Address</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is optional.</p></li>
+<li>
+<p><strong>Validation</strong>: If a test email address is entered, it must=
+ be a valid email format.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Please enter a valid email address for =
+the test."</p></li>
+</ul></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Business Rules</strong></p>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"755bb61d-9382-44ec-b660-c61=
+d443c138a" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Rule</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-1</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Admin</strong> must select a <strong>Campaign Frequency</str=
+ong> before proceeding to the next step.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-2</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Test Email Delivery</strong> is optional but recommended to ensu=
+re correct configuration.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-3</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Campaign Expiry Date</strong> is optional but must be a future d=
+ate if selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-4</p></td>
+<td class=3D"confluenceTd">
+<p><strong>First Batch Delivery</strong> can be scheduled or sent immediate=
+ly, based on <strong>Admin=E2=80=99s</strong> selection.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>Acceptance Criteria</strong></p>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"13beefaf-672d-4b26-97e3-e63=
+72a4c4e7c" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Acceptance Criteria</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Pass/Fail Condition</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-01</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can select a <strong>Phishing Delivery Method</st=
+rong> (Immediate or Scheduled).</p></td>
+<td class=3D"confluenceTd">
+<p>Delivery method is selectable and works as expected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-02</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can select the <strong>Campaign Frequency</strong=
+> (One-off, Weekly, Monthly, Quarterly).</p></td>
+<td class=3D"confluenceTd">
+<p>Frequency options are available and can be selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-03</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can select a <strong>Campaign Expiry Date</strong=
+> (optional).</p></td>
+<td class=3D"confluenceTd">
+<p>Expiry date can be selected and displayed correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-04</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can configure the <strong>First Batch Delivery</s=
+trong> option, choosing between scheduled or immediate delivery.</p></td>
+<td class=3D"confluenceTd">
+<p>First batch delivery option works correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-05</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can enter a <strong>Test Email Address</strong> a=
+nd send a test email.</p></td>
+<td class=3D"confluenceTd">
+<p>Test email is sent successfully.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-06</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can select the <strong>Scheduled Delivery date an=
+d time</strong> for emails.</p></td>
+<td class=3D"confluenceTd">
+<p>Scheduled date and time are validated and displayed.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-07</p></td>
+<td class=3D"confluenceTd">
+<p>The system validates that all required fields (Delivery Method, Frequenc=
+y) are completed before enabling the "Save &amp; Continue" button.</p></td>
+<td class=3D"confluenceTd">
+<p>"Save &amp; Continue" button is only enabled after completing required f=
+ields.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-08</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can preview the scheduled campaign delivery in a =
+confirmation message before finalizing.</p></td>
+<td class=3D"confluenceTd">
+<p>Confirmation message is displayed with campaign details.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-09</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can send a <strong>Test Email</strong> to verify =
+the campaign configuration.</p></td>
+<td class=3D"confluenceTd">
+<p>Test email is received and matches the campaign setup.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-10</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can choose to <strong>Send Test Email</strong> be=
+fore finalizing campaign setup.</p></td>
+<td class=3D"confluenceTd">
+<p>Test email functionality works properly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-11</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Campaign Frequency</strong> setting persists after saving.</=
+p></td>
+<td class=3D"confluenceTd">
+<p>Frequency setting remains saved and is available on subsequent views.</p=
+></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-12</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can view the <strong>Expiry Date</strong> setting=
+ and edit it if necessary.</p></td>
+<td class=3D"confluenceTd">
+<p>Expiry date can be viewed and edited as needed.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-13</p></td>
+<td class=3D"confluenceTd">
+<p><strong>First Batch Delivery</strong> can be set for a specific time and=
+ date.</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can choose to set the first batch delivery time a=
+nd date.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-14</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Campaign Settings</strong> are saved successfully after clicking=
+ <strong>Save &amp; Continue</strong>.</p></td>
+<td class=3D"confluenceTd">
+<p>Settings are saved and confirmed by the system.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-15</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can set the <strong>Campaign Frequency</strong> t=
+o "One-off" for a single delivery.</p></td>
+<td class=3D"confluenceTd">
+<p>"One-off" option functions correctly for single campaign delivery.</p></=
+td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-16</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Test Email Delivery</strong> field is visible but optional.<=
+/p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can choose to enable or skip test email delivery.=
+</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-17</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can <strong>Edit</strong> the <strong>Campaign Fr=
+equency</strong> after the initial selection.</p></td>
+<td class=3D"confluenceTd">
+<p>Frequency field is editable and changes are saved correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-18</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Campaign Expiry Date</strong> can be removed if not needed.<=
+/p></td>
+<td class=3D"confluenceTd">
+<p>Expiry date can be cleared if not required.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-19</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> receives a confirmation notification when setting=
+s are successfully saved.</p></td>
+<td class=3D"confluenceTd">
+<p>Confirmation message is displayed after successful save.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-20</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can view the <strong>Campaign Frequency</strong> =
+and <strong>Expiry Date</strong> settings in the campaign summary.</p></td>
+<td class=3D"confluenceTd">
+<p>Frequency and expiry date settings are displayed in the summary.</p></td=
+>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>System Behavior &amp; Validation</strong></p>
+<ul>
+<li>
+<p><strong>Schedule and Frequency</strong>:&nbsp;<strong>Admin</strong> mus=
+t select the campaign's&nbsp;<strong>delivery method</strong>,&nbsp;<strong=
+>frequency</strong>, and&nbsp;<strong>expiration date</strong> before proce=
+eding.</p></li>
+<li>
+<p><strong>Test Email</strong>: The system allows the&nbsp;<strong>Admin</s=
+trong> to verify the campaign configuration via a test email before sending=
+ the actual campaign.</p></li>
+<li>
+<p><strong>Validation</strong>: Fields like&nbsp;<strong>Campaign Frequency=
+</strong> and&nbsp;<strong>First Batch Delivery</strong> are validated to e=
+nsure correct data input.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Security Handling</strong></p>
+<ul>
+<li>
+<p><strong>Access Control</strong>: Only authorized users (<strong>admins</=
+strong>) can configure campaign settings and schedule delivery.</p></li>
+<li>
+<p><strong>Data Security</strong>: All campaign schedule and configuration =
+data are securely stored.</p></li>
+</ul>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p><strong>User Story</strong></p>
+<p>As an Admin, I want to set the schedule and frequency for delivering phi=
+shing emails in a campaign, including choosing the delivery method, campaig=
+n frequency, and expiration date, so that the campaign emails are delivered=
+ according to the planned timeline and frequency.</p>
+<p><strong>Description</strong></p>
+<p>In Step 7 of the campaign setup, the Admin configures the <strong>Schedu=
+le &amp; Frequency</strong> for the phishing simulation campaign. The Admin=
+ can specify the <strong>Phishing Delivery Method</strong> (such as instant=
+ or scheduled delivery), set the <strong>Campaign Frequency</strong> (one-o=
+ff, weekly, monthly, or quarterly), and define the <strong>Campaign Expiry =
+Date</strong>. The Admin can also select whether to deliver the first batch=
+ of phishing emails immediately or schedule it for later. Additionally, the=
+ Admin has the option to send a <strong>Test Email</strong> to verify the c=
+onfiguration before starting the campaign. This step ensures the correct ti=
+ming and delivery configuration for the campaign.</p>
+<p><strong>Actors</strong></p>
+<ul>
+<li>
+<p><strong>Admin</strong>: Selects the delivery method, campaign frequency,=
+ expiry date, and test email configuration.</p></li>
+<li>
+<p><strong>System</strong>: Displays available options for delivery method,=
+ frequency, expiry date, and test email functionality. Verifies and confirm=
+s the settings.</p></li>
+</ul>
+<p><strong>Preconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin is logged in and has completed previous steps in the <strong>C=
+reate New Campaign</strong> wizard.</p></li>
+<li>
+<p>The system is operational and can display the <strong>Schedule &amp; Fre=
+quency</strong> settings for the campaign.</p></li>
+<li>
+<p>The Admin has selected a <strong>Mail Server</strong> in Step 4.</p></li=
+>
+</ol>
+<p><strong>Postconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>The campaign schedule and frequency settings are saved and ready for the=
+ next steps in the campaign creation process.</p></li>
+<li>
+<p>The system will automatically trigger the first batch of phishing emails=
+ based on the specified schedule and frequency.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Main Flow (Normal Success Scenario)</strong></p>
+<p><strong>Step 1: Set Phishing Delivery Method</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin is presented with the option to select the <strong>Phishing De=
+livery Method</strong>.</p>
+<ul>
+<li>
+<p>Options include <strong>Immediate Delivery</strong> or <strong>Scheduled=
+ Delivery </strong>or <strong>Schedule Later</strong>.</p></li>
+<li>
+<p>The Admin selects <strong>Scheduled Delivery</strong> to specify the exa=
+ct time and date of email delivery.</p></li>
+<li>
+<p>If <strong>Immediate Delivery</strong> is selected, emails are delivered=
+ as soon as the campaign is activated.</p></li>
+<li>
+<p>Selecting <strong>Scheduled Delivery</strong> <strong>must</strong> mand=
+ate setting the First Batch Delivery Date and Campaign Expiry Date.</p></li=
+>
+<li>
+<p>Admin selects the <strong>Weekly</strong> Campaign Frequency option. Sys=
+tem calculates and enforces the minimum required Expiry Date (7 days from t=
+he First Batch Date).</p></li>
+<li>
+<p>Admin clicks to set the <strong>First Batch Delivery Date</strong> and s=
+ets it to <strong>December 01, 2025</strong>.System records the start date =
+and displays it.</p></li>
+<li>
+<p>Admin clicks to set the <strong>Campaign Expiry Date</strong> and select=
+s <strong>January 15, 2026</strong>.System validates that the date is after=
+ the minimum required expiry date (Dec 08, 2025). System records and displa=
+ys the date.</p></li>
+<li>
+<p>When a frequency is selected, the system <strong>must</strong> calculate=
+ and enforce a <strong>minimum Campaign Expiry Date</strong> based on the c=
+hosen First Batch Delivery Date:</p>
+<ul>
+<li>
+<p><strong>Weekly:</strong> Start Date + 7 days minimum.</p></li>
+<li>
+<p><strong>Monthly:</strong> Start Date + 1 calendar month minimum.</p></li=
+>
+<li>
+<p><strong>Quarterly:</strong> Start Date + 3 calendar months minimum.</p><=
+/li>
+</ul></li>
+<li>
+<p>If <strong>Scheduled Delivery</strong> is chosen, the Admin <strong>must=
+</strong> configure the specific date and time for the <strong>First Batch =
+Delivery</strong>.</p></li>
+<li>
+<p>The <strong>Campaign Expiry Date</strong> selection <strong>must</strong=
+> prevent the Admin from choosing a date that falls before the enforced min=
+imum expiry date</p></li>
+</ul></li>
+</ol>
+<p><strong>Step 2: Configure Campaign Frequency</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin is prompted to select the <strong>Campaign Frequency</strong>.=
+</p>
+<ul>
+<li>
+<p>The available options are:</p>
+<ul>
+<li>
+<p><strong>One-off</strong>: Campaign will be delivered once.</p></li>
+<li>
+<p><strong>Weekly</strong>: Campaign will be delivered every week.</p></li>
+<li>
+<p><strong>Monthly</strong>: Campaign will be delivered every month.</p></l=
+i>
+<li>
+<p><strong>Quarterly</strong>: Campaign will be delivered every three month=
+s.</p></li>
+</ul></li>
+</ul></li>
+<li>
+<p>The Admin selects <strong>Weekly</strong> for the campaign frequency.</p=
+></li>
+<li>
+<p>The system displays the frequency next to the <strong>Campaign Frequency=
+</strong> field.</p></li>
+</ol>
+<p><strong>Step 3: Set Campaign Expiry Date</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin can specify the <strong>Campaign Expiry Date</strong> by click=
+ing the <strong>Pick an expiry date</strong> button.</p></li>
+<li>
+<p>The Admin selects the date when the campaign should automatically end.</=
+p></li>
+<li>
+<p>The system displays the selected <strong>Campaign Expiry Date</strong> b=
+elow the field.</p></li>
+</ol>
+<p><strong>Step 4: First Batch Delivery Configuration</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin can select whether the <strong>First Batch Delivery</strong> w=
+ill be scheduled or not.</p></li>
+<li>
+<p>If the Admin chooses <strong>Scheduled Delivery</strong>, The system dis=
+plays the selected <strong>First Batch Delivery Date</strong> below the fie=
+ld.</p></li>
+<li>
+<p>If <strong>Immediate Delivery</strong> is selected, the first batch is s=
+ent as soon as the campaign starts.</p></li>
+</ol>
+<p><strong>Step 5: Test Email Delivery</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin can check the box labeled <strong>Test Email Delivery</strong>=
+ to send a test email to verify the campaign configuration.</p></li>
+<li>
+<p>The Admin enters a <strong>Test Email Address</strong> (e.g., "<a class=
+=3D"external-link" href=3D"mailto:your.email@company.com" rel=3D"nofollow">=
+your.email@company.com</a>").</p></li>
+<li>
+<p>The Admin clicks <strong>Send Test Email</strong> to receive a test mess=
+age and ensure the campaign setup is correct.</p></li>
+</ol>
+<p><strong>Step 6: Save &amp; Continue</strong></p>
+<ol start=3D"1">
+<li>
+<p>After configuring the <strong>Delivery Method</strong>, <strong>Campaign=
+ Frequency</strong>, <strong>Expiry Date</strong>, and <strong>First Batch =
+Delivery</strong>, and optionally testing the email delivery, the Admin cli=
+cks <strong>Save &amp; Continue</strong>.</p></li>
+<li>
+<p>The system validates the inputs and confirms the settings.</p></li>
+<li>
+<p>The Admin is directed to the next step in the campaign setup process.</p=
+></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Frontend Form Validation</strong></p>
+<p><strong>Field Validation Rules</strong></p>
+<ol start=3D"1">
+<li>
+<p><strong>Campaign Frequency Field</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory.</p></li>
+<li>
+<p><strong>Validation</strong>:</p>
+<ul>
+<li>
+<p>The Admin must select a frequency (One-off, Weekly, Monthly, Quarterly).=
+</p></li>
+</ul></li>
+<li>
+<p><strong>Error Message</strong>: "Please select a valid campaign frequenc=
+y."</p></li>
+</ul></li>
+<li>
+<p><strong>Campaign Expiry Date</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is optional.</p></li>
+<li>
+<p><strong>Validation</strong>:</p>
+<ul>
+<li>
+<p>If an expiry date is selected, it must be a valid date in the future.</p=
+></li>
+</ul></li>
+<li>
+<p><strong>Error Message</strong>: "Please select a valid campaign expiry d=
+ate."</p></li>
+</ul></li>
+<li>
+<p><strong>Test Email Address</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is optional.</p></li>
+<li>
+<p><strong>Validation</strong>:</p>
+<ul>
+<li>
+<p>If a test email address is entered, it must be a valid email format.</p>=
+</li>
+</ul></li>
+<li>
+<p><strong>Error Message</strong>: "Please enter a valid email address for =
+the test."</p></li>
+</ul></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Business Rules</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"48=
+4b4cc4-6ed4-4be6-af8b-86e4bc0db86b" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Rule</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-1</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must select a <strong>Campaign Frequency</strong> before proceedin=
+g to the next step.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-2</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Test Email Delivery</strong> is optional, but recommended to ens=
+ure correct configuration.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-3</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Campaign Expiry Date</strong> is optional but must be a future d=
+ate if selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-4</p></td>
+<td class=3D"confluenceTd">
+<p><strong>First Batch Delivery</strong> can be scheduled or sent immediate=
+ly, based on Admin=E2=80=99s selection.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>Acceptance Criteria</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"f2=
+a40d84-22b4-4644-ad42-bba3c2a81bed" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Acceptance Criteria</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Pass/Fail Condition</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-01</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select a <strong>Phishing Delivery Method</strong> (Immediate =
+or Scheduled).</p></td>
+<td class=3D"confluenceTd">
+<p>Delivery method is selectable and works as expected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-02</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select the <strong>Campaign Frequency</strong> (One-off, Weekl=
+y, Monthly, Quarterly).</p></td>
+<td class=3D"confluenceTd">
+<p>Frequency options are available and can be selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-03</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select a <strong>Campaign Expiry Date</strong> (optional).</p>=
+</td>
+<td class=3D"confluenceTd">
+<p>Expiry date can be selected and displayed correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-04</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can configure the <strong>First Batch Delivery</strong> option, ch=
+oosing between scheduled or immediate delivery.</p></td>
+<td class=3D"confluenceTd">
+<p>First batch delivery option works correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-05</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can enter a <strong>Test Email Address</strong> and send a test em=
+ail.</p></td>
+<td class=3D"confluenceTd">
+<p>Test email is sent successfully.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-06</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select the <strong>Scheduled Delivery</strong> date and time f=
+or emails.</p></td>
+<td class=3D"confluenceTd">
+<p>Scheduled date and time is validated and displayed.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-07</p></td>
+<td class=3D"confluenceTd">
+<p>The system validates that all required fields (Delivery Method, Frequenc=
+y) are completed before enabling the "Save &amp; Continue" button.</p></td>
+<td class=3D"confluenceTd">
+<p>"Save &amp; Continue" button is only enabled after completing required f=
+ields.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-08</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can preview the scheduled campaign delivery in a confirmation mess=
+age before finalizing.</p></td>
+<td class=3D"confluenceTd">
+<p>Confirmation message is displayed with campaign details.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-09</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can send a <strong>Test Email</strong> to verify the campaign conf=
+iguration.</p></td>
+<td class=3D"confluenceTd">
+<p>Test email is received and matches the campaign setup.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-10</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can choose to <strong>Send Test Email</strong> before finalizing c=
+ampaign setup.</p></td>
+<td class=3D"confluenceTd">
+<p>Test email functionality works properly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-11</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Campaign Frequency</strong> setting persists after saving.</=
+p></td>
+<td class=3D"confluenceTd">
+<p>Frequency setting remains saved and is available on subsequent views.</p=
+></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-12</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can view the <strong>Expiry Date</strong> setting and edit it if n=
+ecessary.</p></td>
+<td class=3D"confluenceTd">
+<p>Expiry date can be viewed and edited as needed.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-13</p></td>
+<td class=3D"confluenceTd">
+<p><strong>First Batch Delivery</strong> can be set for a specific time and=
+ date.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can choose to set the first batch delivery time and date.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-14</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Campaign Settings</strong> are saved successfully after clicking=
+ <strong>Save &amp; Continue</strong>.</p></td>
+<td class=3D"confluenceTd">
+<p>Settings are saved and confirmed by the system.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-15</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can set the <strong>Campaign Frequency</strong> to "One-off" for a=
+ single delivery.</p></td>
+<td class=3D"confluenceTd">
+<p>"One-off" option functions correctly for single campaign delivery.</p></=
+td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-16</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Test Email Delivery</strong> field is visible but optional.<=
+/p></td>
+<td class=3D"confluenceTd">
+<p>Admin can choose to enable or skip test email delivery.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-17</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can <strong>Edit</strong> the <strong>Campaign Frequency</strong> =
+after initial selection.</p></td>
+<td class=3D"confluenceTd">
+<p>Frequency field is editable and changes are saved correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-18</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Campaign Expiry Date</strong> can be removed if not needed.<=
+/p></td>
+<td class=3D"confluenceTd">
+<p>Expiry date can be cleared if not required.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-19</p></td>
+<td class=3D"confluenceTd">
+<p>Admin receives a confirmation notification when settings are successfull=
+y saved.</p></td>
+<td class=3D"confluenceTd">
+<p>Confirmation message is displayed after successful save.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-20</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can view the <strong>Campaign Frequency</strong> and <strong>Expir=
+y Date</strong> settings in the campaign summary.</p></td>
+<td class=3D"confluenceTd">
+<p>Frequency and expiry date settings are displayed in the summary.</p></td=
+>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>System Behavior &amp; Validation</strong></p>
+<ul>
+<li>
+<p><strong>Schedule and Frequency</strong>: Admin must select the campaign'=
+s delivery method, frequency, and expiration date before proceeding.</p></l=
+i>
+<li>
+<p><strong>Test Email</strong>: The system allows the Admin to verify the c=
+ampaign configuration via a test email before sending the actual campaign.<=
+/p></li>
+<li>
+<p><strong>Validation</strong>: Fields like <strong>Campaign Frequency</str=
+ong> and <strong>First Batch Delivery</strong> are validated to ensure corr=
+ect data input.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Security Handling</strong></p>
+<ul>
+<li>
+<p><strong>Access Control</strong>: Only authorized users (admins) can conf=
+igure campaign settings and schedule delivery.</p></li>
+<li>
+<p><strong>Data Security</strong>: All campaign schedule and configuration =
+data are securely stored.</p></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_292_596609855.1764600267842--

@@ -1,0 +1,98 @@
+erDiagram
+    SUPPORT_TICKET {
+        string id PK
+        string requesterId
+        string typeId FK
+        string status
+    }
+
+    SUPPORT_TICKET_TYPE {
+        string id PK
+        string name
+    }
+
+    SUPPORT_TICKET_COMMENT {
+        string id PK
+        string ticketId FK
+        string authorId
+    }
+
+    LATEST_NEWS {
+        string id PK
+        string categoryId FK
+        string title
+    }
+
+    NEWS_COMMENT {
+        string id PK
+        string newsId FK
+        string userId
+    }
+
+    NEWS_LIKE {
+        string id PK
+        string newsId FK
+        string userId
+    }
+
+    KNOWLEDGE_HUB {
+        string id PK
+        string categoryId FK
+        string title
+    }
+
+    KNOWLEDGE_HUB_COMMENT {
+        string id PK
+        string hubId FK
+        string userId
+    }
+
+    KNOWLEDGE_HUB_LIKE {
+        string id PK
+        string hubId FK
+        string userId
+    }
+
+    CATEGORY {
+        string id PK
+        string name
+    }
+
+    TAG {
+        string id PK
+        string name
+    }
+
+    POLICY {
+        string id PK
+        string policyTypeId FK
+        string title
+    }
+
+    POLICY_TYPE {
+        string id PK
+        string name
+    }
+
+    POLL_SURVEY {
+        string id PK
+        string title
+    }
+
+    POLL_SURVEY_SUBMISSION {
+        string id PK
+        string pollSurveyId FK
+        string userId
+    }
+
+    SUPPORT_TICKET_TYPE ||--o{ SUPPORT_TICKET : "type"
+    SUPPORT_TICKET ||--o{ SUPPORT_TICKET_COMMENT : "comments"
+    CATEGORY ||--o{ LATEST_NEWS : "news category"
+    LATEST_NEWS ||--o{ NEWS_COMMENT : "comments"
+    LATEST_NEWS ||--o{ NEWS_LIKE : "likes"
+    CATEGORY ||--o{ KNOWLEDGE_HUB : "hub category"
+    KNOWLEDGE_HUB ||--o{ KNOWLEDGE_HUB_COMMENT : "comments"
+    KNOWLEDGE_HUB ||--o{ KNOWLEDGE_HUB_LIKE : "likes"
+    TAG }o--o{ KNOWLEDGE_HUB : "tags"
+    POLICY_TYPE ||--o{ POLICY : "policy type"
+    POLL_SURVEY ||--o{ POLL_SURVEY_SUBMISSION : "submissions"

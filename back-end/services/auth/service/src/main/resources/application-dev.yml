@@ -1,0 +1,100 @@
+spring:
+  config:
+    import: "optional:classpath:common-defaults.yml,optional:classpath:common-defaults-dev.yml"
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:}
+      database: registration
+      auto-index-creation: false
+
+server:
+  port: 9093
+
+service:
+  cms:
+    url: http://asat-cms-service:5050/cms/api/v1
+  billing:
+    url: http://asat-billing-service:6060/billing/api/v1
+  registration:
+    url: http://asat-registration-service:9090/registration/api/v1
+
+azure:
+  storage:
+    connection-string: DefaultEndpointsProtocol=https;AccountName=${AZURE_STORAGE_ACCOUNT_NAME};AccountKey=${AZURE_STORAGE_ACCOUNT_KEY};EndpointSuffix=core.windows.net
+    container-name: strgblobstandardasatv2
+
+aws:
+  region: "us-east-1"
+  credentials:
+    # From SSM: /asat/local/auth-service/aws.credentials.access-key (or env); do not commit real values
+    access-key: ${AWS_CREDENTIALS_ACCES_KEY:}
+    # From SSM: /asat/local/auth-service/aws.credentials.secret-key (or env); do not commit real values
+    secret-key: ${AWS_CREDENTIALS_SECRET_KEY:}
+  s3:
+    bucket-name: "asatv2-media-bucket"
+
+client:
+  notification:
+    url: http://asat-notification-service:5656/notification
+    send-email-api: /api/v1/send
+
+jwt:
+  secret: "WwiLCJzY29wZSI6WyWwiLCJzY29wZSI6WyWwiLCJzY29wZSI6WyWwiLCJzY29wZSI6WyWwiLCJzY29wZSI6WyWwiLCJzY29wZSI6WyWwiLCJzY29wZSI6Wy"
+  expiration: 20  # 5 minutes (local - for testing refresh token flow)
+  refresh:
+    expiration: 10080  # 7 days in minutes
+
+
+redis:
+  host: ${REDIS_HOST:127.0.0.1}
+  port: ${REDIS_PORT:6379}
+  password: ${REDIS_PASSWORD:}
+  database:
+    index: ${REDIS_DATABASE_INDEX:0}
+  pool:
+    max:
+      connection: 30
+      idle:
+        connection: 10
+    min:
+      idle:
+        connection: 0
+auth:
+  fallback:
+    mongo:
+      enabled: ${AUTH_FALLBACK_MONGO_ENABLED:true}
+  password-reset-token-expiration-second: 3600
+  password-set-token-expiration-second: 28800
+  password-reset: https://dev.aspireelearning.com/auth/reset-password
+  password-history-count: 3
+  password-history-message-count: 3
+
+GATEWAY:
+  BASE_URL: "https://dev.aspireelearning.com/gateway"
+
+link:
+  logo: https://aspiretss.s3.us-east-1.amazonaws.com/public/Image.png
+  login: https://dev.aspireelearning.com/auth/login
+  help: https://dev.aspireelearning.com/auth/login
+  password-reset: https://dev.aspireelearning.com/auth/reset-password
+
+# MFA Configuration
+mfa:
+  enabled: ${MFA_ENABLED:false}  # Global MFA enable/disable flag
+  sms-enabled: ${MFA_SMS_ENABLED:false}  # Enable SMS-based MFA
+  email-enabled: ${MFA_EMAIL_ENABLED:false}  # Enable Email-based MFA
+  authenticator-enabled: ${MFA_AUTHENTICATOR_ENABLED:true}  # Enable Authenticator app-based MFA
+  phone-call-enabled: ${MFA_PHONE_CALL_ENABLED:false}  # Enable Phone Call-based MFA
+  otp-length: ${MFA_OTP_LENGTH:6}  # OTP code length (default: 6 digits)
+  otp-validity-seconds: ${MFA_OTP_VALIDITY_SECONDS:300}  # OTP validity period (default: 5 minutes)
+  max-attempts: ${MFA_MAX_ATTEMPTS:5}  # Maximum failed verification attempts before locking
+  rate-limit-per-hour: ${MFA_RATE_LIMIT_PER_HOUR:10}  # Maximum OTP generate/resend requests per IP per hour
+  lock-duration-seconds: ${MFA_LOCK_DURATION_SECONDS:900}  # Account lock after max failed attempts (default: 15 minutes)
+  max-resends-per-hour: ${MFA_MAX_RESENDS_PER_HOUR:5}  # Additional OTP resends per user per hour (initial generate excluded)
+  resend-cooldown-seconds:
+    - 60
+    - 120
+    - 300
+  temp-token-expiration-minutes: ${MFA_TEMP_TOKEN_EXPIRATION_MINUTES:}  # MFA temp token TTL covering progressive cooldowns
+  ip-verify-limit: ${MFA_IP_VERIFY_LIMIT:30}  # Max OTP verify attempts per IP per lock window
+  encryption-key: ${MFA_ENCRYPTION_KEY:}  # Encryption key for TOTP secrets (CHANGE IN PRODUCTION!)

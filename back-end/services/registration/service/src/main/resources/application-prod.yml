@@ -1,0 +1,63 @@
+spring:
+  config:
+    import: "optional:classpath:common-defaults.yml,optional:classpath:common-defaults-prod.yml"
+  application:
+    name: asat-service
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:}
+      database: registration
+
+server:
+  port: 9090
+
+service:
+  cms:
+    url: http://asat-cms-service:5050/cms/api/v1
+  billing:
+    url: http://asat-billing-service:6060/billing/api/v1
+  auth:
+    url: http://asat-auth-service:9093/auth/api/v1/auth
+    password-reset-token-expiration-second: 28800
+    password-reset: https://portal.securityawarenesstraining.ai/auth/set-password
+
+# Internal service-to-service auth (billing invoice create)
+# SSM (shared): /asat/common/prod/internal.service.api-key
+# Env override: INTERNAL_SERVICE_API_KEY
+internal:
+  service:
+    api-key: ${INTERNAL_SERVICE_API_KEY:}
+
+azure:
+  storage:
+    connection-string: DefaultEndpointsProtocol=https;AccountName=${AZURE_STORAGE_ACCOUNT_NAME};AccountKey=${AZURE_STORAGE_ACCOUNT_KEY};EndpointSuffix=core.windows.net
+    container-name: strgblobstandardasatv2
+
+aws:
+  region: "us-east-1"
+  credentials:
+    # From SSM: /asat/prod/asat-service/aws.credentials.access-key
+    access-key: ${AWS_CREDENTIALS_ACCES_KEY:}
+    # From SSM: /asat/prod/asat-service/aws.credentials.secret-key
+    secret-key: ${AWS_CREDENTIALS_SECRET_KEY:}
+  s3:
+    bucket-name: "asatv2-media-bucket"
+
+client:
+  notification:
+    url: http://asat-notification-service:5656/notification
+#    url: http://localhost:5656/notification
+
+
+link:
+  logo: https://aspiretss.s3.us-east-1.amazonaws.com/public/Image.png
+  login: https://portal.securityawarenesstraining.ai/auth/login
+  help: https://portal.securityawarenesstraining.ai/auth/login
+  support-email: support@securityawarenesstraining.ai
+
+system:
+  user:
+    email: superadmin01@yopmail.com
+const:
+  leaderboard:
+    max-active-size: 2

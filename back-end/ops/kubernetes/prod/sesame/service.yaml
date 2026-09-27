@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: asat-sesame
+    namespace: prod
+    labels:
+        app: asat-sesame
+spec:
+    type: ClusterIP
+    ports:
+        - name: http
+          port: 9010
+          targetPort: 9010
+    selector:
+        app: asat-sesame

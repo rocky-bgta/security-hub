@@ -1,0 +1,195 @@
+spring:
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=100000, expireAfterWrite=120s
+
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:}
+      database: registration
+      auto-index-creation: true
+
+  cloud:
+    gateway:
+      routes:
+        - id: asat-cms-service
+          uri: http://asat-cms-service:5050
+          predicates:
+            - Path=/gateway/cms/**
+          filters:
+            - name: RewritePath
+              args:
+                regexp: /gateway/(?<segment>.*)
+                replacement: /${segment}
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 100 # Higher rate for local development
+                redis-rate-limiter.burstCapacity: 200 # Higher burst for local development
+                key-resolver: "#{@ipKeyResolver}" # Bean name for key resolver
+
+        - id: asat-registration-service
+          uri: http://asat-registration-service:9090
+          predicates:
+            - Path=/gateway/registration/**
+          filters:
+            - name: RewritePath
+              args:
+                regexp: /gateway/(?<segment>.*)
+                replacement: /${segment}
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 100
+                redis-rate-limiter.burstCapacity: 200
+                key-resolver: "#{@ipKeyResolver}"
+
+        - id: asat-auth-service
+          uri: http://asat-auth-service:9093
+          predicates:
+            - Path=/gateway/auth/**
+          filters:
+            - name: RewritePath
+              args:
+                regexp: /gateway/(?<segment>.*)
+                replacement: /${segment}
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 100
+                redis-rate-limiter.burstCapacity: 200
+                key-resolver: "#{@ipKeyResolver}"
+
+        - id: asat-billing-service
+          uri: http://asat-billing-service:6060
+          predicates:
+            - Path=/gateway/billing/**
+          filters:
+            - name: RewritePath
+              args:
+                regexp: /gateway/(?<segment>.*)
+                replacement: /${segment}
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 100
+                redis-rate-limiter.burstCapacity: 200
+                key-resolver: "#{@ipKeyResolver}"
+
+
+        - id: asat-notification-service
+          uri: http://asat-notification-service:5656
+          predicates:
+            - Path=/gateway/notification/**
+          filters:
+            - name: RewritePath
+              args:
+                regexp: /gateway/(?<segment>.*)
+                replacement: /${segment}
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 100
+                redis-rate-limiter.burstCapacity: 200
+                key-resolver: "#{@ipKeyResolver}"
+
+        # - id: notification-service
+        #   uri: http://localhost:8085
+        #   predicates:
+        #     - Path=/notification/**
+        #   filters:
+        #     - name: RequestRateLimiter
+        #       args:
+        #         redis-rate-limiter.replenishRate: 100
+        #         redis-rate-limiter.burstCapacity: 200
+        #         key-resolver: "#{@ipKeyResolver}"
+
+        # - id: vps-service
+        #   uri: http://localhost:8086
+        #   predicates:
+        #     - Path=/vps/**
+        #   filters:
+        #     - name: RequestRateLimiter
+        #       args:
+        #         redis-rate-limiter.replenishRate: 100
+        #         redis-rate-limiter.burstCapacity: 200
+        #         key-resolver: "#{@ipKeyResolver}"
+
+        - id: asat-phishing-service
+          uri: http://asat-phishing-service:5002
+          predicates:
+            - Path=/gateway/phishing/**
+          filters:
+            - name: RewritePath
+              args:
+                regexp: /gateway/(?<segment>.*)
+                replacement: /${segment}
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 100
+                redis-rate-limiter.burstCapacity: 200
+                key-resolver: "#{@ipKeyResolver}"
+
+        - id: asat-universal-service
+          uri: http://asat-universal-service:9099
+          predicates:
+            - Path=/gateway/universal/**
+          filters:
+            - name: RewritePath
+              args:
+                regexp: /gateway/(?<segment>.*)
+                replacement: /${segment}
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 100
+                redis-rate-limiter.burstCapacity: 200
+                key-resolver: "#{@ipKeyResolver}"
+
+        - id: asat-breach-detection-service
+          uri: http://asat-breach-detection-service:6080
+          predicates:
+            - Path=/gateway/breach/**
+          filters:
+            - name: RewritePath
+              args:
+                regexp: /gateway/(?<segment>.*)
+                replacement: /${segment}
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 100
+                redis-rate-limiter.burstCapacity: 200
+                key-resolver: "#{@ipKeyResolver}"
+
+server:
+  port: 7030
+  forward-headers-strategy: none
+
+jwt:
+  secret: "WwiLCJzY29wZSI6WyWwiLCJzY29wZSI6WyWwiLCJzY29wZSI6WyWwiLCJzY29wZSI6WyWwiLCJzY29wZSI6WyWwiLCJzY29wZSI6WyWwiLCJzY29wZSI6Wy"
+  expiration: 30
+  enable: true  # Make true to enable API security in API gateway
+
+
+redis:
+  host: ${REDIS_HOST:localhost}
+  port: ${REDIS_PORT:6379}
+  password: ${REDIS_PASSWORD:}
+  database:
+    index: ${REDIS_DATABASE_INDEX:0}
+  pool:
+    max:
+      connection: 30
+      idle:
+        connection: 10
+    min:
+      idle:
+        connection: 0
+
+GATEWAY:
+  BASE_URL: "http://15.204.234.241:7030"
+
+asat-service:
+  # Allow all origins for local development
+  frontend-url: "${FRONTEND_URL:http://portal.aspireelearning.com/, https://portal.aspireelearning.com/,  https://staging.aspireelearning.com/}"
+  allow-origins: "${AC_ALLOW_ORIGINS:http://portal.aspireelearning.com,https://portal.aspireelearning.com,https://staging.aspireelearning.com,https://staging-site.aspireelearning.com,https://securityawarenesstraining.ai,http://securityawarenesstraining.ai}"
+  allow-headers: "${AC_ALLOW_HEADERS:*,Authorization,Content-Type,X-Requested-With,Accept,Origin,Access-Control-Allow-Origin,Access-Control-Allow-Headers,Access-Control-Allow-Methods}"
+  allow-methods: "${AC_ALLOW_METHODS:*,GET,POST,PUT,DELETE,OPTIONS,PATCH,HEAD}"
+
+link:
+  logo: https://aspiretss.s3.us-east-1.amazonaws.com/public/Image.png

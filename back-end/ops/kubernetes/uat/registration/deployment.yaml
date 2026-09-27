@@ -1,0 +1,28 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: asat-registration
+  namespace: uat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: asat-registration
+  template:
+    metadata:
+      labels:
+        app: asat-registration
+#        version: "{{ .VERSION }}"
+    spec:
+      containers:
+        - name: asat-registration
+          image: aspirebase.azurecr.io/aspire-registration:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9090
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"      # Minimum CPU (500 millicores = 0.5 CPU)
+            limits:
+              memory: "512Mi"

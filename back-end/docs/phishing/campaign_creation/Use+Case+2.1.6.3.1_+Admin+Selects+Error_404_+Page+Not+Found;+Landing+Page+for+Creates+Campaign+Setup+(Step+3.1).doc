@@ -1,0 +1,699 @@
+Date: Mon, 1 Dec 2025 14:43:37 +0000 (UTC)
+Message-ID: <1462222448.297.1764600217872@f0181bd6a79d>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_296_1169931182.1764600217872"
+
+------=_Part_296_1169931182.1764600217872
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Use Case 2.1.6.3.1: Admin Selects Error/404: Page Not Found; Lan=
+ding Page for Creates Campaign Setup (Step 3.1)</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Use Case 2.1.6.3.1: Admin Selects Error/404: Page Not Found; Landin=
+g Page for Creates Campaign Setup (Step 3.1)</h1>
+    <div class=3D"Section1">
+        <p><strong>User Story</strong></p>
+<p>As an Admin, I want to select the <strong>Error/404: Page Not Found</str=
+ong> landing page template for my phishing campaign, apply filters to narro=
+w down the templates, preview the selected template, and confirm the select=
+ion, so that I can configure the appropriate landing page for the phishing =
+campaign.</p>
+<p><strong>Description</strong></p>
+<p>This use case describes the process by which the Aspire Admin selects th=
+e <strong>Error/404: Page Not Found</strong> landing page template for the =
+phishing campaign. The Admin can filter landing page templates based on cri=
+teria such as category and difficulty level, preview the selected template,=
+ and confirm the landing page selection. The Admin can apply filters for ca=
+tegories and difficulty levels and view a preview of the landing page templ=
+ate before confirming the selection.</p>
+<p>The Admin must choose the <strong>Error/404: Page Not Found</strong> tem=
+plate if they want to simulate the phishing scenario where a user encounter=
+s an error page, typically used to engage users in phishing campaigns.</p>
+<p><strong>Actors</strong></p>
+<ul>
+<li>
+<p><strong>Admin</strong>: Selects the <strong>Error/404: Page Not Found</s=
+trong> landing page, applies filters, previews the template, and confirms t=
+he selection.</p></li>
+<li>
+<p><strong>System</strong>: Displays the available landing page templates, =
+applies filters, shows the preview of the selected template, and allows the=
+ Admin to confirm their choice.</p></li>
+</ul>
+<p><strong>Preconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>Admin is logged into the platform and has access to the <strong>Create N=
+ew Campaign</strong> wizard.</p></li>
+<li>
+<p>The Admin is in the <strong>Landing Page Selection</strong> step.</p></l=
+i>
+<li>
+<p>The system has available templates for <strong>Error/404: Page Not Found=
+</strong> landing pages.</p></li>
+<li>
+<p>The Admin has the option to select between <strong>Landing Page</strong>=
+, <strong>Error/404: Page Not Found</strong>, or <strong>Custom Landing Pag=
+e</strong>.</p></li>
+</ol>
+<p><strong>Postconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>The <strong>Error/404: Page Not Found</strong> landing page template is =
+selected and confirmed for the phishing campaign.</p></li>
+<li>
+<p>The <strong>Save &amp; Continue</strong> button is enabled to proceed to=
+ the next step in the campaign creation.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Main Flow (Normal Success Scenario)</strong></p>
+<p><strong>Step 1: Navigate to Landing Page Selection</strong></p>
+<ul>
+<li>
+<p>The Admin navigates to the <strong>Landing Page Selection</strong> step =
+in the campaign creation wizard.</p></li>
+<li>
+<p>The system displays the <strong>Landing Page Type</strong> options, incl=
+uding <strong>Landing Page</strong>, <strong>Error/404 Page Not Found</stro=
+ng>, and <strong>Custom Landing Page</strong>.</p></li>
+</ul>
+<p></p>
+<p><strong>Step 2: Search Template</strong></p>
+<ul>
+<li>
+<p>Admin can search the available Phishing Landing Page templates. placehol=
+der: Search templates...<br>
+Admin can search by keywords (e.g., "Holidays Offer").<br>
+Admin can sort templates by popularity (Most to Least).<br>
+Admin can search for templates using keywords.</p></li>
+</ul>
+<p></p>
+<p><strong>Step 3: View Error/404: Page Not Found Templates</strong></p>
+<ul>
+<li>
+<p>The Admin reviews the available landing page templates under <strong>Err=
+or/404: Page Not Found Templates</strong>.</p></li>
+<li>
+<p>Templates are displayed with the template name, preview, and associated =
+description (e.g., LinkedIn, Google Login, etc.).</p></li>
+<li>
+<p>The Admin can click <strong>Preview</strong> to view a preview of the la=
+nding page.</p></li>
+<li>
+<p>Use Pagination to Navigate Between Pages</p></li>
+</ul>
+<ol start=3D"1">
+<li>
+<p>The Admin can view the first page of 9 <strong>Error/404: Page Not Found=
+</strong> After that it will show as pagination</p></li>
+<li>
+<p>The system displays pagination controls at the bottom of the campaign li=
+st with the following options:</p>
+<ul>
+<li>
+<p><strong>Previous</strong>: Navigate to the previous page.</p></li>
+<li>
+<p><strong>Next</strong>: Navigate to the next page.</p></li>
+<li>
+<p>The page number (e.g., "1", "2", "3", etc.) is highlighted to indicate t=
+he current page.</p></li>
+</ul></li>
+<li>
+<p>The Admin clicks <strong>Next</strong> or <strong>Previous</strong> to n=
+avigate between pages of <strong>Error/404: Page Not Found</strong>.</p></l=
+i>
+<li>
+<p>The system updates the page content and displays the <strong>Error/404: =
+Page Not Found </strong>from the selected page.</p></li>
+</ol>
+<p></p>
+<p><strong>Step 4: View Available Templates</strong></p>
+<ul>
+<li>
+<p>The Admin reviews the available <strong>Error/404: Page Not Found</stron=
+g> landing page templates under <strong>Available Landing Page Templates</s=
+trong>.</p></li>
+<li>
+<p>Templates are displayed with the template name, preview, and associated =
+description (e.g., "Classic 404 Error," "Maintenance Page").</p></li>
+</ul>
+<p><strong>Step 5: Preview Error/404: Page Not Found</strong> <strong>Landi=
+ng Page</strong></p>
+<ul>
+<li>
+<p>The Admin clicks the <strong>Preview</strong> button next to the <strong=
+>Error/404: Page Not Found</strong> template.</p></li>
+<li>
+<p>The system displays a preview of the selected <strong>Error/404 Error Pa=
+ge</strong>.</p></li>
+<li>
+<p>Example preview shows a 404 error message with a sad face icon and a "Go=
+ to the homepage" button (as per the image provided).</p></li>
+</ul>
+<p><strong>Step 6: Close Preview</strong></p>
+<ul>
+<li>
+<p>After reviewing the preview, the Admin can close the preview window by c=
+licking the <strong>Close</strong> button.</p></li>
+</ul>
+<p><strong>Step 7: Select Landing Page</strong></p>
+<ul>
+<li>
+<p>After previewing and reviewing the landing page, the Admin clicks <stron=
+g>Select</strong> to confirm the selection of the <strong>Error/404: Page N=
+ot Found</strong> landing page template for the campaign.</p></li>
+</ul>
+<p><strong>Step 8: Proceed to Next Step</strong></p>
+<ul>
+<li>
+<p>Once the <strong>Error/404: Page Not Found</strong> landing page is sele=
+cted, the Admin can proceed to the next step by clicking <strong>Save &amp;=
+ Continue</strong>.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Frontend Form Validation</strong></p>
+<p><strong>Field Validation Rules</strong></p>
+<ol start=3D"1">
+<li>
+<p><strong>Landing Page Type</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory.</p></li>
+<li>
+<p><strong>Validation</strong>: The Admin must select the <strong>Error/404=
+: Page Not Found</strong> landing page type.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Please select a valid landing page type=
+."</p></li>
+</ul></li>
+<li>
+<p><strong>Available Landing Page Templates</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory after applying filter=
+s.</p></li>
+<li>
+<p><strong>Validation</strong>: The Admin must select a valid <strong>Error=
+/404: Page Not Found</strong> template from the list.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Please select a 404 error page template=
+."</p></li>
+</ul></li>
+<li>
+<p><strong>Preview</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: Admin must preview the selected template befo=
+re confirming.</p></li>
+<li>
+<p><strong>Validation</strong>: Admin must click <strong>Preview</strong> t=
+o view the template before selecting it.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Please preview the selected template be=
+fore proceeding."</p></li>
+</ul></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Business Rules</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"ad=
+d556ff-d322-484d-80cf-1b9208e84a38" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Rule</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-1</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must choose a <strong>Error/404: Page Not Found</strong> landing p=
+age type before selecting a template.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-2</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can filter available landing page templates based on <strong>Categ=
+ory</strong> and <strong>Difficulty Level</strong>.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-3</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must <strong>Preview</strong> the selected template before confirm=
+ing the selection.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-4</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Preview</strong> button must show an accurate representation=
+ of the selected 404 landing page.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-5</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must select the <strong>Error/404: Page Not Found</strong> templat=
+e for campaigns simulating error pages.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-6</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must apply <strong>Landing Page Filters</strong> to narrow down av=
+ailable templates by category and difficulty.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-7</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must confirm their selection by clicking <strong>Select</strong>.<=
+/p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>Acceptance Criteria</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"97=
+4d22fb-4aac-4ae8-a9f7-285794e70ef6" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Acceptance Criteria</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Pass/Fail Condition</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-01</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select the <strong>Error/404: Page Not Found</strong> landing =
+page type.</p></td>
+<td class=3D"confluenceTd">
+<ul>
+<li>
+<p><strong>Error/</strong></p></li>
+</ul>
+<p><strong>404: Page Not Found</strong> is selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-02</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can preview the <strong>Error/404: Page Not Found</strong> landing=
+ page template by clicking <strong>Preview</strong>.</p></td>
+<td class=3D"confluenceTd">
+<p>A preview of the 404 error page is displayed correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-03</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can close the preview window by clicking <strong>Close</strong>.</=
+p></td>
+<td class=3D"confluenceTd">
+<p>The preview window closes and returns to the template list.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-04</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can confirm the selection by clicking <strong>Select</strong>.</p>=
+</td>
+<td class=3D"confluenceTd">
+<p>The selected 404 landing page template is confirmed and saved.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-05</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can proceed to the next step after confirming the landing page sel=
+ection.</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Save &amp; Continue</strong> button is enabled after selection.<=
+/p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-06</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can preview a <strong>Error/404: Page Not Found</strong> landing p=
+age template before selecting it.</p></td>
+<td class=3D"confluenceTd">
+<p>The preview displays an accurate representation of the template.</p></td=
+>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-07</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must select a <strong>Error/404: Page Not Found</strong> template =
+before proceeding.</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Save &amp; Continue</strong> button is disabled until a temp=
+late is selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-08</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select <strong>Error/404 Page Not Found</strong> from the avai=
+lable templates and apply them to the campaign.</p></td>
+<td class=3D"confluenceTd">
+<p><strong>404 Page Not Found</strong> is correctly selected and applied.</=
+p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-09</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select <strong>Classic 404 Error Page</strong> template.</p></=
+td>
+<td class=3D"confluenceTd">
+<p>Admin can select the <strong>Classic 404 Error Page</strong> template fr=
+om the available list.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-10</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can view and interact with the <strong>Error/404: Page Not Found</=
+strong> preview in real-time.</p></td>
+<td class=3D"confluenceTd">
+<p>The 404 error page template reflects any updates immediately.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-11</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select the <strong>Error/404: Page Not Found</strong> type, an=
+d the preview accurately reflects the template=E2=80=99s content.</p></td>
+<td class=3D"confluenceTd">
+<p>Preview is an exact match for the selected 404 error template.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-12</p></td>
+<td class=3D"confluenceTd">
+<p>Admin is able to view the <strong>Go to the homepage</strong> button in =
+the preview.</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Go to the homepage</strong> button is visible and functional=
+ in the preview.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-13</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can confirm the landing page selection without needing to make fur=
+ther modifications.</p></td>
+<td class=3D"confluenceTd">
+<p>Once confirmed, the template is saved and ready for the next step.</p></=
+td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-14</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can view a valid error message if they try to proceed without sele=
+cting a template.</p></td>
+<td class=3D"confluenceTd">
+<p>Error message appears if no template is selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-15</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can confirm their selection of the <strong>Error/404: Page Not Fou=
+nd</strong> template only after previewing it.</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Select</strong> button is only enabled after previewing the =
+landing page.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-16</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select <strong>Custom Landing Page</strong> if required.</p></=
+td>
+<td class=3D"confluenceTd">
+<p>Custom landing page option is available for selection.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>System Behavior &amp; Validation</strong></p>
+<ul>
+<li>
+<p><strong>Landing Page Type</strong>: Admin must select one of the three a=
+vailable landing page types (<strong>Landing Page</strong>, <strong>404 Pag=
+e Not Found</strong>, <strong>Custom Landing Page</strong>).</p></li>
+<li>
+<p><strong>Preview</strong>: Admin can preview the landing page by clicking=
+ the <strong>Preview</strong> button. The system ensures that the preview i=
+s accurate and matches the selected template.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Security Handling</strong></p>
+<ul>
+<li>
+<p><strong>Data Integrity</strong>: All landing page selections and preview=
+s are securely stored. Only authorized Admins can modify landing page templ=
+ates.</p></li>
+<li>
+<p><strong>Audit Logs</strong>: The system logs all actions related to temp=
+late selection and filtering for audit purposes.</p></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_296_1169931182.1764600217872--

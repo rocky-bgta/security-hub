@@ -1,0 +1,107 @@
+erDiagram
+    ASPIRE_USER {
+        UUID id PK
+        string userType
+        string clientAdminId FK
+        string mspId FK
+        string[] roles FK
+    }
+
+    CLIENT_ADMIN {
+        string id PK
+        string clientAdminId
+        string organizationName
+        string mspId FK
+        string[] clientProductIds FK
+        string[] roleIds FK
+    }
+
+    MSP_USER {
+        string id PK
+        string mspId
+        string organizationName
+        string[] clientProductIds FK
+    }
+
+    CLIENT_PRODUCT {
+        string id PK
+        string clientAdminId FK
+        string productId
+        string packageId
+        int licenseCount
+        int usedLicenseCount
+        string mspId FK
+    }
+
+    USER_LICENCE {
+        string id PK
+        string userId FK
+        string clientAdminId FK
+        string productId
+        string packageId
+    }
+
+    END_USER_PACKAGE {
+        string id PK
+        string userId FK
+        string clientAdminId FK
+        string productId
+        string subPackageId
+    }
+
+    DEPARTMENT {
+        string id PK
+        string clientAdminId FK
+        string name
+    }
+
+    ACTIVITY_LOG {
+        string id PK
+        string userId FK
+        string clientAdminId FK
+        string activityType
+    }
+
+    USER_IMPORT_JOB {
+        string id PK
+        string clientAdminId FK
+        string status
+    }
+
+    BULK_USER_IMPORT_SESSION {
+        string id PK
+        string clientAdminId FK
+        string status
+    }
+
+    MICROSOFT_INTEGRATION {
+        string id PK
+        string clientAdminId FK
+        boolean active
+    }
+
+    ROLE {
+        string id PK
+        string roleName
+    }
+
+    ROLE_PERMISSION {
+        string id PK
+        string roleId FK
+    }
+
+    CLIENT_ADMIN ||--o{ ASPIRE_USER : "clientAdminId"
+    CLIENT_ADMIN ||--o{ CLIENT_PRODUCT : "products"
+    CLIENT_ADMIN ||--o{ USER_LICENCE : "licences"
+    CLIENT_ADMIN ||--o{ END_USER_PACKAGE : "package progress"
+    CLIENT_ADMIN ||--o{ DEPARTMENT : "departments"
+    CLIENT_ADMIN ||--o{ ACTIVITY_LOG : "activity"
+    CLIENT_ADMIN ||--o{ USER_IMPORT_JOB : "imports"
+    CLIENT_ADMIN ||--o{ BULK_USER_IMPORT_SESSION : "bulk imports"
+    CLIENT_ADMIN ||--o| MICROSOFT_INTEGRATION : "directory sync"
+    MSP_USER ||--o{ CLIENT_ADMIN : "mspId"
+    MSP_USER ||--o{ CLIENT_PRODUCT : "mspId"
+    ASPIRE_USER ||--o{ USER_LICENCE : "user licences"
+    ASPIRE_USER ||--o{ END_USER_PACKAGE : "package progress"
+    ASPIRE_USER }o--o{ ROLE : "roles[]"
+    ROLE ||--o| ROLE_PERMISSION : "permissions"

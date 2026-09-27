@@ -1,0 +1,16 @@
+flowchart TD
+    APP[Spring Boot Application<br/>service module] --> API[api module]
+    APP --> CORE[core module]
+    APP --> COMMON[common:core]
+
+    API --> DTO[DTOs / Requests / Responses / Enums]
+    CORE --> CONTROLLER[Controllers]
+    CORE --> SERVICE[Business Services]
+    CORE --> REPO[Repositories]
+    CORE --> CLIENT[Other Service Clients]
+    CORE --> ENTITY[Entities / Models]
+
+    CONTROLLER --> SERVICE
+    SERVICE --> REPO
+    SERVICE --> CLIENT
+    CLIENT --> OTHER[Other Microservice HTTP Endpoint]

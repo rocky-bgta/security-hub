@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        registration-uri: http://localhost:9090
+        course-uri: http://localhost:9020

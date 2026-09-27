@@ -1,0 +1,21 @@
+# Use a lightweight base image with Java runtime
+FROM gcr.io/distroless/java17-debian11 as base
+
+# Stage 1: Build stage
+FROM eclipse-temurin:17-jdk-alpine as builder
+WORKDIR /app
+COPY ./build/libs/service-0.0.1-SNAPSHOT.jar service-0.0.1-SNAPSHOT.jar
+
+# Stage 2: Final stage
+FROM base
+WORKDIR /app
+COPY --from=builder /app/service-0.0.1-SNAPSHOT.jar service-0.0.1-SNAPSHOT.jar
+
+# Set maintainer information
+LABEL maintainer="aspiretss.com"
+
+# Execute the application
+ENTRYPOINT ["java", "-jar", "service-0.0.1-SNAPSHOT.jar"]
+
+# Expose the port the application runs on
+EXPOSE 9030

@@ -1,0 +1,6 @@
+Name: "Name"
+Email: "Email"
+Phone Number: "Phone Number"
+Address: "Address"
+menu.code.exists: "Menu code already exists"
+menu.code.not.found: "Menu with this id not found"

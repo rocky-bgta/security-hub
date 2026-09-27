@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.0'
+    id 'io.spring.dependency-management' version '1.1.5'
+    id 'application'
+}
+
+application {
+    mainClass = 'com.aspire.asat.billing.BillingApplication'
+}
+
+group 'com.aspire.asat.billing'
+
+dependencies {
+
+    implementation project(':services:billing:api')
+    implementation project(':services:billing:core')
+    implementation project(':common:core')
+
+    implementation 'org.springframework.data:spring-data-commons:3.3.0'
+    implementation project.rootProject.ext.libraries.development.springDocUi
+    implementation project.rootProject.ext.libraries.core.springBootStarter
+    implementation project.rootProject.ext.libraries.core.springBootStarterWeb
+    implementation project.rootProject.ext.libraries.core.jacksonDatatype
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation project.rootProject.ext.libraries.core.awsSdkS3
+
+
+
+    testImplementation platform(project.rootProject.ext.libraries.test.junitBom)
+    testImplementation project.rootProject.ext.libraries.test.junitJupiter
+
+}
+
+tasks.test {
+    useJUnitPlatform()
+}

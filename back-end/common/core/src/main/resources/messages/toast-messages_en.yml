@@ -1,0 +1,155 @@
+auth:
+  email:
+    verified: "The email address has been verified successfully. You can now proceed with account setup and access platform features based on your assigned permissions."
+  password:
+    updated: "Your password has been updated successfully. Use the new credentials for all future sign-ins across the platform."
+
+branding:
+  settings:
+    saved: "The branding configuration has been saved successfully. Updated assets will be applied across the platform as system-wide updates are processed and cache refresh is completed."
+  logo:
+    updated: "The logo has been updated successfully and will appear across the platform after refresh."
+
+file:
+  size:
+    limit:
+      exceeded: "One or more files exceed the allowed size limit of 2 MB. Reduce the file size or upload supported files within the permitted limit and try again."
+  exceeds:
+    size:
+      limit: "The selected file exceeds the maximum allowed size of 2 MB. Upload a smaller file or compress the current file before retrying."
+
+user:
+  already:
+    exists: "An account with the provided email or username already exists. Use a different identifier or update the existing user record instead of creating a duplicate."
+  company:
+    email:
+      required: "The provided email does not match the organization's domain policy. Use a valid company email address to complete the registration process."
+  created:
+    success: "The user account has been created successfully and is now ready for access provisioning, training enrollment, and policy enforcement based on organizational security configurations."
+
+import:
+  users:
+    partial:
+      success: "The import process completed with some records skipped due to duplicates or invalid data. Review the import report to identify and resolve skipped entries."
+  website:
+    success: "The website content has been imported successfully. It is now available for use in landing page creation and phishing simulation scenarios."
+
+product:
+  assigned:
+    success: "The selected product has been assigned successfully. Assigned users can now access associated features based on their license and permissions."
+
+billing:
+  purchase:
+    completed: "The transaction has been completed successfully. Subscription and billing details are now active and available in your billing and subscription management workspace"
+
+general:
+  operation:
+    completed: "The requested operation has been completed successfully. Changes are now reflected across the platform and available for further actions."
+
+package:
+  sub:
+    created: "The sub-package has been created successfully and is now available for assignment, configuration, and inclusion in product offerings."
+    updated: "The sub-package has been updated successfully. Changes will be reflected in associated configurations and assignments."
+    assigned: "The sub-package has been assigned successfully. Selected users or entities now have access based on configuration."
+
+template:
+  assigned:
+    success: "The template has been assigned successfully and is now available for certification workflows. Assigned users can complete the required activities and obtain certificates based on the configured criteria."
+  updated: "The template has been updated successfully. Changes are now available for use in phishing campaigns and future simulations."
+  duplicated: "The template has been duplicated successfully. The new copy can be modified independently and used for additional campaigns."
+  deleted: "The template has been deleted successfully and is no longer available for selection in campaigns or template libraries."
+  created: "The template has been created successfully and is ready for editing, testing, or inclusion in phishing campaigns."
+  generated: "The template has been generated successfully using configured inputs. Review the generated content before using it in live campaigns."
+
+support:
+  ticket:
+    created: "The support ticket has been submitted successfully. Our support team will review the request and provide updates through the ticketing system."
+    status:
+      updated: "The support ticket status has been updated successfully. Updates are now reflected for the assigned support team and across all reporting and tracking workflows."
+  comment:
+    added: "Your comment has been added successfully. All participants can now view the update and continue the conversation within the support ticket."
+    failed: "The system was unable to add your comment at this time. Verify your input and retry. If the issue persists, contact support for further assistance."
+
+leaderboard:
+  entry:
+    created: "The leader entry has been added successfully and is now available for display and management within the leadership module."
+    updated: "The leaderboard entry has been updated successfully. The updated information is now reflected across leaderboard displays and participant performance views."
+    removed: "The leaderboard entry has been removed successfully and is no longer visible across leaderboard views and related performance displays."
+
+survey:
+  created: "The survey has been created successfully. You can now configure distribution settings and start collecting responses from assigned participants."
+  updated: "The survey has been updated successfully. Changes will be applied to future responses while preserving previously collected data."
+
+system:
+  json:
+    parse:
+      error: "The request could not be processed due to a system error. Verify the input format and retry. If the issue persists, contact technical support."
+  resource:
+    not:
+      found: "The requested resource could not be found on the server. Verify the API endpoint or request path and try again. Contact support if the issue persists."
+  unexpected:
+    error: "An unexpected system error occurred while processing the request. Retry the operation, and if the problem persists, contact support with error details for investigation."
+
+policy:
+  created: "The policy has been created successfully and is ready for assignment. Publish the policy to enforce it across selected users and groups."
+
+notification:
+  settings:
+    updated: "Notification preferences have been updated successfully. Future alerts will follow the selected channels and delivery configurations."
+
+profile:
+  updated: "Personal information has been saved successfully and is now reflected across the platform."
+
+domain:
+  locked:
+    error: "The domain is already associated with another tenant and cannot be used. Contact support or verify ownership to proceed with configuration."
+    success: "The domain has been locked successfully to prevent unauthorized changes. Configuration settings are now restricted until the domain is manually unlocked by an authorized administrator."
+  verified: "The domain has been verified successfully and is now trusted within the platform. You can proceed with domain configuration, DNS setup, and service integration to enable full operational use of this domain."
+  unlocked: "The domain has been unlocked successfully. You can now modify domain settings, update configurations, or manage associated services as required."
+  deleted: "The domain has been permanently removed from the platform. All associated configurations and mappings have been deleted and will no longer be available."
+
+verification:
+  email:
+    sent: "A verification email has been sent successfully. Follow the instructions in your inbox to complete verification."
+
+campaign:
+  deleted: "The campaign has been deleted successfully. All associated configurations, schedules, and tracking data are no longer accessible and cannot be restored."
+  paused: "The campaign has been paused successfully. All scheduled email deliveries are temporarily suspended and can be resumed at any time without data loss."
+  resumed: "The campaign has been resumed successfully. Email delivery will continue based on the previously configured schedule and targeting rules."
+  cancelled: "The campaign has been cancelled successfully. All pending deliveries have been stopped and no further actions will be executed under this campaign."
+  launched: "The campaign has been launched successfully. Phishing simulation emails will be delivered to targeted users based on the configured schedule and campaign rules."
+  name:
+    already:
+      exists: "A campaign with the same name already exists in the system. Provide a unique campaign name to avoid conflicts and ensure proper identification."
+  saved:
+    draft: "The campaign has been saved as a draft successfully. You can continue editing configurations before launching or scheduling the campaign."
+
+analytics:
+  statistics:
+    refreshed: "Campaign metrics and reporting data have been refreshed successfully. The latest analytics are now available for review across reporting modules and analytics interfaces."
+
+landing:
+  page:
+    generated: "The landing page has been generated successfully. You can customize the content and link it to phishing simulations for realistic user interaction."
+    duplicated: "The landing page has been duplicated successfully. The copied version can be edited and reused for additional campaigns or testing scenarios."
+    deleted: "The landing page has been deleted successfully and removed from all associated campaigns and configurations. This action cannot be undone."
+    updated: "The landing page has been updated successfully. Changes are now live and will be reflected in all associated simulations and user interactions."
+    created: "The landing page has been created successfully and is ready for customization, testing, and integration into campaigns."
+
+sender:
+  profile:
+    duplicated: "The sender profile has been duplicated successfully. You can modify the copied profile and use it in different phishing campaign configurations."
+    deleted: "The sender profile has been deleted successfully and is no longer available for campaign email delivery configuration."
+    created: "The sender profile has been created successfully and can now be used to configure email delivery settings in phishing campaigns."
+    updated: "The sender profile has been updated successfully. Changes are applied immediately to associated campaign configurations."
+
+reports:
+  exported: "The report has been generated and exported successfully. You can download, share, and use the report for compliance, auditing, and performance analysis."
+
+ai:
+  configuration:
+    updated: "AI configuration settings have been saved successfully. The updated model settings will be used to generate email templates, landing pages, and related content in future AI-driven content creation workflows."
+
+role:
+  permission:
+    updated: "Role permissions have been updated successfully. The new access controls are now applied across assigned modules. Affected users will experience updated access based on the revised permission matrix."

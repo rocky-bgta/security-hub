@@ -1,0 +1,58 @@
+spring:
+    profiles:
+        active: ${SPRING_PROFILES_ACTIVE:local}
+    application:
+        name: phishing-service
+    main:
+        allow-bean-definition-overriding: true
+    servlet:
+        multipart:
+            max-file-size: 20MB
+            max-request-size: 20MB
+# Region for Spring Cloud AWS autoconfig (e.g. SqsAsyncClient); avoids "Unable to load region" on non-EC2 servers
+spring.cloud.aws.region.static: ${AWS_REGION:us-east-1}
+
+server:
+    servlet:
+        context-path: /phishing
+
+springdoc:
+    api-docs:
+        enabled: true
+    swagger-ui:
+        enabled: true
+        path: /swagger-ui.html
+
+# AWS SSM Parameter Store Configuration
+aws:
+  access-key-id: ${AWS_ACCESS_KEY_ID:}}
+  secret-access-key: ${AWS_SECRET_ACCESS_KEY:}
+  ssm:
+    enabled: ${AWS_SSM_ENABLED:false}
+    kms-enabled: ${AWS_SSM_KMS_ENABLED:false}
+    parameter-path-prefix: ${AWS_SSM_PARAMETER_PATH_PREFIX:/asat}
+    kms-key-id: ${AWS_KMS_KEY_ID:}
+    region: ${AWS_REGION:us-east-1}
+    fail-on-error: ${AWS_SSM_FAIL_ON_ERROR:false}
+  region: ${AWS_REGION:us-east-1}
+
+# Risk score: Scenario C uses 25/75 (training/phishing). Weights kept for reference.
+risk-score:
+  training-weight: 0.25
+  phishing-weight: 0.75
+
+shortener:
+  # Random suffix length (env prefix adds 2 more → 10-char public short codes)
+  code-length: ${SHORTENER_CODE_LENGTH:8}
+  # 01=development, 10=staging, 11=production (override per profile)
+  env-prefix: ${SHORTENER_ENV_PREFIX:}
+
+phishing:
+  credentials:
+    # Base64-encoded 32-byte (AES-256) key used to encrypt SMS/SMTP/voice provider credentials at rest.
+    # A stable default is provided so credentials remain decryptable across restarts and replicas even
+    # when the env var is not set. MUST be overridden with a securely-managed secret in production.
+    encryption-key: ${PHISHING_CREDENTIALS_ENCRYPTION_KEY:}
+  submission-awareness:
+    redirect-delay-seconds: ${PHISHING_SUBMISSION_REDIRECT_DELAY_SECONDS:5}
+    guide-url: ${PHISHING_SUBMISSION_AWARENESS_GUIDE_URL:}

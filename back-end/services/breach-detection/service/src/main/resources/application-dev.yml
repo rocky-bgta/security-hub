@@ -1,0 +1,35 @@
+spring:
+  config:
+    import: "classpath:common-defaults.yml"
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:}
+      database: breach
+
+server:
+  port: 6080
+
+service:
+  registration:
+    url: ${REGISTRATION_SERVICE_URL:http://asat-registration-service:9090/registration/api/v1}
+
+
+insecureweb:
+  api:
+    key: ${INSECUREWEB_API_KEY:}
+    url: ${INSECUREWEB_API_URL:https://app.insecureweb.com}
+    skip-ssl-validation: ${INSECUREWEB_SKIP_SSL_VALIDATION:true}
+
+shodan:
+  api:
+    key: ${SHODAN_API_KEY:}
+    url: ${SHODAN_API_URL:https://api.shodan.io}
+    skip-ssl-validation: ${SHODAN_SKIP_SSL_VALIDATION:true}
+
+breach:
+  swagger:
+    gateway-url: ${BREACH_SWAGGER_GATEWAY_URL:https://dev.aspireelearning.com/gateway/breach}
+
+logging:
+  level:
+    com.aspire.asat.breachdetection: INFO

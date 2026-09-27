@@ -1,0 +1,816 @@
+{
+  "cms": [
+    {
+      "_comment": "Client User LMS"
+    },
+    {
+      "path": "/api/v1/client/packages/assign",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/packages/assign-multiple",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/package/reset",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/exam/validate-answer",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/exam/submit",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/courses/bookmark",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/contents/complete",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/user-packages/status-grouped",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/topics/stats",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/topic-assignment-report/summary",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/topic-assignment-report/list",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/topic-assignment-report/export/csv",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Client private topics (micro-content uploads)"
+    },
+    {
+      "path": "/api/v1/topics/private",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/topics/exists",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/packages",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/packages/details",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/dashboard/summary",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/courses",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/courses/{courseId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/certificates",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/certificates/stats",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Certificate reports"
+    },
+    {
+      "path": "/api/v1/client/expiring-certificates",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/email-expiring-certificates",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/export-certificates",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/expired-certificate-report/summary",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/expired-certificate-report",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/expired-certificate-report/export",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/issued-certificate-report/summary",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/issued-certificate-report",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/client/issued-certificate-report/export",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "question-controller-impl"
+    },
+    {
+      "path": "/api/v1/questions/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/questions/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/questions/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/questions",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/questions",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "product-controller-impl"
+    },
+    {
+      "path": "/api/v1/products/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/products/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/products/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/products/bulk-update",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/products",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/products",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/products/bulk-export",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/products/export",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/products/enabled",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/products/bulk-delete",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "package-controller-impl"
+    },
+    {
+      "path": "/api/v1/packages/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages/bulk-update",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages/exam/questions/upload",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages/bulk-export",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages/export",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages/exists",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages/details/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages/client/products",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages/client/product-analytics",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages/client/product-analytics/download",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages/client/packages/available",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages/client/package-performance",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages/client/license-history",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages/client/assigned-packages",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/packages/bulk-delete",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "package-exam-controller-impl"
+    },
+    {
+      "path": "/api/v1/package-exams/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/package-exams",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/package-exams/search",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "feature-controller-impl"
+    },
+    {
+      "path": "/api/v1/features/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/features/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/features/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/features/bulk-update",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/features",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/features",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/features/bulk-export",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/features/export",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/features/enabled",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/features/bulk-delete",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "course-controller-impl"
+    },
+    {
+      "path": "/api/v1/courses/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/courses/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/courses/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/courses/bulk-update",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/courses",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/courses",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/courses/bulk-export",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/courses/search",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/courses/export",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/courses/enabled",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/courses/bulk-delete",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "content-controller-impl"
+    },
+    {
+      "path": "/api/v1/contents/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "text-content-controller-impl"
+    },
+    {
+      "path": "/api/v1/contents/text/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/text/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/text/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/text",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/text",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/text/search",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "story-block-content-controller-impl"
+    },
+    {
+      "path": "/api/v1/contents/story-block/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/story-block/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/story-block/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/story-block",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/story-block",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/story-block/search",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "slide-content-controller-impl"
+    },
+    {
+      "path": "/api/v1/contents/slide/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/slide/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/slide/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/slide",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/slide",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/slide/search",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "pdf-content-controller-impl"
+    },
+    {
+      "path": "/api/v1/contents/pdf/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/pdf/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/pdf/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/pdf",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/pdf",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/pdf/search",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "link-content-controller-impl"
+    },
+    {
+      "path": "/api/v1/contents/link/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/link/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/link/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/link",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents/link",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "chapter-controller-impl"
+    },
+    {
+      "path": "/api/v1/chapters/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/chapters/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/chapters/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/chapters",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/chapters",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/chapters/search",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/chapters/export",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "user-activity-controller"
+    },
+    {
+      "path": "/api/v1/update-activity",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/total-duration-per-year",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/total-duration-last-7-days",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/total-duration-last-30-days",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "survey-controller"
+    },
+    {
+      "path": "/api/v1/survey",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/survey",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "news-controller"
+    },
+    {
+      "path": "/api/v1/news/react",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/news",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/news/reaction",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "leaderboard-controller"
+    },
+    {
+      "path": "/api/v1/leaderboard",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "file-upload-controller-impl"
+    },
+    {
+      "path": "/api/v1/storages/generate-upload-url",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/storages/check-upload-status",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "quiz-content-controller-impl"
+    },
+    {
+      "path": "/api/v1/contents/quiz",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Contents Available Language CRUD"
+    },
+    {
+      "path": "/api/v1/contents-available-languages",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents-available-languages",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents-available-languages/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents-available-languages/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/contents-available-languages/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "auth-controller"
+    },
+    {
+      "path": "/api/auth/login",
+      "method": "POST",
+      "permissions": ["ALL"]
+    }
+  ]
+}

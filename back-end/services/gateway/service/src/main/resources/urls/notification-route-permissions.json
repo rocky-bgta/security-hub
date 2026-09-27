@@ -1,0 +1,112 @@
+{
+  "notification": [
+    {
+      "_comment": "Legacy Email Notification"
+    },
+    {
+      "path": "/api/v1/send",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/send-notification",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Notification Management - User Notifications"
+    },
+    {
+      "path": "/api/v1/management/in-app",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/management/in-app/unread",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/management/in-app/count",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/management/in-app/{notificationId}/read",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/management/in-app/read-all",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/management/types",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/management/types/priority",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Admin - Notification Settings Dynamic"
+    },
+    {
+      "path": "/api/v1/admin/notification-settings/dynamic",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/admin/notification-settings/dynamic/action",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Admin - Notification Templates Dynamic"
+    },
+    {
+      "path": "/api/v1/admin/notification-templates",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/admin/notification-templates/{templateId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/admin/notification-templates/action",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Test Email Controller"
+    },
+    {
+      "path": "/api/v1/test/smtp/send",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/test/smtp/simple",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Test SMS Controller"
+    },
+    {
+      "path": "/api/v1/test/sms/send",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/test/sms/simple",
+      "method": "POST",
+      "permissions": ["ALL"]
+    }
+  ]
+}

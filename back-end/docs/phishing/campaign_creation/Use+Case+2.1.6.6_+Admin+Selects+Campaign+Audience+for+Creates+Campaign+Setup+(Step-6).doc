@@ -1,0 +1,735 @@
+Date: Mon, 1 Dec 2025 14:44:09 +0000 (UTC)
+Message-ID: <1388757324.9.1764600249990@9d1cf2b4ca9b>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8_1313718481.1764600249990"
+
+------=_Part_8_1313718481.1764600249990
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Use Case 2.1.6.6: Admin Selects Campaign Audience for Creates Ca=
+mpaign Setup (Step-6)</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Use Case 2.1.6.6: Admin Selects Campaign Audience for Creates Campa=
+ign Setup (Step-6)</h1>
+    <div class=3D"Section1">
+        <p><strong>User Story</strong></p>
+<p>As an Admin, I want to select the target audience for my phishing simula=
+tion campaign by either choosing from predefined user groups or creating cu=
+stom user groups, so that I can target specific employees or teams for the =
+campaign.</p>
+<p><strong>Description</strong></p>
+<p>This use case describes how the Admin selects the audience for a phishin=
+g simulation campaign in Step 6 of the campaign setup. The admin has the op=
+tion to select from predefined user groups (such as Low Risk, Medium Risk, =
+High Risk, Remote Workers) or to create custom user groups by selecting emp=
+loyees from a list. If the Admin opts to create a custom user group, they w=
+ill be able to specify a group name, search for employees, and add them to =
+the new group. After making their selections, the Admin can proceed to the =
+next step in the campaign creation process.</p>
+<p><strong>Actors</strong></p>
+<ul>
+<li>
+<p><strong>Admin</strong>: Selects predefined or custom user groups for the=
+ campaign audience.</p></li>
+<li>
+<p><strong>System</strong>: Displays predefined groups, allows for custom g=
+roup creation, and stores selected groups for targeting in the campaign.</p=
+></li>
+</ul>
+<p><strong>Preconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin is logged in and at the <strong>Audience</strong> step in the =
+<strong>Create New Campaign</strong> wizard.</p></li>
+<li>
+<p>The system is operational and can display predefined user groups and sup=
+port custom user group creation.</p></li>
+</ol>
+<p><strong>Postconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>The target audience (predefined or custom groups) is saved and assigned =
+to the campaign.</p></li>
+<li>
+<p>The Admin can continue to the next step in the campaign creation process=
+.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Main Flow (Normal Success Scenario)</strong></p>
+<p><strong>Step 1: Select Predefined User Groups</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Aspire Admin is presented with the option to select predefined user =
+groups such as:</p>
+<ul>
+<li>
+<p><strong>Low Risk Employees</strong></p></li>
+<li>
+<p><strong>Medium Risk Employees</strong></p></li>
+<li>
+<p><strong>High Risk Employees</strong></p></li>
+</ul></li>
+<li>
+<p>The Admin checks the checkbox next to the relevant predefined group(s).<=
+/p></li>
+<li>
+<p>The system displays the number of users within each predefined group.</p=
+></li>
+</ol>
+<p><strong>Step 2: Choose Custom User Groups</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Aspire Admin selects the <strong>Use Custom User Groups</strong> che=
+ckbox.</p></li>
+<li>
+<p>The system displays the <strong>Select Existing Custom User Groups</stro=
+ng> option.</p></li>
+<li>
+<p>The Admin can select from existing custom user groups (e.g., <strong>Sal=
+es Group</strong>, <strong>IT Department</strong>, <strong>Marketing Team</=
+strong>) by clicking the checkbox next to the group name.</p></li>
+<li>
+<p>The Admin can also search for specific users within the custom groups by=
+ typing in the search field.</p></li>
+</ol>
+<p><strong>Step 3: Create New Custom User Group</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin clicks the <strong>Create New Custom User Group</strong> butto=
+n.</p></li>
+<li>
+<p>The system displays an interface where the Admin can enter a <strong>Gro=
+up Name</strong> for the new custom group.</p></li>
+<li>
+<p>The Employees list must display the following five attributes for each u=
+ser:</p></li>
+</ol>
+<p><strong>Data Fields to Display.</strong></p>
+<ul>
+<li>
+<p><strong>Full Name</strong></p></li>
+<li>
+<p><strong>Email Address</strong></p></li>
+<li>
+<p><strong>Department Name</strong></p></li>
+<li>
+<p><strong>Manager Name</strong></p></li>
+<li>
+<p><strong>Phone Number</strong></p></li>
+</ul>
+<h3 id=3D"UseCase2.1.6.6:AdminSelectsCampaignAudienceforCreatesCampaignSetu=
+p(Step-6)-DefaultDisplayLimit">Default Display Limit</h3>
+<p>By default, the list should display <strong>20 users</strong> per page.<=
+/p>
+<h3 id=3D"UseCase2.1.6.6:AdminSelectsCampaignAudienceforCreatesCampaignSetu=
+p(Step-6)-OptiontoChangeDisplayLimit">Option to Change Display Limit</h3>
+<p>A control (e.g., a dropdown menu or selector) must be provided to allow =
+the user to change the number of users displayed on the page. The available=
+ options are:</p>
+<ul>
+<li>
+<p><strong>20</strong> users per page</p></li>
+<li>
+<p><strong>40</strong> users per page</p></li>
+<li>
+<p><strong>60</strong> users per page</p></li>
+<li>
+<p><strong>80</strong> users per page</p></li>
+<li>
+<p><strong>100</strong> users per page</p></li>
+</ul>
+<h3 id=3D"UseCase2.1.6.6:AdminSelectsCampaignAudienceforCreatesCampaignSetu=
+p(Step-6)-PaginationImplementation">Pagination Implementation</h3>
+<p>The application needs to implement <strong>server-side pagination</stron=
+g> to manage large datasets efficiently.</p>
+<ul>
+<li>
+<p><strong>Core Logic:</strong> The pagination mechanism should load the <s=
+trong>next set of 20 users</strong> when triggered (e.g., by clicking a "Ne=
+xt" button).</p></li>
+<li>
+<p><strong>Data Consistency:</strong> This step-by-step loading ensures tha=
+t the initial request is fast and subsequent data is loaded only when neces=
+sary. The <em>actual number of users loaded</em> (20, 40, 60, etc.) will be=
+ determined by the limit selected in above Requirement.</p></li>
+</ul>
+<blockquote>
+<p><strong>Example:</strong> If the user selects <strong>40</strong> users =
+per page, the first page will show 40 users. When the user clicks "Next," t=
+he application will load and display the next 40 users (users 41-80). Howev=
+er, the <em>size of the data transfer</em> for each page load will correspo=
+nd to the selected limit. If the current limit is 40, the next <em>page</em=
+> will fetch 40. The mention of "next set of 20 users each time" suggests a=
+ <strong>fixed step size</strong> for scrolling/loading, which might contra=
+dict the dynamic limit options. Assuming the <strong>page size</strong> is =
+the primary control, the system should load the selected limit (20, 40, 60,=
+ etc.) on each page request.</p>
+</blockquote>
+<ol start=3D"4">
+<li>
+<p>The Admin can <strong>search </strong>for employees by name or departmen=
+t or email address and add them to the new custom group.</p></li>
+<li>
+<p>The Admin can <strong>filter </strong>for employees by department or man=
+ager name and add them to the new custom group.</p></li>
+<li>
+<p>The Admin clicks <strong>Save</strong> to create the custom group.</p></=
+li>
+<li>
+<p>The newly created custom user group is now available for selection in th=
+e audience list.</p></li>
+</ol>
+<p><strong>Step 4: Finalize Audience Selection</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin can review the selected user groups (predefined or custom).</p=
+></li>
+<li>
+<p>The Admin clicks <strong>Save &amp; Continue</strong> to save the select=
+ed audience and proceed to the next step in the campaign setup process.</p>=
+</li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Frontend Form Validation</strong></p>
+<p><strong>Field Validation Rules</strong></p>
+<ol start=3D"1">
+<li>
+<p><strong>Group Name Field (for Custom User Groups)</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory when creating a custo=
+m group.</p></li>
+<li>
+<p><strong>Validation</strong>:</p>
+<ul>
+<li>
+<p>Must be at least 3 characters long.</p></li>
+</ul></li>
+<li>
+<p><strong>Error Message</strong>: "Group name is required and must be at l=
+east 3 characters."</p></li>
+</ul></li>
+<li>
+<p><strong>Employee Selection</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: At least five employees must be added to a cu=
+stom user group.</p></li>
+<li>
+<p><strong>Validation</strong>:</p>
+<ul>
+<li>
+<p>The Admin must select employees from the search results.</p></li>
+</ul></li>
+<li>
+<p><strong>Error Message</strong>: "Please select at least five employees f=
+or the group."</p></li>
+</ul></li>
+<li>
+<p><strong>User Group Selection</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: The Admin must select at least one predefined=
+ or custom user group.</p></li>
+<li>
+<p><strong>Validation</strong>:</p>
+<ul>
+<li>
+<p>Must not be empty.</p></li>
+</ul></li>
+<li>
+<p><strong>Error Message</strong>: "Please select a user group."</p></li>
+</ul></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Business Rules</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"87=
+cba15f-448e-4e01-863b-0d62b8689ba7" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Rule</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-1</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must select at least one predefined or custom user group.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-2</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can create custom user groups by adding employees manually or sele=
+cting from existing groups.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-3</p></td>
+<td class=3D"confluenceTd">
+<p>Tags and groups can be filtered and customized by departments, teams, or=
+ risk levels.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-4</p></td>
+<td class=3D"confluenceTd">
+<p>Custom user groups must have a name and contain at least one employee.</=
+p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>Acceptance Criteria</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"67=
+8c6ac7-906d-491c-942f-f709bb92903e" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Acceptance Criteria</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Pass/Fail Condition</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-01</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select predefined user groups (e.g., Low Risk, High Risk).</p>=
+</td>
+<td class=3D"confluenceTd">
+<p>Predefined groups are selectable and can be checked.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-02</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select custom user groups from existing groups.</p></td>
+<td class=3D"confluenceTd">
+<p>Custom groups are displayed and selectable.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-03</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can search for employees within custom groups.</p></td>
+<td class=3D"confluenceTd">
+<p>Employee search functionality works correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-04</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can create a new custom user group by entering a group name and se=
+lecting employees.</p></td>
+<td class=3D"confluenceTd">
+<p>New group is created and saved successfully.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-05</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must assign at least one group (either predefined or custom) befor=
+e proceeding.</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Save &amp; Continue</strong> button is enabled only after se=
+lection.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-06</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can remove any custom user group by clicking the <strong>Delete</s=
+trong> icon next to the group.</p></td>
+<td class=3D"confluenceTd">
+<p>Custom groups can be removed from the list.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-07</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can filter custom user groups by category (e.g., department, team)=
+.</p></td>
+<td class=3D"confluenceTd">
+<p>Filtering by category works correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-08</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can create and assign multiple custom user groups in a single camp=
+aign.</p></td>
+<td class=3D"confluenceTd">
+<p>Multiple groups can be selected and assigned at once.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-09</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can see the number of users within each predefined group.</p></td>
+<td class=3D"confluenceTd">
+<p>Number of users is displayed for each predefined group.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-10</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can click <strong>Create New Custom User Group</strong> and it pro=
+mpts the Admin to enter a group name.</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Create New Custom User Group</strong> button works and prompts c=
+orrectly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-11</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select employees from a list when creating a custom user group=
+.</p></td>
+<td class=3D"confluenceTd">
+<p>Employees can be selected from a searchable list.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-12</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can proceed to the next step once at least one group is selected.<=
+/p></td>
+<td class=3D"confluenceTd">
+<p><strong>Save &amp; Continue</strong> button is only enabled after select=
+ing a group.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-13</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can view the custom group details, such as group name and the numb=
+er of users within the group.</p></td>
+<td class=3D"confluenceTd">
+<p>Custom group details are displayed correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-14</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can search for groups by name or tag.</p></td>
+<td class=3D"confluenceTd">
+<p>Groups can be searched and filtered effectively.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-15</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select more than one predefined or custom group to assign to t=
+he campaign.</p></td>
+<td class=3D"confluenceTd">
+<p>Multiple groups can be selected simultaneously.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-16</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Create New Custom User Group</strong> button allows the Admi=
+n to define the group name and select users.</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Create New Custom User Group</strong> button works properly.</p>=
+</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-17</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can remove an employee from a custom group during the creation pro=
+cess.</p></td>
+<td class=3D"confluenceTd">
+<p>Employees can be removed from a custom group.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-18</p></td>
+<td class=3D"confluenceTd">
+<p>The system prevents duplicate user selections in custom user groups.</p>=
+</td>
+<td class=3D"confluenceTd">
+<p>Duplicate user selections are prevented.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-19</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can assign users from different departments to custom groups.</p><=
+/td>
+<td class=3D"confluenceTd">
+<p>Users from different departments can be selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-20</p></td>
+<td class=3D"confluenceTd">
+<p>Admin receives confirmation upon saving a custom user group, and the gro=
+up is displayed in the group list.</p></td>
+<td class=3D"confluenceTd">
+<p>Group is saved and displayed in the list after confirmation.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>System Behavior &amp; Validation</strong></p>
+<ul>
+<li>
+<p><strong>Group Selection</strong>: Admin can select from predefined or cu=
+stom groups.</p></li>
+<li>
+<p><strong>Employee Search</strong>: Employees can be searched and added to=
+ custom groups.</p></li>
+<li>
+<p><strong>Tagging and Categorization</strong>: Admin can categorize users =
+based on risk level, department, or team.</p></li>
+<li>
+<p><strong>Custom Group Creation</strong>: Admin can create new groups by a=
+dding users manually or from an existing list.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Security Handling</strong></p>
+<ul>
+<li>
+<p><strong>Access Control</strong>: Only authorized admins can create and a=
+ssign user groups.</p></li>
+<li>
+<p><strong>Data Security</strong>: User group data is securely stored and o=
+nly accessible to authorized personnel.</p></li>
+<li>
+<p><strong>Audit</strong>: All group creation and assignment activities are=
+ logged for auditing purposes.</p></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_8_1313718481.1764600249990--

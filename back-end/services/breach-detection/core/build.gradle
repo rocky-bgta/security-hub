@@ -1,0 +1,50 @@
+plugins {
+    id 'io.spring.dependency-management' version '1.1.5'
+    id 'java'
+    id 'jacoco'
+}
+
+group 'com.aspire.asat.breachdetection'
+
+dependencies {
+    implementation project(':common:core')
+    implementation project(':services:breach-detection:api')
+
+    implementation project.rootProject.ext.libraries.core.springBootStarter
+    implementation project.rootProject.ext.libraries.core.springBootStarterWeb
+    implementation project.rootProject.ext.libraries.core.springBootStarterDataMongo
+    implementation project.rootProject.ext.libraries.core.springBootStarterThymeLeaf
+    implementation project.rootProject.ext.libraries.core.springBootStarterMail
+    implementation project.rootProject.ext.libraries.core.webflux
+    implementation project.rootProject.ext.libraries.core.json
+    implementation project.rootProject.ext.libraries.core.jacksonCore
+    implementation project.rootProject.ext.libraries.core.jwtApi
+    implementation project.rootProject.ext.libraries.core.jwtImpl
+    implementation project.rootProject.ext.libraries.core.jwtJackson
+    implementation project.rootProject.ext.libraries.core.starterValidation
+    implementation project.rootProject.ext.libraries.core.jsoup
+    implementation project.rootProject.ext.libraries.core.lombok
+    implementation project.rootProject.ext.libraries.development.springDocUi
+    annotationProcessor project.rootProject.ext.libraries.core.lombok
+
+    testImplementation platform(project.rootProject.ext.libraries.test.junitBom)
+    testImplementation project.rootProject.ext.libraries.test.junitJupiter
+    testImplementation project.rootProject.ext.libraries.core.mockitoCore
+    testImplementation project.rootProject.ext.libraries.test.mockitoJunitJupiter
+    testRuntimeOnly project.rootProject.ext.libraries.test.junitPlatformLauncher
+    testImplementation project.rootProject.ext.libraries.test.testcontainers
+    testImplementation project.rootProject.ext.libraries.test.testcontainersJunit
+    testImplementation project.rootProject.ext.libraries.test.testcontainersMongodb
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-parameters"
+}
+
+jacoco {
+    toolVersion = project.rootProject.ext.versions.test.jacoco
+}
+
+tasks.test {
+    useJUnitPlatform()
+}

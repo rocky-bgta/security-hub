@@ -1,0 +1,117 @@
+spring:
+  config:
+    import: "optional:classpath:common-defaults.yml,optional:classpath:common-defaults-prod.yml"
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:}
+      database: notification
+  task:
+    scheduling:
+      pool:
+        size: 2
+
+server:
+  port: 5656
+
+service:
+  registration:
+    url: http://asat-registration-service:9090/registration/api/v1
+
+aws:
+  region: "us-east-1"
+  credentials:
+    # From SSM: /asat/dev/notification-service/aws.credentials.access-key (or env)
+    access-key: ${AWS_CREDENTIALS_ACCESS_KEY:}
+    # From SSM: /asat/dev/notification-service/aws.credentials.secret-key (or env)
+    secret-key: ${AWS_CREDENTIALS_SECRET_KEY:}
+  sqs:
+    queue-name: asatv2-prod-queue
+    queue-url: https://sqs.us-east-1.amazonaws.com/636499496141/asatv2-prod-queue
+    dead-letter-queue-name: asatv2-prod-dlq
+    visibility-timeout: 60  # 60 seconds visibility timeout
+    message-retention-period: 1209600 # 14 days in seconds
+    listener:
+      poll-interval-ms: 500
+      thread-pool-size: 5
+      wait-time-seconds: 2
+  ses:
+    sender-email: "info@aspiretss.com" # IMPORTANT: Must be a verified SES identity
+    sandbox-mode: false # Set to false in production when SES is out of sandbox
+    fallback-to-console: false # Log emails to console when SES fails in dev mode
+    smtp:
+      host: "email-smtp.us-east-1.amazonaws.com"
+      port: 587
+      username: ${aws_ses_smtp_username:} # SMTP username (same as access key)
+      password: ${aws_ses_smtp_password:}  # SMTP password (same as secret key)
+      from-name: "AspireLMS Support"
+
+logging:
+  level:
+    com.example.emailservice: DEBUG
+    com.aspire.asat.notification.listener: DEBUG
+    software.amazon.awssdk: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+link:
+  logo: https://aspiretss.s3.us-east-1.amazonaws.com/public/Image.png
+  login: https://portal.securityawarenesstraining.ai/auth/login
+  help: https://portal.securityawarenesstraining.ai/auth/login
+
+# SMS Provider Configuration
+# Using Twilio Live Credentials for Dev Environment
+# IMPORTANT: The phone number MUST belong to the account specified in account-sid
+# Format: E.164 format required (e.g., +12092645211, not +1(209)264-5211)
+sms:
+  providers:
+    bangladesh:
+      enabled: ${BANGLADESH_SMS_ENABLED:true}
+      provider-type: anbernet
+      api-url: ${BANGLADESH_SMS_API_URL:https://wapi.anbernet.com:9956/api/v1/sendsms}
+      account: ${BANGLADESH_SMS_ACCOUNT:Aspire-Tech}
+      api-key: ${BANGLADESH_SMS_API_KEY:}
+      sender-id: ${BANGLADESH_SMS_SENDER_ID:8809639210610}
+      country-codes: "+880"
+    north-america:
+      enabled: ${NA_SMS_ENABLED:true}
+      provider-type: twilio  # twilio, aws-sns, etc.
+      account-sid: ${TWILIO_ACCOUNT_SID:}
+      auth-token: ${TWILIO_AUTH_TOKEN:}
+      from-number: ${TWILIO_PHONE_NUMBER:+13502078283}  # REQUIRED: Set via environment variable - must belong to account TWILIO_ACCOUNT_SID_PLACEHOLDER
+      country-codes: "+1"
+    default:
+      enabled: ${DEFAULT_SMS_ENABLED:true}
+      provider-type: twilio  # twilio, aws-sns, etc.
+      account-sid: ${TWILIO_ACCOUNT_SID:}
+      auth-token: ${TWILIO_AUTH_TOKEN:}
+      from-number: ${TWILIO_PHONE_NUMBER:+13502078283}  # REQUIRED: Set via environment variable - must belong to account TWILIO_ACCOUNT_SID_PLACEHOLDER
+
+# Phone Call Provider Configuration
+# Using Twilio Live Credentials for Dev Environment
+# IMPORTANT: The phone number MUST belong to the account specified in account-sid
+# TwiML is passed directly to Twilio (no webhook endpoint required)
+phone-call:
+  providers:
+    twilio:
+      enabled: ${TWILIO_PHONE_CALL_ENABLED:true}
+      account-sid: ${TWILIO_ACCOUNT_SID:}
+      auth-token: ${TWILIO_AUTH_TOKEN:}
+      from-number: ${TWILIO_PHONE_NUMBER:+13502078283}  # REQUIRED: Set via environment variable - must belong to account TWILIO_ACCOUNT_SID_PLACEHOLDER
+      country-codes: "+1,+880"
+    default:
+      enabled: ${DEFAULT_PHONE_CALL_ENABLED:true}
+      api-key: ${DEFAULT_PHONE_CALL_API_KEY:}
+      api-secret: ${DEFAULT_PHONE_CALL_API_SECRET:}
+      endpoint: ${DEFAULT_PHONE_CALL_ENDPOINT:+13502078283}
+
+
+# Data initialization configuration
+notification:
+  branding:
+    company-name: "ASAT Learning Platform"
+    support-email: "support@securityawarenesstraining.ai"
+    login-url: "https://portal.securityawarenesstraining.ai/auth/login"
+    logo-url: "https://aspiretss.s3.us-east-1.amazonaws.com/public/Image.png"
+    banner-url: "https://aspiretss.s3.us-east-1.amazonaws.com/a-sat-v2.0/aspire-soc.png"
+    base-url: "https://portal.securityawarenesstraining.ai"
+    platform-features: "Personalized learning paths\n- Interactive courses\n- Certificates on completion"

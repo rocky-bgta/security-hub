@@ -1,0 +1,82 @@
+plugins {
+    id 'io.spring.dependency-management' version '1.1.5'
+    id 'java'
+    id 'jacoco'
+}
+
+group 'com.aspire.asat.notification'
+
+dependencies {
+
+    implementation project(':common:core')
+    implementation project(':services:notification:api')
+
+    implementation project.rootProject.ext.libraries.core.springBootStarterWeb
+    implementation project.rootProject.ext.libraries.core.springBootStarterDataMongo
+    implementation project.rootProject.ext.libraries.core.webflux
+    implementation project.rootProject.ext.libraries.core.json
+    implementation project.rootProject.ext.libraries.core.springBootStarterMail
+    implementation project.rootProject.ext.libraries.core.springBootStarterThymeLeaf
+    implementation project.rootProject.ext.libraries.core.jwtApi
+    implementation project.rootProject.ext.libraries.core.jwtImpl
+    implementation project.rootProject.ext.libraries.core.jwtJackson
+    // NOTE: jackson-core is intentionally NOT pinned here (unlike other core modules).
+    // Pinning it to the older libraries.core.jacksonCore version (2.15.2) overrides Spring
+    // Boot's managed Jackson BOM (2.17.1) for jackson-core only, while jackson-databind stays
+    // on 2.17.1. That mismatch causes NoSuchMethodError at runtime (e.g. BufferRecycler).
+    // Jackson-core is already pulled in transitively, at the correct managed version, by
+    // jackson-databind/spring-boot-starter, so no explicit dependency is needed here.
+    implementation project.rootProject.ext.libraries.core.awsSdkSqs
+    implementation project.rootProject.ext.libraries.core.awsSdkS3
+    implementation project.rootProject.ext.libraries.core.awsSdkSes
+    implementation project.rootProject.ext.libraries.core.springCloudAwsStarterSqs
+    implementation project.rootProject.ext.libraries.core.twilio
+    implementation project.rootProject.ext.libraries.core.lombok
+    implementation project.rootProject.ext.libraries.development.springDocUi
+    annotationProcessor project.rootProject.ext.libraries.core.lombok
+
+
+
+
+    testImplementation platform(project.rootProject.ext.libraries.test.junitBom)
+    testImplementation project.rootProject.ext.libraries.test.junitJupiter
+    testRuntimeOnly project.rootProject.ext.libraries.test.junitPlatformLauncher
+    testImplementation project.rootProject.ext.libraries.core.mockitoCore
+    testImplementation project.rootProject.ext.libraries.test.mockitoJunitJupiter
+    testImplementation project.rootProject.ext.libraries.test.testcontainers
+    testImplementation project.rootProject.ext.libraries.test.testcontainersJunit
+    testImplementation project.rootProject.ext.libraries.test.testcontainersMongodb
+
+
+
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-parameters"
+}
+
+jacoco {
+    toolVersion = project.rootProject.ext.versions.test.jacoco
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+        html.required = true
+        csv.required = true
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.80
+            }
+        }
+    }
+}
+
+tasks.test {
+    useJUnitPlatform()
+}

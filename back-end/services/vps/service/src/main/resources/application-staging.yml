@@ -1,0 +1,16 @@
+spring:
+  config:
+    import: "optional:classpath:common-defaults.yml,optional:classpath:common-defaults-staging.yml"
+  application:
+    name: asat
+
+server:
+  port: 5052
+
+azure:
+  storage:
+      connection-string: DefaultEndpointsProtocol=https;AccountName=${AZURE_STORAGE_ACCOUNT_NAME};AccountKey=${AZURE_STORAGE_ACCOUNT_KEY};EndpointSuffix=core.windows.net
+
+rest:
+  template:
+    base-url: http://asat-cms-service:5050/cms

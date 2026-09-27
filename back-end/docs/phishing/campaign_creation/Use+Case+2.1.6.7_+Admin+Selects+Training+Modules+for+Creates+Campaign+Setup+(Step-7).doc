@@ -1,0 +1,814 @@
+Date: Mon, 1 Dec 2025 14:44:19 +0000 (UTC)
+Message-ID: <569907914.353.1764600259050@c4d2b43a3bd0>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_352_488845308.1764600259050"
+
+------=_Part_352_488845308.1764600259050
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Use Case 2.1.6.7: Admin Selects Training Modules for Creates Cam=
+paign Setup (Step-7)</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Use Case 2.1.6.7: Admin Selects Training Modules for Creates Campai=
+gn Setup (Step-7)</h1>
+    <div class=3D"Section1">
+        <p><strong>User Story</strong></p>
+<p>As an Admin, I want to select the training language, assignment type, an=
+d training modules to be assigned to employees so that I can tailor the tra=
+ining content for the phishing campaign and ensure it reaches the correct a=
+udience.</p>
+<p><strong>Description</strong></p>
+<p>This use case outlines the process by which the Admin can select the tra=
+ining language, assignment method, and specific training modules during the=
+ campaign creation process. The Admin is able to filter, sort, and preview =
+training modules before finalizing their selection. Additionally, the Admin=
+ can specify the training scope, assign deadlines, and toggle advanced opti=
+ons for customization. Once all selections are made, the Admin can proceed =
+with the campaign setup.</p>
+<p><strong>Actors</strong></p>
+<ul>
+<li>
+<p><strong>Admin</strong>: Selects the language, assignment method, and tra=
+ining modules for the campaign.</p></li>
+<li>
+<p><strong>System</strong>: Validates the selected options, assigns trainin=
+g modules, and ensures the modules are assigned according to the Admin's pr=
+eferences.</p></li>
+</ul>
+<p><strong>Preconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin is logged into the Aspire Tech portal with necessary privilege=
+s to create campaigns.</p></li>
+<li>
+<p>The Admin is on the "Create Campaign" screen, where the "Training Module=
+s" section is available.</p></li>
+<li>
+<p>The system is operational and supports training module selection and ass=
+ignment.</p></li>
+</ol>
+<p><strong>Postconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>The selected training language, assignment method, and training modules =
+are saved and linked to the campaign.</p></li>
+<li>
+<p>The Admin can proceed to the next steps of the campaign creation process=
+ by clicking the "Save &amp; Continue" button.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Main Flow (Normal Success Scenario)</strong></p>
+<p><strong>Step 1: Access Training Module Selection</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin accesses the Campaign Creation Dashboard.</p></li>
+<li>
+<p>The system displays the <strong>Training Language</strong> dropdown list=
+ (English, Spanish, Arabic, Bengali, Portuguese, French, Russian, Indonesia=
+n, Hindi, Mandarin Chinese), where the Admin can select the language for th=
+e training modules:</p>
+<ul>
+<li>
+<p><strong>Default Language</strong>: English (preselected).</p></li>
+<li>
+<p><strong>Other Languages</strong>: Additional languages available in the =
+system.</p></li>
+</ul></li>
+</ol>
+<p><strong>Step 2: Select Assignment Method</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin selects the assignment method from the dropdown:</p>
+<ul>
+<li>
+<p><strong>Assign All</strong>: All selected training modules will be assig=
+ned to users.</p></li>
+<li>
+<p><strong>Intelligently Assign</strong>: One of the selected training modu=
+les will be assigned to users based on data. Based on Phishing email templa=
+te type (Credential Harvesting, Financial Fraud, Malware Distribution, Data=
+ Theft, Account Takeover, Ransomware, Spyware, Business Email Compromise, P=
+hishing for Information, CEO Fraud), training module will automatically ass=
+ign.</p></li>
+</ul></li>
+</ol>
+<p><strong>Step 3: View Available Training Modules</strong></p>
+<ol start=3D"1">
+<li>
+<p>The system displays the <strong>Training Module Selection</strong> secti=
+on, where the Admin can choose from a list of available training modules.</=
+p></li>
+<li>
+<p>The Admin can:</p>
+<ul>
+<li>
+<p><strong>Filter</strong>: Filter modules by category, type, or difficulty=
+.</p></li>
+<li>
+<p><strong>Sort</strong>: Sort by popularity (most to least) or Alphabetica=
+l.</p></li>
+<li>
+<p><strong>Search</strong>: Search for specific training modules.</p></li>
+</ul></li>
+</ol>
+<p><strong>Step 4: Use the Filter Option (Optional)</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin can click on the <strong>Filter</strong> button to refine the =
+selection of training modules.</p></li>
+<li>
+<p>A modal window opens with additional filtering options:</p>
+<ul>
+<li>
+<p><strong>Training Language</strong>: Admin selects the language for the t=
+raining.</p></li>
+<li>
+<p><strong>Days Until Due</strong>: Admin sets the number of days before th=
+e training is due.</p></li>
+<li>
+<p><strong>Assignments</strong>: Admin selects the assignment method.</p></=
+li>
+<li>
+<p><strong>Hide Advanced Options</strong>: Admin can toggle to show or hide=
+ advanced options.</p></li>
+<li>
+<p><strong>Training Scope</strong>: Admin specifies the scope of training (=
+e.g., employees who clicked on phishing links or were compromised).</p></li=
+>
+</ul></li>
+</ol>
+<p><strong>Step 5: Select Training Modules</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin selects one or more training modules to be assigned to employe=
+es.</p></li>
+<li>
+<p>The Admin can preview the selected modules before finalizing the selecti=
+on.</p>
+<ul>
+<li>
+<p>A preview of the training module is displayed, showing a brief overview =
+of the content.</p></li>
+</ul></li>
+</ol>
+<p><strong>Step 6: Confirm Selection</strong></p>
+<ol start=3D"1">
+<li>
+<p>Once the training modules are selected, the Admin confirms the selection=
+ and clicks <strong>Save &amp; Continue</strong> to proceed to the next ste=
+p in the campaign creation process.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Input Field Validation Table</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"c0=
+4acd9d-a608-4a5d-9043-3a09f085ee7b" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>Field</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Validation Rules</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>Training Language</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Required</strong>: Admin must select a language from the dropdow=
+n. <strong>Default</strong>: English.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>Assignment Type</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Required</strong>: Admin must select either "Assign All" or "Int=
+elligently Assign".</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>Training Modules</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Required</strong>: Admin must select at least one training modul=
+e.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>Module Preview</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Optional</strong>: Admin can preview selected training modules b=
+efore assignment.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>Days Until Due</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Optional</strong>: Admin can set a due date for the training.</p=
+></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>Training Scope</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Required</strong>: Admin must specify the scope of training (e.g=
+., employees who clicked on payloads or were compromised).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>Exception / Alternative Scenarios</strong></p>
+<p><strong>Scenario 1</strong>: <strong>No training module selected</strong=
+></p>
+<ul>
+<li>
+<p><strong>System Behavior</strong>: Display error message: "You must selec=
+t at least one training module."</p></li>
+</ul>
+<p><strong>Scenario 2</strong>: <strong>Invalid training module selection</=
+strong></p>
+<ul>
+<li>
+<p><strong>System Behavior</strong>: Display error message: "Invalid traini=
+ng module. Please select a valid option."</p></li>
+</ul>
+<p><strong>Scenario 3</strong>: <strong>No assignment method selected</stro=
+ng></p>
+<ul>
+<li>
+<p><strong>System Behavior</strong>: Display error message: "Please select =
+a valid assignment method."</p></li>
+</ul>
+<p><strong>Scenario 4</strong>: <strong>No training scope selected</strong>=
+</p>
+<ul>
+<li>
+<p><strong>System Behavior</strong>: Display error message: "Please specify=
+ a valid training scope."</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Acceptance Criteria</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"00=
+02556f-978f-420b-9e69-3d5c2f2e870c" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Acceptance Criteria</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Pass/Fail Condition</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-01</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select a language from the dropdown list.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can choose a language from the available list (default is English)=
+.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-02</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select an assignment type (Assign all or Intelligently assign)=
+.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can choose between assigning all or one module intelligently.</p><=
+/td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-03</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can filter, sort, and search for available training modules.</p></=
+td>
+<td class=3D"confluenceTd">
+<p>Admin can filter, sort, and search for modules, and modules can be sorte=
+d by popularity.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-04</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can preview the selected training modules before assignment.</p></=
+td>
+<td class=3D"confluenceTd">
+<p>Admin can see a preview of the selected training modules.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-05</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin must select at least one training module before proceeding.</p></t=
+d>
+<td class=3D"confluenceTd">
+<p>Admin cannot proceed without selecting at least one training module.</p>=
+</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-06</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select Days Until Due and Training Scope for the campaign.</p>=
+</td>
+<td class=3D"confluenceTd">
+<p>Admin can specify the number of days until due and define training scope=
+.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-07</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can toggle advanced options for additional configuration (if avail=
+able).</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can show or hide advanced options in the modal.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-08</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can specify the training scope, including employees who clicked on=
+ payloads or were compromised.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can define the scope of employees who should receive the training.=
+</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-09</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can save and continue after selecting and validating the training =
+modules.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can click the Save &amp; Continue button and proceed to the next s=
+tep.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-10</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can assign all selected modules or intelligently assign one module=
+.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can choose the assignment method.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-11</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can filter training modules based on categories such as security, =
+phishing, etc.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can apply filters to display specific modules based on category.</=
+p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-12</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can set a due date for the training and specify the number of days=
+ until it=E2=80=99s due.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can specify and view the days until due.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-13</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can configure multiple training modules for different users within=
+ the campaign.</p></td>
+<td class=3D"confluenceTd">
+<p>Multiple training modules can be configured and assigned.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-14</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can specify the scope of training based on specific user actions (=
+e.g., clicking on phishing payloads).</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can set user-specific scopes for training (e.g., employees who cli=
+cked on payloads).</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-15</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can choose to hide or display advanced options for configuring tra=
+ining.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can toggle advanced options on and off.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-16</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can review the training module preview before finalizing selection=
+.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can preview the training content to ensure it meets requirements.<=
+/p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-17</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can assign the training based on predefined criteria (e.g., depart=
+ment, risk level).</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can filter and assign training based on department or user group.<=
+/p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-18</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can sort training modules based on popularity, difficulty, or cate=
+gory.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can see training modules sorted as per their selected criteria.</p=
+></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-19</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can specify the number of days until training is due as a required=
+ input.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select the number of days for training completion.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-20</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can successfully proceed to the next step in the campaign setup af=
+ter completing the training module selection.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can move to the next step once all modules are selected and valida=
+ted.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>System Behavior &amp; Validation</strong></p>
+<ol start=3D"1">
+<li>
+<p><strong>Training Language Selection</strong>:</p>
+<ul>
+<li>
+<p>Admin can select a language from the dropdown list, with English as the =
+default language.</p></li>
+</ul></li>
+<li>
+<p><strong>Assignment Type Selection</strong>:</p>
+<ul>
+<li>
+<p>Admin selects the assignment method from the dropdown:</p>
+<ul>
+<li>
+<p><strong>Assign All</strong>: All selected trainings will be assigned.</p=
+></li>
+<li>
+<p><strong>Intelligently Assign</strong>: One module is intelligently assig=
+ned based on data.</p></li>
+</ul></li>
+</ul></li>
+<li>
+<p><strong>Training Module Selection</strong>:</p>
+<ul>
+<li>
+<p>Admin can select one or more training modules from a list.</p></li>
+<li>
+<p>The list should support filtering, sorting by popularity, and searching =
+by keyword.</p></li>
+<li>
+<p>Admin can preview the training modules before finalizing the selection.<=
+/p></li>
+</ul></li>
+<li>
+<p><strong>Filter Modal Behavior</strong>:</p>
+<ul>
+<li>
+<p>Admin clicks the Filter button to show the filter modal.</p></li>
+<li>
+<p>Training Language and Assignments can be selected.</p></li>
+<li>
+<p>Days Until Due is configurable to specify when the training should be du=
+e.</p></li>
+<li>
+<p>Admin can select a Training Scope to specify the target audience of the =
+campaign (e.g., employees who clicked on payloads or were compromised).</p>=
+</li>
+</ul></li>
+<li>
+<p><strong>Validation</strong>:</p>
+<ul>
+<li>
+<p>The system ensures that at least one training module is selected before =
+proceeding.</p></li>
+<li>
+<p>The system checks the validity of the selected training language, assign=
+ment method, and training scope.</p></li>
+</ul></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Business Rules</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"8d=
+14193a-eada-428f-98cb-e9722feed454" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Rule</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>BR-1</strong></p></td>
+<td class=3D"confluenceTd">
+<p>The Admin must select at least one training module before proceeding.</p=
+></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>BR-2</strong></p></td>
+<td class=3D"confluenceTd">
+<p>The Admin can choose between two assignment methods: Assign all or Intel=
+ligently assign.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>BR-3</strong></p></td>
+<td class=3D"confluenceTd">
+<p>English is the default training language if no other language is selecte=
+d.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>BR-4</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin can click the Save &amp; Continue button to move to the next step =
+after selecting and validating the training modules.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>BR-5</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin must specify the Training Scope for the phishing campaign (e.g., e=
+mployees who clicked on payloads or were compromised).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>Special Scenario for "Simulated Phishing &amp; Security Awarenes=
+s Training"</strong></p>
+<ul>
+<li>
+<p>If the Admin selects <strong>Simulated Phishing &amp; Security Awareness=
+ Training</strong> during the campaign setup:</p>
+<ol start=3D"1">
+<li>
+<p>After selecting the training modules, the system will detect if <strong>=
+Simulated Phishing &amp; Security Awareness Training</strong> has been sele=
+cted.</p></li>
+<li>
+<p>The system will then prompt the Admin to proceed to the next step, where=
+ the modules will be applied accordingly for the selected audience.</p></li=
+>
+<li>
+<p>The training content will be tailored according to the chosen simulated =
+phishing scenarios, and the system will enable the Admin to review the fina=
+lized setup.</p></li>
+</ol></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_352_488845308.1764600259050--

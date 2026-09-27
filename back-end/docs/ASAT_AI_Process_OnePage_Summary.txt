@@ -1,0 +1,211 @@
+================================================================================
+ASAT V2 — AI PROCESS OVERVIEW (ONE-PAGE BRIEF FOR EXTERNAL EXPERT)
+Platform: Security Awareness & Phishing Simulation (ASAT Backend — Phishing Service)
+Purpose: 5–7 minute walkthrough + Q&A for solution recommendations
+================================================================================
+
+1) WHAT WE ARE BUILDING (30 seconds)
+--------------------------------------------------------------------------------
+ASAT is a B2B security-awareness platform. The Phishing Service lets client admins:
+  • Create simulated phishing/smishing campaigns (email + SMS)
+  • Build email templates, landing pages, sender profiles
+  • Launch campaigns, track opens/clicks/submissions/reports
+  • Score user risk and assign remedial training
+  • Monitor data breaches and generate admin dashboards
+
+AI is used in TWO WAYS:
+  A) Engineering workflow (how we build faster) — Cursor, Loveable
+  B) Product runtime (what end-users/admins use in the live app) — external AI APIs
+
+
+2) PART A — HOW WE USE AI TO BUILD THE PRODUCT (Development Tools)
+--------------------------------------------------------------------------------
+These tools are NOT called by our production APIs. Our developers use them.
+
+  CURSOR
+    • AI pair-programming IDE used by backend/frontend team
+    • Speeds up Java Spring Boot APIs, bug fixes, tests, refactors
+    • Example: phishing service has 200+ APIs — Cursor helps maintain quality at scale
+
+  LOVEABLE (or similar AI UI builders)
+    • Used to rapidly prototype / iterate admin UI screens
+    • Frontend team converts approved designs into production React app
+    • Reduces time from idea → clickable demo before backend integration
+
+  TAKEAWAY FOR EXPERT: Dev AI = faster delivery. Product AI = features customers pay for.
+
+
+3) PART B — HOW AI WORKS IN THE LIVE PRODUCT (Runtime — What Admins Use)
+--------------------------------------------------------------------------------
+All product AI flows follow the same pattern:
+
+  Admin UI  →  Phishing Service API  →  AWS SQS Queue  →  Background Worker
+       →  External AI API  →  Result saved (MongoDB + S3)  →  Admin sees output
+
+Credentials: Per-tenant AI keys stored in AWS SSM (Parameter Store), not in code.
+Async: Long AI jobs never block the browser — user gets job ID and polls status.
+
+
+3A) AI EMAIL TEMPLATE GENERATION  [LIVE]
+--------------------------------------------------------------------------------
+What: Admin describes a phishing email (tone, brand, difficulty, attack style, language).
+How:
+  1. POST /api/v1/phishing/email-templates/ai-generate
+  2. System creates stub template (status = PROCESSING)
+  3. Job queued to SQS → worker calls selected AI provider
+  4. AI returns JSON: subject + HTML body + plain text + suggested difficulty
+  5. HTML is sanitized; template becomes ACTIVE or FAILED
+
+AI Providers (pluggable adapters):
+  • OpenAI      — primary, production-ready
+  • Google Gemini — production-ready
+  • Z.AI        — production-ready
+  • Claude      — listed in enum; adapter not fully wired yet
+
+Also supported:
+  • Fix/improve HTML via AI (fix-email-template)
+  • Voice hint field in prompt (voiceInputContent) — text fed into generation
+  • Catalog data (brands, tones, personas, triggers) guides prompts
+
+
+3B) AI LANDING PAGE GENERATION  [LIVE]
+--------------------------------------------------------------------------------
+What: Admin generates a fake login/credential-capture page for campaigns.
+How: Same async SQS pattern as email templates.
+  • POST /api/v1/phishing/landing-pages/ai-generate
+  • AI returns HTML page with placeholders ({{FIRST_NAME}}, etc.)
+  • HTML validated + sanitized before save
+
+Alternative (non-AI): Import real website HTML (clone a site) using our import engine
+  — useful when AI output is not realistic enough.
+
+
+3C) SPEECH-TO-TEXT (STT)  [LIVE — OpenAI]
+--------------------------------------------------------------------------------
+What: Upload audio → get text (e.g. dictate email idea, script for deepfake).
+How:
+  1. POST /api/v1/stt/transcribe  →  audio uploaded to S3
+  2. SQS job  →  OpenAI gpt-4o-transcribe API
+  3. GET /api/v1/stt/{audioId}  →  poll transcription result
+
+Note: Older email-template /transcribe endpoint has a placeholder implementation;
+      the dedicated STT module above is the real production path.
+
+
+3D) DEEPFAKE VIDEO GENERATION  [LIVE — Multi-step wizard]
+--------------------------------------------------------------------------------
+What: Create training videos with cloned face + cloned voice + script (awareness content).
+6-Step wizard (/api/v1/deepfake):
+
+  Step 1 — Title, language, background (preset or custom upload → S3)
+  Step 2 — Face photo upload → S3
+  Step 3 — Confirm face preview
+  Step 4 — Voice clone: upload audio sample → ElevenLabs API → voice_id stored
+  Step 5 — Script text + variable placeholders
+  Step 6 — Pick video engine → async render via SQS
+
+Video render providers:
+  • HEYGEN        — LIVE (talking-photo API: upload face, generate video, poll status)
+  • DEEPFACELAB, WAV2LIP, OPENCV, FACERIG — enum exists; stub only (future self-hosted ML)
+
+Flow after Step 6:
+  SQS → worker generates TTS audio (ElevenLabs) → HeyGen renders video →
+  final MP4 stored in S3 → admin polls GET /videos/{id}/status
+
+
+3E) CAMPAIGN DELIVERY (Not generative AI — but completes the story)
+--------------------------------------------------------------------------------
+Once templates/pages exist, campaigns send via:
+  • Email: AWS SES / custom SMTP (sender profiles) — SQS per recipient
+  • SMS: SMS gateway configs — SQS per recipient
+Tracking: public /t/* endpoints record open, click, submit, report → risk scoring.
+
+
+4) HIGH-LEVEL ARCHITECTURE (show this while explaining)
+--------------------------------------------------------------------------------
+
+                    ┌─────────────────────────────────────┐
+                    │         ASAT Admin / User UI        │
+                    └─────────────────┬───────────────────┘
+                                      │ HTTPS
+                    ┌─────────────────▼───────────────────┐
+                    │      API Gateway + Auth + Tenant      │
+                    └─────────────────┬───────────────────┘
+                                      │
+        ┌─────────────────────────────▼─────────────────────────────┐
+        │              PHISHING SERVICE (Spring Boot)               │
+        │  Controllers → Services → MongoDB / S3                    │
+        │         │                                                 │
+        │         └──► AWS SQS (async jobs)                         │
+        │                    │                                      │
+        │     ┌──────────────┼──────────────┬──────────────┐        │
+        │     ▼              ▼              ▼              ▼        │
+        │  Email/LP AI    STT Worker   Deepfake Worker  Campaign    │
+        │  Worker       (OpenAI)      (ElevenLabs+     Email/SMS     │
+        │     │              │         HeyGen)         Sender       │
+        └─────┼──────────────┼──────────────┼──────────────┼────────┘
+              ▼              ▼              ▼              ▼
+         OpenAI/Gemini/   OpenAI       ElevenLabs      AWS SES
+         Z.AI APIs       Transcribe    + HeyGen        + SMS GW
+
+
+5) INTEGRATIONS SUMMARY TABLE (quick reference for expert)
+--------------------------------------------------------------------------------
+Capability              | Status   | Provider(s)              | Async (SQS)
+------------------------|----------|--------------------------|------------
+Email template AI       | LIVE     | OpenAI, Gemini, Z.AI     | Yes
+Landing page AI         | LIVE     | OpenAI, Gemini, Z.AI     | Yes
+HTML fix/sanitize       | LIVE     | Same providers + Jsoup   | No (sync)
+Website clone import    | LIVE     | In-house (Jsoup)         | No
+Speech-to-text (STT)    | LIVE     | OpenAI gpt-4o-transcribe | Yes
+Voice clone             | LIVE     | ElevenLabs               | Sync in wizard
+Deepfake video render   | LIVE     | HeyGen                   | Yes
+Alt video engines       | PLANNED  | Stub only                | —
+Email /transcribe       | PARTIAL  | Placeholder text         | No
+Claude content AI       | PLANNED  | Enum only                | —
+Dev: Cursor             | Team use | N/A                      | N/A
+Dev: Loveable           | Team use | N/A                      | N/A
+
+
+6) DATA & SECURITY (30 seconds — expert will care)
+--------------------------------------------------------------------------------
+  • Tenant isolation: every request scoped by clientAdminId (from gateway header)
+  • AI API keys: AWS SSM per tenant + provider metadata in MongoDB
+  • Generated HTML: sanitized before storage (no scripts)
+  • Media files: S3 with presigned URLs
+  • Tracking endpoints (/t/*): public, no login — by design for email pixels/links
+
+
+7) CURRENT GAPS / WHY WE NEED EXPERT INPUT (lead into Q&A)
+--------------------------------------------------------------------------------
+  1. Multiple AI providers — is our adapter + SQS pattern optimal vs unified gateway?
+  2. Claude listed but not implemented — should we consolidate providers?
+  3. Deepfake: only HeyGen is real; self-hosted engines are stubs — build vs buy?
+  4. Voice: two paths (STT live, old transcribe placeholder) — consolidate?
+  5. Cost control: no central token budgeting / rate limits per tenant yet
+  6. Quality: prompt engineering is in code — should we use prompt management platform?
+  7. Compliance: deepfake + phishing simulation — legal/ethics guardrails needed?
+  8. Observability: limited unified AI job dashboard for ops
+
+
+8) SUGGESTED QUESTIONS TO ASK THE EXPERT (after our 5–7 min pitch)
+--------------------------------------------------------------------------------
+  • Single AI orchestration layer vs our per-feature SQS workers?
+  • Best architecture for multi-tenant API key + quota management?
+  • Recommended stack for self-hosted deepfake vs HeyGen at scale?
+  • How to standardize prompts and A/B test generation quality?
+  • Security review checklist for AI-generated phishing content in enterprise?
+  • Roadmap priority: Claude, better STT, or video engine diversification?
+
+
+9) ONE-SENTENCE ELEVATOR PITCH (read this first to the expert)
+--------------------------------------------------------------------------------
+"We built ASAT as a phishing-simulation and security-training platform where admins
+use AI (OpenAI/Gemini/Z.AI) to generate emails and landing pages, ElevenLabs + HeyGen
+for deepfake awareness videos, and OpenAI for speech-to-text — all async via AWS SQS —
+while our engineering team uses Cursor and Loveable to ship features faster; we need your
+help optimizing architecture, cost, quality, and the deepfake/AI roadmap."
+
+================================================================================
+Document version: June 2026 | Service: phishing-service | Contact: [Your team name]
+================================================================================

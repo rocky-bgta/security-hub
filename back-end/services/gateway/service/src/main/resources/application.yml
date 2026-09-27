@@ -1,0 +1,67 @@
+server:
+  shutdown:
+    graceful: true
+
+spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
+  application:
+    name: ${SERVICE_NAME:gateway-service}
+  servlet:
+    multipart:
+      max-file-size: ${MULTIPART_MAX_FILE_SIZE:50MB}
+      max-request-size: ${MULTIPART_MAX_REQUEST_SIZE:50MB}
+
+  main:
+    web-application-type: reactive
+    allow-bean-definition-overriding: true
+
+
+springdoc:
+  override-with-generic-response: true
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    operationsSorter: method
+    tagsSorter: alpha
+    tryItOutEnabled: true
+    filter: true
+    displayRequestDuration: true
+    displayOperationId: false
+    config-url: /swagger-ui/swagger-config
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+
+
+
+ignore:
+  header-param: '${IGNORE_HEADER_PARAM_FOR_LOG:password,cookie,authorization}'
+
+management:
+  endpoints:
+    web:
+      exposure:
+        # This makes the /actuator/health endpoint available over the web.
+        include: health
+  endpoint:
+    health:
+      # This ensures you can see all the details (database, disk space, etc.).
+      show-details: always
+
+# AWS SSM Parameter Store Configuration
+aws:
+  access-key-id: ${AWS_ACCESS_KEY_ID:}}
+  secret-access-key: ${AWS_SECRET_ACCESS_KEY:}
+  ssm:
+    enabled: ${AWS_SSM_ENABLED:false}
+    kms-enabled: ${AWS_SSM_KMS_ENABLED:false}
+    parameter-path-prefix: ${AWS_SSM_PARAMETER_PATH_PREFIX:/asat}
+    kms-key-id: ${AWS_KMS_KEY_ID:}
+    region: ${AWS_REGION:us-east-1}
+    fail-on-error: ${AWS_SSM_FAIL_ON_ERROR:false}
+  region: ${AWS_REGION:us-east-1}

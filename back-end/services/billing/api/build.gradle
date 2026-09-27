@@ -1,0 +1,23 @@
+plugins {
+    id 'io.spring.dependency-management' version '1.1.5'
+    id 'java'
+}
+
+group 'com.aspire.asat.billing'
+
+dependencies {
+
+    implementation project(':common:core')
+    implementation project.rootProject.ext.libraries.core.lombok
+    implementation project.rootProject.ext.libraries.core.springBootStarterWeb
+    annotationProcessor project.rootProject.ext.libraries.core.lombok
+//    implementation project.rootProject.ext.libraries.core.validationApi
+    implementation project.rootProject.ext.libraries.development.springDocUi
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+    implementation("org.springframework.boot:spring-boot-starter-validation:3.4.4")
+
+}
+
+tasks.test {
+    useJUnitPlatform()
+}

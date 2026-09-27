@@ -1,0 +1,213 @@
+services:
+  # Infrastructure Services
+  redis:
+    image: redis:7.2-alpine
+    container_name: asat-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data/redis:/data
+    networks:
+      - asat_network
+    command: redis-server --appendonly yes
+
+  # Backend Services
+  # MongoDB: set MONGODB_URI in .env (standalone server). Do not set SPRING_DATA_MONGODB_URI —
+  # it overrides spring.data.mongodb.uri from application-{profile}.yml.
+  asat-auth-service:
+    image: ${ECR_REGISTRY}/aspire-auth-asatv2:${TAG}
+    container_name: auth-service
+    restart: unless-stopped
+    # ports:
+    #   - "9093:9093"
+    environment:
+      SPRING_PROFILES_ACTIVE: ${ENVIRONMENT:-local}
+      SERVER_PORT: 9093
+      MONGODB_URI: ${MONGODB_URI}
+      REDIS_HOST: ${REDIS_HOST:-asat-redis}
+    networks:
+      - asat_network
+    depends_on:
+      - redis
+
+  asat-billing-service:
+    image: ${ECR_REGISTRY}/aspire-billing-asatv2:${TAG}
+    container_name: billing-service
+    restart: unless-stopped
+    # ports:
+    #   - "6060:6060"
+    environment:
+      SPRING_PROFILES_ACTIVE: ${ENVIRONMENT:-local}
+      SERVER_PORT: 6060
+      MONGODB_URI: ${MONGODB_URI}
+      REDIS_HOST: ${REDIS_HOST:-asat-redis}
+    networks:
+      - asat_network
+    depends_on:
+      - redis
+      - asat-auth-service
+
+  asat-cms-service:
+    #    build:
+    #      context: .
+    #      dockerfile: services/cms/service/Dockerfile
+    image: ${ECR_REGISTRY}/aspire-cms-asatv2:${TAG}
+    container_name: cms-service
+    restart: unless-stopped
+    # ports:
+    #   - "5050:5050"
+    environment:
+      SPRING_PROFILES_ACTIVE: ${ENVIRONMENT:-local}
+      SERVER_PORT: 5050
+      MONGODB_URI: ${MONGODB_URI}
+      REDIS_HOST: ${REDIS_HOST:-asat-redis}
+    networks:
+      - asat_network
+    depends_on:
+      - redis
+      - asat-auth-service
+
+  asat-notification-service:
+    #    build:
+    #      context: .
+    #      dockerfile: services/notification/service/Dockerfile
+    image: ${ECR_REGISTRY}/aspire-notification-asatv2:${TAG}
+    container_name: notification-service
+    restart: unless-stopped
+    environment:
+      SPRING_PROFILES_ACTIVE: ${ENVIRONMENT:-local}
+      SERVER_PORT: 5656
+      MONGODB_URI: ${MONGODB_URI}
+      REDIS_HOST: ${REDIS_HOST:-asat-redis}
+    networks:
+      - asat_network
+    depends_on:
+      - redis
+      - asat-auth-service
+
+  asat-phishing-service:
+    image: ${ECR_REGISTRY}/aspire-phishing-asatv2:${TAG}
+    container_name: phishing-service
+    restart: unless-stopped
+    # ports:
+    #   - "5002:5002"
+    environment:
+      SPRING_PROFILES_ACTIVE: ${ENVIRONMENT:-local}
+      SERVER_PORT: 5002
+      MONGODB_URI: ${MONGODB_URI}
+      REDIS_HOST: ${REDIS_HOST:-asat-redis}
+    networks:
+      - asat_network
+    depends_on:
+      - redis
+      - asat-auth-service
+
+  asat-breach-detection-service:
+    image: ${ECR_REGISTRY}/aspire-breach-detection-asatv2:${TAG}
+    container_name: breach-detection-service
+    restart: unless-stopped
+    # ports:
+    #   - "6080:6080"
+    environment:
+      SPRING_PROFILES_ACTIVE: ${ENVIRONMENT:-local}
+      SERVER_PORT: 6080
+      MONGODB_URI: ${MONGODB_URI}
+      REDIS_HOST: ${REDIS_HOST:-asat-redis}
+    networks:
+      - asat_network
+    depends_on:
+      - redis
+      - asat-auth-service
+
+  asat-registration-service:
+    #    build:
+    #      context: .
+    #      dockerfile: services/registration/service/Dockerfile
+    image: ${ECR_REGISTRY}/aspire-registration-asatv2:${TAG}
+    container_name: registration-service
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    environment:
+      SPRING_PROFILES_ACTIVE: ${ENVIRONMENT:-local}
+      SERVER_PORT: 9090
+      MONGODB_URI: ${MONGODB_URI}
+      REDIS_HOST: ${REDIS_HOST:-asat-redis}
+    networks:
+      - asat_network
+    depends_on:
+      - redis
+      - asat-auth-service
+
+  asat-universal-service:
+    #    build:
+    #      context: .
+    #      dockerfile: services/universal/service/Dockerfile
+    image: ${ECR_REGISTRY}/aspire-universal-asatv2:${TAG}
+    container_name: universal-service
+    restart: unless-stopped
+    # ports:
+    #   - "9099:9099"
+    environment:
+      SPRING_PROFILES_ACTIVE: ${ENVIRONMENT:-local}
+      SERVER_PORT: 9099
+      MONGODB_URI: ${MONGODB_URI}
+      REDIS_HOST: ${REDIS_HOST:-asat-redis}
+    networks:
+      - asat_network
+    depends_on:
+      - redis
+      - asat-auth-service
+
+  asat-vps-service:
+    #    build:
+    #      context: .
+    #      dockerfile: services/vps/service/Dockerfile
+    image: ${ECR_REGISTRY}/aspire-vps-asatv2:${TAG}
+    container_name: vps-service
+    restart: unless-stopped
+    environment:
+      SPRING_PROFILES_ACTIVE: ${ENVIRONMENT:-local}
+      SERVER_PORT: 5052
+      REDIS_HOST: ${REDIS_HOST:-asat-redis}
+    networks:
+      - asat_network
+    depends_on:
+      - redis
+      - asat-auth-service
+
+  asat-gateway-service:
+    #    build:
+    #      context: .
+    #      dockerfile: services/gateway/service/Dockerfile
+    image: ${ECR_REGISTRY}/aspire-gateway-asatv2:${TAG}
+    container_name: gateway-service
+    restart: unless-stopped
+    ports:
+      - "7030:7030"
+    environment:
+      SPRING_PROFILES_ACTIVE: ${ENVIRONMENT:-local}
+      SERVER_PORT: 7030
+      REDIS_HOST: ${REDIS_HOST:-asat-redis}
+      MONGODB_URI: mongodb://user:password@asat-mongodb:27017/?authSource=admin
+    networks:
+      - asat_network
+    depends_on:
+      - redis
+      - asat-auth-service
+      - asat-billing-service
+      # - cloud-config-service
+      - asat-cms-service
+      # - course-service
+      - asat-notification-service
+      - asat-phishing-service
+      - asat-registration-service
+      - asat-breach-detection-service
+      # - sesame-service
+      - asat-universal-service
+      - asat-vps-service
+
+networks:
+  asat_network:
+    external: true

@@ -1,0 +1,82 @@
+erDiagram
+    COUNTRY {
+        string id PK
+        string name
+        string code
+    }
+
+    STATE {
+        string id PK
+        string countryId FK
+        string name
+    }
+
+    TIMEZONE {
+        string id PK
+        string countryId FK
+        string name
+    }
+
+    LANGUAGE {
+        string id PK
+        string name
+    }
+
+    INDUSTRY {
+        string id PK
+        string name
+    }
+
+    SUB_INDUSTRY {
+        string id PK
+        string industryId FK
+        string name
+    }
+
+    ORGANIZATION_SIZE {
+        string id PK
+        string name
+    }
+
+    ORGANIZATION_TYPE {
+        string id PK
+        string name
+    }
+
+    MSP_TYPE {
+        string id PK
+        string name
+    }
+
+    SUSPEND_REASON {
+        string id PK
+        string reason
+    }
+
+    TIER_CONFIGURATION {
+        string id PK
+        string name
+    }
+
+    NET_TERM_CONFIGURATION {
+        string id PK
+        int netDays
+    }
+
+    MENU {
+        string id PK
+        string name
+        string parentId FK
+    }
+
+    MENU_PERMISSION {
+        string id PK
+        string menuId FK
+        string action
+    }
+
+    COUNTRY ||--o{ STATE : "states"
+    COUNTRY ||--o{ TIMEZONE : "timezones"
+    INDUSTRY ||--o{ SUB_INDUSTRY : "sub industries"
+    MENU ||--o{ MENU : "parent menu"
+    MENU ||--o{ MENU_PERMISSION : "permissions"

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${subject}">Welcome to AspireLMS</title>
+    <style>
+        /* Responsive styles */
+        @media screen and (max-width: 600px) {
+            .container {
+                width: 100% !important;
+            }
+            .credentials-box {
+                padding: 15px !important;
+            }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f8f9fa;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td style="padding: 20px 0;">
+            <!-- Main Container Table -->
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" class="container" style="border-collapse: collapse; background-color: #ffffff; border: 1px solid #dee2e6;">
+                <!-- Header with Logo -->
+                <tr>
+                    <td align="center" style="padding: 20px 0; border-bottom: 1px solid #dee2e6;">
+                        <img th:src="'https://aspiretss.s3.us-east-1.amazonaws.com/public/Image.png'" alt="LMS Logo" width="160" style="display: block;" />
+                    </td>
+                </tr>
+
+                <!-- Main Content -->
+                <tr>
+                    <td style="padding: 40px 30px;">
+                        <h1 style="font-family: Arial, sans-serif; color: #212529;">Welcome to <span th:text="${lmsName}">AspireLMS</span>, <span th:text="${userName}">Admin</span>!</h1>
+                        <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6; color: #495057;">
+                            An account has been created for you on <strong th:text="${signupDate}"></strong>. Please use the credentials below for your initial login.
+                        </p>
+
+                        <!-- User Credentials Box -->
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 20px;">
+                            <tr>
+                                <td class="credentials-box" style="background-color: #f8f9fa; border: 1px dashed #ced4da; padding: 20px; border-radius: 5px;">
+                                    <p style="font-family: Arial, sans-serif; font-size: 16px; margin: 0 0 10px 0;"><strong>Username:</strong> <span th:text="${userName}">admin</span></p>
+                                    <p style="font-family: Arial, sans-serif; font-size: 16px; margin: 0;"><strong>Temporary Password:</strong> <span th:text="${password}" style="font-family: 'Courier New', Courier, monospace; background-color: #e9ecef; padding: 3px 6px; border-radius: 3px;">test</span></p>
+                                </td>
+                            </tr>
+                        </table>
+                        <p style="font-family: Arial, sans-serif; font-size: 14px; color: #6c757d; text-align: center; margin-top: 15px;">
+                            <strong>Important:</strong> For your security, you will be required to change this password upon your first login.
+                        </p>
+
+                        <!-- Call to Action Button -->
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <td align="center" style="padding: 30px 0 20px 0;">
+                                    <a th:href="'https://portal.aspireelearning.com/auth/login'" style="font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; color: #ffffff; text-decoration: none; background-color: #007bff; padding: 15px 30px; border-radius: 5px; display: inline-block;">Login to Your Account</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- Footer -->
+                <tr style="background-color: #343a40; color: #adb5bd;">
+                    <td style="padding: 20px 30px; font-family: Arial, sans-serif; font-size: 12px; text-align: center;">
+                        <p style="margin: 0;">This is an automated message. Please do not reply to this email.</p>
+                        <p style="margin: 5px 0 0 0;">&copy; <span th:text="${#dates.format(#dates.createNow(), 'yyyy')}">2025</span> <span th:text="${lmsName}">AspireLMS</span>. All Rights Reserved.</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

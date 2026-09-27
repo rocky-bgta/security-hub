@@ -1,0 +1,760 @@
+Date: Mon, 1 Dec 2025 14:43:19 +0000 (UTC)
+Message-ID: <1198199631.313.1764600199807@d5ab38921dc7>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_312_1638290839.1764600199807"
+
+------=_Part_312_1638290839.1764600199807
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Use Case 2.1.6.2: Admin Selects Email Template for Creates Campa=
+ign Setup (Step-2)</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Use Case 2.1.6.2: Admin Selects Email Template for Creates Campaign=
+ Setup (Step-2)</h1>
+    <div class=3D"Section1">
+        <p><strong>User Story</strong></p>
+<p>As an Admin, I want to select an email template from the available optio=
+ns and preview it before finalizing the selection, so that I can ensure it =
+is configured correctly for my phishing campaign.</p>
+<p><strong>Description</strong></p>
+<p>This use case describes the process by which the Admin selects an email =
+template for the phishing campaign. The Admin can filter templates using di=
+fferent criteria such as difficulty level, geolocation, and payload type. T=
+he Admin can also preview any selected email template before confirming the=
+ choice for the campaign. The system ensures that templates are valid and t=
+hat only the relevant templates are displayed based on the applied filters.=
+</p>
+<p><strong>Actors</strong></p>
+<ul>
+<li>
+<p><strong>Admin</strong>: Views and selects an email template, applies fil=
+ters, previews the email template, and proceeds to the next campaign setup =
+step.</p></li>
+<li>
+<p><strong>System</strong>: Displays the available email templates based on=
+ applied filters, shows the preview, and enables selection of the template.=
+</p></li>
+</ul>
+<p><strong>Preconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>Admin is logged into the platform and has access to the <strong>Create N=
+ew Campaign</strong> wizard.</p></li>
+<li>
+<p>The Admin has navigated to the <strong>Email Template Selection</strong>=
+ step.</p></li>
+<li>
+<p>The Admin has available templates loaded in the system to choose from.</=
+p></li>
+<li>
+<p>The system supports <strong>Email Template Filtering</strong> and <stron=
+g>Preview</strong> functionality.</p></li>
+</ol>
+<p><strong>Postconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>The selected email template is confirmed for the phishing campaign.</p><=
+/li>
+<li>
+<p>The <strong>Save &amp; Continue</strong> button is enabled for the Admin=
+ to proceed to the next step in the campaign creation.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Main Flow (Normal Success Scenario)</strong></p>
+<p><strong>Wizard: 2 Email Template</strong></p>
+<p><strong>Step 1: Navigate to Email Template Selection</strong></p>
+<ul>
+<li>
+<p>The Admin navigates to the <strong>Email Template Selection</strong> pag=
+e as part of the campaign creation process.</p></li>
+</ul>
+<p><strong>Step 2: Select Email Template Language</strong></p>
+<ul>
+<li>
+<p>The Admin selects the <strong>Email Template Language </strong>from drop=
+ down<strong>. </strong>Default language is set to <strong>English</strong>=
+ (e.g., English, Spanish, Arabic, Bengali, Portuguese, French, Russian, Ind=
+onesian, Hindi, Mandarin Chinese). Other language will be display in the li=
+st only if E-mail template available in that language.</p></li>
+<li>
+<p>The system filters available templates based on the chosen language.</p>=
+</li>
+</ul>
+<p><strong>Step 3: Select Template Type</strong></p>
+<ul>
+<li>
+<p>The Admin selects the <strong>Template Type</strong> from drop down<stro=
+ng>. </strong>Default Template Type is set to <strong>All Templates </stron=
+g>(Credential Harvesting, Financial Fraud, Malware Distribution, Data Theft=
+, Account Takeover, Ransomware, Spyware, Business Email Compromise, Phishin=
+g for Information, CEO Fraud). Other Template Type will be display in the l=
+ist only if the Admin has added them dynamically from the setting.</p></li>
+</ul>
+<p><strong>Step 4: Search Template </strong></p>
+<ul>
+<li>
+<p>Admin can search, and sort the available email templates:<br>
+Admin can search by keywords (e.g., "Holidays Offer").<br>
+Admin can sort templates by popularity (Most to Least).<br>
+Admin can search for templates using keywords.</p></li>
+</ul>
+<p><strong>Step 5: Apply Phishing Email Filters</strong></p>
+<ul>
+<li>
+<p>The Admin applies filters by clicking on the <strong>Apply Phishing Emai=
+l Filters</strong> button, which opens the <strong>Apply Filters</strong> m=
+odal.</p></li>
+<li>
+<p>The Admin selects the relevant filters such as <strong>Detection Difficu=
+lty</strong> selected dropdown (Easy, Medium, Hard).</p></li>
+<li>
+<p>The Admin selects the relevant filters such as <strong>Geolocation </str=
+ong> selected dropdown (United States, Canada, Brazil, Bangladesh, Australi=
+a, United Kingdom, Singapore, Germany, Italy, Poland, Netherlands, Belgium,=
+ Mexico, Egypt, Algeria, Sudan, Saudi Arabia, Morocco, Indonesia, India, Ch=
+ina)</p></li>
+<li>
+<p>The Admin selects the relevant filters such as <strong>Payload Type</str=
+ong> selected dropdown (Phishing Website, Phishing Attachment, Information =
+Request, Callback Request, Phishing Link, Phishing QR Code, Social Media Ph=
+ishing, Malware Payload via Embedded Media, Fake Software Updates, Fake Pay=
+ment Requests, Survey/Contest Phishing, Form Grabbing, Browser Hijacking, A=
+d Fraud, Account Verification Phishing).</p></li>
+</ul>
+<p><strong>Step 6: View Available Email Templates</strong></p>
+<ul>
+<li>
+<p>The Admin views the filtered list of available templates under <strong>A=
+vailable Email Template</strong>.</p></li>
+<li>
+<p>Templates are displayed with their names, subjects, required employee da=
+ta, and other attributes.</p></li>
+<li>
+<p>Use Pagination to Navigate Between Pages</p></li>
+</ul>
+<ol start=3D"1">
+<li>
+<p>The Admin can view the first page of 9 <strong>Available Email Template<=
+/strong>. After that it will show as pagination</p></li>
+<li>
+<p>The system displays pagination controls at the bottom of the campaign li=
+st with the following options:</p>
+<ul>
+<li>
+<p><strong>Previous</strong>: Navigate to the previous page.</p></li>
+<li>
+<p><strong>Next</strong>: Navigate to the next page.</p></li>
+<li>
+<p>The page number (e.g., "1", "2", "3", etc.) is highlighted to indicate t=
+he current page.</p></li>
+</ul></li>
+<li>
+<p>The Admin clicks <strong>Next</strong> or <strong>Previous</strong> to n=
+avigate between pages of <strong>Available Email Template</strong>.</p></li=
+>
+<li>
+<p>The system updates the page content and displays the <strong>Available E=
+mail Template </strong>from the selected page.</p></li>
+</ol>
+<p><strong>Step 7: Preview Template</strong></p>
+<ul>
+<li>
+<p>The Admin clicks the <strong>Preview</strong> button next to any templat=
+e they wish to review.</p></li>
+<li>
+<p>A preview of the selected email template is displayed, showing how it wi=
+ll look to the target audience.</p></li>
+<li>
+<p>The Admin can review the email body, subject, and any embedded content (=
+e.g., images, links).</p></li>
+</ul>
+<p><strong>Step 8: Select Template</strong></p>
+<ul>
+<li>
+<p>After reviewing the preview, the Admin clicks <strong>Select</strong> on=
+ the desired email template.</p></li>
+<li>
+<p>The system enables the <strong>Save &amp; Continue</strong> button for t=
+he Admin to proceed.</p></li>
+</ul>
+<p><strong>Step 9: Proceed to Next Step</strong></p>
+<ul>
+<li>
+<p>The Admin clicks <strong>Save &amp; Continue</strong> to move to the nex=
+t step in the campaign creation process.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Frontend Form Validation</strong></p>
+<p><strong>Field Validation Rules</strong></p>
+<ol start=3D"1">
+<li>
+<p><strong>Email Template Language</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory.</p></li>
+<li>
+<p><strong>Validation</strong>: The Admin must select a language.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Please select a valid email template la=
+nguage."</p></li>
+</ul></li>
+<li>
+<p><strong>Template Type</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory.</p></li>
+<li>
+<p><strong>Validation</strong>: The Admin must select a valid template type=
+.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Please select a valid template type."</=
+p></li>
+</ul></li>
+<li>
+<p><strong>Apply Phishing Email Filters</strong>:</p>
+<ul>
+<li>
+<p><strong>Optional</strong>: Filters can be applied or left blank.</p></li=
+>
+<li>
+<p><strong>Validation</strong>: If applied, the filters must be valid (e.g.=
+, <strong>Detection Difficulty</strong>, <strong>Geolocation</strong>, <str=
+ong>Payload Type</strong>).</p></li>
+<li>
+<p><strong>Error Message</strong>: "Please select valid filter options."</p=
+></li>
+</ul></li>
+<li>
+<p><strong>Email Template Selection</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: Admin must select a template.</p></li>
+<li>
+<p><strong>Validation</strong>: The Admin must choose at least one template=
+ from the list after applying filters.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Please select a valid email template."<=
+/p></li>
+</ul></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Business Rules</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"d7=
+db11a5-74ab-48e3-a44e-31874618743d" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Rule</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-1</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must apply at least one filter (optional) before viewing the email=
+ templates.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-2</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can preview the email templates by clicking <strong>Preview</stron=
+g> next to the selected template.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-3</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must select a template before proceeding to the next step in the c=
+ampaign creation.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-4</p></td>
+<td class=3D"confluenceTd">
+<p>Only valid templates are displayed after applying filters.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-5</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can only select one email template at a time.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-6</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must select a language for the email template before applying filt=
+ers.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-7</p></td>
+<td class=3D"confluenceTd">
+<p>The preview functionality must display the exact rendering of the select=
+ed template.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>Acceptance Criteria</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"f5=
+6b6296-c340-4f2b-89ef-3e55b6621097" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Acceptance Criteria</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Pass/Fail Condition</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-01</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select an <strong>Email Template Language</strong> and <strong=
+>Template Type</strong> from the dropdown menus.</p></td>
+<td class=3D"confluenceTd">
+<p>Language and type are selected and displayed correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-02</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can apply <strong>Phishing Email Filters</strong> (Detection Diffi=
+culty, Geolocation, Payload Type) to filter templates.</p></td>
+<td class=3D"confluenceTd">
+<p>Filters are applied successfully and affect the displayed templates.</p>=
+</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-03</p></td>
+<td class=3D"confluenceTd">
+<p>The system displays the filtered list of available email templates based=
+ on selected filters.</p></td>
+<td class=3D"confluenceTd">
+<p>Only the templates that match the filters are shown.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-04</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can click <strong>Preview</strong> to view a template before selec=
+ting it.</p></td>
+<td class=3D"confluenceTd">
+<p>The preview of the selected template is displayed correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-05</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can close the preview window and return to the <strong>Email Templ=
+ate Selection</strong> screen.</p></td>
+<td class=3D"confluenceTd">
+<p>The preview window closes when clicking <strong>Close</strong>.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-06</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select a valid email template and click <strong>Select</strong=
+> to choose it.</p></td>
+<td class=3D"confluenceTd">
+<p>The selected template is highlighted, and the <strong>Select</strong> bu=
+tton works.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-07</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can apply multiple filters (difficulty, location, payload type) an=
+d the results update accordingly.</p></td>
+<td class=3D"confluenceTd">
+<p>The list of templates is updated based on the selected filters.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-08</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can preview the email body of any selected template.</p></td>
+<td class=3D"confluenceTd">
+<p>The preview function works and displays the email body correctly.</p></t=
+d>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-09</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can proceed to the next step after selecting a template.</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Save &amp; Continue</strong> button is enabled once a valid =
+template is selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-10</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can apply <strong>Detection Difficulty</strong> filter and the lis=
+t updates accordingly.</p></td>
+<td class=3D"confluenceTd">
+<p>The list of templates is updated based on the selected difficulty level.=
+</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-11</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can apply <strong>Geolocation</strong> filter and the list updates=
+ accordingly.</p></td>
+<td class=3D"confluenceTd">
+<p>The list of templates is updated based on the selected location.</p></td=
+>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-12</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can apply <strong>Payload Type</strong> filter and the list update=
+s accordingly.</p></td>
+<td class=3D"confluenceTd">
+<p>The list of templates is updated based on the selected payload type.</p>=
+</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-13</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can clear the selected filters by clicking <strong>Clear</strong>.=
+</p></td>
+<td class=3D"confluenceTd">
+<p>Filters are cleared and the full list of templates is displayed.</p></td=
+>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-14</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can successfully search for a template using the <strong>Search</s=
+trong> feature.</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Search</strong> function filters templates based on the sear=
+ch text.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-15</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can reset all filters using the <strong>Clear</strong> button.</p>=
+</td>
+<td class=3D"confluenceTd">
+<p>Clicking <strong>Clear</strong> resets all filters and shows all templat=
+es.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-16</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can apply filters and search simultaneously.</p></td>
+<td class=3D"confluenceTd">
+<p>Both search and filter operations work together without issues.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-17</p></td>
+<td class=3D"confluenceTd">
+<p>Admin is guided to the next step after selecting the email template.</p>=
+</td>
+<td class=3D"confluenceTd">
+<p>The system proceeds to the next step in the campaign creation process af=
+ter template selection.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-18</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select <strong>Simulated Phishing</strong> email templates fro=
+m the list.</p></td>
+<td class=3D"confluenceTd">
+<p>Only relevant <strong>Simulated Phishing</strong> templates are displaye=
+d.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-19</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can filter templates based on <strong>Employee Data Required</stro=
+ng> (e.g., Email Address, First Name).</p></td>
+<td class=3D"confluenceTd">
+<p>The displayed templates update based on the selected employee data requi=
+rements.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-20</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select a <strong>Premium</strong> template based on the subscr=
+iption.</p></td>
+<td class=3D"confluenceTd">
+<p>Only templates available to the user's subscription plan can be selected=
+.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>System Behavior &amp; Validation</strong></p>
+<ul>
+<li>
+<p><strong>Template Filters</strong>: Filters like <strong>Detection Diffic=
+ulty</strong>, <strong>Geolocation</strong>, and <strong>Payload Type</stro=
+ng> must be applied correctly to narrow down the list of available template=
+s.</p></li>
+<li>
+<p><strong>Template Selection</strong>: Admin can select only one template =
+at a time. The system ensures that the <strong>Save &amp; Continue</strong>=
+ button is enabled after a valid template is selected.</p></li>
+<li>
+<p><strong>Preview</strong>: Admin can preview the selected template before=
+ final selection to ensure it fits the campaign requirements.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Security Handling</strong></p>
+<ul>
+<li>
+<p><strong>Data Integrity</strong>: All email templates are securely stored=
+ and only accessible to authorized Aspire Admins.</p></li>
+<li>
+<p><strong>Audit Logs</strong>: All actions related to email template selec=
+tion and filtering are logged for audit and troubleshooting purposes.</p></=
+li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_312_1638290839.1764600199807--

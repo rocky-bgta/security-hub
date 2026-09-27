@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        registration-uri: http://asat-registration:9090
+        course-uri: http://asat-course:9020

@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.0'
+    id 'io.spring.dependency-management' version '1.1.5'
+    id 'application'
+}
+
+application {
+    mainClass = 'com.aspire.asat.registration.RegistrationApplication'
+}
+
+group 'com.aspire.asat.registration'
+
+dependencies {
+
+    implementation project(':services:registration:api')
+    implementation project(':services:registration:core')
+    implementation project(':common:core')
+//    implementation project(':common:messaging:producer')
+
+    implementation project.rootProject.ext.libraries.development.springDocUi
+    implementation 'org.springframework.boot:spring-boot-starter-webflux:3.0.6'
+
+    implementation project.rootProject.ext.libraries.core.springBootStarter
+    implementation project.rootProject.ext.libraries.core.springBootStarterWeb
+    implementation project.rootProject.ext.libraries.core.springBootStarterDataMongo
+    implementation project.rootProject.ext.libraries.core.jacksonDatatype
+    implementation project.rootProject.ext.libraries.core.awsSdkS3
+
+    implementation project.rootProject.ext.libraries.core.springBootStarterSecurity
+    implementation 'org.modelmapper:modelmapper:3.1.1'
+
+    //Microsoft Graph SDK
+    implementation("com.microsoft.graph:microsoft-graph:6.60.0")
+    implementation("com.azure:azure-identity:1.18.1")
+
+    testImplementation platform(project.rootProject.ext.libraries.test.junitBom)
+    testImplementation project.rootProject.ext.libraries.test.junitJupiter
+
+}
+
+tasks.test {
+    useJUnitPlatform()
+}

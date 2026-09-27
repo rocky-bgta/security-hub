@@ -1,0 +1,52 @@
+spring:
+  config:
+    import: "optional:classpath:common-defaults.yml,optional:classpath:common-defaults-local.yml"
+  application:
+    name: cms-service
+  leaderboard:
+    api:
+      url: "http://localhost:9090"
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/cms}
+      database: cms
+
+server:
+  port: 5050
+
+azure:
+  storage:
+    connection-string: DefaultEndpointsProtocol=https;AccountName=${AZURE_STORAGE_ACCOUNT_NAME};AccountKey=${AZURE_STORAGE_ACCOUNT_KEY};EndpointSuffix=core.windows.net
+    container-name: strgblobstandardasatv2
+
+web:
+  client:
+    base:
+      #      url: http://localhost:5055/vps
+      url: http://localhost:5052/vps
+
+service:
+  registration:
+    url: ${REGISTRATION_SERVICE_URL:http://localhost:9090/registration/api/v1}
+  billing:
+    url: ${BILLING_SERVICE_URL:http://asat-billing-service:6060/billing/api/v1}
+  phishing:
+    url: ${PHISHING_SERVICE_URL:http://asat-phishing-service:5002/phishing/api/v1}
+
+storage:
+  active: s3
+aws:
+  region: us-east-1
+  # From SSM: /asat/local/cms-service/aws.credentials.access-key (or env); do not commit real values
+  credentials:
+    access-key: ${AWS_CREDENTIALS_ACCESS_KEY:}
+    # From SSM: /asat/local/cms-service/aws.credentials.secret-key (or env); do not commit real values
+    secret-key: ${AWS_CREDENTIALS_SECRET_KEY:}
+  s3:
+    bucket-name: "asatv2-media-bucket"
+
+link:
+  logo: https://aspiretss.s3.us-east-1.amazonaws.com/public/Image.png
+  login: https://dev.aspireelearning.com/auth/login
+  help: https://dev.aspireelearning.com/auth/login
+  support-email: support@securityawarenesstraining.ai

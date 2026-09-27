@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: asat-universal
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: asat-universal
+  template:
+    metadata:
+      labels:
+        app: asat-universal
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: role
+                    operator: In
+                    values:
+                      - general
+      # This toleration allows the pods to be scheduled on nodes with the taint "workload-type: cms".
+      tolerations:
+        - key: "workload-type"
+          operator: "Equal"
+          value: "general"
+          effect: "NoSchedule"
+      containers:
+        - name: asat-universal
+          # Best Practice: Use a placeholder that your CI/CD pipeline will replace.
+          image: IMAGE_PLACEHOLDER
+          imagePullPolicy: Always
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: dev
+            - name: MONGODB_URI
+              value: "mongodb://docdbadmin:Aspire1234@staging-docdb-cluster.cluster-c8bk2448qgsk.us-east-1.docdb.amazonaws.com:27017/?tls=true&replicaSet=rs0&readPreference=primary&retryWrites=false"
+
+          ports:
+            - containerPort: 9099
+          # --- Resource Requests & Limits ---
+          # These are sensible starting points for a standard Spring Boot microservice.
+          resources:
+            # 'requests' are the minimum resources guaranteed to your pod by Kubernetes.
+            requests:
+              memory: "256Mi"   # 256 Mebibytes - A common minimum for a Spring Boot app to start.
+              cpu: "250m"       # 250 millicores (0.25 CPU) - Enough for an idle service.
+            # 'limits' are the maximum resources your pod is allowed to use.
+            limits:
+              memory: "512Mi"   # Prevents the app from consuming too much memory.
+              cpu: "500m"       # Allows the app to burst up to 0.5 CPU during request processing.

@@ -1,0 +1,94 @@
+erDiagram
+    CAMPAIGN {
+        string id PK
+        string clientAdminId FK
+        string name
+        string status
+    }
+
+    CAMPAIGN_RECIPIENT {
+        string id PK
+        string campaignId FK
+        string userId FK
+    }
+
+    EMAIL_ACTIVITY {
+        string id PK
+        string campaignId FK
+        string recipientId FK
+    }
+
+    EMAIL_TEMPLATE {
+        string id PK
+        string clientAdminId FK
+        string name
+    }
+
+    LANDING_PAGE {
+        string id PK
+        string clientAdminId FK
+        string categoryId FK
+    }
+
+    SENDER_PROFILE {
+        string id PK
+        string clientAdminId FK
+    }
+
+    DOMAIN {
+        string id PK
+        string clientAdminId FK
+        string domain
+    }
+
+    DOMAIN_VERIFICATION_CODE {
+        string id PK
+        string domainId FK
+    }
+
+    PHISHING_USER_LICENCE {
+        string id PK
+        string userId FK
+        string clientAdminId FK
+    }
+
+    USER_RISK_PROFILE {
+        string id PK
+        string userId FK
+        string clientAdminId FK
+    }
+
+    DASHBOARD_STATS {
+        string id PK
+        string clientAdminId FK
+    }
+
+    ADMIN_DASHBOARD_AGGREGATE {
+        string id PK
+        string clientAdminId FK
+    }
+
+    BREACH_RECORD {
+        string id PK
+        string email
+        string clientAdminId FK
+    }
+
+    RECIPIENT_BREACH {
+        string id PK
+        string recipientId FK
+        string breachId FK
+    }
+
+    CAMPAIGN ||--o{ CAMPAIGN_RECIPIENT : "recipients"
+    CAMPAIGN ||--o{ EMAIL_ACTIVITY : "events"
+    CAMPAIGN_RECIPIENT ||--o{ EMAIL_ACTIVITY : "activity"
+    EMAIL_TEMPLATE ||--o{ CAMPAIGN : "template"
+    LANDING_PAGE ||--o{ CAMPAIGN : "landing page"
+    SENDER_PROFILE ||--o{ CAMPAIGN : "sender"
+    DOMAIN ||--o{ DOMAIN_VERIFICATION_CODE : "verification"
+    DOMAIN ||--o{ SENDER_PROFILE : "sender domain"
+    CAMPAIGN_RECIPIENT ||--o{ RECIPIENT_BREACH : "breaches"
+    BREACH_RECORD ||--o{ RECIPIENT_BREACH : "breach match"
+    PHISHING_USER_LICENCE ||--o{ CAMPAIGN_RECIPIENT : "licensed users"
+    USER_RISK_PROFILE ||--o{ CAMPAIGN_RECIPIENT : "risk profile"

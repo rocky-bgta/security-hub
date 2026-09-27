@@ -1,0 +1,14 @@
+{
+  "breach": [
+    {
+      "_comment": "Breach Detection Service - temporary broad allow; replace with fine-grained routes."
+    },
+    {
+      "path": "/api/v1/**",
+      "method": "ALL",
+      "permissions": [
+        "ALL"
+      ]
+    }
+  ]
+}

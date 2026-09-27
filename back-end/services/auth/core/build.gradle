@@ -1,0 +1,87 @@
+plugins {
+    id 'io.spring.dependency-management' version '1.1.5'
+    id 'java'
+    id 'jacoco'
+}
+
+group 'com.aspire.asat.auth'
+
+dependencies {
+
+    implementation project(':common:core')
+    implementation project(':services:auth:api')
+
+    implementation project.rootProject.ext.libraries.core.azureCosmos
+    implementation project.rootProject.ext.libraries.core.lombok
+    annotationProcessor project.rootProject.ext.libraries.core.lombok
+    implementation project.rootProject.ext.libraries.core.springBootStarter
+    implementation project.rootProject.ext.libraries.core.springBootStarterWeb
+    implementation project.rootProject.ext.libraries.core.jacksonCore
+    implementation project.rootProject.ext.libraries.core.springBootStarterDataMongo
+    implementation project.rootProject.ext.libraries.core.mockitoCore
+    implementation project.rootProject.ext.libraries.core.blobStorage
+    implementation project.rootProject.ext.libraries.core.commonsCsv
+    implementation project.rootProject.ext.libraries.core.jwtApi
+    implementation project.rootProject.ext.libraries.core.jwtImpl
+    implementation project.rootProject.ext.libraries.core.jwtJackson
+    implementation project.rootProject.ext.libraries.development.springDocUi
+    implementation project.rootProject.ext.libraries.core.awsSdkS3
+
+
+    implementation project.rootProject.ext.libraries.core.starterAop
+    implementation project.rootProject.ext.libraries.core.starterValidation
+    implementation project.rootProject.ext.libraries.core.aspectjweaver
+    implementation project.rootProject.ext.libraries.core.jacksonDatatype
+    implementation project.rootProject.ext.libraries.core.openhtmltopdf
+    implementation project.rootProject.ext.libraries.core.jsoup
+    implementation project.rootProject.ext.libraries.core.springBootStarterSecurity
+
+    implementation project.rootProject.ext.libraries.core.redis
+//    implementation project.rootProject.ext.libraries.core.redisLettuceCore
+
+    // WebFlux for WebClient (Microsoft Entra integration)
+    implementation project.rootProject.ext.libraries.core.webflux
+
+    // Microsoft Graph SDK and Azure Identity for Microsoft Entra integration
+/*    implementation project.rootProject.ext.libraries.core.microsoftGraph
+    implementation project.rootProject.ext.libraries.core.azureIdentity*/
+
+    testImplementation project.rootProject.ext.libraries.test.mockitoJunitJupiter
+    testImplementation platform(project.rootProject.ext.libraries.test.junitBom)
+    testImplementation project.rootProject.ext.libraries.test.junitJupiter
+    testRuntimeOnly project.rootProject.ext.libraries.test.junitPlatformLauncher
+    testImplementation project.rootProject.ext.libraries.test.testcontainers
+    testImplementation project.rootProject.ext.libraries.test.testcontainersJunit
+    testImplementation project.rootProject.ext.libraries.test.testcontainersMongodb
+
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-parameters"
+}
+
+jacoco {
+    toolVersion = project.rootProject.ext.versions.test.jacoco
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+        html.required = true
+        csv.required = true
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.80
+            }
+        }
+    }
+}
+
+tasks.test {
+    useJUnitPlatform()
+}

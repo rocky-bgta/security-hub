@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.0'
+    id 'io.spring.dependency-management' version '1.1.5'
+    id 'application'
+}
+
+application {
+    mainClass = 'com.aspire.asat.auth.AuthApplication'
+}
+
+group 'com.aspire.asat.auth'
+
+dependencies {
+
+    implementation project(':services:auth:api')
+    implementation project(':services:auth:core')
+    implementation project(':common:core')
+
+    implementation project.rootProject.ext.libraries.development.springDocUi
+    
+    implementation project.rootProject.ext.libraries.core.springBootStarter
+    implementation project.rootProject.ext.libraries.core.springBootStarterWeb
+    implementation project.rootProject.ext.libraries.core.springBootStarterDataMongo
+    implementation project.rootProject.ext.libraries.core.jacksonDatatype
+    implementation project.rootProject.ext.libraries.core.awsSdkS3
+
+    implementation project.rootProject.ext.libraries.core.springBootStarterSecurity
+    implementation project.rootProject.ext.libraries.core.lombok
+
+    implementation project.rootProject.ext.libraries.core.redis
+
+    implementation("io.lettuce:lettuce-core:6.5.5.RELEASE")
+    implementation 'org.apache.commons:commons-pool2:2.12.0'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux:3.0.6'
+
+    //Microsoft Graph SDK
+    /*implementation("com.microsoft.graph:microsoft-graph:6.60.0")
+    implementation("com.azure:azure-identity:1.18.1")*/
+
+    // Microsoft Graph SDK
+/*    implementation 'com.microsoft.graph:microsoft-graph:6.59.0'
+    implementation 'com.azure:azure-identity:1.11.0'*/
+
+
+    testImplementation platform(project.rootProject.ext.libraries.test.junitBom)
+    testImplementation project.rootProject.ext.libraries.test.junitJupiter
+
+}
+
+tasks.test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,69 @@
+spring:
+  config:
+    import: "optional:classpath:common-defaults.yml,optional:classpath:common-defaults-staging.yml"
+  application:
+    name: billing-service
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:}
+      database: paymentModule
+azure:
+  storage:
+    connection-string: DefaultEndpointsProtocol=https;AccountName=${AZURE_STORAGE_ACCOUNT_NAME};AccountKey=${AZURE_STORAGE_ACCOUNT_KEY};EndpointSuffix=core.windows.net
+    container-name: strgblobstandardasatv2
+
+
+service:
+  cms:
+    url: http://asat-cms-service:5050/cms/api/v1
+  registration:
+    url: http://asat-registration-service:9090/registration/api/v1
+  frontEnd:
+    url: https://staging.aspireelearning.com/billing-management
+
+stripe:
+  secret-key: ${STRIPE_SECRET_KEY:}
+  public-key: ${STRIPE_PUBLIC_KEY:}
+  webhook-secret: ${STRIPE_WEBHOOK_SECRET:}
+
+paypal:
+  client-id: ${PAYPAL_CLIENT_ID:}
+  secret: ${PAYPAL_SECRET:}
+  mode: sandbox
+
+# Internal service-to-service auth (invoice create/update)
+# SSM (shared): /asat/common/staging/internal.service.api-key
+# Env override: INTERNAL_SERVICE_API_KEY
+internal:
+  service:
+    api-key: ${INTERNAL_SERVICE_API_KEY:}
+    auth-enabled: true
+
+server:
+  port: 6060
+
+aws:
+  region: "us-east-1"
+  credentials:
+    # From SSM: /asat/staging/billing-service/aws.credentials.access-key (or env); do not commit real values
+    access-key: ${AWS_CREDENTIALS_ACCES_KEY:}
+    # From SSM: /asat/staging/billing-service/aws.credentials.secret-key (or env); do not commit real values
+    secret-key: ${AWS_CREDENTIALS_SECRET_KEY:}
+  s3:
+    bucket-name: "asatv2-media-bucket"
+
+# Maps aws.credentials.* (SSM/env) into common FileService (app.aws.*)
+app:
+  aws:
+    accessKeyId: ${aws.credentials.access-key:}
+    secretAccessKey: ${aws.credentials.secret-key:}
+
+notification:
+  service:
+    url: http://asat-notification-service:5656
+    api-path: /notification/api/v1
+
+link:
+  logo: https://aspiretss.s3.us-east-1.amazonaws.com/public/Image.png
+  login: https://staging.aspireelearning.com/auth/login
+  help: https://staging.aspireelearning.com/auth/login

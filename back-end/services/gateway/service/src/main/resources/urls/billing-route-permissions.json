@@ -1,0 +1,257 @@
+{
+  "billing": [
+    {
+      "_comment": "VAT Configuration"
+    },
+    {
+      "path": "/api/v1/vat/update/{countryCode}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/vat/create",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/vat/country/{countryCode}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/vat/all",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/vat/delete/{countryCode}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Commission Management"
+    },
+    {
+      "path": "/api/v1/commission/update/{clientId}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/commission/create",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/commission/list",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/commission/client/{clientId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/commission/delete/{clientId}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Invoice Management"
+    },
+    {
+      "path": "/api/v1/invoice/update/{id}",
+      "method": "PUT",
+      "permissions": ["BLOCKED"]
+    },
+    {
+      "path": "/api/v1/invoice/create",
+      "method": "POST",
+      "permissions": ["BLOCKED"]
+    },
+    {
+      "path": "/api/v1/invoice/list",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/invoice/id/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/invoice/delete/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Coupon Management"
+    },
+    {
+      "path": "/api/v1/coupon/update/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/coupon/{code}/qr",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/coupon/create",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/coupon/list",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/coupon/id/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/coupon/code/{code}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/coupon/delete/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Credit Management"
+    },
+    {
+      "path": "/api/v1/credit/update/{creditId}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/credit/switch-mode/{creditId}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/credit/withdraw",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/credit/transfer",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/credit/transaction/log",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/credit/deposit",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/credit/create",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/credit/transaction/usage-summary/{clientId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/credit/transaction/usage-list/{clientId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/credit/transaction/id/{transactionId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/credit/transaction/credit/{creditId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/credit/transaction/client/{clientId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/credit/id/{creditId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/credit/client/{clientId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Payment Processing"
+    },
+    {
+      "path": "/api/v1/payment/online-entry",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/payment/manual-entry",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/payment/credit/pay",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/payment/history",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/payment/history/download",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/payment/history/summary",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/payment/history/export/csv",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/payment/summary-report/summary",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/payment/summary-report/list",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/payment/summary-report/export/csv",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/payment/details/{paymentId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    }
+  ]
+}

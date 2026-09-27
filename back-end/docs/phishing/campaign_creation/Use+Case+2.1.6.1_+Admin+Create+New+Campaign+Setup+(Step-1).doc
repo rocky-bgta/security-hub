@@ -1,0 +1,670 @@
+Date: Mon, 1 Dec 2025 14:43:05 +0000 (UTC)
+Message-ID: <2061583749.311.1764600185410@d5ab38921dc7>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_310_1444794703.1764600185410"
+
+------=_Part_310_1444794703.1764600185410
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Use Case 2.1.6.1: Admin Create New Campaign Setup (Step-1)</titl=
+e>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Use Case 2.1.6.1: Admin Create New Campaign Setup (Step-1)</h1>
+    <div class=3D"Section1">
+        <p><strong>User Story</strong></p>
+<p>As an Admin, I want to enter the campaign name and select the campaign t=
+ype so that I can initiate the phishing simulation campaign creation proces=
+s with a unique setup.</p>
+<p><strong>Description</strong></p>
+<p>The Admin begins the campaign creation process by entering a unique camp=
+aign name and selecting the campaign type. This step is critical as it sets=
+ up the foundation for the entire campaign and guides the Admin through the=
+ subsequent steps of the campaign creation process. The Admin's selection o=
+f the campaign type determines the inclusion or exclusion of training modul=
+es in the following steps.</p>
+<p><strong>Actors</strong></p>
+<ul>
+<li>
+<p><strong>Admin</strong>: Enters the campaign name, selects the campaign t=
+ype, and progresses through the campaign setup.</p></li>
+<li>
+<p><strong>System</strong>: Displays the campaign setup interface, validate=
+s inputs, and guides the Admin to the next step based on the selected campa=
+ign type.</p></li>
+</ul>
+<p><strong>Preconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>Admin is logged in with the necessary privileges to create phishing camp=
+aigns.</p></li>
+<li>
+<p>The system is operational and supports campaign creation with a step-by-=
+step setup process.</p></li>
+<li>
+<p>The Admin has access to the <strong>Create New Campaign</strong> interfa=
+ce.</p></li>
+</ol>
+<p><strong>Postconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>The campaign name and type are saved as the initial step of the campaign=
+ setup.</p></li>
+<li>
+<p>The Admin proceeds to the next step (Email Template selection) in the ca=
+mpaign creation process.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Main Flow (Normal Success Scenario)</strong></p>
+<p>Step-by-step wizard: 1 Campaign Setup -&gt; 2 Email Template -&gt; 3 Lan=
+ding Page -&gt; 4 Mail Server -&gt; 5 Tags -&gt; 6 Audience -&gt; 7 Trainin=
+g -&gt; 8 Schedule -&gt; 9 Review</p>
+<p><strong>Wizard: Step 1 Campaign Setup</strong></p>
+<p><strong>Step 1: Access Campaign Setup</strong></p>
+<ul>
+<li>
+<p>The Admin navigates to the <strong>Campaign Management</strong> section =
+and clicks on the <strong>Create New Campaign</strong> button.</p></li>
+<li>
+<p>The system displays the <strong>Campaign Setup</strong> interface with t=
+wo fields:</p>
+<ul>
+<li>
+<p><strong>Campaign Name</strong>: A input field to enter a unique campaign=
+ name. placeholder: Enter unique campaign name (max 50 characters)</p></li>
+<li>
+<p><strong>Campaign Type</strong>: A radio button to select one of the foll=
+owing campaign types:</p>
+<ol start=3D"1">
+<li>
+<p><strong>Simulated Phishing</strong>: A phishing-only campaign without th=
+e security awareness training step. p tag: Send simulated phishing emails t=
+o test employee awareness and identify vulnerabilities.</p></li>
+<li>
+<p><strong>Simulated Phishing &amp; Security Awareness Training</strong>: A=
+ combined campaign that includes both phishing simulation and security awar=
+eness training. p tag: Combined campaign with phishing simulation and immed=
+iate security awareness training for caught users.</p></li>
+</ol></li>
+</ul></li>
+</ul>
+<p><strong>Step 2: Enter Campaign Information</strong></p>
+<ul>
+<li>
+<p>The Admin enters a unique <strong>Campaign Name</strong> (e.g., "Holiday=
+ Offer").</p>
+<ul>
+<li>
+<p>The system validates the name to ensure it does not exceed 50 characters=
+.</p></li>
+</ul></li>
+<li>
+<p>The Admin selects a <strong>Campaign Type</strong> from the radio button=
+:</p>
+<ul>
+<li>
+<p>If the <strong>Simulated Phishing</strong> type is selected, then from w=
+izard step 7 <strong>training module</strong> selection will be skipped in =
+the next steps of the campaign setup.</p></li>
+<li>
+<p>If the <strong>Simulated Phishing &amp; Security Awareness Training</str=
+ong> type is selected, the system will include wizard step 7 for selecting =
+<strong>training modules</strong> later in the setup process.</p></li>
+</ul></li>
+</ul>
+<p><strong>Step 3: Continue to Next Step</strong></p>
+<ul>
+<li>
+<p>After entering the campaign name and selecting the campaign type, the <s=
+trong>Save &amp; Continue</strong> button is enabled.</p></li>
+<li>
+<p>The Admin clicks <strong>Save &amp; Continue</strong> to proceed to the =
+next step (Email Template selection).</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Frontend Form Validation</strong></p>
+<p><strong>Field Validation Rules</strong></p>
+<ol start=3D"1">
+<li>
+<p><strong>Campaign Name Field</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory.</p></li>
+<li>
+<p><strong>Validation</strong>:</p>
+<ul>
+<li>
+<p>Should not be empty.</p></li>
+<li>
+<p>Must be at least 3 characters long and a maximum of 50 characters.</p></=
+li>
+</ul></li>
+<li>
+<p><strong>Error Message</strong>: "Campaign name is required and must be a=
+t least 3 characters."</p></li>
+</ul></li>
+<li>
+<p><strong>Campaign Type Field</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory.</p></li>
+<li>
+<p><strong>Validation</strong>:</p>
+<ul>
+<li>
+<p>The Admin must select a valid <strong>Campaign Type</strong> (Simulated =
+Phishing or Simulated Phishing &amp; Security Awareness Training).</p></li>
+</ul></li>
+<li>
+<p><strong>Error Message</strong>: "Please select a valid campaign type."</=
+p></li>
+</ul></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Business Rules</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"61=
+76efa3-c5eb-441b-93ec-857b287adecf" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Rule</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-1</p></td>
+<td class=3D"confluenceTd">
+<p>The Admin must enter a unique campaign name.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-2</p></td>
+<td class=3D"confluenceTd">
+<p>The Admin must select a valid <strong>Campaign Type</strong> (Simulated =
+Phishing or Simulated Phishing &amp; Security Awareness Training).</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-3</p></td>
+<td class=3D"confluenceTd">
+<p>The system will dynamically adjust the flow based on the selected <stron=
+g>Campaign Type</strong>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>Acceptance Criteria</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"0b=
+f78995-5bef-46cd-884c-d3093571edf5" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Acceptance Criteria</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Pass/Fail Condition</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-01</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can enter a <strong>Campaign Name</strong> and it must be unique a=
+nd within the character limit.</p></td>
+<td class=3D"confluenceTd">
+<p>The name is entered successfully and does not exceed 50 characters.</p><=
+/td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-02</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select a <strong>Campaign Type</strong> (Simulated Phishing or=
+ Simulated Phishing &amp; Security Awareness Training).</p></td>
+<td class=3D"confluenceTd">
+<p>The campaign type is correctly selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-03</p></td>
+<td class=3D"confluenceTd">
+<p>The system dynamically adjusts the setup process based on the selected <=
+strong>Campaign Type</strong>.</p></td>
+<td class=3D"confluenceTd">
+<p>The flow adjusts by including or excluding the training module selection=
+.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-04</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Save &amp; Continue</strong> button is enabled once all requ=
+ired fields are valid.</p></td>
+<td class=3D"confluenceTd">
+<p>The button is enabled only after the valid inputs.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-05</p></td>
+<td class=3D"confluenceTd">
+<p>Admin cannot proceed without selecting a <strong>Campaign Type</strong>.=
+</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Save &amp; Continue</strong> button is disabled until a vali=
+d campaign type is selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-06</p></td>
+<td class=3D"confluenceTd">
+<p>The system displays a warning if the <strong>Campaign Name</strong> exce=
+eds the character limit.</p></td>
+<td class=3D"confluenceTd">
+<p>The system displays an error message if the name exceeds 50 characters.<=
+/p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-07</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can continue to the next step only after a valid <strong>Campaign =
+Name</strong> and <strong>Campaign Type</strong> are selected.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can click <strong>Save &amp; Continue</strong> after both fields a=
+re filled correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-08</p></td>
+<td class=3D"confluenceTd">
+<p>The system ensures that the <strong>Campaign Name</strong> is unique and=
+ prevents duplicates.</p></td>
+<td class=3D"confluenceTd">
+<p>The system prevents duplicate names and displays a relevant message.</p>=
+</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-09</p></td>
+<td class=3D"confluenceTd">
+<p>The system logs the <strong>Campaign Name</strong> and <strong>Campaign =
+Type</strong> for audit purposes.</p></td>
+<td class=3D"confluenceTd">
+<p>The campaign details are logged once the Admin clicks <strong>Save &amp;=
+ Continue</strong>.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-10</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can view the selected <strong>Campaign Type</strong> and the <stro=
+ng>Campaign Name</strong> in the next step of the setup process.</p></td>
+<td class=3D"confluenceTd">
+<p>Both the <strong>Campaign Name</strong> and <strong>Campaign Type</stron=
+g> appear in the subsequent step.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-11</p></td>
+<td class=3D"confluenceTd">
+<p>If <strong>Simulated Phishing</strong> is selected, the system skips the=
+ <strong>Training Module Selection</strong> step.</p></td>
+<td class=3D"confluenceTd">
+<p>The system skips step 6 (Training Module Selection) when <strong>Simulat=
+ed Phishing</strong> is selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-12</p></td>
+<td class=3D"confluenceTd">
+<p>If <strong>Simulated Phishing &amp; Security Awareness Training</strong>=
+ is selected, the system includes the <strong>Training Module Selection</st=
+rong> step.</p></td>
+<td class=3D"confluenceTd">
+<p>The system adds step 6 (Training Module Selection) when <strong>Simulate=
+d Phishing &amp; Security Awareness Training</strong> is selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-13</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select <strong>Simulated Phishing</strong> and <strong>Simulat=
+ed Phishing &amp; Security Awareness Training</strong> without errors.</p><=
+/td>
+<td class=3D"confluenceTd">
+<p>The dropdown list shows both options, and Admin can select either.</p></=
+td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-14</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Save &amp; Continue</strong> button is disabled until both t=
+he <strong>Campaign Name</strong> and <strong>Campaign Type</strong> are fi=
+lled in correctly.</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Save &amp; Continue</strong> button is enabled only when bot=
+h fields are valid.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-15</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can return to the <strong>Campaign Setup</strong> page and edit th=
+e <strong>Campaign Name</strong> or <strong>Campaign Type</strong> before c=
+ontinuing.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can modify the details before moving on to the next step.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-16</p></td>
+<td class=3D"confluenceTd">
+<p>The system validates that the <strong>Campaign Name</strong> is within t=
+he required length (3-50 characters).</p></td>
+<td class=3D"confluenceTd">
+<p>A validation error is shown if the <strong>Campaign Name</strong> is too=
+ short or too long.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-17</p></td>
+<td class=3D"confluenceTd">
+<p>If the <strong>Campaign Name</strong> is empty, the system prompts the A=
+dmin to enter a name.</p></td>
+<td class=3D"confluenceTd">
+<p>An error message prompts the Admin to fill in the <strong>Campaign Name<=
+/strong> field.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-18</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can change the <strong>Campaign Type</strong> after the initial se=
+lection, and the flow will adjust accordingly.</p></td>
+<td class=3D"confluenceTd">
+<p>The system dynamically adjusts the flow based on the updated selection.<=
+/p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-19</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can use the <strong>Search</strong> bar to find an existing campai=
+gn or to track the progress of the creation process.</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Search</strong> function works and allows filtering the camp=
+aigns in progress.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-20</p></td>
+<td class=3D"confluenceTd">
+<p>The system ensures that the <strong>Campaign Name</strong> is displayed =
+as entered in the summary section after it is saved.</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Campaign Name</strong> appears correctly in the summary afte=
+r saving.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>System Behavior &amp; Validation</strong></p>
+<ul>
+<li>
+<p><strong>Campaign Name</strong>: Must be unique and within 50 characters.=
+ The system validates that the name meets the minimum and maximum length re=
+quirements.</p></li>
+<li>
+<p><strong>Campaign Type</strong>: The system dynamically changes the setup=
+ flow based on the selected campaign type:</p>
+<ul>
+<li>
+<p>If <strong>Simulated Phishing</strong> is selected, the training step is=
+ skipped.</p></li>
+<li>
+<p>If <strong>Simulated Phishing &amp; Security Awareness Training</strong>=
+ is selected, the training step is included.</p></li>
+</ul></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Security Handling</strong></p>
+<ul>
+<li>
+<p><strong>Authorization</strong>: Only authorized Admins can create phishi=
+ng campaigns.</p></li>
+<li>
+<p><strong>Data Protection</strong>: All campaign data, including campaign =
+names and configurations, is securely stored.</p></li>
+<li>
+<p><strong>Logging</strong>: All actions related to campaign creation are l=
+ogged for auditing purposes.</p></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_310_1444794703.1764600185410--

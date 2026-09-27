@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=1123, initial-scale=1.0"/>
+    <style>
+        @page {
+            size: 1123px 794px;
+            margin: 0;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Times New Roman MT", "Times New Roman", "Liberation Serif", "DejaVu Serif", Times, serif;
+            background: #fff;
+            width: 1123px;
+            height: 794px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .body {
+            width: 1123px;
+            height: 794px;
+        }
+
+        .certificate-container {
+            position: relative;
+            width: 1123px; /* width: 1154px; */
+            height: 794px;
+            box-sizing: border-box;
+            overflow: hidden;
+            margin: 0 auto;
+            background-image: url("https://aspiretss.s3.us-east-1.amazonaws.com/a-sat-v2.0/Sample-Blank-Certificate.png");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        .company-name {
+            position: absolute;
+            top: 246px;
+            left: 142px;
+            z-index: 4;
+            font-size: 20px;
+            color: #fff;
+            font-weight: 600;
+            user-select: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .main-content {
+            position: absolute;
+            top: 0;
+            width: 67%;
+            height: 100%;
+            left: 51%;
+            transform: translateX(-30%);
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            margin-top: 100px;
+            align-items: center;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .cert-title {
+            color: #222;
+            text-transform: uppercase;
+            font-size: 78px;
+            font-weight: 300;
+            line-height: 1.1;
+            margin: 0;
+            user-select: none;
+        }
+
+        .cert-subtitle {
+            font-size: 39px;
+            margin: 40px auto;
+            color: #222;
+            letter-spacing: 1px;
+            user-select: none;
+        }
+
+        .cert-text {
+            font-size: 22px;
+            color: #333;
+            font-weight: 500;
+            user-select: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .cert-name {
+            font-size: 32px;
+            margin: 0 auto;
+            font-weight: bold;
+            color: #1a1a1a;
+            user-select: text;
+            border-top: double 3px #222;
+            border-bottom: double 3px #222;
+            padding: 12px 0;
+            width: 660px;
+        }
+
+        .cert-training-title {
+            font-size: 32px;
+            color: #2a3e55;
+            margin-top: 22px;
+            user-select: text;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .cert-footer {
+            width: 660px;
+            position: absolute;
+            margin: 0 auto;
+            bottom: 138px;
+            left: 0%;
+            right: 0%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+            color: #222;
+            user-select: none;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: 12px;
+            color: #222;
+        }
+
+        .footer-sign {
+            font-size: 12px;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .footer-label {
+            font-size: 12px;
+            color: #222;
+            line-height: 1.3;
+        }
+
+        .footer-col.right > div {
+            margin-top: 4px;
+        }
+
+        .footer-line {
+            border: 2px solid #353535;
+            width: 140px;
+            margin-top: 6px;
+        }
+
+        img {
+            user-select: none;
+        }
+    </style>
+    <title>Certificate</title>
+</head>
+<body>
+<div class="certificate-container">
+    <div class="main-content">
+        <div class="cert-title">{{certificateTitle}}</div>
+        <div class="cert-subtitle">{{certificateType}}</div>
+        <div class="cert-text" style="margin-bottom: 40px">
+            {{acknowledgement}}
+        </div>
+        <div class="cert-name">{{name}}</div>
+        <div class="cert-text" style="margin-top: 28px; margin-bottom: 28px">
+            {{completionStatus}}
+        </div>
+        <div class="cert-training-title">{{courseName}}</div>
+        <div>
+            <table
+                    style="width: 660px; margin: 74px auto 0; border-collapse: collapse"
+            >
+                <tr>
+                    <td style="text-align: center; width: 33%">
+                        <div
+                                class="footer-title"
+                                style="
+                    margin-bottom: 6px;
+                    margin: 0 auto 6px;
+                    border-bottom: double 3px #222;
+                    padding-bottom: 6px;
+                    width: 140px;
+                  "
+                        >
+                            {{date}}
+                        </div>
+                        <div class="footer-label">{{completionTitle}}</div>
+                        <div class="footer-title">
+                            Certificate ID: {{certificateId}}
+                        </div>
+                    </td>
+                    <td style="text-align: center; width: 33%">
+                        <div class="footer-col">
+                            <img
+                                    src="https://aspiretss.s3.us-east-1.amazonaws.com/a-sat-v2.0/Sample+Certificate/aspire_logo.png"
+                                    alt="Aspire Tech Logo"
+                                    style="width: 60px"
+                            />
+                        </div>
+                    </td>
+                    <td style="text-align: center; width: 33%">
+                        <div class="footer-col right">
+                            <img
+                                    src="https://aspiretss.s3.us-east-1.amazonaws.com/a-sat-v2.0/Sample+Certificate/Sign-of-abdullah.png"
+                                    alt="Director Signature"
+                                    style="width: 80px"
+                            />
+                            <div
+                                    class="footer-label"
+                                    style="
+                      border-top: 3px #222 solid;
+                      padding-top: 6px;
+                      width: 140px;
+                      margin: 4px auto 0;
+                    "
+                            >
+                            {{signerName}}
+                            </div>
+                            <!-- <div class="footer-label">{{signerDesignation}}</div> -->
+                            <div class="footer-label">
+                                {{signatureIdentity}}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

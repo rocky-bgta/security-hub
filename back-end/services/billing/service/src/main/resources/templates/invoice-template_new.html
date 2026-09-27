@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice</title>
+  <style>
+    @page {
+      size: 8.5in 11in;
+      margin: 0;
+    }
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    .invoice-container {
+      position: relative;
+      width: 8.5in;
+      height: 11in;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+    }
+    .header {
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .header .logo img {
+      width: 70px;
+    }
+    .company-info {
+      text-align: center;
+    }
+    .company-name {
+      color: #4aa3df;
+      font-size: 24px;
+      font-weight: normal;
+      margin: 0 0 5px 0;
+    }
+    .tagline-container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 10px;
+    }
+    .gray-line {
+      width: 80%;
+      height: 8px;
+      background-color: #e0e0e0;
+      margin-right: 10px;
+    }
+    .tagline {
+      color: #555;
+      font-style: italic;
+      white-space: nowrap;
+      font-size: 12px;
+    }
+    .invoice-title {
+      text-align: center;
+      margin: 16px 0;
+      font-size: 28px;
+      color: #4aa3df;
+      margin-bottom: 24px;
+    }
+    .invoice-details {
+      width: 100%;
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .invoice-details-column {
+      width: 50%;
+    }
+    .invoice-details-row {
+      margin-bottom: 12px;
+    }
+    .invoice-details-label {
+      font-weight: bold;
+      display: inline-block;
+      margin-right: 5px;
+    }
+    .invoice-details-value {
+      display: inline-block;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 3px;
+      font-weight: bold;
+      color: white;
+      background-color: #f39c12;
+      font-size: 12px;
+    }
+    .products-section h3 {
+      font-size: 16px;
+      margin: 20px 0 15px 0;
+    }
+    .products-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .products-table th,
+    .products-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    .products-table th {
+      background-color: #f5f5f5;
+    }
+    .totals-section {
+      margin-top: 20px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .totals-table {
+      width: 300px;
+      text-align: right;
+    }
+    .totals-table td {
+      padding: 5px 0;
+    }
+    .totals-table td:first-child {
+      text-align: right;
+      padding-right: 20px;
+      font-weight: bold;
+    }
+    .totals-table tr.total td {
+      color: #4aa3df;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .footer {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      right: 30px;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+    .certifications {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .certification-logo img {
+      width: 30px;
+    }
+    .company-details {
+      flex-grow: 1;
+      margin-left: 20px;
+    }
+    .company-title {
+      font-weight: bold;
+    }
+    .contact-info {
+      display: flex;
+      justify-content: space-between;
+    }
+    .left-info {
+      margin-right: 30px;
+    }
+    .right-info {
+      text-align: right;
+    }
+    a {
+      color: #4aa3df;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="invoice-container">
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">
+      <img src="https://aspcstorageprd.blob.core.windows.net/aspire-pad-elements/Aspire-Logo.png" alt="Logo">
+    </div>
+    <div class="company-info">
+      <h1 class="company-name">Aspire Tech Services and Solutions Corporation</h1>
+      <div class="tagline-container">
+        <div class="gray-line"></div>
+        <div class="tagline">Your security our commitment</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Invoice Title -->
+  <div class="invoice-title">INVOICE</div>
+
+  <!-- Invoice Details -->
+  <div class="invoice-details">
+    <div class="invoice-details-column">
+      <div class="invoice-details-row">
+        <div class="invoice-details-label">Invoice Number:</div>
+        <div class="invoice-details-value">{{invoiceId}}</div>
+      </div>
+      <div class="invoice-details-row">
+        <div class="invoice-details-label">Status:</div>
+        <div class="invoice-details-value">
+          <span class="status-badge">PENDING</span>
+        </div>
+      </div>
+    </div>
+    <div class="invoice-details-column">
+      <div class="invoice-details-row">
+        <div class="invoice-details-label">Client:</div>
+        <div class="invoice-details-value">{{clientName}}</div>
+      </div>
+      <div class="invoice-details-row">
+        <div class="invoice-details-label">Date Issued:</div>
+        <div class="invoice-details-value">{{date}}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Products -->
+  <div class="products-section">
+    <h3>Products &amp; Services</h3>
+    <table class="products-table">
+      <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Package</th>
+        <th>Licenses</th>
+        <th>Price/License</th>
+        <th>Validity</th>
+        <th>Subtotal</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{productRows}}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Totals -->
+  <div class="totals-section">
+    <table class="totals-table">
+      <tr>
+        <td>Subtotal:</td>
+        <td>${{subtotal}}</td>
+      </tr>
+      <tr>
+        <td>Discount:</td>
+        <td>${{discount}}</td>
+      </tr>
+      <tr>
+        <td>VAT (15%):</td>
+        <td>${{vat}}</td>
+      </tr>
+      <tr class="total">
+        <td>Total Amount:</td>
+        <td>${{total}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="certifications">
+      <div class="certification-logo">
+        <img src="https://aspcstorageprd.blob.core.windows.net/aspire-pad-elements/iso-9001.png" alt="ISO 9001">
+      </div>
+      <div class="certification-logo">
+        <img src="https://aspcstorageprd.blob.core.windows.net/aspire-pad-elements/iso-27001.png" alt="ISO 27001">
+      </div>
+      <div class="certification-logo">
+        <img src="https://aspcstorageprd.blob.core.windows.net/aspire-pad-elements/cmmi-level-3.png" alt="CMMI Level 3">
+      </div>
+      <div class="certification-logo">
+        <img src="https://aspcstorageprd.blob.core.windows.net/aspire-pad-elements/cmmi-level-5.png" alt="CMMI Level 5">
+      </div>
+    </div>
+    <div class="company-details">
+      <div class="company-title">Aspire Tech Services and Solutions Corp.</div>
+      <div class="contact-info">
+        <div class="left-info">
+          <strong>Head Office:</strong> 11 Broadway, Manhattan, NY-10004, USA.<br>
+          <strong>Web:</strong> <a href="http://www.aspiretss.com">www.aspiretss.com</a><br>
+          <strong>Email:</strong> <a href="mailto:info@aspiretss.com">info@aspiretss.com</a>
+        </div>
+        <div class="right-info">
+          <strong>Cell:</strong> +1-646-445-9610<br>
+          <strong>Land Phone:</strong> +1-212-500-7710
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

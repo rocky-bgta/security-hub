@@ -1,0 +1,195 @@
+plugins {
+    id 'base'
+}
+
+configure(subprojects) {
+    version '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    plugins.withId('java') {
+        tasks.withType(JavaCompile).configureEach {
+            options.encoding = 'UTF-8'
+        }
+
+        tasks.withType(Test).configureEach { Test testTask ->
+            useJUnitPlatform()
+
+            def testType = rootProject.hasProperty('testType')
+                    ? rootProject.property('testType').toString()
+                    : 'all'
+            testTask.inputs.property('testType', testType)
+
+            if (testType != 'all') {
+                testTask.filter.failOnNoMatchingTests = false
+
+                switch (testType) {
+                    case 'unit':
+                        testTask.exclude '**/integration/**'
+                        testTask.exclude '**/functional/**'
+                        testTask.exclude '**/*Controller*Test*'
+                        break
+                    case 'integration':
+                        testTask.include '**/integration/**'
+                        break
+                    case 'functional':
+                        testTask.include '**/functional/**'
+                        testTask.include '**/*Controller*Test*'
+                        break
+                    default:
+                        throw new GradleException("Unknown testType '${testType}'. Use unit, integration, or functional.")
+                }
+            }
+        }
+    }
+}
+
+def ciTestModules = [
+        ':common:core',
+        ':services:auth:core',
+        ':services:billing:core',
+        ':services:cms:core',
+        ':services:notification:core',
+        ':services:phishing:core',
+        ':services:registration:core',
+        ':services:universal:core',
+        ':services:vps:core',
+        ':services:breach-detection:core',
+        ':services:gateway:service'
+]
+
+tasks.register('ciTest') {
+    group = 'verification'
+    description = 'Run tests for deployable modules (use -PtestType=unit|integration|functional)'
+    dependsOn ciTestModules.collect { "${it}:test" }
+}
+
+ext.versions = [
+
+        core       : [
+                aop                                       : '3.3.0',
+                pdfbox                                    : '1.0.10',
+                jsoupv                                    : '1.17.1',
+                validation                                : '3.4.4',
+                aspectj                                   : '1.9.22',
+                azureCosmos                               : '4.19.0',
+                lombok                                    : '1.18.34',
+                springBoot                                : '3.3.0',
+                thymeleaf                                 : '3.5.3',
+                validationApi                             : '2.0.1.Final',
+                springCloudVersion                        : "2023.0.2",
+                zuulCore                                  : '2.5.0',
+                jacksonCore                               : '2.17.1',
+                mockitoCore                               : '4.0.0',
+                blobStorage                               : '12.19.0',
+                csv                                       : '1.10.0',
+                jjwtApi                                   : '0.11.5',
+                jjwtImpl                                  : '0.11.5',
+                jjwtJackson                               : '0.11.5',
+                json                                      : '20240303',
+                azureMessagingEventHubs                   : '5.10.1',
+                azureMessagingEventHubsCheckpointstoreBlob: '1.10.2',
+                springBootStarterMail                     : '3.3.0',
+                velocityEngineCore                        : '2.3',
+                opencsv                                   : '5.5.2',
+                awsSdk                                    : '2.33.11',
+                springCloudAws                            : '3.0.3',
+                gcp                                       :  '2.40.1',
+                twilio                                    : '9.14.1',
+                microsoftGraph                            : '6.60.0',
+                azureIdentity                             : '1.18.1'
+        ],
+
+        development: [
+                springBootDevTools: '3.3.0',
+                springDoc         : '2.3.0'
+        ],
+
+        runtime    : [
+        ],
+
+        test       : [
+                junit         : '5.9.3',
+                junitPlatform : '1.9.3',
+                testcontainers: '1.19.0',
+                jacoco        : '0.8.10',
+                mockitojj     : '4.0.0'
+        ]
+
+]
+
+ext.libraries = [
+
+        core       : [
+                azureCosmos                               : "com.azure:azure-cosmos:${versions.core.azureCosmos}",
+                lombok                                    : "org.projectlombok:lombok:${versions.core.lombok}",
+                springBootStarter                         : "org.springframework.boot:spring-boot-starter:${versions.core.springBoot}",
+                springBootStarterWeb                      : "org.springframework.boot:spring-boot-starter-web:${versions.core.springBoot}",
+                springBootStarterThymeLeaf                : "org.springframework.boot:spring-boot-starter-thymeleaf:${versions.core.thymeleaf}",
+                validationApi                             : "javax.validation:validation-api:${versions.core.validationApi}",
+                springBootStarterDataMongo                : "org.springframework.boot:spring-boot-starter-data-mongodb:${versions.core.springBoot}",
+                springCloudConfigServer                   : "org.springframework.cloud:spring-cloud-config-server",
+                zuulCore                                  : "com.netflix.zuul:zuul-core:${versions.core.zuulCore}",
+                jacksonCore                               : "com.fasterxml.jackson.core:jackson-core:${versions.core.jacksonCore}",
+                mockitoCore                               : "org.mockito:mockito-core:${versions.core.mockitoCore}",
+                blobStorage                               : "com.azure:azure-storage-blob:${versions.core.blobStorage}",
+                commonsCsv                                : "org.apache.commons:commons-csv:${versions.core.csv}",
+                jwtApi                                    : "io.jsonwebtoken:jjwt-api:${versions.core.jjwtApi}",
+                jwtImpl                                   : "io.jsonwebtoken:jjwt-impl:${versions.core.jjwtImpl}",
+                jwtJackson                                : "io.jsonwebtoken:jjwt-jackson:${versions.core.jjwtJackson}",
+                json                                      : "org.json:json:${versions.core.json}",
+                azureMessagingEventHubs                   : "com.azure:azure-messaging-eventhubs:${versions.core.azureMessagingEventHubs}",
+                azureMessagingEventHubsCheckpointstoreBlob: "com.azure:azure-messaging-eventhubs-checkpointstore-blob:${versions.core.azureMessagingEventHubsCheckpointstoreBlob}",
+                springBootStarterMail                     : "org.springframework.boot:spring-boot-starter-mail:${versions.core.springBootStarterMail}",
+                velocityEngineCore                        : "org.apache.velocity:velocity-engine-core:${versions.core.velocityEngineCore}",
+                openCsv                                   : "com.opencsv:opencsv:${versions.core.opencsv}",
+                starterAop                                : "org.springframework.boot:spring-boot-starter-aop:${versions.core.aop}",
+                starterValidation                         : "org.springframework.boot:spring-boot-starter-validation:${versions.core.validation}",
+                aspectjweaver                             : "org.aspectj:aspectjweaver:${versions.core.aspectj}",
+                jacksonDatatype                           : "com.fasterxml.jackson.datatype:jackson-datatype-jsr310",
+                openhtmltopdf                             : "com.openhtmltopdf:openhtmltopdf-pdfbox:${versions.core.pdfbox}",
+                jsoup                                     : "org.jsoup:jsoup:${versions.core.jsoupv}",
+                springBootStarterSecurity                 : "org.springframework.boot:spring-boot-starter-security:${versions.core.springBoot}",
+                awsSdkS3                                  : "software.amazon.awssdk:s3:${versions.core.awsSdk}",
+                //awsSdkS3Presigner                         : "software.amazon.awssdk:s3-presigner:${versions.core.awsSdk}",
+                awsSdkSqs                                 : "software.amazon.awssdk:sqs:${versions.core.awsSdk}",
+                awsSdkSes                                 : "software.amazon.awssdk:ses:${versions.core.awsSdk}",
+                awsSdkSsm                                 : "software.amazon.awssdk:ssm:${versions.core.awsSdk}",
+                awsSdkKms                                 : "software.amazon.awssdk:kms:${versions.core.awsSdk}",
+                awsSdkRekognition                         : "software.amazon.awssdk:rekognition:${versions.core.awsSdk}",
+                gcpStorage                                : "com.google.cloud:google-cloud-storage:${versions.core.gcp}",
+                springCloudAwsStarterSqs                  : "io.awspring.cloud:spring-cloud-aws-starter-sqs:${versions.core.springCloudAws}",
+                redis                                     : "org.springframework.boot:spring-boot-starter-data-redis:${versions.core.springBoot}",
+                gatewayStarterRedisReactive               : "org.springframework.boot:spring-boot-starter-data-redis-reactive:${versions.core.springBoot}",
+                webflux                                   : "org.springframework.boot:spring-boot-starter-webflux:${versions.core.springBoot}",
+                springCloudGateway                        : "org.springframework.cloud:spring-cloud-starter-gateway:${versions.core.springCloudVersion}",
+                apacheCommonsPool2                        : "org.apache.commons:commons-pool2",
+                caffeine                                  : "com.github.ben-manes.caffeine:caffeine",
+                twilio                                    : "com.twilio.sdk:twilio:${versions.core.twilio}",
+                microsoftGraph                            : "com.microsoft.graph:microsoft-graph:${versions.core.microsoftGraph}",
+                azureIdentity                             : "com.azure:azure-identity:${versions.core.azureIdentity}"
+
+
+        ],
+
+        development: [
+                springBootDevTools: "org.springframework.boot:spring-boot-devtools:${versions.development.springBootDevTools}",
+                springDocUi       : "org.springdoc:springdoc-openapi-starter-webmvc-ui:${versions.development.springDoc}",
+                springDocWebfluxUi: "org.springdoc:springdoc-openapi-starter-webflux-ui:${versions.development.springDoc}"
+        ],
+
+        test       : [
+                springBootStarterTest: "org.springframework.boot:spring-boot-starter-test",
+                junitBom             : "org.junit:junit-bom:${versions.test.junit}",
+                junitJupiter         : "org.junit.jupiter:junit-jupiter:${versions.test.junit}",
+                junitPlatformLauncher: "org.junit.platform:junit-platform-launcher:${versions.test.junitPlatform}",
+
+                testcontainers       : "org.testcontainers:testcontainers:${versions.test.testcontainers}",
+                testcontainersJunit  : "org.testcontainers:junit-jupiter:${versions.test.testcontainers}",
+                testcontainersMongodb: "org.testcontainers:mongodb:${versions.test.testcontainers}",
+                mockitoJunitJupiter  : "org.mockito:mockito-junit-jupiter:${versions.test.mockitojj}"
+        ]
+
+]

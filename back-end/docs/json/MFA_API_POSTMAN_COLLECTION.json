@@ -1,0 +1,1088 @@
+{
+	"info": {
+		"_postman_id": "mfa-api-collection-v2",
+		"name": "ASAT MFA API Collection - Updated Flow",
+		"description": "Complete collection for testing Multi-Factor Authentication (MFA) APIs with temporary token flow",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"version": "2.0.0"
+	},
+	"item": [
+		{
+			"name": "1. Login & Get TempToken",
+			"item": [
+				{
+					"name": "Login (Get TempToken for MFA)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData.data) {",
+									"        // Save access token if login is complete (no MFA required)",
+									"        if (jsonData.data.accessToken) {",
+									"            pm.environment.set(\"accessToken\", jsonData.data.accessToken);",
+									"            pm.environment.set(\"refreshToken\", jsonData.data.refreshToken);",
+									"            console.log(\"✓ Login successful - Access token saved\");",
+									"        }",
+									"        ",
+									"        // Save tempToken if MFA is required",
+									"        if (jsonData.data.tempToken) {",
+									"            pm.environment.set(\"tempToken\", jsonData.data.tempToken);",
+									"            console.log(\"✓ TempToken saved: \" + jsonData.data.tempToken.substring(0, 20) + \"...\");",
+									"        }",
+									"        ",
+									"        // Log MFA status",
+									"        if (jsonData.data.mfaSetupRequired) {",
+									"            console.log(\"⚠ MFA Setup Required - User needs to set up MFA\");",
+									"        }",
+									"        if (jsonData.data.mfaVerificationRequired) {",
+									"            console.log(\"⚠ MFA Verification Required - Method: \" + jsonData.data.mfaMethod);",
+									"            pm.environment.set(\"mfaMethod\", jsonData.data.mfaMethod);",
+									"        }",
+									"    }",
+									"} else {",
+									"    console.log(\"✗ Login failed: \" + pm.response.code);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"{{username}}\",\n    \"password\": \"{{password}}\",\n    \"deviceInfo\": {\n        \"platformType\": \"WEB\",\n        \"platformInfo\": \"GOOGLE CHROME\",\n        \"platformVersion\": \"1001.0.1.1\",\n        \"deviceIdentifier\": \"test-device-123\",\n        \"appLanguage\": \"ENGLISH\",\n        \"appVersion\": \"1.0.1\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/api/v1/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Login with username and password. If MFA is enabled and required, this will return a tempToken instead of accessToken. Use this tempToken for all subsequent MFA API calls."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. Get MFA Methods",
+			"item": [
+				{
+					"name": "Get Enabled MFA Methods",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData.data && jsonData.data.methods) {",
+									"        console.log(\"✓ Available MFA Methods: \" + jsonData.data.methods.join(\", \"));",
+									"        pm.environment.set(\"availableMfaMethods\", jsonData.data.methods.join(\",\"));",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/auth/api/v1/auth/mfa/methods",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"api",
+								"v1",
+								"auth",
+								"mfa",
+								"methods"
+							]
+						},
+						"description": "Get list of MFA methods enabled globally for the system. No authentication required."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. MFA - OTP Generation (Using TempToken)",
+			"item": [
+				{
+					"name": "Generate OTP - SMS (with TempToken)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData.data && jsonData.data.sessionId) {",
+									"        pm.environment.set(\"mfaSessionId\", jsonData.data.sessionId);",
+									"        console.log(\"✓ OTP Session ID saved: \" + jsonData.data.sessionId);",
+									"        console.log(\"✓ OTP expires in: \" + jsonData.data.expiresIn + \" seconds\");",
+									"        console.log(\"⚠ Check your SMS for the OTP code\");",
+									"    }",
+									"} else {",
+									"    console.log(\"✗ Failed to generate OTP: \" + pm.response.code);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"SMS\",\n    \"phoneNumber\": \"{{phoneNumber}}\",\n    \"tempToken\": \"{{tempToken}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/api/v1/auth/mfa/generate-otp",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"api",
+								"v1",
+								"auth",
+								"mfa",
+								"generate-otp"
+							]
+						},
+						"description": "Generate OTP code for SMS MFA method using tempToken. Phone number is optional; when omitted, the phone number from the user profile is used. OTP will be sent via SMS."
+					},
+					"response": []
+				},
+				{
+					"name": "Generate OTP - Email (with TempToken)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData.data && jsonData.data.sessionId) {",
+									"        pm.environment.set(\"mfaSessionId\", jsonData.data.sessionId);",
+									"        console.log(\"✓ OTP Session ID saved: \" + jsonData.data.sessionId);",
+									"        console.log(\"✓ OTP expires in: \" + jsonData.data.expiresIn + \" seconds\");",
+									"        console.log(\"⚠ Check your email for the OTP code\");",
+									"    }",
+									"} else {",
+									"    console.log(\"✗ Failed to generate OTP: \" + pm.response.code);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"EMAIL\",\n    \"tempToken\": \"{{tempToken}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/api/v1/auth/mfa/generate-otp",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"api",
+								"v1",
+								"auth",
+								"mfa",
+								"generate-otp"
+							]
+						},
+						"description": "Generate OTP code for EMAIL MFA method using tempToken. Email will be sent to user's registered email address."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3.5. MFA - Resend OTP (Using TempToken)",
+			"item": [
+				{
+					"name": "Resend OTP - SMS (with TempToken)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData.data && jsonData.data.sessionId) {",
+									"        pm.environment.set(\"mfaSessionId\", jsonData.data.sessionId);",
+									"        console.log(\"✓ OTP Resent - New Session ID saved: \" + jsonData.data.sessionId);",
+									"        console.log(\"✓ OTP expires in: \" + jsonData.data.expiresIn + \" seconds\");",
+									"        console.log(\"⚠ Check your SMS for the new OTP code\");",
+									"        console.log(\"⚠ Previous OTP has been invalidated\");",
+									"    }",
+									"} else {",
+									"    console.log(\"✗ Failed to resend OTP: \" + pm.response.code);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"SMS\",\n    \"phoneNumber\": \"{{phoneNumber}}\",\n    \"tempToken\": \"{{tempToken}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/api/v1/auth/mfa/resend-otp",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"api",
+								"v1",
+								"auth",
+								"mfa",
+								"resend-otp"
+							]
+						},
+						"description": "Resend OTP code for SMS MFA method using tempToken. This will invalidate any existing unused OTPs and generate a new one. Phone number is optional; when omitted, the phone number from the user profile is used. Success message indicates to check the phone for the verification code."
+					},
+					"response": []
+				},
+				{
+					"name": "Resend OTP - Email (with TempToken)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData.data && jsonData.data.sessionId) {",
+									"        pm.environment.set(\"mfaSessionId\", jsonData.data.sessionId);",
+									"        console.log(\"✓ OTP Resent - New Session ID saved: \" + jsonData.data.sessionId);",
+									"        console.log(\"✓ OTP expires in: \" + jsonData.data.expiresIn + \" seconds\");",
+									"        console.log(\"⚠ Check your email for the new OTP code\");",
+									"        console.log(\"⚠ Previous OTP has been invalidated\");",
+									"    }",
+									"} else {",
+									"    console.log(\"✗ Failed to resend OTP: \" + pm.response.code);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"EMAIL\",\n    \"tempToken\": \"{{tempToken}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/api/v1/auth/mfa/resend-otp",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"api",
+								"v1",
+								"auth",
+								"mfa",
+								"resend-otp"
+							]
+						},
+						"description": "Resend OTP code for EMAIL MFA method using tempToken. This will invalidate any existing unused OTPs and generate a new one. Email will be sent to user's registered email address. Success message indicates to check email for the verification code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4. MFA - OTP Verification (Using TempToken)",
+			"item": [
+				{
+					"name": "Verify OTP - SMS (with TempToken)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData.data) {",
+									"        if (jsonData.data.verified) {",
+									"            console.log(\"✓ OTP verified successfully!\");",
+									"            ",
+									"            // Save access token if returned (after successful MFA verification)",
+									"            if (jsonData.data.tokenResponse && jsonData.data.tokenResponse.accessToken) {",
+									"                pm.environment.set(\"accessToken\", jsonData.data.tokenResponse.accessToken);",
+									"                pm.environment.set(\"refreshToken\", jsonData.data.tokenResponse.refreshToken);",
+									"                console.log(\"✓ Access token saved - Login complete!\");",
+									"                ",
+									"                // Clear tempToken as it's no longer needed",
+									"                pm.environment.set(\"tempToken\", \"\");",
+									"            }",
+									"        } else {",
+									"            console.log(\"✗ OTP verification failed: \" + jsonData.data.message);",
+									"        }",
+									"    }",
+									"} else {",
+									"    console.log(\"✗ Verification failed: \" + pm.response.code);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"SMS\",\n    \"code\": \"{{otpCode}}\",\n    \"sessionId\": \"{{mfaSessionId}}\",\n    \"tempToken\": \"{{tempToken}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/api/v1/auth/mfa/verify-otp",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"api",
+								"v1",
+								"auth",
+								"mfa",
+								"verify-otp"
+							]
+						},
+						"description": "Verify OTP code received via SMS using tempToken. Replace {{otpCode}} with actual OTP code. After successful verification, access token will be returned in tokenResponse."
+					},
+					"response": []
+				},
+				{
+					"name": "Verify OTP - Email (with TempToken)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData.data) {",
+									"        if (jsonData.data.verified) {",
+									"            console.log(\"✓ OTP verified successfully!\");",
+									"            ",
+									"            // Save access token if returned (after successful MFA verification)",
+									"            if (jsonData.data.tokenResponse && jsonData.data.tokenResponse.accessToken) {",
+									"                pm.environment.set(\"accessToken\", jsonData.data.tokenResponse.accessToken);",
+									"                pm.environment.set(\"refreshToken\", jsonData.data.tokenResponse.refreshToken);",
+									"                console.log(\"✓ Access token saved - Login complete!\");",
+									"                ",
+									"                // Clear tempToken as it's no longer needed",
+									"                pm.environment.set(\"tempToken\", \"\");",
+									"            }",
+									"        } else {",
+									"            console.log(\"✗ OTP verification failed: \" + jsonData.data.message);",
+									"        }",
+									"    }",
+									"} else {",
+									"    console.log(\"✗ Verification failed: \" + pm.response.code);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"EMAIL\",\n    \"code\": \"{{otpCode}}\",\n    \"sessionId\": \"{{mfaSessionId}}\",\n    \"tempToken\": \"{{tempToken}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/api/v1/auth/mfa/verify-otp",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"api",
+								"v1",
+								"auth",
+								"mfa",
+								"verify-otp"
+							]
+						},
+						"description": "Verify OTP code received via Email using tempToken. Replace {{otpCode}} with actual OTP code. After successful verification, access token will be returned in tokenResponse."
+					},
+					"response": []
+				},
+				{
+					"name": "Verify OTP - Authenticator (with TempToken)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData.data) {",
+									"        if (jsonData.data.verified) {",
+									"            console.log(\"✓ TOTP verified successfully!\");",
+									"            ",
+									"            // Save access token if returned (after successful MFA verification)",
+									"            if (jsonData.data.tokenResponse && jsonData.data.tokenResponse.accessToken) {",
+									"                pm.environment.set(\"accessToken\", jsonData.data.tokenResponse.accessToken);",
+									"                pm.environment.set(\"refreshToken\", jsonData.data.tokenResponse.refreshToken);",
+									"                console.log(\"✓ Access token saved - Login complete!\");",
+									"                ",
+									"                // Clear tempToken as it's no longer needed",
+									"                pm.environment.set(\"tempToken\", \"\");",
+									"            }",
+									"        } else {",
+									"            console.log(\"✗ TOTP verification failed: \" + jsonData.data.message);",
+									"        }",
+									"    }",
+									"} else {",
+									"    console.log(\"✗ Verification failed: \" + pm.response.code);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"AUTHENTICATOR\",\n    \"code\": \"{{totpCode}}\",\n    \"sessionId\": \"00000000-0000-0000-0000-000000000000\",\n    \"tempToken\": \"{{tempToken}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/api/v1/auth/mfa/verify-otp",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"api",
+								"v1",
+								"auth",
+								"mfa",
+								"verify-otp"
+							]
+						},
+						"description": "Verify TOTP code from authenticator app using tempToken. Replace {{totpCode}} with actual TOTP code from your authenticator app. Note: sessionId is not used for AUTHENTICATOR method but is required in the request."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "5. MFA - Authenticator Setup (Using TempToken)",
+			"item": [
+				{
+					"name": "Setup Authenticator (Generate QR Code) - with TempToken",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData.data) {",
+									"        pm.environment.set(\"totpSecret\", jsonData.data.secret);",
+									"        pm.environment.set(\"otpauthUri\", jsonData.data.otpauthUri);",
+									"        console.log(\"✓ TOTP Secret: \" + jsonData.data.secret);",
+									"        console.log(\"✓ QR Code URL: \" + jsonData.data.qrCodeUrl);",
+									"        console.log(\"✓ otpauth URI: \" + jsonData.data.otpauthUri);",
+									"        console.log(\"\\n⚠ Scan the QR code or manually enter the secret in your authenticator app.\");",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tempToken\": \"{{tempToken}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/api/v1/auth/mfa/authenticator/setup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"api",
+								"v1",
+								"auth",
+								"mfa",
+								"authenticator",
+								"setup"
+							]
+						},
+						"description": "Generate TOTP secret and QR code for authenticator app setup using tempToken. The secret is temporarily stored and will be saved after verification."
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Authenticator Setup - with TempToken",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData.data === true) {",
+									"        console.log(\"✓ Authenticator setup completed successfully!\");",
+									"        console.log(\"✓ MFA is now enabled for this user with AUTHENTICATOR method\");",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"{{totpCode}}\",\n    \"tempToken\": \"{{tempToken}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/api/v1/auth/mfa/authenticator/verify-setup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"api",
+								"v1",
+								"auth",
+								"mfa",
+								"authenticator",
+								"verify-setup"
+							]
+						},
+						"description": "Verify TOTP code from authenticator app to complete setup using tempToken. Replace {{totpCode}} with actual TOTP code from your authenticator app. After successful verification, the TOTP secret will be saved and MFA will be enabled."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "6. Complete Flow Examples",
+			"item": [
+				{
+					"name": "Complete Flow - SMS MFA",
+					"item": [
+						{
+							"name": "Step 1: Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"{{username}}\",\n    \"password\": \"{{password}}\",\n    \"deviceInfo\": {\n        \"platformType\": \"WEB\",\n        \"platformInfo\": \"GOOGLE CHROME\",\n        \"platformVersion\": \"1001.0.1.1\",\n        \"deviceIdentifier\": \"test-device-123\",\n        \"appLanguage\": \"ENGLISH\",\n        \"appVersion\": \"1.0.1\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/api/v1/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							}
+						},
+						{
+							"name": "Step 2: Get MFA Methods",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/auth/api/v1/auth/mfa/methods",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"api",
+										"v1",
+										"auth",
+										"mfa",
+										"methods"
+									]
+								}
+							}
+						},
+						{
+							"name": "Step 3: Generate OTP (SMS)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"method\": \"SMS\",\n    \"phoneNumber\": \"{{phoneNumber}}\",\n    \"tempToken\": \"{{tempToken}}\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/api/v1/auth/mfa/generate-otp",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"api",
+										"v1",
+										"auth",
+										"mfa",
+										"generate-otp"
+									]
+								}
+							}
+						},
+						{
+							"name": "Step 4: Verify OTP (SMS)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"method\": \"SMS\",\n    \"code\": \"{{otpCode}}\",\n    \"sessionId\": \"{{mfaSessionId}}\",\n    \"tempToken\": \"{{tempToken}}\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/api/v1/auth/mfa/verify-otp",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"api",
+										"v1",
+										"auth",
+										"mfa",
+										"verify-otp"
+									]
+								}
+							}
+						}
+					],
+					"description": "Complete sequential flow for SMS MFA: Login → Get Methods → Generate OTP → Verify OTP → Get Access Token"
+				},
+				{
+					"name": "Complete Flow - Email MFA",
+					"item": [
+						{
+							"name": "Step 1: Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"{{username}}\",\n    \"password\": \"{{password}}\",\n    \"deviceInfo\": {\n        \"platformType\": \"WEB\",\n        \"platformInfo\": \"GOOGLE CHROME\",\n        \"platformVersion\": \"1001.0.1.1\",\n        \"deviceIdentifier\": \"test-device-123\",\n        \"appLanguage\": \"ENGLISH\",\n        \"appVersion\": \"1.0.1\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/api/v1/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							}
+						},
+						{
+							"name": "Step 2: Generate OTP (Email)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"method\": \"EMAIL\",\n    \"tempToken\": \"{{tempToken}}\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/api/v1/auth/mfa/generate-otp",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"api",
+										"v1",
+										"auth",
+										"mfa",
+										"generate-otp"
+									]
+								}
+							}
+						},
+						{
+							"name": "Step 3: Verify OTP (Email)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"method\": \"EMAIL\",\n    \"code\": \"{{otpCode}}\",\n    \"sessionId\": \"{{mfaSessionId}}\",\n    \"tempToken\": \"{{tempToken}}\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/api/v1/auth/mfa/verify-otp",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"api",
+										"v1",
+										"auth",
+										"mfa",
+										"verify-otp"
+									]
+								}
+							}
+						}
+					],
+					"description": "Complete sequential flow for Email MFA: Login → Generate OTP → Verify OTP → Get Access Token"
+				},
+				{
+					"name": "Complete Flow - Authenticator MFA",
+					"item": [
+						{
+							"name": "Step 1: Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"{{username}}\",\n    \"password\": \"{{password}}\",\n    \"deviceInfo\": {\n        \"platformType\": \"WEB\",\n        \"platformInfo\": \"GOOGLE CHROME\",\n        \"platformVersion\": \"1001.0.1.1\",\n        \"deviceIdentifier\": \"test-device-123\",\n        \"appLanguage\": \"ENGLISH\",\n        \"appVersion\": \"1.0.1\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/api/v1/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							}
+						},
+						{
+							"name": "Step 2: Verify OTP (Authenticator)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"method\": \"AUTHENTICATOR\",\n    \"code\": \"{{totpCode}}\",\n    \"sessionId\": \"00000000-0000-0000-0000-000000000000\",\n    \"tempToken\": \"{{tempToken}}\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/api/v1/auth/mfa/verify-otp",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"api",
+										"v1",
+										"auth",
+										"mfa",
+										"verify-otp"
+									]
+								}
+							}
+						}
+					],
+					"description": "Complete sequential flow for Authenticator MFA: Login → Verify TOTP → Get Access Token"
+				}
+			]
+		},
+		{
+			"name": "7. Utility",
+			"item": [
+				{
+					"name": "Get Current User Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/auth/api/v1/auth/user-details",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"api",
+								"v1",
+								"auth",
+								"user-details"
+							]
+						},
+						"description": "Get current user details including MFA status. Requires valid access token."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Auto-generate CurrentContext header from JWT token if available (for backward compatibility)",
+					"const accessToken = pm.environment.get('accessToken');",
+					"if (accessToken && !accessToken.includes('temp')) {",
+					"    try {",
+					"        // Decode JWT token (without verification)",
+					"        const tokenParts = accessToken.split('.');",
+					"        if (tokenParts.length === 3) {",
+					"            const payload = JSON.parse(atob(tokenParts[1]));",
+					"            const currentContext = {",
+					"                userId: payload.sub || payload.userId || '',",
+					"                username: payload.username || payload.preferred_username || '',",
+					"                email: payload.email || '',",
+					"                roles: payload.roles || []",
+					"            };",
+					"            // Base64 encode the context",
+					"            const contextBase64 = btoa(JSON.stringify(currentContext));",
+					"            pm.environment.set('currentContext', contextBase64);",
+					"        }",
+					"    } catch (e) {",
+					"        console.log('Error generating CurrentContext:', e);",
+					"    }",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:9093",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": "your-email@example.com",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "your-password",
+			"type": "string"
+		},
+		{
+			"key": "phoneNumber",
+			"value": "+1234567890",
+			"type": "string"
+		},
+		{
+			"key": "tempToken",
+			"value": "",
+			"type": "string",
+			"description": "Temporary token received from login API when MFA is required"
+		},
+		{
+			"key": "accessToken",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "refreshToken",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "mfaSessionId",
+			"value": "",
+			"type": "string",
+			"description": "Session ID received from generate-otp API"
+		},
+		{
+			"key": "otpCode",
+			"value": "123456",
+			"type": "string",
+			"description": "OTP code received via SMS or Email"
+		},
+		{
+			"key": "totpCode",
+			"value": "123456",
+			"type": "string",
+			"description": "TOTP code from authenticator app"
+		},
+		{
+			"key": "mfaMethod",
+			"value": "",
+			"type": "string",
+			"description": "MFA method required (SMS, EMAIL, or AUTHENTICATOR)"
+		},
+		{
+			"key": "availableMfaMethods",
+			"value": "",
+			"type": "string",
+			"description": "Comma-separated list of available MFA methods"
+		},
+		{
+			"key": "currentContext",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "totpSecret",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "otpauthUri",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

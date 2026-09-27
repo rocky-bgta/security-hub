@@ -1,0 +1,84 @@
+pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'asat'
+
+
+include "common"
+include "services:common"
+
+include "services:sesame:api"
+include "services:sesame:core"
+include "services:sesame:service"
+
+include 'services:course'
+include 'services:course:service'
+include 'services:course:api'
+include 'services:course:core'
+
+include 'services:cloud-config'
+include 'services:cloud-config:service'
+include 'services:security'
+
+include 'services:registration'
+include 'services:registration:api'
+include 'services:registration:core'
+include 'services:registration:service'
+
+include 'services:notification'
+include 'services:notification:api'
+include 'services:notification:core'
+include 'services:notification:service'
+
+include 'services:cms'
+include 'services:cms:api'
+include 'services:cms:core'
+include 'services:cms:service'
+
+include 'services:vps'
+include 'services:vps:api'
+include 'services:vps:core'
+include 'services:vps:service'
+
+include 'common:core'
+//include 'common:messaging'
+//include 'common:messaging:producer'
+//findProject(':common:core')?.name = 'core'
+//findProject(':common:messaging')?.name = 'messaging'
+
+include 'services:billing'
+include 'services:billing:api'
+include 'services:billing:core'
+include 'services:billing:service'
+
+include 'services:auth'
+include 'services:auth:api'
+include 'services:auth:core'
+include 'services:auth:service'
+
+include 'services:gateway:service'
+
+include 'services:universal'
+include 'services:universal:api'
+include 'services:universal:core'
+include 'services:universal:service'
+
+include 'services:phishing'
+include 'services:phishing:api'
+include 'services:phishing:core'
+include 'services:phishing:service'
+
+include 'services:breach-detection'
+include 'services:breach-detection:api'
+include 'services:breach-detection:core'
+include 'services:breach-detection:service'

@@ -1,0 +1,567 @@
+{
+  "description": "Complete MSP Onboarding API Request Body Examples with All Parameters",
+  "endpoint": "POST /registration/api/v1/msp/onboarding",
+  "baseUrl": "https://dev.aspireelearning.com/gateway",
+  "examples": {
+    "example1_online_payment_pending": {
+      "description": "MSP onboarding with PENDING payment status for online payment (Stripe/PayPal). Invoice will be created with PENDING status and MSP will be activated after successful payment.",
+      "request": {
+        "organization": {
+          "organizationName": "Global MSP Solutions Inc.",
+          "contactEmail": "contact@globalmsp.com",
+          "phoneNumber": "+1-555-123-4567",
+          "country": "United States",
+          "stateProvince": "California",
+          "timeZone": "America/Los_Angeles",
+          "language": "English",
+          "industry": "Information Technology",
+          "domain": "globalmsp.com",
+          "organizationSize": "Large",
+          "streetAddress": "123 Tech Boulevard",
+          "streetAddressLine2": "Suite 500",
+          "city": "San Francisco",
+          "zipPostalCode": "94105",
+          "logoUrl": "https://cdn.example.com/logos/globalmsp.png",
+          "tierId": "tier-premium-001",
+          "mspTypeId": "msp-type-enterprise-001",
+          "mspAdminEmail": "admin@globalmsp.com"
+        },
+        "billing": {
+          "billingEmail": "billing@globalmsp.com",
+          "billingName": "Global MSP Solutions Inc. - Billing Department",
+          "streetAddress": "123 Tech Boulevard",
+          "streetAddressLine2": "Suite 500",
+          "city": "San Francisco",
+          "stateProvince": "California",
+          "country": "United States",
+          "zipPostalCode": "94105"
+        },
+        "productSelections": [
+          {
+            "productId": "product-cybersecurity-001",
+            "packageId": "package-cyber-pro-001",
+            "userRangeId": "range-50-100-001",
+            "licenseCount": 75,
+            "pricePerLicense": 99.99,
+            "validityPeriod": 12,
+            "validityUnit": "MONTH",
+            "productName": "Cybersecurity Essentials",
+            "packageName": "Cyber Pro Monthly Package"
+          },
+          {
+            "productId": "product-compliance-001",
+            "packageId": "package-compliance-basic-001",
+            "userRangeId": null,
+            "licenseCount": 50,
+            "pricePerLicense": 149.99,
+            "validityPeriod": 6,
+            "validityUnit": "MONTH",
+            "productName": "Compliance Management",
+            "packageName": "Compliance Basic Package"
+          }
+        ],
+        "invoice": {
+          "subtotal": 11248.25,
+          "discountType": null,
+          "discountPercentage": null,
+          "discountAmount": null,
+          "couponCode": null,
+          "vatRate": 8.5,
+          "vatAmount": 956.10,
+          "totalAmount": 12204.35,
+          "paymentStatus": "PENDING",
+          "completedPayment": null
+        },
+        "creditInfo": null
+      }
+    },
+    "example2_manual_payment_bank_transfer": {
+      "description": "MSP onboarding with COMPLETED payment status using BANK_TRANSFER (manual payment). Invoice will be created with PAID status and MSP will be activated immediately.",
+      "request": {
+        "organization": {
+          "organizationName": "Regional MSP Partners LLC",
+          "contactEmail": "info@regionalmsp.com",
+          "phoneNumber": "+44-20-7946-0958",
+          "country": "United Kingdom",
+          "stateProvince": "England",
+          "timeZone": "Europe/London",
+          "language": "English",
+          "industry": "Managed Services",
+          "domain": "regionalmsp.com",
+          "organizationSize": "Medium",
+          "streetAddress": "456 Business Park",
+          "streetAddressLine2": "Building A",
+          "city": "London",
+          "zipPostalCode": "SW1A 1AA",
+          "logoUrl": null,
+          "tierId": "tier-standard-001",
+          "mspTypeId": "msp-type-standard-001",
+          "mspAdminEmail": "admin@regionalmsp.com"
+        },
+        "billing": {
+          "billingEmail": "accounts@regionalmsp.com",
+          "billingName": "Regional MSP Partners LLC - Accounts",
+          "streetAddress": "456 Business Park",
+          "streetAddressLine2": "Building A",
+          "city": "London",
+          "stateProvince": "England",
+          "country": "United Kingdom",
+          "zipPostalCode": "SW1A 1AA"
+        },
+        "productSelections": [
+          {
+            "productId": "product-cybersecurity-001",
+            "packageId": "package-cyber-basic-001",
+            "userRangeId": "range-10-50-001",
+            "licenseCount": 25,
+            "pricePerLicense": 79.99,
+            "validityPeriod": 12,
+            "validityUnit": "MONTH",
+            "productName": "Cybersecurity Essentials",
+            "packageName": "Cyber Basic Package"
+          }
+        ],
+        "invoice": {
+          "subtotal": 1999.75,
+          "discountType": null,
+          "discountPercentage": null,
+          "discountAmount": null,
+          "couponCode": null,
+          "vatRate": 20.0,
+          "vatAmount": 399.95,
+          "totalAmount": 2399.70,
+          "paymentStatus": "COMPLETED",
+          "completedPayment": {
+            "paymentMethod": "BANK_TRANSFER",
+            "bankTransferDetails": {
+              "bankName": "Barclays Bank",
+              "accountNumber": "12345678",
+              "bankBranchName": "London Main Branch",
+              "transactionNumber": "TXN-20241207-001234",
+              "paymentDate": "2024-12-07",
+              "paymentAmount": 2399.70,
+              "transactionReceiptUrl": "https://s3.amazonaws.com/receipts/txn-20241207-001234.pdf"
+            },
+            "checkPaymentDetails": null,
+            "commentLog": {
+              "invoiceId": null,
+              "comment": "Initial onboarding payment via bank transfer",
+              "actionTakenId": "action-payment-received",
+              "nextStepId": "step-activate-license",
+              "userName": "admin@system.com",
+              "userRole": "SUPER_ADMIN"
+            }
+          }
+        },
+        "creditInfo": null
+      }
+    },
+    "example3_manual_payment_check": {
+      "description": "MSP onboarding with COMPLETED payment status using CHECK_PAYMENT (manual payment). Invoice will be created with PAID status and MSP will be activated immediately.",
+      "request": {
+        "organization": {
+          "organizationName": "Local MSP Services",
+          "contactEmail": "contact@localmsp.com",
+          "phoneNumber": "+1-416-555-7890",
+          "country": "Canada",
+          "stateProvince": "Ontario",
+          "timeZone": "America/Toronto",
+          "language": "English",
+          "industry": "IT Services",
+          "domain": "localmsp.com",
+          "organizationSize": "Small",
+          "streetAddress": "789 Main Street",
+          "streetAddressLine2": null,
+          "city": "Toronto",
+          "zipPostalCode": "M5H 2N2",
+          "logoUrl": null,
+          "tierId": null,
+          "mspTypeId": null,
+          "mspAdminEmail": "admin@localmsp.com"
+        },
+        "billing": {
+          "billingEmail": "billing@localmsp.com",
+          "billingName": "Local MSP Services",
+          "streetAddress": "789 Main Street",
+          "streetAddressLine2": null,
+          "city": "Toronto",
+          "stateProvince": "Ontario",
+          "country": "Canada",
+          "zipPostalCode": "M5H 2N2"
+        },
+        "productSelections": [
+          {
+            "productId": "product-compliance-001",
+            "packageId": "package-compliance-basic-001",
+            "userRangeId": null,
+            "licenseCount": 10,
+            "pricePerLicense": 149.99,
+            "validityPeriod": 6,
+            "validityUnit": "MONTH",
+            "productName": "Compliance Management",
+            "packageName": "Compliance Basic Package"
+          }
+        ],
+        "invoice": {
+          "subtotal": 1499.90,
+          "discountType": null,
+          "discountPercentage": null,
+          "discountAmount": null,
+          "couponCode": null,
+          "vatRate": 13.0,
+          "vatAmount": 194.99,
+          "totalAmount": 1694.89,
+          "paymentStatus": "COMPLETED",
+          "completedPayment": {
+            "paymentMethod": "CHECK_PAYMENT",
+            "bankTransferDetails": null,
+            "checkPaymentDetails": {
+              "checkNumber": "CHK-20241207-567890",
+              "bankName": "Royal Bank of Canada",
+              "branchName": "Toronto Downtown Branch",
+              "paymentDate": "2024-12-07",
+              "checkImageUrl": "https://s3.amazonaws.com/checks/chk-20241207-567890.jpg"
+            },
+            "commentLog": {
+              "invoiceId": null,
+              "comment": "Payment received via check",
+              "actionTakenId": "action-payment-received",
+              "nextStepId": "step-activate-license",
+              "userName": "admin@system.com",
+              "userRole": "SUPER_ADMIN"
+            }
+          }
+        },
+        "creditInfo": null
+      }
+    },
+    "example4_online_payment_with_coupon": {
+      "description": "MSP onboarding with PENDING payment status and coupon code applied. Coupon discount is applied first, then VAT is calculated on the discounted amount.",
+      "request": {
+        "organization": {
+          "organizationName": "Enterprise MSP Corp",
+          "contactEmail": "contact@enterprisemsp.com",
+          "phoneNumber": "+1-212-555-9876",
+          "country": "United States",
+          "stateProvince": "New York",
+          "timeZone": "America/New_York",
+          "language": "English",
+          "industry": "Enterprise Solutions",
+          "domain": "enterprisemsp.com",
+          "organizationSize": "Large",
+          "streetAddress": "789 Enterprise Avenue",
+          "streetAddressLine2": "Floor 20",
+          "city": "New York",
+          "zipPostalCode": "10001",
+          "logoUrl": "https://cdn.example.com/logos/enterprisemsp.png",
+          "tierId": "tier-enterprise-001",
+          "mspTypeId": "msp-type-enterprise-001",
+          "mspAdminEmail": "admin@enterprisemsp.com"
+        },
+        "billing": {
+          "billingEmail": "billing@enterprisemsp.com",
+          "billingName": "Enterprise MSP Corp - Finance",
+          "streetAddress": "789 Enterprise Avenue",
+          "streetAddressLine2": "Floor 20",
+          "city": "New York",
+          "stateProvince": "New York",
+          "country": "United States",
+          "zipPostalCode": "10001"
+        },
+        "productSelections": [
+          {
+            "productId": "product-cybersecurity-001",
+            "packageId": "package-cyber-pro-001",
+            "userRangeId": "range-100-200-001",
+            "licenseCount": 150,
+            "pricePerLicense": 99.99,
+            "validityPeriod": 12,
+            "validityUnit": "MONTH",
+            "productName": "Cybersecurity Essentials",
+            "packageName": "Cyber Pro Monthly Package"
+          }
+        ],
+        "invoice": {
+          "subtotal": 14998.50,
+          "discountType": null,
+          "discountPercentage": null,
+          "discountAmount": null,
+          "couponCode": "SUMMER2024",
+          "vatRate": 8.5,
+          "vatAmount": 1274.87,
+          "totalAmount": 16273.37,
+          "paymentStatus": "PENDING",
+          "completedPayment": null
+        },
+        "creditInfo": null
+      }
+    },
+    "example5_manual_payment_with_discount_and_coupon": {
+      "description": "MSP onboarding with COMPLETED payment status, invoice discount (PERCENTAGE), and coupon code. Calculation order: 1) Apply coupon, 2) Apply discount, 3) Calculate VAT.",
+      "request": {
+        "organization": {
+          "organizationName": "Premium MSP Solutions",
+          "contactEmail": "contact@premiummsp.com",
+          "phoneNumber": "+1-310-555-1234",
+          "country": "United States",
+          "stateProvince": "California",
+          "timeZone": "America/Los_Angeles",
+          "language": "English",
+          "industry": "Premium Services",
+          "domain": "premiummsp.com",
+          "organizationSize": "Large",
+          "streetAddress": "321 Premium Drive",
+          "streetAddressLine2": "Suite 1000",
+          "city": "Los Angeles",
+          "zipPostalCode": "90001",
+          "logoUrl": "https://cdn.example.com/logos/premiummsp.png",
+          "tierId": "tier-premium-001",
+          "mspTypeId": "msp-type-premium-001",
+          "mspAdminEmail": "admin@premiummsp.com"
+        },
+        "billing": {
+          "billingEmail": "billing@premiummsp.com",
+          "billingName": "Premium MSP Solutions - Billing",
+          "streetAddress": "321 Premium Drive",
+          "streetAddressLine2": "Suite 1000",
+          "city": "Los Angeles",
+          "stateProvince": "California",
+          "country": "United States",
+          "zipPostalCode": "90001"
+        },
+        "productSelections": [
+          {
+            "productId": "product-cybersecurity-001",
+            "packageId": "package-cyber-pro-001",
+            "userRangeId": "range-50-100-001",
+            "licenseCount": 75,
+            "pricePerLicense": 99.99,
+            "validityPeriod": 12,
+            "validityUnit": "MONTH",
+            "productName": "Cybersecurity Essentials",
+            "packageName": "Cyber Pro Monthly Package"
+          },
+          {
+            "productId": "product-compliance-001",
+            "packageId": "package-compliance-premium-001",
+            "userRangeId": null,
+            "licenseCount": 100,
+            "pricePerLicense": 199.99,
+            "validityPeriod": 12,
+            "validityUnit": "MONTH",
+            "productName": "Compliance Management",
+            "packageName": "Compliance Premium Package"
+          }
+        ],
+        "invoice": {
+          "subtotal": 27498.25,
+          "discountType": "PERCENTAGE",
+          "discountPercentage": 10.0,
+          "discountAmount": 2749.83,
+          "couponCode": "WELCOME2024",
+          "vatRate": 8.5,
+          "vatAmount": 2103.61,
+          "totalAmount": 26852.03,
+          "paymentStatus": "COMPLETED",
+          "completedPayment": {
+            "paymentMethod": "BANK_TRANSFER",
+            "bankTransferDetails": {
+              "bankName": "Wells Fargo",
+              "accountNumber": "987654321",
+              "bankBranchName": "LA Downtown Branch",
+              "transactionNumber": "TXN-20241207-987654",
+              "paymentDate": "2024-12-07",
+              "paymentAmount": 26852.03,
+              "transactionReceiptUrl": "https://s3.amazonaws.com/receipts/txn-20241207-987654.pdf"
+            },
+            "checkPaymentDetails": null,
+            "commentLog": {
+              "invoiceId": null,
+              "comment": "Payment received with coupon and discount applied",
+              "actionTakenId": "action-payment-received",
+              "nextStepId": "step-activate-license",
+              "userName": "admin@system.com",
+              "userRole": "SUPER_ADMIN"
+            }
+          }
+        },
+        "creditInfo": null
+      }
+    },
+    "example6_online_payment_with_credit_info": {
+      "description": "MSP onboarding with PENDING payment status and credit allocation enabled. Credit will be allocated after successful onboarding.",
+      "request": {
+        "organization": {
+          "organizationName": "Credit MSP Services",
+          "contactEmail": "contact@creditmsp.com",
+          "phoneNumber": "+1-555-999-8888",
+          "country": "United States",
+          "stateProvince": "Texas",
+          "timeZone": "America/Chicago",
+          "language": "English",
+          "industry": "Credit Services",
+          "domain": "creditmsp.com",
+          "organizationSize": "Medium",
+          "streetAddress": "555 Credit Street",
+          "streetAddressLine2": "Suite 200",
+          "city": "Dallas",
+          "zipPostalCode": "75201",
+          "logoUrl": null,
+          "tierId": "tier-standard-001",
+          "mspTypeId": "msp-type-standard-001",
+          "mspAdminEmail": "admin@creditmsp.com"
+        },
+        "billing": {
+          "billingEmail": "billing@creditmsp.com",
+          "billingName": "Credit MSP Services",
+          "streetAddress": "555 Credit Street",
+          "streetAddressLine2": "Suite 200",
+          "city": "Dallas",
+          "stateProvince": "Texas",
+          "country": "United States",
+          "zipPostalCode": "75201"
+        },
+        "productSelections": [
+          {
+            "productId": "product-cybersecurity-001",
+            "packageId": "package-cyber-basic-001",
+            "userRangeId": "range-10-50-001",
+            "licenseCount": 30,
+            "pricePerLicense": 79.99,
+            "validityPeriod": 12,
+            "validityUnit": "MONTH",
+            "productName": "Cybersecurity Essentials",
+            "packageName": "Cyber Basic Package"
+          }
+        ],
+        "invoice": {
+          "subtotal": 2399.70,
+          "discountType": null,
+          "discountPercentage": null,
+          "discountAmount": null,
+          "couponCode": null,
+          "vatRate": 8.25,
+          "vatAmount": 197.97,
+          "totalAmount": 2597.67,
+          "paymentStatus": "PENDING",
+          "completedPayment": null
+        },
+        "creditInfo": {
+          "enableCredit": true,
+          "creditAmount": 1000.00,
+          "reason": "Initial credit allocation for launch partnership",
+          "netDaysId": "net-days-30-001",
+          "autoSuspendOnOverdue": true,
+          "creditStartDate": "2024-12-07"
+        }
+      }
+    },
+    "example7_manual_payment_with_flat_discount": {
+      "description": "MSP onboarding with COMPLETED payment status using FLAT discount type (not percentage).",
+      "request": {
+        "organization": {
+          "organizationName": "Flat Discount MSP",
+          "contactEmail": "contact@flatdiscountmsp.com",
+          "phoneNumber": "+1-555-777-6666",
+          "country": "United States",
+          "stateProvince": "Florida",
+          "timeZone": "America/New_York",
+          "language": "English",
+          "industry": "Discount Services",
+          "domain": "flatdiscountmsp.com",
+          "organizationSize": "Small",
+          "streetAddress": "999 Discount Avenue",
+          "streetAddressLine2": null,
+          "city": "Miami",
+          "zipPostalCode": "33101",
+          "logoUrl": null,
+          "tierId": null,
+          "mspTypeId": null,
+          "mspAdminEmail": "admin@flatdiscountmsp.com"
+        },
+        "billing": {
+          "billingEmail": "billing@flatdiscountmsp.com",
+          "billingName": "Flat Discount MSP",
+          "streetAddress": "999 Discount Avenue",
+          "streetAddressLine2": null,
+          "city": "Miami",
+          "stateProvince": "Florida",
+          "country": "United States",
+          "zipPostalCode": "33101"
+        },
+        "productSelections": [
+          {
+            "productId": "product-compliance-001",
+            "packageId": "package-compliance-basic-001",
+            "userRangeId": null,
+            "licenseCount": 20,
+            "pricePerLicense": 149.99,
+            "validityPeriod": 6,
+            "validityUnit": "MONTH",
+            "productName": "Compliance Management",
+            "packageName": "Compliance Basic Package"
+          }
+        ],
+        "invoice": {
+          "subtotal": 2999.80,
+          "discountType": "FLAT",
+          "discountPercentage": null,
+          "discountAmount": 500.00,
+          "couponCode": null,
+          "vatRate": 6.0,
+          "vatAmount": 149.99,
+          "totalAmount": 2649.79,
+          "paymentStatus": "COMPLETED",
+          "completedPayment": {
+            "paymentMethod": "CHECK_PAYMENT",
+            "bankTransferDetails": null,
+            "checkPaymentDetails": {
+              "checkNumber": "CHK-20241207-111222",
+              "bankName": "Bank of America",
+              "branchName": "Miami Beach Branch",
+              "paymentDate": "2024-12-07",
+              "checkImageUrl": "https://s3.amazonaws.com/checks/chk-20241207-111222.jpg"
+            },
+            "commentLog": {
+              "invoiceId": null,
+              "comment": "Payment with flat discount applied",
+              "actionTakenId": "action-payment-received",
+              "nextStepId": "step-activate-license",
+              "userName": "admin@system.com",
+              "userRole": "SUPER_ADMIN"
+            }
+          }
+        },
+        "creditInfo": null
+      }
+    }
+  },
+  "notes": {
+    "paymentStatus": {
+      "PENDING": "Use for online payments (Stripe/PayPal). Invoice created with PENDING status. MSP will be activated after successful payment via webhook.",
+      "COMPLETED": "Use for manual payments (BANK_TRANSFER/CHECK_PAYMENT). Invoice created with PAID status. MSP will be activated immediately."
+    },
+    "calculationOrder": {
+      "step1": "Apply coupon discount (if couponCode is provided)",
+      "step2": "Apply invoice discount (if discountType and discountAmount/discountPercentage are provided)",
+      "step3": "Calculate VAT on the discounted subtotal using vatRate"
+    },
+    "requiredFields": {
+      "organization": "All fields except logoUrl, tierId, mspTypeId, and streetAddressLine2 are required",
+      "billing": "billingEmail and billingName are required. Address fields are optional but recommended",
+      "productSelections": "All fields are required except userRangeId (can be null)",
+      "invoice": "subtotal, vatRate, totalAmount, and paymentStatus are required",
+      "completedPayment": "Required when paymentStatus is COMPLETED. Must include paymentMethod and corresponding payment details (bankTransferDetails or checkPaymentDetails)"
+    },
+    "creditInfo": {
+      "note": "Optional field. If enableCredit is true, creditAmount, reason, and creditStartDate are required",
+      "autoSuspendOnOverdue": "Optional boolean to auto-suspend account when payment is overdue",
+      "netDaysId": "Optional net payment days ID for invoice settlement terms"
+    },
+    "activationFlow": {
+      "onlinePayment": "1. Create invoice with PENDING status -> 2. User pays via Stripe/PayPal -> 3. Webhook updates payment -> 4. System activates MSP automatically",
+      "manualPayment": "1. Create invoice with PAID status -> 2. System activates MSP immediately"
+    }
+  }
+}
+

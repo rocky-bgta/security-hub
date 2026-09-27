@@ -1,0 +1,1273 @@
+Date: Mon, 1 Dec 2025 14:44:34 +0000 (UTC)
+Message-ID: <1543423297.7.1764600274959@859a18646921>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_6_1904344247.1764600274959"
+
+------=_Part_6_1904344247.1764600274959
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Use Case 2.1.6.9: Aspire Admin Reviews and Submits Campaign for =
+Creates Campaign Setup (Step-9)</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Use Case 2.1.6.9: Aspire Admin Reviews and Submits Campaign for Cre=
+ates Campaign Setup (Step-9)</h1>
+    <div class=3D"Section1">
+        <p><strong>User Story</strong></p>
+<p>As an <strong>Admin</strong>, I want to review all configured phishing c=
+ampaign settings in one consolidated summary page before submission, so tha=
+t I can verify accuracy, make any necessary corrections, and confidently su=
+bmit the campaign for execution.</p>
+<p>&nbsp;</p>
+<p><strong>Description</strong></p>
+<p>In the <strong>Review &amp; Submit</strong> step (final step of the camp=
+aign creation wizard), the <strong>Admin</strong> is shown a structured sum=
+mary of all previously configured campaign settings, including:</p>
+<ul>
+<li>
+<p><strong>Campaign Setup</strong></p></li>
+<li>
+<p><strong>Email Template</strong></p></li>
+<li>
+<p><strong>Landing Page</strong></p></li>
+<li>
+<p><strong>Mail Server</strong></p></li>
+<li>
+<p><strong>Tags</strong></p></li>
+<li>
+<p><strong>Audience</strong></p></li>
+<li>
+<p><strong>Training</strong></p></li>
+<li>
+<p><strong>Schedule</strong></p></li>
+</ul>
+<p>Each section includes an <strong>Edit</strong> button, allowing the Admi=
+n to return to the specific configuration step and make changes if needed.<=
+/p>
+<p>Once reviewed, the <strong>admin</strong> can select <strong>Submit Camp=
+aign</strong>, after which the system validates all settings, finalizes cam=
+paign scheduling, and queues or activates the campaign according to the def=
+ined delivery method and frequency.</p>
+<p>&nbsp;</p>
+<p><strong>Actors</strong></p>
+<ul>
+<li>
+<p><strong>Admin</strong>: Reviews all settings, edits sections if needed, =
+and submits the campaign.</p></li>
+<li>
+<p><strong>System</strong>: Displays the full campaign summary, validates c=
+onfiguration, and processes the final submission.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Preconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>The&nbsp;<strong>Admin</strong> has completed all prior steps in the Cre=
+ate Campaign wizard.</p></li>
+<li>
+<p>All mandatory fields in earlier steps are valid.</p></li>
+<li>
+<p>The system can retrieve and display all campaign configuration data.</p>=
+</li>
+<li>
+<p>The&nbsp;<strong>Admin</strong> is authenticated and authorized to creat=
+e campaigns.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Postconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>The campaign is successfully submitted and saved in the system.</p></li>
+<li>
+<p>The campaign status changes to&nbsp;<strong>Queued</strong>,&nbsp;<stron=
+g>Scheduled</strong>, or&nbsp;<strong>Active</strong>, depending on the del=
+ivery method.</p></li>
+<li>
+<p>The&nbsp;<strong>Admin</strong> is redirected to the&nbsp;<strong>Campai=
+gn List</strong> page where they can monitor progress.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Main Flow (Normal Success Scenario)</strong></p>
+<p><strong>Step 1: Display Review Summary</strong></p>
+<ol start=3D"1">
+<li>
+<p>The&nbsp;<strong>System</strong> displays a complete read-only summary o=
+f all configured campaign sections:</p>
+<ul>
+<li>
+<p><strong>Campaign Setup</strong></p>
+<ul>
+<li>
+<p>Campaign Name:</p></li>
+<li>
+<p>Campaign Type: Simulated Phishing &amp; Security Awareness Training</p><=
+/li>
+</ul></li>
+<li>
+<p><strong>Email Template</strong></p>
+<ul>
+<li>
+<p>Language: English</p></li>
+<li>
+<p>Template Type: all</p></li>
+<li>
+<p>Selected Template: ID 3</p></li>
+</ul></li>
+<li>
+<p><strong>Landing Page</strong></p>
+<ul>
+<li>
+<p>Language: Not selected</p></li>
+<li>
+<p>Template Type: Not selected</p></li>
+<li>
+<p>Selected Template: Not selected</p></li>
+</ul></li>
+<li>
+<p><strong>Mail Server</strong></p>
+<ul>
+<li>
+<p>Selected Server: client-sendgrid</p></li>
+</ul></li>
+<li>
+<p><strong>Tags</strong></p>
+<ul>
+<li>
+<p>Assigned Tags: Q1, Q3</p></li>
+</ul></li>
+<li>
+<p><strong>Audience</strong></p>
+<ul>
+<li>
+<p>Audience Type: Predefined Groups</p></li>
+<li>
+<p>Target Count: 1 predefined group</p></li>
+</ul></li>
+<li>
+<p><strong>Training</strong></p>
+<ul>
+<li>
+<p>Training Language: English</p></li>
+<li>
+<p>Assignment Type: Assign All</p></li>
+<li>
+<p>Selected Modules: 1</p></li>
+</ul></li>
+<li>
+<p><strong>Schedule</strong></p>
+<ul>
+<li>
+<p>Delivery Method: Dec 02, 2025 =E2=80=93 Dec 05, 2025</p></li>
+<li>
+<p>Frequency: one-off</p></li>
+<li>
+<p>Time Zone: GMT+10:00</p></li>
+<li>
+<p>Expiry Date: Dec 03, 2025</p></li>
+</ul></li>
+</ul></li>
+<li>
+<p>For each section, the system displays the&nbsp;<strong>Edit</strong> but=
+ton, allowing the&nbsp;<strong>Admin</strong> to make adjustments if necess=
+ary.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Step 2: Admin Edits Configuration (Optional)</strong></p>
+<ol start=3D"1">
+<li>
+<p>The&nbsp;<strong>Admin</strong> may click&nbsp;<strong>Edit</strong> on =
+any section to modify the settings.</p></li>
+<li>
+<p>The system navigates the&nbsp;<strong>Admin</strong> back to the corresp=
+onding step.</p></li>
+<li>
+<p>After saving changes, the system returns to the&nbsp;<strong>Review &amp=
+; Submit</strong> step with the updated settings.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Step 3: Submit Campaign</strong></p>
+<ol start=3D"1">
+<li>
+<p>The&nbsp;<strong>Admin</strong> clicks&nbsp;<strong>Submit Campaign</str=
+ong>.</p></li>
+<li>
+<p>The&nbsp;<strong>System</strong> validates the following configurations:=
+</p>
+<ul>
+<li>
+<p><strong>Delivery Method</strong></p></li>
+<li>
+<p><strong>Frequency</strong></p></li>
+<li>
+<p><strong>Mail Server</strong></p></li>
+<li>
+<p><strong>Audience Selection</strong></p></li>
+<li>
+<p><strong>Schedule</strong></p></li>
+<li>
+<p><strong>Training Assignment (if applicable)</strong></p></li>
+</ul></li>
+<li>
+<p>The&nbsp;<strong>System</strong> displays a confirmation message:<br>
+"Your campaign is now being processed according to the configured schedule.=
+"</p></li>
+<li>
+<p>The&nbsp;<strong>System</strong> redirects the&nbsp;<strong>Admin</stron=
+g> to the&nbsp;<strong>Campaign List</strong> page where they can monitor t=
+he campaign's progress.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Frontend Form Validation</strong></p>
+<p><strong>Validation Rules</strong></p>
+<ol start=3D"1">
+<li>
+<p><strong>All required campaign settings must be complete</strong></p>
+<ul>
+<li>
+<p><strong>Error: </strong>=E2=80=9CPlease complete all mandatory configura=
+tion steps before submission.=E2=80=9D</p></li>
+</ul></li>
+<li>
+<p><strong>Schedule validation</strong></p>
+<ul>
+<li>
+<p>Must have valid delivery method, frequency, and start date.</p></li>
+</ul></li>
+<li>
+<p><strong>Mail server must be selected</strong></p>
+<ul>
+<li>
+<p><strong>Error: </strong>=E2=80=9CA valid mail server must be configured =
+before submitting.=E2=80=9D</p></li>
+</ul></li>
+<li>
+<p><strong>Audience must contain at least one valid target</strong></p>
+<ul>
+<li>
+<p><strong>Error: </strong>=E2=80=9CPlease select at least one audience gro=
+up.=E2=80=9D</p></li>
+</ul></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Business Rules</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"18=
+a69f90-c30b-4131-a224-6124b5474a6b" class=3D"confluenceTable">
+<colgroup>
+<col style=3D"width: 74.0px;">
+<col style=3D"width: 685.0px;">
+</colgroup>
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Rule</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>BR-1</strong></p></td>
+<td class=3D"confluenceTd">
+<p>All required campaign configuration fields across all steps must be vali=
+d before submission.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>BR-2</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Admin must be able to edit any section from the <strong>Review</strong> =
+page.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>BR-3</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Campaign cannot be submitted without a <strong>Mail Server</strong>.</p>=
+</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>BR-4</strong></p></td>
+<td class=3D"confluenceTd">
+<p>Campaign cannot be submitted if no <strong>Audience</strong> is selected=
+.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>BR-5</strong></p></td>
+<td class=3D"confluenceTd">
+<p>System must save all final campaign settings before processing the campa=
+ign.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>Acceptance Criteria</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"27=
+a48c68-790d-4d0a-98ce-dd721d33bf1a" class=3D"confluenceTable">
+<colgroup>
+<col style=3D"width: 84.0px;">
+<col style=3D"width: 425.0px;">
+<col style=3D"width: 248.0px;">
+</colgroup>
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Acceptance Criteria</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Pass/Fail Condition</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-01</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can select a <strong>Phishing Delivery Method</st=
+rong> (Immediate or Scheduled).</p></td>
+<td class=3D"confluenceTd">
+<p>Delivery method is selectable and works as expected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-02</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can select the <strong>Campaign Frequency</strong=
+> (One-off, Weekly, Monthly, Quarterly).</p></td>
+<td class=3D"confluenceTd">
+<p>Frequency options are available and can be selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-03</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can select a <strong>Campaign Expiry Date</strong=
+> (optional).</p></td>
+<td class=3D"confluenceTd">
+<p>Expiry date can be selected and displayed correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-04</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can configure the <strong>First Batch Delivery</s=
+trong> option, choosing between scheduled or immediate delivery.</p></td>
+<td class=3D"confluenceTd">
+<p>First batch delivery option works correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-05</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can enter a <strong>Test Email Address</strong> a=
+nd send a test email.</p></td>
+<td class=3D"confluenceTd">
+<p>Test email is sent successfully.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-06</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can select the <strong>Scheduled Delivery date an=
+d time</strong> for emails.</p></td>
+<td class=3D"confluenceTd">
+<p>Scheduled date and time are validated and displayed.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-07</strong></p></td>
+<td class=3D"confluenceTd">
+<p>The system validates that all required fields (Delivery Method, Frequenc=
+y) are completed before enabling the "Save &amp; Continue" button.</p></td>
+<td class=3D"confluenceTd">
+<p>"Save &amp; Continue" button is only enabled after completing required f=
+ields.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-08</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can preview the scheduled campaign delivery in a =
+confirmation message before finalizing.</p></td>
+<td class=3D"confluenceTd">
+<p>Confirmation message is displayed with campaign details.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-09</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can send a <strong>Test Email</strong> to verify =
+the campaign configuration.</p></td>
+<td class=3D"confluenceTd">
+<p>Test email is received and matches the campaign setup.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-10</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can choose to <strong>Send Test Email</strong> be=
+fore finalizing campaign setup.</p></td>
+<td class=3D"confluenceTd">
+<p>Test email functionality works properly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-11</strong></p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Campaign Frequency</strong> setting persists after saving.</=
+p></td>
+<td class=3D"confluenceTd">
+<p>Frequency setting remains saved and is available on subsequent views.</p=
+></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-12</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can view the <strong>Expiry Date</strong> setting=
+ and edit it if necessary.</p></td>
+<td class=3D"confluenceTd">
+<p>Expiry date can be viewed and edited as needed.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-13</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>First Batch Delivery</strong> can be set for a specific time and=
+ date.</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can choose to set the first batch delivery time a=
+nd date.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-14</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Campaign Settings</strong> are saved successfully after clicking=
+ <strong>Save &amp; Continue</strong>.</p></td>
+<td class=3D"confluenceTd">
+<p>Settings are saved and confirmed by the system.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-15</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can set the <strong>Campaign Frequency</strong> t=
+o "One-off" for a single delivery.</p></td>
+<td class=3D"confluenceTd">
+<p>"One-off" option functions correctly for single campaign delivery.</p></=
+td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-16</strong></p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Test Email Delivery</strong> field is visible but optional.<=
+/p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can choose to enable or skip test email delivery.=
+</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-17</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can <strong>Edit</strong> the <strong>Campaign Fr=
+equency</strong> after the initial selection.</p></td>
+<td class=3D"confluenceTd">
+<p>Frequency field is editable and changes are saved correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-18</strong></p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Campaign Expiry Date</strong> can be removed if not needed.<=
+/p></td>
+<td class=3D"confluenceTd">
+<p>Expiry date can be cleared if not required.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-19</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> receives a confirmation notification when setting=
+s are successfully saved.</p></td>
+<td class=3D"confluenceTd">
+<p>Confirmation message is displayed after successful save.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>AC-20</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Admin</strong> can view the <strong>Campaign Frequency</strong> =
+and <strong>Expiry Date</strong> settings in the campaign summary.</p></td>
+<td class=3D"confluenceTd">
+<p>Frequency and expiry date settings are displayed in the summary.</p></td=
+>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>System Behavior &amp; Validation</strong></p>
+<ul>
+<li>
+<p>The system retrieves all stored configuration values from previous steps=
+.</p></li>
+<li>
+<p>All values displayed must be read-only except via Edit.</p></li>
+<li>
+<p>Validation runs once again at the point of final submission.</p></li>
+<li>
+<p>If scheduling is invalid, system blocks submission and highlights the is=
+sue.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Security Handling</strong></p>
+<ul>
+<li>
+<p>Only&nbsp;<strong>authorized Admin roles</strong> can review and submit =
+campaigns.</p></li>
+<li>
+<p>All sensitive configuration data (Mail Server credentials, template IDs,=
+ schedule times) are&nbsp;<strong>encrypted at rest</strong>.</p></li>
+<li>
+<p>Unauthorized users cannot access or modify campaign settings.</p></li>
+</ul>
+<p></p>
+<p></p>
+<p><strong>User Story</strong></p>
+<p>As an Aspire Admin, I want to review the entire phishing simulation camp=
+aign configuration before final submission to ensure all settings are corre=
+ct and that the campaign will be executed as planned.</p>
+<p><strong>Description</strong></p>
+<p>In Step 8 of the <strong>Create New Campaign</strong> wizard, the Aspire=
+ Admin reviews all settings related to the phishing simulation campaign bef=
+ore finalizing and submitting it for processing. This step includes reviewi=
+ng the <strong>Campaign Overview</strong>, <strong>Email Configuration</str=
+ong>, <strong>Target Audience</strong>, <strong>Training Configuration</str=
+ong>, <strong>Landing Page Configuration</strong>, and <strong>Schedule &am=
+p; Delivery Configuration</strong>. The Admin can edit any section if neede=
+d, and once all details are verified, the Admin clicks the <strong>Submit C=
+ampaign</strong> button to initiate the campaign execution. The system disp=
+lays a confirmation message and the status of the campaign. The Admin can a=
+lso monitor the campaign progress from the <strong>Campaign List</strong> p=
+age after submission.</p>
+<p><strong>Actors</strong></p>
+<ul>
+<li>
+<p><strong>Aspire Admin</strong>: Reviews and verifies the configuration se=
+ttings, edits sections if necessary, and submits the campaign.</p></li>
+<li>
+<p><strong>System</strong>: Displays the campaign summary, validates the se=
+ttings, and submits the campaign.</p></li>
+</ul>
+<p><strong>Preconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Aspire Admin has completed all the previous steps in the <strong>Cre=
+ate New Campaign</strong> wizard.</p></li>
+<li>
+<p>The system is operational and displays all campaign configuration settin=
+gs in the <strong>Review</strong> section.</p></li>
+<li>
+<p>The Admin is logged in and has necessary privileges to submit the campai=
+gn.</p></li>
+</ol>
+<p><strong>Postconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>The campaign configuration is reviewed and finalized.</p></li>
+<li>
+<p>The campaign is submitted for execution, and the system processes the ca=
+mpaign based on the selected settings.</p></li>
+<li>
+<p>The campaign will appear in the <strong>Campaign List</strong>, where th=
+e Admin can track its progress.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Main Flow (Normal Success Scenario)</strong></p>
+<p><strong>Step 1: Campaign Overview Review</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Aspire Admin is presented with the <strong>Campaign Overview</strong=
+> section.</p>
+<ul>
+<li>
+<p>This includes <strong>Campaign Name</strong> and <strong>Campaign Type</=
+strong> (e.g., Simulated Phishing, Training).</p></li>
+<li>
+<p>The Admin can click <strong>Edit</strong> if any details need to be chan=
+ged.</p></li>
+</ul></li>
+</ol>
+<p><strong>Step 2: Email Configuration Review</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin reviews the <strong>Email Configuration</strong> section:</p>
+<ul>
+<li>
+<p>Includes <strong>Email Template Language</strong> and <strong>Mail Serve=
+r</strong> settings.</p></li>
+<li>
+<p>If needed, the Admin can click <strong>Edit</strong> to update the setti=
+ngs.</p></li>
+</ul></li>
+</ol>
+<p><strong>Step 3: Target Audience Review</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin reviews the <strong>Target Audience</strong> section:</p>
+<ul>
+<li>
+<p>Displays <strong>Audience Type</strong> (Predefined Groups or Custom Gro=
+ups) and <strong>Target Count</strong>.</p></li>
+<li>
+<p>If the Admin wants to modify the target audience, they can click <strong=
+>Edit</strong>.</p></li>
+</ul></li>
+</ol>
+<p><strong>Step 4: Training Configuration Review</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin reviews the <strong>Training Configuration</strong> section:</=
+p>
+<ul>
+<li>
+<p>Displays <strong>Training Language</strong>, <strong>Assignment Type</st=
+rong>, and <strong>Selected Modules</strong>.</p></li>
+<li>
+<p>If any training modules or settings need to be adjusted, the Admin can c=
+lick <strong>Edit</strong>.</p></li>
+</ul></li>
+</ol>
+<p><strong>Step 5: Landing Page Configuration Review</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin reviews the <strong>Landing Page Configuration</strong> sectio=
+n:</p>
+<ul>
+<li>
+<p>Displays the selected <strong>Landing Page Type</strong> (e.g., Error/40=
+4: Page Not Found, Custom Landing Page).</p></li>
+<li>
+<p>The Admin can click <strong>Edit</strong> to change the landing page typ=
+e.</p></li>
+</ul></li>
+</ol>
+<p><strong>Step 6: Schedule &amp; Delivery Configuration Review</strong></p=
+>
+<ol start=3D"1">
+<li>
+<p>The Admin reviews the <strong>Schedule &amp; Delivery Configuration</str=
+ong> section:</p>
+<ul>
+<li>
+<p>Displays <strong>Delivery Method</strong> (Immediate or Scheduled), <str=
+ong>Frequency</strong> (One-off, Weekly, Monthly, Quarterly), and <strong>C=
+ampaign Expiry Date</strong>.</p></li>
+<li>
+<p>If any changes are required, the Admin can click <strong>Edit</strong>.<=
+/p></li>
+</ul></li>
+</ol>
+<p><strong>Step 7: Final Submission</strong></p>
+<ol start=3D"1">
+<li>
+<p>After reviewing all sections and ensuring the campaign settings are corr=
+ect, the Admin clicks <strong>Submit Campaign</strong>.</p></li>
+<li>
+<p>The system displays a confirmation message: "Your campaign has been succ=
+essfully submitted and will be processed according to the configured schedu=
+le."</p></li>
+<li>
+<p>The Admin can click <strong>Edit Configuration</strong> to make any fina=
+l changes or <strong>Submit Campaign</strong> to finalize the campaign.</p>=
+</li>
+<li>
+<p>The Admin is redirected to the <strong>Campaign List</strong> page to mo=
+nitor the campaign's progress.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Frontend Form Validation</strong></p>
+<p><strong>Field Validation Rules</strong></p>
+<ol start=3D"1">
+<li>
+<p><strong>Campaign Overview</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: Campaign Name and Campaign Type.</p></li>
+<li>
+<p><strong>Validation</strong>: These fields must not be empty.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Campaign name and type are required."</=
+p></li>
+</ul></li>
+<li>
+<p><strong>Email Configuration</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: Email Template Language and Mail Server.</p><=
+/li>
+<li>
+<p><strong>Validation</strong>: These fields must be valid and selected.</p=
+></li>
+<li>
+<p><strong>Error Message</strong>: "Please review email configuration setti=
+ngs."</p></li>
+</ul></li>
+<li>
+<p><strong>Target Audience</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: Audience Type and Target Count.</p></li>
+<li>
+<p><strong>Validation</strong>: Audience group must be selected correctly.<=
+/p></li>
+<li>
+<p><strong>Error Message</strong>: "Please select a target audience."</p></=
+li>
+</ul></li>
+<li>
+<p><strong>Training Configuration</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: Training Language and Assigned Modules.</p></=
+li>
+<li>
+<p><strong>Validation</strong>: These fields must be configured.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Please select training modules."</p></l=
+i>
+</ul></li>
+<li>
+<p><strong>Landing Page Configuration</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: Landing Page Type.</p></li>
+<li>
+<p><strong>Validation</strong>: Ensure a valid landing page is selected.</p=
+></li>
+<li>
+<p><strong>Error Message</strong>: "Please select a valid landing page."</p=
+></li>
+</ul></li>
+<li>
+<p><strong>Schedule &amp; Delivery Configuration</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: Delivery Method, Campaign Frequency, and Camp=
+aign Expiry Date.</p></li>
+<li>
+<p><strong>Validation</strong>: Ensure that all scheduling fields are compl=
+eted.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Please review the delivery schedule set=
+tings."</p></li>
+</ul></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Business Rules</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"93=
+f34717-8bcb-4335-bb8e-b77ee88eb0e1" class=3D"confluenceTable">
+<colgroup>
+<col style=3D"width: 110.0px;">
+<col style=3D"width: 649.0px;">
+</colgroup>
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Rule</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-1</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must review and confirm the <strong>Campaign Overview</strong> bef=
+ore proceeding to submission.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-2</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can edit any section before final submission.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-3</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Email Configuration</strong>, <strong>Target Audience</strong>, =
+and other sections must be validated before submission.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-4</p></td>
+<td class=3D"confluenceTd">
+<p>The system will display <strong>Submit Campaign</strong> button only whe=
+n all sections are properly filled.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-5</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must click <strong>Submit Campaign</strong> to initiate the campai=
+gn process.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>Acceptance Criteria</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"9d=
+aae70b-7723-433e-8def-a32db7827afe" class=3D"confluenceTable">
+<colgroup>
+<col style=3D"width: 124.0px;">
+<col style=3D"width: 381.0px;">
+<col style=3D"width: 252.0px;">
+</colgroup>
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Acceptance Criteria</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Pass/Fail Condition</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-01</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can review all campaign sections (Overview, Email Configuration, A=
+udience, etc.).</p></td>
+<td class=3D"confluenceTd">
+<p>All sections are viewable and editable.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-02</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can click <strong>Edit</strong> to make changes to any section of =
+the campaign.</p></td>
+<td class=3D"confluenceTd">
+<p>Editing is functional for all sections.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-03</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can submit the campaign by clicking <strong>Submit Campaign</stron=
+g>.</p></td>
+<td class=3D"confluenceTd">
+<p>Campaign is submitted and the system processes the settings.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-04</p></td>
+<td class=3D"confluenceTd">
+<p>Admin receives a confirmation message after successful submission.</p></=
+td>
+<td class=3D"confluenceTd">
+<p>Confirmation message is displayed after submission.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-05</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can return to previous sections to edit before final submission.</=
+p></td>
+<td class=3D"confluenceTd">
+<p>Admin can navigate back to any section and make changes.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-06</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Campaign Frequency</strong>, <strong>Campaign Expiry Date</stron=
+g>, and other required fields are validated before submission.</p></td>
+<td class=3D"confluenceTd">
+<p>All required fields must be filled in before submission.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-07</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can view all configuration details in the <strong>Review</strong> =
+section.</p></td>
+<td class=3D"confluenceTd">
+<p>Configuration details are displayed for review.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-08</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can successfully proceed to <strong>Submit Campaign</strong> after=
+ all fields are verified.</p></td>
+<td class=3D"confluenceTd">
+<p>Submit Campaign button is enabled after validation.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-09</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can review <strong>Landing Page</strong>, <strong>Email Configurat=
+ion</strong>, <strong>Audience</strong>, and other details for accuracy.</p=
+></td>
+<td class=3D"confluenceTd">
+<p>Admin confirms the accuracy of the selected settings.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-10</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can modify any section using the <strong>Edit</strong> functionali=
+ty before submission.</p></td>
+<td class=3D"confluenceTd">
+<p>Editing is enabled on all sections.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-11</p></td>
+<td class=3D"confluenceTd">
+<p>After submitting, Admin is redirected to the <strong>Campaign List</stro=
+ng> to monitor progress.</p></td>
+<td class=3D"confluenceTd">
+<p>Campaign status is updated and displayed in the list.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-12</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can <strong>Cancel</strong> the submission and go back to the camp=
+aign setup.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can cancel submission and edit the campaign further.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-13</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can click <strong>Edit Configuration</strong> to make final change=
+s after submission.</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Edit Configuration</strong> works as expected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-14</p></td>
+<td class=3D"confluenceTd">
+<p>The system confirms successful submission with <strong>Campaign Ready to=
+ Submit</strong> status.</p></td>
+<td class=3D"confluenceTd">
+<p>Submission confirmation is displayed with a <strong>Ready to Submit</str=
+ong> status.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-15</p></td>
+<td class=3D"confluenceTd">
+<p>The system prevents duplicate submission of the same campaign.</p></td>
+<td class=3D"confluenceTd">
+<p>Duplicate submissions are prevented.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-16</p></td>
+<td class=3D"confluenceTd">
+<p>The system allows changes in <strong>Training Configuration</strong> and=
+ other fields before submission.</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Training Configuration</strong> section is editable.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-17</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Target Audience</strong> and other configurations are displayed =
+as selected by the Admin in the review section.</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Target Audience</strong> is correctly displayed.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-18</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can see a <strong>Campaign Preview</strong> and ensure all details=
+ are correct before submitting.</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Campaign Preview</strong> is available for final review.</p></td=
+>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-19</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can <strong>Save &amp; Continue</strong> to proceed to the next st=
+ep or submit the campaign.</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Save &amp; Continue</strong> button works to proceed.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-20</p></td>
+<td class=3D"confluenceTd">
+<p>Admin receives an error message if any mandatory field is left incomplet=
+e.</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Error messages</strong> are shown for missing fields.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>System Behavior &amp; Validation</strong></p>
+<ul>
+<li>
+<p><strong>Campaign Validation</strong>: The system validates all campaign =
+sections before allowing the Admin to submit the campaign.</p></li>
+<li>
+<p><strong>Submission Confirmation</strong>: Once submitted, the campaign s=
+tatus is updated to "Submitted" and is processed according to the configure=
+d schedule.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Security Handling</strong></p>
+<ul>
+<li>
+<p><strong>Access Control</strong>: Only authorized users (admins) can revi=
+ew and submit campaigns.</p></li>
+<li>
+<p><strong>Data Security</strong>: All campaign data is securely stored and=
+ accessible only to authorized users.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+    </div>
+</body>
+</html>
+------=_Part_6_1904344247.1764600274959--

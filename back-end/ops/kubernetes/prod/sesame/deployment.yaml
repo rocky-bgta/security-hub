@@ -1,0 +1,28 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: asat-sesame
+  namespace: prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: asat-sesame
+  template:
+    metadata:
+      labels:
+        app: asat-sesame
+#        version: "{{ .VERSION }}"
+    spec:
+      containers:
+        - name: asat-sesame
+          image: aspirebase.azurecr.io/aspire-sesame:latest
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 9010
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"      # Minimum CPU (500 millicores = 0.5 CPU)
+            limits:
+              memory: "512Mi"

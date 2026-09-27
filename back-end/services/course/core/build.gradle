@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+}
+
+group 'com.aspire.asat.course'
+
+
+dependencies {
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,2342 @@
+openapi: 3.0.3
+
+info:
+  title: ASAT Phishing — Vishing (Voice Campaign) API
+  description: |
+    OpenAPI specification for the vishing (voice phishing) campaign flow in the ASAT Phishing service.
+
+    **Wizard flow:** Setup → Voice Setup → Scenario & Script → Telephony → Tags → Audience → Training → Schedule → Review → Launch → Live simulation / Dashboard.
+
+    **Scoring** is applied via `POST /v/calls/{trackingId}/result` using `VishingCallOutcome`:
+    - NO_ANSWER / FAILED / REPORTED_WITHOUT_ANSWER → 0.0
+    - ANSWERED_BUT_REPORTED → 10.0
+    - ANSWERED → 20.0
+    - ENGAGED → 75.0 (click-equivalent training trigger)
+    - COMPROMISED → 100.0 (compromise training trigger)
+
+    **External dependencies:**
+    - Audience user resolution uses the Registration service (not exposed as a phishing REST API).
+    - Voice clones are created via the Deepfake API; there is no standalone list-voice-clones endpoint.
+  version: 1.0.0
+  contact:
+    name: ASAT Backend Team
+
+servers:
+  - url: https://{host}
+    description: Production / staging
+    variables:
+      host:
+        default: api.example.com
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Campaigns
+    description: Vishing campaign wizard, lifecycle, recipients, and stats
+  - name: Vishing Dashboard
+    description: Live simulation, reporting, remediation, and test calls
+  - name: Vishing Scenarios
+    description: Scenario script library (draft / publish)
+  - name: Vishing Attack Templates
+    description: Platform attack template catalog (admin CUD; all clients can read for scenario picker)
+  - name: Voice Server Configurations
+    description: Telephony providers (Twilio, Generic SIP)
+  - name: Voice Ingestion
+    description: Post-call webhooks for the telephony worker
+  - name: Voice Clone
+    description: Deepfake voice cloning used in Voice Setup (Step 2)
+  - name: Speech-to-Text
+    description: Audio transcription fallback for call analysis
+  - name: Catalog
+    description: Reused dropdown catalogs (tone, attack template, language, tags)
+  - name: User Risk Profile
+    description: Aggregated phishing and training risk scores
+  - name: Training Risk Score
+    description: Training completion score updates
+  - name: AI Configuration
+    description: Voice engine credentials (e.g. ElevenLabs)
+
+paths:
+
+  # ===========================================================================
+  # CAMPAIGNS — CRUD & wizard (Steps 1, 5–9)
+  # ===========================================================================
+
+  /api/v1/phishing/campaigns:
+    get:
+      tags: [Campaigns]
+      operationId: listCampaigns
+      summary: List campaigns
+      description: Use query parameter `channel=VOICE` to list vishing campaigns only.
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/pageSize'
+        - $ref: '#/components/parameters/searchParam'
+        - name: status
+          in: query
+          schema:
+            $ref: '#/components/schemas/CampaignStatus'
+        - name: channel
+          in: query
+          schema:
+            type: string
+            enum: [VOICE]
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+            default: createdAt
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+            enum: [asc, desc]
+            default: desc
+      responses:
+        '200':
+          description: Paginated campaign list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllResponseDtoCampaignList'
+    post:
+      tags: [Campaigns]
+      operationId: createCampaign
+      summary: Step 1 — Create vishing campaign
+      description: Set `channel=VOICE` and `campaignType` to `VISHING_SIMULATION` or `VISHING_WITH_TRAINING`.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CampaignCreateRequest'
+      responses:
+        '201':
+          description: Campaign created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoCampaign'
+
+  /api/v1/phishing/campaigns/{campaignId}:
+    get:
+      tags: [Campaigns]
+      operationId: getCampaignById
+      summary: Step 9 — Review campaign
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      responses:
+        '200':
+          description: Campaign details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoCampaign'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags: [Campaigns]
+      operationId: deleteCampaign
+      summary: Delete draft campaign
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      responses:
+        '200':
+          description: Campaign deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoString'
+
+  /api/v1/phishing/campaigns/{campaignId}/step/1:
+    put:
+      tags: [Campaigns]
+      operationId: updateCampaignSetup
+      summary: Step 1 — Update campaign setup
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CampaignCreateRequest'
+      responses:
+        '200':
+          description: Setup updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoCampaign'
+
+  /api/v1/phishing/campaigns/{campaignId}/step/2/voice-setup:
+    put:
+      tags: [Campaigns]
+      operationId: updateVoiceSetup
+      summary: Step 2 — Voice setup (consent, upload sample, clone voice, caller ID)
+      description: >
+        Uploads an audio sample and creates a one-shot voice clone via the selected
+        provider (default ELEVENLABS). Stores consent, external voice id, and caller ID
+        on the campaign.
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+        - name: provider
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/VoiceCloneProvider'
+          description: Voice clone provider. Defaults to ELEVENLABS.
+        - name: language
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Language label stored on the clone (e.g. English (US)).
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file, consentConfirmed]
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: Audio sample for voice cloning (wav, mp3, m4a, webm, ogg, flac; max 20MB)
+                consentConfirmed:
+                  type: boolean
+                consentText:
+                  type: string
+                callerId:
+                  type: string
+                  description: E.164 outbound number; optional if set on voice server config
+      responses:
+        '200':
+          description: Voice setup saved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoCampaign'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  /api/v1/phishing/campaigns/{campaignId}/step/3/scenario:
+    put:
+      tags: [Campaigns]
+      operationId: updateScenario
+      summary: Step 3 — Attach published vishing scenario and LLM config
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CampaignScenarioRequest'
+      responses:
+        '200':
+          description: Scenario attached
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoCampaign'
+        '400':
+          description: Scenario not published or not voice channel
+
+  /api/v1/phishing/campaigns/{campaignId}/step/4/telephony:
+    put:
+      tags: [Campaigns]
+      operationId: updateTelephony
+      summary: Step 4 — Telephony provider, region, retry policy
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CampaignTelephonyRequest'
+      responses:
+        '200':
+          description: Telephony configuration saved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoCampaign'
+
+  /api/v1/phishing/campaigns/{campaignId}/step/5:
+    put:
+      tags: [Campaigns]
+      operationId: updateCampaignTags
+      summary: Step 5 — Campaign tags
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CampaignTagsRequest'
+      responses:
+        '200':
+          description: Tags updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoCampaign'
+
+  /api/v1/phishing/campaigns/{campaignId}/step/6:
+    put:
+      tags: [Campaigns]
+      operationId: updateCampaignAudience
+      summary: Step 6 — Select audience
+      description: Resolves users via Registration service internally.
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CampaignAudienceRequest'
+      responses:
+        '200':
+          description: Audience updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoCampaign'
+
+  /api/v1/phishing/campaigns/{campaignId}/step/7:
+    put:
+      tags: [Campaigns]
+      operationId: updateCampaignTraining
+      summary: Step 7 — Training and content
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CampaignTrainingRequest'
+      responses:
+        '200':
+          description: Training configuration saved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoCampaign'
+
+  /api/v1/phishing/campaigns/{campaignId}/step/8:
+    put:
+      tags: [Campaigns]
+      operationId: updateCampaignSchedule
+      summary: Step 8 — Schedule
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CampaignScheduleRequest'
+      responses:
+        '200':
+          description: Schedule saved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoCampaign'
+
+  /api/v1/phishing/campaigns/{campaignId}/launch:
+    post:
+      tags: [Campaigns]
+      operationId: launchCampaign
+      summary: Launch vishing campaign
+      description: Validates voice clone, scenario, telephony, caller ID; enqueues calls to SQS.
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      responses:
+        '200':
+          description: Campaign launched (RUNNING)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoCampaign'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  /api/v1/phishing/campaigns/{campaignId}/pause:
+    post:
+      tags: [Campaigns]
+      operationId: pauseCampaign
+      summary: Pause running campaign
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      responses:
+        '200':
+          description: Campaign paused
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoCampaign'
+
+  /api/v1/phishing/campaigns/{campaignId}/resume:
+    post:
+      tags: [Campaigns]
+      operationId: resumeCampaign
+      summary: Resume paused campaign
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      responses:
+        '200':
+          description: Campaign resumed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoCampaign'
+
+  /api/v1/phishing/campaigns/{campaignId}/cancel:
+    post:
+      tags: [Campaigns]
+      operationId: cancelCampaign
+      summary: Cancel campaign
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      responses:
+        '200':
+          description: Campaign cancelled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoCampaign'
+
+  /api/v1/phishing/campaigns/{campaignId}/recipients:
+    get:
+      tags: [Campaigns]
+      operationId: getCampaignRecipients
+      summary: List campaign recipients
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/pageSize'
+        - $ref: '#/components/parameters/searchParam'
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+            default: email
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+            enum: [asc, desc]
+            default: asc
+      responses:
+        '200':
+          description: Paginated recipient list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllResponseDtoRecipientList'
+
+  /api/v1/phishing/campaigns/{campaignId}/stats:
+    get:
+      tags: [Campaigns]
+      operationId: getCampaignStats
+      summary: Get campaign statistics (includes voice counters)
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      responses:
+        '200':
+          description: Campaign stats
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoCampaignStats'
+
+  /api/v1/phishing/campaigns/{campaignId}/stats/refresh:
+    post:
+      tags: [Campaigns]
+      operationId: refreshCampaignStats
+      summary: Recalculate campaign statistics from recipients
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      responses:
+        '200':
+          description: Refreshed stats
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoCampaignStats'
+
+  /api/v1/phishing/campaigns/{campaignId}/recommended-topics:
+    get:
+      tags: [Campaigns]
+      operationId: getRecommendedTopics
+      summary: Step 7 — CMS topic recommendations for training
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+        - name: productId
+          in: query
+          schema:
+            type: string
+        - name: packageId
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: size
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: Recommended CMS topics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoCmsTopics'
+
+  # ===========================================================================
+  # VISHING DASHBOARD
+  # ===========================================================================
+
+  /api/v1/phishing/campaigns/{campaignId}/vishing/data-capture:
+    get:
+      tags: [Vishing Dashboard]
+      operationId: getVishingDataCapture
+      summary: Data capture — call logs, transcripts, compromise count
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/pageSize'
+      responses:
+        '200':
+          description: Data capture page
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoVishingDataCapture'
+
+  /api/v1/phishing/campaigns/{campaignId}/vishing/success-keywords:
+    get:
+      tags: [Vishing Dashboard]
+      operationId: getSuccessKeywords
+      summary: Get compromise detection keywords
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      responses:
+        '200':
+          description: Keyword list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoStringList'
+    put:
+      tags: [Vishing Dashboard]
+      operationId: updateSuccessKeywords
+      summary: Update compromise detection keywords
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SuccessKeywordsRequest'
+      responses:
+        '200':
+          description: Keywords updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoStringList'
+
+  /api/v1/phishing/campaigns/{campaignId}/vishing/remediation:
+    get:
+      tags: [Vishing Dashboard]
+      operationId: getVishingRemediation
+      summary: Remediation metrics (answer, engaged, compromise rates, avg risk)
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      responses:
+        '200':
+          description: Remediation metrics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoVishingRemediation'
+
+  /api/v1/phishing/campaigns/{campaignId}/vishing/teachable-moment:
+    post:
+      tags: [Vishing Dashboard]
+      operationId: sendTeachableMoment
+      summary: Send teachable moment notification to recipient
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeachableMomentRequest'
+      responses:
+        '200':
+          description: Teachable moment queued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoString'
+
+  /api/v1/phishing/campaigns/{campaignId}/vishing/report:
+    get:
+      tags: [Vishing Dashboard]
+      operationId: getVishingReport
+      summary: Vishing campaign report
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      responses:
+        '200':
+          description: Report data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoVishingReport'
+
+  /api/v1/phishing/campaigns/{campaignId}/vishing/report/export:
+    get:
+      tags: [Vishing Dashboard]
+      operationId: exportVishingReport
+      summary: Export vishing report (JSON or CSV)
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+        - name: format
+          in: query
+          schema:
+            type: string
+            enum: [json, csv]
+            default: json
+        - name: anonymize
+          in: query
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: Exported report file
+          content:
+            application/json:
+              schema:
+                type: string
+                format: binary
+            text/csv:
+              schema:
+                type: string
+                format: binary
+
+  /api/v1/phishing/campaigns/{campaignId}/vishing/live-metrics:
+    get:
+      tags: [Vishing Dashboard]
+      operationId: getVishingLiveMetrics
+      summary: Live simulation metrics
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      responses:
+        '200':
+          description: Live metrics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoVoiceLiveMetrics'
+
+  /api/v1/phishing/campaigns/{campaignId}/vishing/test-call:
+    post:
+      tags: [Vishing Dashboard]
+      operationId: sendVishingTestCall
+      summary: Browser test mode — initiate a single test call
+      parameters:
+        - $ref: '#/components/parameters/campaignId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoiceTestCallRequest'
+      responses:
+        '200':
+          description: Test call initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoString'
+
+  # ===========================================================================
+  # VISHING ATTACK TEMPLATES
+  # ===========================================================================
+
+  /api/v1/phishing/vishing-attack-templates:
+    get:
+      tags: [Vishing Attack Templates]
+      operationId: listVishingAttackTemplates
+      summary: List attack templates
+      description: Available to all authenticated users for the scenario Attack Template picker.
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/pageSize'
+        - $ref: '#/components/parameters/searchParam'
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+            default: createdAt
+            enum: [name, createdAt]
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+            default: desc
+            enum: [asc, desc]
+      responses:
+        '200':
+          description: Paginated attack template list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllResponseDtoVishingAttackTemplateList'
+    post:
+      tags: [Vishing Attack Templates]
+      operationId: createVishingAttackTemplate
+      summary: Create attack template
+      description: Platform admin only (ASPIRE_ADMIN / SUPER_ADMIN / SYSTEM_USER). Variables are auto-detected from script placeholders.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VishingAttackTemplateCreateRequest'
+            example:
+              name: Bank Fraud Alert
+              script: "Hello {{FIRST_NAME}}, this is your bank calling about suspicious activity."
+      responses:
+        '201':
+          description: Attack template created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoVishingAttackTemplate'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  /api/v1/phishing/vishing-attack-templates/{id}:
+    get:
+      tags: [Vishing Attack Templates]
+      operationId: getVishingAttackTemplate
+      summary: Get attack template by ID
+      parameters:
+        - $ref: '#/components/parameters/attackTemplateId'
+      responses:
+        '200':
+          description: Attack template details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoVishingAttackTemplate'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags: [Vishing Attack Templates]
+      operationId: updateVishingAttackTemplate
+      summary: Update attack template
+      description: Platform admin only. Variables are re-detected from script.
+      parameters:
+        - $ref: '#/components/parameters/attackTemplateId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VishingAttackTemplateUpdateRequest'
+      responses:
+        '200':
+          description: Attack template updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoVishingAttackTemplate'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags: [Vishing Attack Templates]
+      operationId: deleteVishingAttackTemplate
+      summary: Delete attack template
+      description: Platform admin only.
+      parameters:
+        - $ref: '#/components/parameters/attackTemplateId'
+      responses:
+        '200':
+          description: Attack template deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoString'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ===========================================================================
+  # VISHING SCENARIOS
+  # ===========================================================================
+
+  /api/v1/phishing/vishing-scenarios:
+    get:
+      tags: [Vishing Scenarios]
+      operationId: listVishingScenarios
+      summary: List scenarios (client-owned + global library)
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/pageSize'
+        - $ref: '#/components/parameters/searchParam'
+      responses:
+        '200':
+          description: Paginated scenario list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllResponseDtoVishingScenarioList'
+    post:
+      tags: [Vishing Scenarios]
+      operationId: createVishingScenario
+      summary: Create scenario (DRAFT)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VishingScenarioCreateRequest'
+      responses:
+        '201':
+          description: Scenario created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoVishingScenario'
+
+  /api/v1/phishing/vishing-scenarios/{id}:
+    get:
+      tags: [Vishing Scenarios]
+      operationId: getVishingScenario
+      summary: Get scenario by ID
+      parameters:
+        - $ref: '#/components/parameters/scenarioId'
+      responses:
+        '200':
+          description: Scenario details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoVishingScenario'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags: [Vishing Scenarios]
+      operationId: updateVishingScenario
+      summary: Update scenario
+      parameters:
+        - $ref: '#/components/parameters/scenarioId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VishingScenarioUpdateRequest'
+      responses:
+        '200':
+          description: Scenario updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoVishingScenario'
+    delete:
+      tags: [Vishing Scenarios]
+      operationId: deleteVishingScenario
+      summary: Delete scenario
+      parameters:
+        - $ref: '#/components/parameters/scenarioId'
+      responses:
+        '200':
+          description: Scenario deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoString'
+
+  /api/v1/phishing/vishing-scenarios/{id}/publish:
+    post:
+      tags: [Vishing Scenarios]
+      operationId: publishVishingScenario
+      summary: Publish scenario (required before campaign Step 3)
+      parameters:
+        - $ref: '#/components/parameters/scenarioId'
+      responses:
+        '200':
+          description: Scenario published
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoVishingScenario'
+
+  # ===========================================================================
+  # VOICE SERVER CONFIGURATIONS
+  # ===========================================================================
+
+  /api/v1/phishing/voice-server-configurations:
+    get:
+      tags: [Voice Server Configurations]
+      operationId: listVoiceServerConfigurations
+      summary: List voice server configurations
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/pageSize'
+        - name: clientId
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Paginated configuration list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllResponseDtoVoiceServerList'
+    post:
+      tags: [Voice Server Configurations]
+      operationId: createVoiceServerConfiguration
+      summary: Create voice server configuration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoiceServerConfigurationRequest'
+      responses:
+        '201':
+          description: Configuration created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoVoiceServer'
+
+  /api/v1/phishing/voice-server-configurations/default:
+    get:
+      tags: [Voice Server Configurations]
+      operationId: getDefaultVoiceServerConfiguration
+      summary: Get default voice server configuration
+      responses:
+        '200':
+          description: Default configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoVoiceServer'
+
+  /api/v1/phishing/voice-server-configurations/{id}:
+    get:
+      tags: [Voice Server Configurations]
+      operationId: getVoiceServerConfiguration
+      summary: Get configuration by ID
+      parameters:
+        - $ref: '#/components/parameters/voiceServerId'
+      responses:
+        '200':
+          description: Configuration details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoVoiceServer'
+    put:
+      tags: [Voice Server Configurations]
+      operationId: updateVoiceServerConfiguration
+      summary: Update configuration
+      parameters:
+        - $ref: '#/components/parameters/voiceServerId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoiceServerConfigurationRequest'
+      responses:
+        '200':
+          description: Configuration updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoVoiceServer'
+    delete:
+      tags: [Voice Server Configurations]
+      operationId: deleteVoiceServerConfiguration
+      summary: Delete configuration
+      parameters:
+        - $ref: '#/components/parameters/voiceServerId'
+      responses:
+        '200':
+          description: Configuration deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoString'
+
+  /api/v1/phishing/voice-server-configurations/{id}/set-default:
+    post:
+      tags: [Voice Server Configurations]
+      operationId: setDefaultVoiceServerConfiguration
+      summary: Set configuration as default
+      parameters:
+        - $ref: '#/components/parameters/voiceServerId'
+      responses:
+        '200':
+          description: Default updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoVoiceServer'
+
+  /api/v1/phishing/voice-server-configurations/{id}/test:
+    post:
+      tags: [Voice Server Configurations]
+      operationId: testVoiceServerConfiguration
+      summary: Initiate test call using configuration
+      parameters:
+        - $ref: '#/components/parameters/voiceServerId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoiceServerTestRequest'
+      responses:
+        '200':
+          description: Test call result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoTestResult'
+
+  # ===========================================================================
+  # VOICE INGESTION WEBHOOKS (telephony worker)
+  # ===========================================================================
+
+  /v/calls/{trackingId}/status:
+    post:
+      tags: [Voice Ingestion]
+      operationId: recordCallStatus
+      summary: Record interim call lifecycle status
+      description: Updates recipient status (CALL_QUEUED, CALL_RINGING, ANSWERED, etc.) and increments stats.
+      security:
+        - voiceIngestionApiKey: []
+      parameters:
+        - $ref: '#/components/parameters/trackingId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoiceCallStatusRequest'
+      responses:
+        '200':
+          description: Status recorded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoString'
+        '401':
+          description: Invalid X-Voice-Ingestion-Key
+
+  /v/calls/{trackingId}/result:
+    post:
+      tags: [Voice Ingestion]
+      operationId: processCallResult
+      summary: Process final call result
+      description: |
+        Applies vishing scoring, updates stats, assigns training, and writes call log.
+        Training triggers: ENGAGED (click-equivalent), COMPROMISED (compromise-equivalent).
+      security:
+        - voiceIngestionApiKey: []
+      parameters:
+        - $ref: '#/components/parameters/trackingId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoiceCallResultRequest'
+      responses:
+        '200':
+          description: Result processed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoString'
+        '401':
+          description: Invalid X-Voice-Ingestion-Key
+
+  # ===========================================================================
+  # VOICE CLONE (Deepfake — Step 2 support)
+  # ===========================================================================
+
+  /api/v1/deepfake/videos/{videoId}/step/4:
+    put:
+      tags: [Voice Clone]
+      operationId: createVoiceClone
+      summary: Upload audio and create voice clone
+      description: Creates a one-shot voice clone for deepfake video. Vishing Step 2 now clones inline from its own audio upload and does not require this id.
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/videoId'
+        - name: provider
+          in: query
+          schema:
+            $ref: '#/components/schemas/VoiceCloneProvider'
+        - name: language
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file]
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: Audio sample for one-shot voice cloning
+      responses:
+        '200':
+          description: Voice clone created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoDeepfakeStep'
+
+  /api/v1/deepfake/videos:
+    get:
+      tags: [Voice Clone]
+      operationId: listDeepfakeVideos
+      summary: List deepfake videos (includes voice clone references)
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: uploadDate
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: title
+          in: query
+          schema:
+            type: string
+        - name: description
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Paginated video list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllResponseDtoDeepfakeVideoList'
+
+  /api/v1/deepfake/videos/{videoId}:
+    get:
+      tags: [Voice Clone]
+      operationId: getDeepfakeVideo
+      summary: Get deepfake video details (voice clone state)
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/videoId'
+      responses:
+        '200':
+          description: Video details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoDeepfakeVideoDetail'
+
+  # ===========================================================================
+  # SPEECH-TO-TEXT (post-call audio fallback)
+  # ===========================================================================
+
+  /api/v1/stt/transcribe:
+    post:
+      tags: [Speech-to-Text]
+      operationId: uploadAudioForTranscription
+      summary: Upload audio for transcription
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: languageHint
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file]
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Upload accepted; returns audioId
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SttUploadResponse'
+
+  /api/v1/stt/{audioId}:
+    get:
+      tags: [Speech-to-Text]
+      operationId: getTranscriptionStatus
+      summary: Get transcription status and result
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/audioId'
+      responses:
+        '200':
+          description: Transcription status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SttStatusResponse'
+
+  # ===========================================================================
+  # CATALOG (reused dropdowns)
+  # ===========================================================================
+
+  /api/v1/phishing/tones:
+    get:
+      tags: [Catalog]
+      operationId: listTones
+      summary: Tone dropdown (scenario creation)
+      parameters:
+        - $ref: '#/components/parameters/searchParam'
+        - name: isActive
+          in: query
+          schema:
+            type: boolean
+            default: true
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/pageSize'
+      responses:
+        '200':
+          description: Tone catalog
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoToneList'
+
+  /api/v1/phishing/email-types:
+    get:
+      tags: [Catalog]
+      operationId: listEmailTypes
+      summary: Attack template dropdown
+      parameters:
+        - $ref: '#/components/parameters/searchParam'
+        - name: isActive
+          in: query
+          schema:
+            type: boolean
+            default: true
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/pageSize'
+      responses:
+        '200':
+          description: Email type / attack template catalog
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllResponseDtoEmailTypeList'
+
+  /api/v1/phishing/email-templates/languages:
+    get:
+      tags: [Catalog]
+      operationId: getSupportedLanguages
+      summary: Supported languages dropdown
+      responses:
+        '200':
+          description: Language code to display name map
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoStringMap'
+
+  /api/v1/phishing/email-templates/tags:
+    get:
+      tags: [Catalog]
+      operationId: getAvailableTags
+      summary: Predefined campaign tags (Step 5)
+      responses:
+        '200':
+          description: Tag list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoStringList'
+
+  # ===========================================================================
+  # AI CONFIGURATION (voice engine credentials)
+  # ===========================================================================
+
+  /api/v1/phishing/ai-config:
+    get:
+      tags: [AI Configuration]
+      operationId: listAiProviderSecretRefs
+      summary: List AI provider secret references (ElevenLabs, etc.)
+      responses:
+        '200':
+          description: Provider metadata list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoAiProviderRefList'
+    post:
+      tags: [AI Configuration]
+      operationId: saveAiGlobalConfig
+      summary: Save global AI provider credentials
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AiGlobalConfigRequest'
+      responses:
+        '200':
+          description: Configuration saved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoAiGlobalConfig'
+
+  # ===========================================================================
+  # USER RISK PROFILE & TRAINING SCORE
+  # ===========================================================================
+
+  /api/v1/phishing/user-risk-profiles:
+    get:
+      tags: [User Risk Profile]
+      operationId: listUserRiskProfiles
+      summary: List user risk profiles
+      parameters:
+        - name: clientAdminId
+          in: query
+          schema:
+            type: string
+        - name: department
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+        - $ref: '#/components/parameters/offset'
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            default: 20
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+            default: riskScore
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+            enum: [asc, desc]
+            default: desc
+      responses:
+        '200':
+          description: Paginated risk profiles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllResponseDtoUserRiskList'
+    post:
+      tags: [User Risk Profile]
+      operationId: saveUserRiskProfile
+      summary: Create or update user risk profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRiskProfileSaveRequest'
+      responses:
+        '200':
+          description: Profile saved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoUserRiskSummary'
+
+  /api/v1/phishing/user-risk-profiles/export:
+    get:
+      tags: [User Risk Profile]
+      operationId: exportUserRiskProfilesCsv
+      summary: Export user risk profiles as CSV
+      parameters:
+        - name: clientAdminId
+          in: query
+          schema:
+            type: string
+        - name: department
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: CSV export
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+
+  /api/v1/phishing/user-risk-profiles/{id}:
+    get:
+      tags: [User Risk Profile]
+      operationId: getUserRiskProfile
+      summary: Get user risk profile by ID
+      parameters:
+        - $ref: '#/components/parameters/userRiskProfileId'
+      responses:
+        '200':
+          description: Risk profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoUserRiskSummary'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags: [User Risk Profile]
+      operationId: updateUserRiskProfile
+      summary: Update user risk profile by ID
+      parameters:
+        - $ref: '#/components/parameters/userRiskProfileId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRiskProfileSaveRequest'
+      responses:
+        '200':
+          description: Profile updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoUserRiskSummary'
+
+  /api/v1/phishing/training-risk-score/{userId}:
+    post:
+      tags: [Training Risk Score]
+      operationId: updateTrainingRiskScore
+      summary: Update training risk score after microcontent completion
+      parameters:
+        - $ref: '#/components/parameters/userId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrainingRiskScoreRequest'
+      responses:
+        '200':
+          description: Updated overall risk score
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDtoDouble'
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Standard admin/UI authentication
+    voiceIngestionApiKey:
+      type: apiKey
+      in: header
+      name: X-Voice-Ingestion-Key
+      description: Required when voice.ingestion.api-key is configured in application.yml
+
+  parameters:
+    campaignId:
+      name: campaignId
+      in: path
+      required: true
+      schema:
+        type: string
+    scenarioId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    attackTemplateId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Vishing attack template ID
+    voiceServerId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    trackingId:
+      name: trackingId
+      in: path
+      required: true
+      schema:
+        type: string
+    videoId:
+      name: videoId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    audioId:
+      name: audioId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    userRiskProfileId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    userId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    pageSize:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
+        default: 10
+        minimum: 1
+    searchParam:
+      name: searchParam
+      in: query
+      schema:
+        type: string
+
+  responses:
+    BadRequest:
+      description: Validation error
+    NotFound:
+      description: Resource not found
+
+  schemas:
+
+    # --- Enums ---
+    CampaignChannel:
+      type: string
+      enum: [EMAIL, SMS, VOICE]
+
+    CampaignType:
+      type: string
+      enum:
+        - VISHING_SIMULATION
+        - VISHING_WITH_TRAINING
+
+    CampaignStatus:
+      type: string
+      enum: [DRAFT, SCHEDULED, RUNNING, PAUSED, COMPLETED, CANCELLED, EXPIRED]
+
+    VoiceResponseStage:
+      type: string
+      enum: [CALL_ENGAGED, COMPROMISED]
+
+    LearningMode:
+      type: string
+      enum: [MICRO_CONTENT]
+
+    VoiceCloneProvider:
+      type: string
+      enum: [ELEVENLABS, FISH_AUDIO]
+
+    VoiceProviderType:
+      type: string
+      enum: [TWILIO, GENERIC_SIP]
+
+    VoiceServerStatus:
+      type: string
+      enum: [ACTIVE, INACTIVE]
+
+    VishingScenarioStatus:
+      type: string
+      enum: [DRAFT, PUBLISHED]
+
+    LlmEscalationLimit:
+      type: string
+      enum: [LOW, MEDIUM, HIGH]
+
+    VishingCallOutcome:
+      type: string
+      enum:
+        - ANSWERED
+        - ENGAGED
+        - COMPROMISED
+        - NO_ANSWER
+        - FAILED
+        - ANSWERED_BUT_REPORTED
+        - REPORTED_WITHOUT_ANSWER
+      description: |
+        Scoring tiers (PhishingRiskScore):
+        ANSWERED=20, ENGAGED=75, COMPROMISED=100,
+        ANSWERED_BUT_REPORTED=10, others=0.
+
+    RecipientStatus:
+      type: string
+      description: Voice-relevant recipient statuses
+      enum:
+        - PENDING
+        - CALL_QUEUED
+        - CALL_RINGING
+        - ANSWERED
+        - VOICE_ENGAGED
+        - COMPROMISED
+        - NO_ANSWER
+        - CALL_FAILED
+        - REPORTED
+
+    # --- Request bodies ---
+    CampaignCreateRequest:
+      type: object
+      required: [campaignName, campaignType, channel]
+      properties:
+        campaignName:
+          type: string
+        campaignType:
+          $ref: '#/components/schemas/CampaignType'
+        channel:
+          type: string
+          enum: [VOICE]
+        assignedFor:
+          type: string
+          description: Ignored for VOICE; use responseStages instead
+        responseStages:
+          type: array
+          items:
+            $ref: '#/components/schemas/VoiceResponseStage'
+        learningMode:
+          $ref: '#/components/schemas/LearningMode'
+        expireDate:
+          type: string
+          format: date
+
+    CampaignVoiceSetupRequest:
+      type: object
+      required: [consentConfirmed]
+      properties:
+        consentConfirmed:
+          type: boolean
+        consentText:
+          type: string
+        callerId:
+          type: string
+          description: E.164 outbound number; optional if set on voice server config
+
+    CampaignScenarioRequest:
+      type: object
+      required: [scenarioId]
+      properties:
+        scenarioId:
+          type: string
+        enableLlmResponses:
+          type: boolean
+        escalationLimit:
+          $ref: '#/components/schemas/LlmEscalationLimit'
+
+    CampaignTelephonyRequest:
+      type: object
+      required: [voiceServerConfigurationId]
+      properties:
+        voiceServerConfigurationId:
+          type: string
+        region:
+          type: string
+        countryCode:
+          type: string
+        retryPolicy:
+          type: object
+          properties:
+            maxRetries:
+              type: integer
+              default: 3
+            intervalMinutes:
+              type: integer
+              default: 15
+
+    CampaignTagsRequest:
+      type: object
+      properties:
+        tags:
+          type: array
+          items:
+            type: string
+
+    CampaignAudienceRequest:
+      type: object
+      properties:
+        audienceType:
+          type: string
+        departmentIds:
+          type: array
+          items:
+            type: string
+        groupIds:
+          type: array
+          items:
+            type: string
+        userIds:
+          type: array
+          items:
+            type: string
+        riskGroups:
+          type: array
+          items:
+            type: string
+
+    CampaignTrainingRequest:
+      type: object
+      properties:
+        trainingModuleId:
+          type: string
+        name:
+          type: string
+        productId:
+          type: string
+        packageId:
+          type: string
+        productPackageId:
+          type: string
+        assignedFor:
+          type: string
+        completionDays:
+          type: object
+          properties:
+            durationUnit:
+              type: string
+            durationValue:
+              type: integer
+
+    CampaignScheduleRequest:
+      type: object
+      properties:
+        scheduleType:
+          type: string
+        scheduledAt:
+          type: string
+          format: date-time
+        timezone:
+          type: string
+        sendingConfig:
+          type: object
+
+    VoiceServerConfigurationRequest:
+      type: object
+      required: [name, provider]
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        provider:
+          $ref: '#/components/schemas/VoiceProviderType'
+        apiKey:
+          type: string
+        apiSecret:
+          type: string
+        callerId:
+          type: string
+        baseUrl:
+          type: string
+        region:
+          type: string
+        countryCode:
+          type: string
+        isDefault:
+          type: boolean
+          default: false
+        status:
+          $ref: '#/components/schemas/VoiceServerStatus'
+        providerMetadata:
+          type: object
+          additionalProperties:
+            type: string
+
+    VoiceServerTestRequest:
+      type: object
+      required: [phoneNumber]
+      properties:
+        phoneNumber:
+          type: string
+          description: E.164 format
+
+    VishingScenarioCreateRequest:
+      type: object
+      required: [scenarioName, scriptBody]
+      properties:
+        scenarioName:
+          type: string
+          maxLength: 150
+        description:
+          type: string
+        attackTemplateId:
+          type: string
+        attackTemplateName:
+          type: string
+        language:
+          type: string
+        tone:
+          type: string
+        role:
+          type: string
+        scriptBody:
+          type: string
+        enableLlmResponses:
+          type: boolean
+          default: true
+        escalationLimit:
+          $ref: '#/components/schemas/LlmEscalationLimit'
+        isGlobal:
+          type: boolean
+          default: false
+
+    VishingAttackTemplateCreateRequest:
+      type: object
+      required: [name, script]
+      properties:
+        name:
+          type: string
+          maxLength: 150
+          example: Bank Fraud Alert
+        script:
+          type: string
+          example: "Hello {{FIRST_NAME}}, this is your bank calling."
+
+    VishingAttackTemplateUpdateRequest:
+      allOf:
+        - $ref: '#/components/schemas/VishingAttackTemplateCreateRequest'
+
+    VishingAttackTemplateDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        script:
+          type: string
+        variables:
+          type: array
+          items:
+            type: string
+          example: ["{{FIRST_NAME}}"]
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    VishingScenarioUpdateRequest:
+      allOf:
+        - $ref: '#/components/schemas/VishingScenarioCreateRequest'
+
+    VoiceCallStatusRequest:
+      type: object
+      required: [status]
+      properties:
+        status:
+          $ref: '#/components/schemas/RecipientStatus'
+        startedAt:
+          type: string
+          format: date-time
+        retries:
+          type: integer
+
+    VoiceCallResultRequest:
+      type: object
+      required: [outcome]
+      properties:
+        outcome:
+          $ref: '#/components/schemas/VishingCallOutcome'
+        durationSeconds:
+          type: integer
+        retries:
+          type: integer
+        recordingS3Key:
+          type: string
+        transcript:
+          type: string
+        audioId:
+          type: string
+        detectedKeywords:
+          type: array
+          items:
+            type: string
+        sensitiveDataCaptured:
+          type: object
+          additionalProperties: true
+        sttLatencyMs:
+          type: number
+          format: double
+        llmLatencyMs:
+          type: number
+          format: double
+        ttsLatencyMs:
+          type: number
+          format: double
+        startedAt:
+          type: string
+          format: date-time
+        endedAt:
+          type: string
+          format: date-time
+
+    SuccessKeywordsRequest:
+      type: object
+      properties:
+        keywords:
+          type: array
+          items:
+            type: string
+
+    TeachableMomentRequest:
+      type: object
+      required: [recipientId]
+      properties:
+        recipientId:
+          type: string
+        message:
+          type: string
+
+    VoiceTestCallRequest:
+      type: object
+      required: [phoneNumber]
+      properties:
+        phoneNumber:
+          type: string
+          description: E.164 format
+        recipientId:
+          type: string
+
+    UserRiskProfileSaveRequest:
+      type: object
+      properties:
+        clientId:
+          type: string
+        userId:
+          type: string
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        department:
+          type: string
+
+    TrainingRiskScoreRequest:
+      type: object
+      properties:
+        clientAdminId:
+          type: string
+        riskScore:
+          type: number
+          format: double
+
+    AiGlobalConfigRequest:
+      type: object
+      description: See AiGlobalConfigRequest in phishing API module
+
+    # --- Response wrappers (outline) ---
+    ApiResponseDtoString:
+      type: object
+      properties:
+        message: { type: string }
+        statusCode: { type: integer }
+        data: { type: string }
+
+    ApiResponseDtoStringList:
+      type: object
+      properties:
+        message: { type: string }
+        statusCode: { type: integer }
+        data:
+          type: array
+          items: { type: string }
+
+    ApiResponseDtoStringMap:
+      type: object
+      properties:
+        message: { type: string }
+        statusCode: { type: integer }
+        data:
+          type: object
+          additionalProperties: { type: string }
+
+    ApiResponseDtoDouble:
+      type: object
+      properties:
+        message: { type: string }
+        statusCode: { type: integer }
+        data: { type: number }
+
+    ApiResponseDtoCampaign:
+      type: object
+      properties:
+        message: { type: string }
+        statusCode: { type: integer }
+        data: { $ref: '#/components/schemas/CampaignDto' }
+
+    AllResponseDtoCampaignList:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/CampaignDto' }
+        total: { type: integer }
+        offset: { type: integer }
+        pageSize: { type: integer }
+
+    ApiResponseDtoCampaignStats:
+      type: object
+      properties:
+        data: { $ref: '#/components/schemas/CampaignStatsDto' }
+
+    AllResponseDtoRecipientList:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/CampaignRecipientDto' }
+        total: { type: integer }
+
+    ApiResponseDtoCmsTopics:
+      type: object
+      properties:
+        data: { type: object }
+
+    ApiResponseDtoVishingDataCapture:
+      type: object
+      properties:
+        data: { $ref: '#/components/schemas/VishingDataCaptureDto' }
+
+    ApiResponseDtoVishingRemediation:
+      type: object
+      properties:
+        data: { $ref: '#/components/schemas/VishingRemediationDto' }
+
+    ApiResponseDtoVishingReport:
+      type: object
+      properties:
+        data: { $ref: '#/components/schemas/VishingReportDto' }
+
+    ApiResponseDtoVoiceLiveMetrics:
+      type: object
+      properties:
+        data: { $ref: '#/components/schemas/VoiceLiveMetricsDto' }
+
+    AllResponseDtoVishingScenarioList:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/VishingScenarioDto' }
+        total: { type: integer }
+
+    ApiResponseDtoVishingScenario:
+      type: object
+      properties:
+        data: { $ref: '#/components/schemas/VishingScenarioDto' }
+
+    AllResponseDtoVishingAttackTemplateList:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/VishingAttackTemplateDto' }
+        total: { type: integer }
+
+    ApiResponseDtoVishingAttackTemplate:
+      type: object
+      properties:
+        data: { $ref: '#/components/schemas/VishingAttackTemplateDto' }
+
+    AllResponseDtoVoiceServerList:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/VoiceServerConfigurationDto' }
+        total: { type: integer }
+
+    ApiResponseDtoVoiceServer:
+      type: object
+      properties:
+        data: { $ref: '#/components/schemas/VoiceServerConfigurationDto' }
+
+    ApiResponseDtoTestResult:
+      type: object
+      properties:
+        data: { $ref: '#/components/schemas/TestResultDto' }
+
+    ApiResponseDtoDeepfakeStep:
+      type: object
+      properties:
+        data: { type: object }
+
+    AllResponseDtoDeepfakeVideoList:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { type: object }
+        total: { type: integer }
+
+    ApiResponseDtoDeepfakeVideoDetail:
+      type: object
+      properties:
+        data: { type: object }
+
+    SttUploadResponse:
+      type: object
+      properties:
+        audioId: { type: string, format: uuid }
+
+    SttStatusResponse:
+      type: object
+      properties:
+        status: { type: string }
+        transcript: { type: string }
+
+    ApiResponseDtoToneList:
+      type: object
+      properties:
+        data: { type: object }
+
+    AllResponseDtoEmailTypeList:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { type: object }
+        total: { type: integer }
+
+    ApiResponseDtoAiProviderRefList:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { type: object }
+
+    ApiResponseDtoAiGlobalConfig:
+      type: object
+      properties:
+        data: { type: object }
+
+    AllResponseDtoUserRiskList:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/UserRiskSummaryDto' }
+        total: { type: integer }
+
+    ApiResponseDtoUserRiskSummary:
+      type: object
+      properties:
+        data: { $ref: '#/components/schemas/UserRiskSummaryDto' }
+
+    # --- Domain DTOs (outline) ---
+    CampaignDto:
+      type: object
+      description: Includes voiceData, voiceScenario, telephonyData, responseStages, learningMode, canLaunch
+
+    CampaignStatsDto:
+      type: object
+      properties:
+        callsTotal: { type: integer }
+        callsAnswered: { type: integer }
+        callsEngaged: { type: integer }
+        callsReported: { type: integer }
+        callsCompromised: { type: integer }
+        callsNoAnswer: { type: integer }
+        callsFailed: { type: integer }
+        retriesTriggered: { type: integer }
+        trainingAssignedCount: { type: integer }
+        trainingCompletedCount: { type: integer }
+
+    CampaignRecipientDto:
+      type: object
+
+    VoiceServerConfigurationDto:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        provider: { $ref: '#/components/schemas/VoiceProviderType' }
+        callerId: { type: string }
+        region: { type: string }
+        countryCode: { type: string }
+        isDefault: { type: boolean }
+        isGlobal:
+          type: boolean
+          description: True when created by ASPIRE_ADMIN / SUPER_ADMIN / SYSTEM_USER; visible to all clients (read-only for CLIENT_ADMIN / CLIENT)
+        canEdit:
+          type: boolean
+          description: Whether the current user may update, delete, set-default, or test this configuration
+        status: { $ref: '#/components/schemas/VoiceServerStatus' }
+
+    VishingScenarioDto:
+      type: object
+      properties:
+        id: { type: string }
+        scenarioName: { type: string }
+        status: { $ref: '#/components/schemas/VishingScenarioStatus' }
+        scriptBody: { type: string }
+        isGlobal: { type: boolean }
+
+    VishingDataCaptureDto:
+      type: object
+      properties:
+        totalCalls: { type: integer }
+        compromisedCount: { type: integer }
+        callLogs:
+          type: array
+          items: { $ref: '#/components/schemas/CallLogDto' }
+
+    VishingRemediationDto:
+      type: object
+      properties:
+        answerRate: { type: number }
+        engagedRate: { type: number }
+        compromiseRate: { type: number }
+        failureRate: { type: number }
+        averageRiskScore: { type: number }
+        trainingAssignedCount: { type: integer }
+        trainingCompletedCount: { type: integer }
+
+    VishingReportDto:
+      type: object
+      properties:
+        campaignId: { type: string }
+        callsTotal: { type: integer }
+        callsAnswered: { type: integer }
+        callsEngaged: { type: integer }
+        callsReported: { type: integer }
+        callsCompromised: { type: integer }
+        callsNoAnswer: { type: integer }
+        callsFailed: { type: integer }
+        retriesTriggered: { type: integer }
+
+    VoiceLiveMetricsDto:
+      type: object
+      properties:
+        activeCalls: { type: integer }
+        answeredCalls: { type: integer }
+        engagedCalls: { type: integer }
+        completedCalls: { type: integer }
+
+    CallLogDto:
+      type: object
+      properties:
+        trackingId: { type: string }
+        outcome: { $ref: '#/components/schemas/VishingCallOutcome' }
+        transcript: { type: string }
+        durationSeconds: { type: integer }
+        sensitiveDataCaptured:
+          type: object
+          additionalProperties: true
+        scenario:
+          type: string
+          description: >
+            Personalized scenario script with placeholders resolved.
+            Present only when sensitiveDataCaptured is non-empty; otherwise null.
+
+    TestResultDto:
+      type: object
+      properties:
+        success: { type: boolean }
+        message: { type: string }
+
+    UserRiskSummaryDto:
+      type: object
+      properties:
+        userId: { type: string }
+        phishingRiskScore: { type: number }
+        trainingRiskScore: { type: number }
+        riskScore: { type: number }
+        riskLevel: { type: string }

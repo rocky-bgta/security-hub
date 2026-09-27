@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: asat-gateway
+  namespace: dev
+  labels:
+    app: asat-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: asat-gateway
+  template:
+    metadata:
+      labels:
+        app: asat-gateway
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: role
+                    operator: In
+                    values:
+                      - general
+      # This toleration allows the pods to be scheduled on nodes with the taint "workload-type: cms".
+      tolerations:
+        - key: "workload-type"
+          operator: "Equal"
+          value: "general"
+          effect: "NoSchedule"
+      containers:
+        - name: asat-gateway
+#          image: IMAGE_PLACEHOLDER
+          image: 636499496141.dkr.ecr.us-east-1.amazonaws.com/aspire-gateway-asatv2:1.0.20
+          imagePullPolicy: Always
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: dev
+            - name: REDIS_HOST
+              value: "staging-redis-cluster.6jzneb.0001.use1.cache.amazonaws.com"
+            - name: REDIS_PORT
+              value: "6379"
+            - name: GATEWAY_BASE_URL
+              value: "http://k8s-dev-asatingr-3a805fed4e-838657218.us-east-1.elb.amazonaws.com"
+          ports:
+            - containerPort: 7030
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          readinessProbe:
+            httpGet:
+              path: /home
+              port: 7030
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /home
+              port: 7030
+            initialDelaySeconds: 15
+            periodSeconds: 20

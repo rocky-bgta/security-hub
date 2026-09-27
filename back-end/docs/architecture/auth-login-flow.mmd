@@ -1,0 +1,7 @@
+flowchart LR
+    FE[Frontend] --> GW[Gateway<br/>/gateway/auth/**]
+    GW --> LC[Auth LoginController<br/>core/controller]
+    LC --> LCI[LoginControllerImpl]
+    LCI --> TS[AccessTokenService]
+    TS --> RC[Registration Client / WebClient]
+    RC --> REGAPI[Registration Service Endpoint]

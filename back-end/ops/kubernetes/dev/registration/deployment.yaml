@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: asat-registration
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: asat-registration
+  template:
+    metadata:
+      labels:
+        app: asat-registration
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: role
+                    operator: In
+                    values:
+                      - registration
+      # This toleration allows the pods to be scheduled on nodes with the taint "workload-type: cms".
+      tolerations:
+        - key: "workload-type"
+          operator: "Equal"
+          value: "registration"
+          effect: "NoSchedule"
+      containers:
+        - name: asat-registration
+          # Best Practice: Use a placeholder that your CI/CD pipeline will replace.
+          image: IMAGE_PLACEHOLDER
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9090
+          # --- Resource Requests & Limits ---
+          # These are sensible starting points for a standard Spring Boot microservice.
+          resources:
+            # 'requests' are the minimum resources guaranteed to your pod by Kubernetes.
+            requests:
+              memory: "512Mi"   # 256 Mebibytes - A common minimum for a Spring Boot app to start.
+              cpu: "250m"       # 250 millicores (0.25 CPU) - Enough for an idle service.
+            # 'limits' are the maximum resources your pod is allowed to use.
+            limits:
+              memory: "1G"   # Prevents the app from consuming too much memory.
+              cpu: "500m"       # Allows the app to burst up to 0.5 CPU during request processing.

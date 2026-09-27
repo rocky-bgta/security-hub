@@ -1,0 +1,233 @@
+spring:
+  config:
+    import: "optional:classpath:common-defaults.yml,optional:classpath:common-defaults-prod.yml"
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:}
+      database: phishing
+
+server:
+  port: 5002
+
+# SSM (shared): /asat/common/prod/internal.service.api-key
+internal:
+  service:
+    api-key: ${INTERNAL_SERVICE_API_KEY:}
+    auth-enabled: ${INTERNAL_SERVICE_AUTH_ENABLED:true}
+
+service:
+  registration:
+    url: http://asat-registration-service:9090/registration/api/v1
+  cms:
+    url: http://asat-cms-service:5050/cms/api/v1
+
+notification:
+  service:
+#    url: http://localhost:5656
+    url: http://asat-notification-service:5656
+
+aws:
+  region: "us-east-1"
+  credentials:
+    # From SSM: /asat/local/phishing-service/aws.credentials.access-key (or env); do not commit real values
+    access-key: ${AWS_CREDENTIALS_ACCESS_KEY:}
+    # From SSM: /asat/local/phishing-service/aws.credentials.secret-key (or env); do not commit real values
+    secret-key: ${AWS_CREDENTIALS_SECRET_KEY:}
+  sqs:
+    campaign-email-queue-url: https://sqs.us-east-1.amazonaws.com/636499496141/phishing-campaign-emails
+    campaign-sms-queue-url: ${CAMPAIGN_SMS_SQS_QUEUE_URL:https://sqs.us-east-1.amazonaws.com/636499496141/phishing-campaign-sms-prod-queue}
+    stt-queue-url: ${AWS_STT_SQS_QUEUE_URL:https://sqs.us-east-1.amazonaws.com/636499496141/phishing-stt-prod-queue}
+    ai-content-generation-queue-url: ${AI_GENERATION_SQS_QUEUE_URL:https://sqs.us-east-1.amazonaws.com/636499496141/phishing-ai-email-template-prod-queue}
+    deepfake-render-queue-url: ${AWS_DEEPFAKE_SQS_QUEUE_URL:https://sqs.us-east-1.amazonaws.com/636499496141/phishing-deepfake-render-prod-queue}
+    micro-content-queue-url: ${MICRO_CONTENT_SQS_QUEUE_URL:https://sqs.us-east-1.amazonaws.com/636499496141/phishing-micro-content-prod-queue}
+    campaign-email-publish:
+      max-attempts: ${CAMPAIGN_EMAIL_SQS_PUBLISH_MAX_ATTEMPTS:2}
+      initial-backoff-ms: ${CAMPAIGN_EMAIL_SQS_PUBLISH_INITIAL_BACKOFF_MS:250}
+    campaign-email-consumer:
+      max-messages-per-receive: ${CAMPAIGN_EMAIL_SQS_CONSUMER_MAX_MESSAGES:10}
+      wait-time-seconds: ${CAMPAIGN_EMAIL_SQS_CONSUMER_WAIT_TIME_SECONDS:20}
+      max-receive-cycles-per-poll: ${CAMPAIGN_EMAIL_SQS_CONSUMER_MAX_CYCLES_PER_POLL:20}
+      visibility-timeout-seconds: ${CAMPAIGN_EMAIL_SQS_CONSUMER_VISIBILITY_TIMEOUT_SECONDS:180}
+      poll-fixed-delay-ms: ${CAMPAIGN_EMAIL_SQS_CONSUMER_POLL_FIXED_DELAY_MS:2000}
+      scheduler-pool-size: ${CAMPAIGN_EMAIL_SQS_CONSUMER_SCHEDULER_POOL_SIZE:1}
+    campaign-sms-publish:
+      max-attempts: ${CAMPAIGN_SMS_SQS_PUBLISH_MAX_ATTEMPTS:2}
+      initial-backoff-ms: ${CAMPAIGN_SMS_SQS_PUBLISH_INITIAL_BACKOFF_MS:250}
+    campaign-sms-consumer:
+      max-messages-per-receive: ${CAMPAIGN_SMS_SQS_CONSUMER_MAX_MESSAGES:10}
+      wait-time-seconds: ${CAMPAIGN_SMS_SQS_CONSUMER_WAIT_TIME_SECONDS:20}
+      max-receive-cycles-per-poll: ${CAMPAIGN_SMS_SQS_CONSUMER_MAX_CYCLES_PER_POLL:20}
+      visibility-timeout-seconds: ${CAMPAIGN_SMS_SQS_CONSUMER_VISIBILITY_TIMEOUT_SECONDS:180}
+      poll-fixed-delay-ms: ${CAMPAIGN_SMS_SQS_CONSUMER_POLL_FIXED_DELAY_MS:2000}
+      scheduler-pool-size: ${CAMPAIGN_SMS_SQS_CONSUMER_SCHEDULER_POOL_SIZE:1}
+    campaign-voice-queue-url: ${CAMPAIGN_VOICE_SQS_QUEUE_URL:https://sqs.us-east-1.amazonaws.com/636499496141/phishing-campaign-vishing-prod-queue}
+    campaign-voice-publish:
+      max-attempts: ${CAMPAIGN_VOICE_SQS_PUBLISH_MAX_ATTEMPTS:2}
+      initial-backoff-ms: ${CAMPAIGN_VOICE_SQS_PUBLISH_INITIAL_BACKOFF_MS:250}
+    campaign-voice-consumer:
+      max-messages-per-receive: ${CAMPAIGN_VOICE_SQS_CONSUMER_MAX_MESSAGES:10}
+      wait-time-seconds: ${CAMPAIGN_VOICE_SQS_CONSUMER_WAIT_TIME_SECONDS:20}
+      max-receive-cycles-per-poll: ${CAMPAIGN_VOICE_SQS_CONSUMER_MAX_CYCLES_PER_POLL:20}
+      visibility-timeout-seconds: ${CAMPAIGN_VOICE_SQS_CONSUMER_VISIBILITY_TIMEOUT_SECONDS:180}
+      poll-fixed-delay-ms: ${CAMPAIGN_VOICE_SQS_CONSUMER_POLL_FIXED_DELAY_MS:2000}
+      scheduler-pool-size: ${CAMPAIGN_VOICE_SQS_CONSUMER_SCHEDULER_POOL_SIZE:1}
+    ai-content-generation-consumer:
+      max-messages-per-receive: ${AI_GENERATION_SQS_CONSUMER_MAX_MESSAGES:5}
+      wait-time-seconds: ${AI_GENERATION_SQS_CONSUMER_WAIT_TIME_SECONDS:20}
+      visibility-timeout-seconds: ${AI_GENERATION_SQS_CONSUMER_VISIBILITY_TIMEOUT_SECONDS:240}
+      poll-fixed-delay-ms: ${AI_GENERATION_SQS_CONSUMER_POLL_FIXED_DELAY_MS:2000}
+      scheduler-pool-size: ${AI_GENERATION_SQS_CONSUMER_SCHEDULER_POOL_SIZE:1}
+  s3:
+    bucket: ${AWS_S3_BUCKET:asatv2-media-bucket}
+  ses:
+    smtp:
+      username: ${aws_ses_smtp_username:}
+      password: ${aws_ses_smtp_password:}
+
+openai:
+  base-url: ${OPENAI_BASE_URL:https://api.openai.com/v1}
+  api:
+    key: ${OPENAI_API_KEY:}
+    model: ${OPENAI_AUDIO_MODEL:gpt-4o-transcribe}
+  timeout-seconds: ${OPENAI_TIMEOUT_SECONDS:60}
+
+retry:
+  max-attempts: ${STT_RETRY_MAX_ATTEMPTS:2}
+  backoff-ms: ${STT_RETRY_BACKOFF_MS:500}
+
+elevenlabs:
+  base-url: ${ELEVENLABS_BASE_URL:https://api.elevenlabs.io}
+  api:
+    key: ${ELEVENLABS_API_KEY:}
+  model-id: ${ELEVENLABS_MODEL_ID:eleven_multilingual_v2}
+  timeout-seconds: ${ELEVENLABS_TIMEOUT_SECONDS:120}
+
+fish:
+  base-url: ${FISH_BASE_URL:https://api.fish.audio}
+  api:
+    key: ${FISH_API_KEY:}
+  model: ${FISH_TTS_MODEL:s2.1-pro-free}
+  timeout-seconds: ${FISH_TIMEOUT_SECONDS:120}
+  clone:
+    train-mode: ${FISH_CLONE_TRAIN_MODE:fast}
+    visibility: ${FISH_CLONE_VISIBILITY:private}
+
+heygen:
+  base-url: ${HEYGEN_BASE_URL:https://api.heygen.com}
+  api:
+    key: ${HEYGEN_API_KEY:}
+  timeout-seconds: ${HEYGEN_TIMEOUT_SECONDS:120}
+  default-resolution: ${HEYGEN_DEFAULT_RESOLUTION:1080p}
+  default-aspect-ratio: ${HEYGEN_DEFAULT_ASPECT_RATIO:16:9}
+  default-expressiveness: ${HEYGEN_DEFAULT_EXPRESSIVENESS:low}
+  default-motion-prompt: ${HEYGEN_DEFAULT_MOTION_PROMPT:}
+  engine-type: ${HEYGEN_ENGINE_TYPE:}
+  poll:
+    max-attempts: ${HEYGEN_POLL_MAX_ATTEMPTS:180}
+    interval-ms: ${HEYGEN_POLL_INTERVAL_MS:5000}
+  backgrounds:
+    office: ${HEYGEN_BG_OFFICE:}
+    newsroom: ${HEYGEN_BG_NEWSROOM:}
+    studio: ${HEYGEN_BG_STUDIO:}
+    boardroom: ${HEYGEN_BG_BOARDROOM:}
+    greenscreen: ${HEYGEN_BG_GREENSCREEN:#00B140}
+    gradient: ${HEYGEN_BG_GRADIENT:#1a1a2e}
+
+deepfake:
+  poll-interval-ms: ${DEEPFAKE_POLL_INTERVAL_MS:3000}
+  presign-ttl-minutes: ${DEEPFAKE_PRESIGN_TTL_MINUTES:60}
+  voice-clone:
+    reuse-on-limit-reached: ${DEEPFAKE_VOICE_CLONE_REUSE_ON_LIMIT_REACHED:false}
+  stub:
+    placeholder-video-url: ${DEEPFAKE_STUB_PLACEHOLDER_VIDEO_URL:https://samplelib.com/lib/preview/mp4/sample-5s.mp4}
+  worker:
+    pool-size: ${DEEPFAKE_WORKER_POOL_SIZE:4}
+    queue-capacity: ${DEEPFAKE_WORKER_QUEUE_CAPACITY:50}
+  retry:
+    max-attempts: ${DEEPFAKE_RETRY_MAX_ATTEMPTS:2}
+    backoff-ms: ${DEEPFAKE_RETRY_BACKOFF_MS:1000}
+  render:
+    stale-processing-minutes: ${DEEPFAKE_STALE_PROCESSING_MINUTES:30}
+  micro-content:
+    poll-interval-ms: ${MICRO_CONTENT_POLL_INTERVAL_MS:3000}
+    worker:
+      pool-size: ${MICRO_CONTENT_WORKER_POOL_SIZE:2}
+      queue-capacity: ${MICRO_CONTENT_WORKER_QUEUE_CAPACITY:50}
+    retry:
+      max-attempts: ${MICRO_CONTENT_RETRY_MAX_ATTEMPTS:2}
+      backoff-ms: ${MICRO_CONTENT_RETRY_BACKOFF_MS:1000}
+    stale-processing-minutes: ${MICRO_CONTENT_STALE_PROCESSING_MINUTES:30}
+
+stt:
+  poll-interval-ms: ${STT_POLL_INTERVAL_MS:2000}
+  worker:
+    pool-size: ${STT_WORKER_POOL_SIZE:8}
+    queue-capacity: ${STT_WORKER_QUEUE_CAPACITY:100}
+
+tracking:
+  base-url: "https://portal.securityawarenesstraining.ai/gateway/phishing"
+  campaign-path-prefix: ${TRACKING_CAMPAIGN_PATH_PREFIX:}
+
+landing:
+  import:
+    max-http-attempts: ${LANDING_IMPORT_MAX_HTTP_ATTEMPTS:3}
+    max-redirects: ${LANDING_IMPORT_MAX_REDIRECTS:10}
+    asset:
+      max-count: ${LANDING_IMPORT_ASSET_MAX_COUNT:120}
+      max-bytes: ${LANDING_IMPORT_ASSET_MAX_BYTES:1048576}
+      total-byte-budget: ${LANDING_IMPORT_ASSET_TOTAL_BYTE_BUDGET:15728640}
+    browser-service:
+      enabled: ${LANDING_IMPORT_BROWSER_SERVICE_ENABLED:false}
+      url: ${LANDING_IMPORT_BROWSER_SERVICE_URL:http://127.0.0.1:3002/clone}
+      timeout-ms: ${LANDING_IMPORT_BROWSER_SERVICE_TIMEOUT_MS:30000}
+
+ai:
+  providers:
+    openai:
+      base-url: "https://api.openai.com"
+    gemini:
+      base-url: "https://generativelanguage.googleapis.com"
+  generation:
+    poll-interval-ms: ${AI_GENERATION_POLL_INTERVAL_MS:2000}
+    worker:
+      pool-size: ${AI_GENERATION_WORKER_POOL_SIZE:4}
+      queue-capacity: ${AI_GENERATION_WORKER_QUEUE_CAPACITY:50}
+      processing-max-attempts: ${AI_GENERATION_PROCESSING_MAX_ATTEMPTS:2}
+      processing-retry-backoff-ms: ${AI_GENERATION_PROCESSING_RETRY_BACKOFF_MS:500}
+
+logging:
+  level:
+    com.aspire.asat.phishing: DEBUG
+    software.amazon.awssdk: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+dashboard:
+  aggregation:
+    enabled: ${DASHBOARD_AGGREGATION_ENABLED:true}
+    # Once per day at midnight (server default timezone)
+    cron: ${DASHBOARD_AGGREGATION_CRON:0 0 0 * * ?}
+    rolling-window-days: ${DASHBOARD_ROLLING_WINDOW_DAYS:30}
+
+voice:
+  ingestion:
+    api-key: ${VOICE_INGESTION_API_KEY:}
+  recording:
+    s3-bucket: ${VOICE_RECORDING_S3_BUCKET:}
+  twilio:
+    validate-signature: ${VOICE_TWILIO_VALIDATE_SIGNATURE:true}
+    gather:
+      timeout-seconds: ${VOICE_TWILIO_GATHER_TIMEOUT_SECONDS:20}
+      num-digits: ${VOICE_TWILIO_GATHER_NUM_DIGITS:6}
+      finish-on-key: ${VOICE_TWILIO_GATHER_FINISH_ON_KEY:}
+      speech-timeout: ${VOICE_TWILIO_GATHER_SPEECH_TIMEOUT:auto}
+      speech-hints: ${VOICE_TWILIO_GATHER_SPEECH_HINTS:}
+    messages:
+      no-input: ${VOICE_TWILIO_MSG_NO_INPUT:We did not receive your response. Goodbye.}
+      compromised: ${VOICE_TWILIO_MSG_COMPROMISED:Thank you. Your request has been processed. Goodbye.}
+      engaged: ${VOICE_TWILIO_MSG_ENGAGED:Thank you for your response. Goodbye.}
+      answered: ${VOICE_TWILIO_MSG_ANSWERED:Thank you. Goodbye.}
+
+
+shortener:
+  env-prefix: "11" #Don't change this code

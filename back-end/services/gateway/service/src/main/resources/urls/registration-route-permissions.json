@@ -1,0 +1,679 @@
+{
+  "registration": [
+    {
+      "_comment": "Client Admin Onboarding"
+    },
+    {
+      "path": "/api/v1/client/admin/product-license/used-count",
+      "method": "PUT",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/client/admin/product/package/{id}/used-license-count",
+      "method": "PUT",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/client/admin/activate-license/{clientId}",
+      "method": "PUT",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/client/admin/expire-license/{clientId}",
+      "method": "PUT",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/client/admin/validate-template",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/client/admin/onboard",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/client/admin/username/exists",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/client/admin/products",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "Tier Configuration"
+    },
+    {
+      "path": "/api/tier",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/tier",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/tier/by-msp",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "MSP User Onboarding"
+    },
+    {
+      "path": "/api/v1/msp/onboarding",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "Role Management"
+    },
+    {
+      "path": "/api/v1/role/{id}",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/role/{id}",
+      "method": "PUT",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/role/{id}",
+      "method": "DELETE",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/role",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/role",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "Role Permission Management"
+    },
+    {
+      "path": "/api/v1/role-permissions",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/role-permissions/menu",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "End User Management"
+    },
+    {
+      "path": "/api/v1/end-user",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/end-user",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/end-user/import",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/end-user/bulk-import/validate",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/end-user/bulk-import/{sessionId}/users",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/end-user/bulk-import/{sessionId}/users",
+      "method": "PUT",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/end-user/bulk-import/{sessionId}/onboard",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/end-user/assign-product",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/end-user/unassigned",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/end-user/migrate-trial-user",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "user-controller-impl"
+    },
+    {
+      "path": "/api/v1/user",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/user",
+      "method": "PUT",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/user",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/user/upload-csv",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/user/bulk-user",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/user/{id}",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/user/search",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "packages-controller-impl"
+    },
+    {
+      "path": "/api/v1/packages",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/packages",
+      "method": "PUT",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/packages",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/packages/{id}",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "msp-controller-impl"
+    },
+    {
+      "path": "/api/v1/msp",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/msp",
+      "method": "PUT",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/msp",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/msp/{id}",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/msp/search",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "msp-client-license-controller"
+    },
+    {
+      "path": "/api/v1/msp/client-licenses",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/msp/client-licenses/clients/{clientAdminId}",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/msp/client-licenses/clients/{clientAdminId}/usage",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/msp/client-licenses/export",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "license-controller-impl"
+    },
+    {
+      "path": "/api/v1/license",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/license",
+      "method": "PUT",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/license",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/license/count",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "lesson-controller-impl"
+    },
+    {
+      "path": "/api/v1/lesson",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/lesson",
+      "method": "PUT",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/lesson",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/lesson/{id}",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "course-controller-impl"
+    },
+    {
+      "path": "/api/v1/course",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/course",
+      "method": "PUT",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/course",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/course/{id}",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "content-controller-impl"
+    },
+    {
+      "path": "/api/v1/content",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/content",
+      "method": "PUT",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/content",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/content/count",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "client-controller-impl"
+    },
+    {
+      "path": "/api/v1/client",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/client",
+      "method": "PUT",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/client",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/client/upload-csv",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/client/bulk-client",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/client/{id}",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/client/search",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/client/company/{companyName}",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "menu-controller-impl"
+    },
+    {
+      "path": "/api/menus/{id}",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/menus/{id}",
+      "method": "PUT",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/menus/{id}",
+      "method": "DELETE",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/menus",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/menus",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/menus/with-permissions",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "email-controller-impl"
+    },
+    {
+      "path": "/api/v1/notification",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "info-controller-impl"
+    },
+    {
+      "path": "/api/v1/info",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/info",
+      "method": "POST",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "translation-controller-impl"
+    },
+    {
+      "path": "/api/v1/translate",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "stats-controller-impl"
+    },
+    {
+      "path": "/api/v1/stats",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "form-controller-impl"
+    },
+    {
+      "path": "/api/v1/form-data/user-info",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "_comment": "Super Admin"
+    },
+    {
+      "path": "/api/v1/super-admin/license-history",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    },
+    {
+      "path": "/api/v1/super-admin/msp-license-history",
+      "method": "GET",
+      "permissions": [
+        "ALL"
+      ]
+    }
+  ]
+}

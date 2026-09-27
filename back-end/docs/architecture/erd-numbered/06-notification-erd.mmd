@@ -1,0 +1,54 @@
+erDiagram
+    NOTIFICATION_TEMPLATE {
+        string id PK
+        string type
+        string channel
+    }
+
+    NOTIFICATION_HISTORY {
+        string id PK
+        string templateId FK
+        string recipientId
+        string status
+    }
+
+    IN_APP_NOTIFICATION {
+        string id PK
+        string recipientId
+        string status
+    }
+
+    NOTIFICATION_SETTINGS {
+        string id PK
+        string channel
+        boolean enabled
+    }
+
+    CLIENT_NOTIFICATION_SETTINGS {
+        string id PK
+        string clientAdminId FK
+        string type
+        boolean enabled
+    }
+
+    USER_NOTIFICATION_SETTINGS {
+        string id PK
+        string userId FK
+        string type
+        boolean enabled
+    }
+
+    NOTIFICATION_ROLE_SETTINGS {
+        string id PK
+        string roleName
+        string type
+        boolean enabled
+    }
+
+    NOTIFICATION_TEMPLATE ||--o{ NOTIFICATION_HISTORY : "sent history"
+    NOTIFICATION_TEMPLATE ||--o{ IN_APP_NOTIFICATION : "in-app"
+    NOTIFICATION_SETTINGS ||--o{ CLIENT_NOTIFICATION_SETTINGS : "client overrides"
+    NOTIFICATION_SETTINGS ||--o{ USER_NOTIFICATION_SETTINGS : "user overrides"
+    NOTIFICATION_SETTINGS ||--o{ NOTIFICATION_ROLE_SETTINGS : "role defaults"
+    CLIENT_NOTIFICATION_SETTINGS ||--o{ NOTIFICATION_HISTORY : "client-scoped sends"
+    USER_NOTIFICATION_SETTINGS ||--o{ NOTIFICATION_HISTORY : "user-scoped sends"

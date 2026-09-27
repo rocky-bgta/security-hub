@@ -1,0 +1,722 @@
+Date: Mon, 1 Dec 2025 14:43:45 +0000 (UTC)
+Message-ID: <2115517189.39.1764600225087@2f02167b5bca>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_38_1803943066.1764600225087"
+
+------=_Part_38_1803943066.1764600225087
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Use Case 2.1.6.3.2: Admin Creates Custom Landing Page for Create=
+s Campaign Setup (Step-3.2)</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Use Case 2.1.6.3.2: Admin Creates Custom Landing Page for Creates C=
+ampaign Setup (Step-3.2)</h1>
+    <div class=3D"Section1">
+        <p><strong>User Story</strong></p>
+<p>As an Admin, I want to create a custom landing page by either importing =
+an existing site or adding my custom content directly, so that I can simula=
+te a personalized phishing experience for users.</p>
+<p><strong>Description</strong></p>
+<p>This use case outlines the process by which an Admin selects the <strong=
+>Custom Landing Page</strong> option, inputs the name of the landing page, =
+optionally imports an existing URL, and adds custom content through an HTML=
+ editor. After configuring the landing page, the Admin can save the landing=
+ page to be used in phishing simulations. This allows for a tailored phishi=
+ng campaign where the landing page can mimic real websites or contain custo=
+m messages as required.</p>
+<p><strong>Actors</strong></p>
+<ul>
+<li>
+<p><strong>Admin</strong>: Configures the custom landing page, imports a UR=
+L if required, and adds custom HTML content.</p></li>
+<li>
+<p><strong>System</strong>: Displays the custom landing page configuration =
+interface, validates inputs, and saves the landing page.</p></li>
+</ul>
+<p><strong>Preconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>Admin is logged into the platform and has access to the <strong>Create N=
+ew Campaign</strong> wizard.</p></li>
+<li>
+<p>Admin is at the <strong>Landing Page</strong> step in the campaign creat=
+ion wizard.</p></li>
+<li>
+<p>Admin has the option to select between <strong>Landing Page</strong>, <s=
+trong>Error/404: Page Not Found</strong>, or <strong>Custom Landing Page</s=
+trong>.</p></li>
+<li>
+<p>Admin has the option to import a landing page from an external URL or ad=
+d custom HTML content.</p></li>
+</ol>
+<p><strong>Postconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>A new <strong>Custom Landing Page</strong> is created and stored in the =
+system.</p></li>
+<li>
+<p>The landing page is available for use in phishing campaigns.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Main Flow (Normal Success Scenario)</strong></p>
+<p><strong>Step 1: Navigate to Landing Page Configuration</strong></p>
+<ul>
+<li>
+<p>The Admin navigates to the <strong>Landing Page</strong> configuration s=
+tep in the campaign creation wizard.</p></li>
+<li>
+<p>The system displays the <strong>Landing Page Type</strong> options, incl=
+uding <strong>Landing Page</strong>, <strong>Error/404: Page Not Found</str=
+ong>, and <strong>Custom Landing Page</strong>.</p></li>
+<li>
+<p>The Admin selects the <strong>Custom Landing Page </strong>option.</p></=
+li>
+</ul>
+<p><strong>Step 2: Enter Landing Page Name</strong></p>
+<ul>
+<li>
+<p>The Admin enters a <strong>Landing Page Name</strong>: A input field to =
+enter a unique Landing Page name. placeholder: Enter unique Landing Page na=
+me (max 50 characters)</p></li>
+<li>
+<p>The <strong>Name</strong> field is a required field for this step.</p></=
+li>
+</ul>
+<p><strong>Step 3: Import Site (Optional)</strong></p>
+<ul>
+<li>
+<p>The Admin can choose to <strong>Import Site</strong> by clicking on the =
+<strong>Import Site</strong> button to clone a web page.</p>
+<ul>
+<li>
+<p>If the Admin wants to import an existing website to use as the base for =
+the custom landing page, they can enter the website URL (e.g., "<a class=3D=
+"external-link" href=3D"http://example.com/" rel=3D"nofollow">http://exampl=
+e.com</a>").</p></li>
+<li>
+<p>The system fetches the content from the provided URL and allows the Admi=
+n to modify it for the phishing campaign.</p></li>
+</ul></li>
+</ul>
+<p><strong>Step 4: Add Custom HTML Content</strong></p>
+<ul>
+<li>
+<p>The Admin can add custom content in the <strong>HTML</strong> editor sec=
+tion.</p>
+<ul>
+<li>
+<p>The editor allows the Admin to write or paste custom HTML code for the l=
+anding page.</p></li>
+<li>
+<p>The Admin can use the available text formatting options in the HTML edit=
+or (e.g., bold, italics, text alignment, font size).</p></li>
+<li>
+<p>The Admin can <strong>preview </strong>the content as they edit it and m=
+ake changes as needed.</p></li>
+</ul></li>
+</ul>
+<p><strong>Step 5: Capture Submitted Data (Optional)</strong></p>
+<ul>
+<li>
+<p>The Admin can choose to enable the option <strong>Capture Submitted Data=
+</strong> if they want to record the data submitted by users on the landing=
+ page (e.g., login credentials, personal information). This will utilize We=
+bhook feature to capture the data.</p></li>
+<li>
+<p>This option ensures that any data entered by the target during the phish=
+ing simulation is captured and available for analysis.</p></li>
+</ul>
+<p><strong>Step 6: Save Custom Landing Page</strong></p>
+<ul>
+<li>
+<p>After entering the name and custom content, the Admin clicks <strong>Sav=
+e Page</strong>.</p></li>
+<li>
+<p>The system validates the input:</p>
+<ul>
+<li>
+<p>Ensures the <strong>Name</strong> field is filled.</p></li>
+<li>
+<p>Ensures the custom HTML content is not empty (if applicable).</p></li>
+<li>
+<p>The system saves the custom landing page and confirms the action.</p></l=
+i>
+</ul></li>
+</ul>
+<p><strong>Step 7: Confirmation and Exit</strong></p>
+<ul>
+<li>
+<p>After successfully saving the custom landing page, the system confirms t=
+he action by displaying: "Landing Page saved successfully."</p></li>
+<li>
+<p>The Admin can click <strong>Exit</strong> to return to the <strong>Campa=
+ign Setup</strong> or proceed to the next steps in the campaign creation pr=
+ocess.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Frontend Form Validation</strong></p>
+<p><strong>Field Validation Rules</strong></p>
+<ol start=3D"1">
+<li>
+<p><strong>Name Field</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory.</p></li>
+<li>
+<p><strong>Validation</strong>: The Admin must enter a name for the custom =
+landing page.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Landing page name is required."</p></li=
+>
+</ul></li>
+<li>
+<p><strong>HTML Content</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: The landing page body must not be empty.</p><=
+/li>
+<li>
+<p><strong>Validation</strong>: If the Admin uses the <strong>HTML editor</=
+strong>, the content must be valid HTML and not empty.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Landing page content cannot be empty. P=
+lease add custom HTML content."</p></li>
+</ul></li>
+<li>
+<p><strong>Import Site URL</strong>:</p>
+<ul>
+<li>
+<p><strong>Optional</strong>: Admin can choose to import a site, but this i=
+s not mandatory.</p></li>
+<li>
+<p><strong>Validation</strong>: If provided, the URL must be a valid URL fo=
+rmat (e.g., <a class=3D"external-link" href=3D"http://example.com/" rel=3D"=
+nofollow">http://example.com</a>).</p></li>
+<li>
+<p><strong>Error Message</strong>: "Please enter a valid website URL."</p><=
+/li>
+</ul></li>
+<li>
+<p><strong>Capture Submitted Data</strong>:</p>
+<ul>
+<li>
+<p><strong>Optional</strong>: Admin can enable or disable this option.</p><=
+/li>
+<li>
+<p><strong>Validation</strong>: If enabled, the system will capture and sto=
+re the data submitted on the landing page.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Please enable data capture if required.=
+"</p></li>
+</ul></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Business Rules</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"a4=
+9e163b-55f5-4c53-be40-c7750211b0c1" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Rule</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-1</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must provide a <strong>Name</strong> for the custom landing page b=
+efore saving it.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-2</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can <strong>Import Site</strong> by providing a valid URL, or they=
+ can manually input <strong>HTML</strong> content.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-3</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can enable <strong>Capture Submitted Data</strong> to record user =
+input on the custom landing page.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-4</p></td>
+<td class=3D"confluenceTd">
+<p>The system must validate that the <strong>HTML Content</strong> is not e=
+mpty if custom content is provided.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-5</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must click <strong>Save Page</strong> after configuring the custom=
+ landing page to confirm and store it.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-6</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can preview the custom landing page before saving.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>Acceptance Criteria</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"05=
+7167b4-30cb-4a13-aff9-3dfcbd3d7de4" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Acceptance Criteria</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Pass/Fail Condition</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-01</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can enter a <strong>Name</strong> for the custom landing page.</p>=
+</td>
+<td class=3D"confluenceTd">
+<p>The <strong>Name</strong> field is filled and saved successfully.</p></t=
+d>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-02</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can <strong>Import Site</strong> by entering a valid website URL.<=
+/p></td>
+<td class=3D"confluenceTd">
+<p>The site is imported and displayed for editing.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-03</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can add custom content using the <strong>HTML editor</strong>.</p>=
+</td>
+<td class=3D"confluenceTd">
+<p>Custom HTML content is added and displayed in the editor.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-04</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can enable or disable the <strong>Capture Submitted Data</strong> =
+option.</p></td>
+<td class=3D"confluenceTd">
+<p>The option is correctly enabled or disabled.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-05</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can <strong>Save Page</strong> after configuring the custom landin=
+g page.</p></td>
+<td class=3D"confluenceTd">
+<p>The landing page is saved and available for use in campaigns.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-06</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can <strong>Preview</strong> the custom landing page before saving=
+ it.</p></td>
+<td class=3D"confluenceTd">
+<p>The preview displays the custom landing page content correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-07</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can <strong>Exit</strong> the landing page creation interface afte=
+r saving or canceling.</p></td>
+<td class=3D"confluenceTd">
+<p>The Admin can exit and return to the campaign setup.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-08</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must provide a valid <strong>Name</strong> before saving the landi=
+ng page.</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Save</strong> button is disabled if the <strong>Name</strong=
+> field is empty.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-09</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can <strong>Import Site</strong> and view the site content for edi=
+ting.</p></td>
+<td class=3D"confluenceTd">
+<p>The imported site is editable in the HTML editor.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-10</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>HTML editor</strong> must allow formatting text and insertin=
+g HTML elements.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can format the text and add HTML elements correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-11</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select the <strong>Landing Page Type</strong> as <strong>Custo=
+m Landing Page</strong> from the available options.</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Custom Landing Page</strong> option is selected successfully=
+.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-12</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can review the landing page <strong>Preview</strong> before select=
+ing the template.</p></td>
+<td class=3D"confluenceTd">
+<p>The preview matches the expected custom content.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-13</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can save the custom landing page with the <strong>Save Page</stron=
+g> button.</p></td>
+<td class=3D"confluenceTd">
+<p>The landing page is saved without errors.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-14</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can use <strong>HTML editor</strong> to modify and view changes in=
+stantly.</p></td>
+<td class=3D"confluenceTd">
+<p>Changes are displayed instantly in the preview.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-15</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can choose between <strong>importing a site</strong> or <strong>ed=
+iting content</strong> manually.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can switch between importing a site or editing content.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-16</p></td>
+<td class=3D"confluenceTd">
+<p>Admin is warned if the <strong>Name</strong> field is left empty when at=
+tempting to save the landing page.</p></td>
+<td class=3D"confluenceTd">
+<p>An error message appears if the <strong>Name</strong> field is empty.</p=
+></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-17</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can cancel the process and return to the previous screen.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can click <strong>Cancel</strong> to exit without saving the page.=
+</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-18</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can configure and preview a fully functional <strong>Custom Landin=
+g Page</strong> using the <strong>HTML editor</strong>.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can preview the final design before saving.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-19</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can adjust the <strong>Capture Submitted Data</strong> functionali=
+ty to collect user information if necessary.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can toggle the option on/off to capture data.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-20</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can configure the <strong>Custom Landing Page</strong> to simulate=
+ a realistic phishing attempt.</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Custom Landing Page</strong> simulates a phishing scenario a=
+ccurately.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>System Behavior &amp; Validation</strong></p>
+<ul>
+<li>
+<p><strong>HTML Editor</strong>: Admin must enter content using the HTML ed=
+itor. The system should ensure the content is valid HTML.</p></li>
+<li>
+<p><strong>Import Site</strong>: Admin can import a site URL, and the syste=
+m will fetch and display the site for editing.</p></li>
+<li>
+<p><strong>Capture Data</strong>: The system should capture any data entere=
+d by the user if the <strong>Capture Submitted Data</strong> option is enab=
+led.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Security Handling</strong></p>
+<ul>
+<li>
+<p><strong>Data Integrity</strong>: All custom landing page content must be=
+ securely saved and accessible only by authorized personnel.</p></li>
+<li>
+<p><strong>Preview Security</strong>: The preview must accurately reflect t=
+he final landing page content.</p></li>
+<li>
+<p><strong>Capture Data Security</strong>: Any data captured from the landi=
+ng page must be securely stored and handled according to privacy guidelines=
+.</p></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_38_1803943066.1764600225087--

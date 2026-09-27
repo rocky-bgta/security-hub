@@ -1,0 +1,795 @@
+Date: Mon, 1 Dec 2025 14:43:28 +0000 (UTC)
+Message-ID: <2015764053.25.1764600208161@441140501eb6>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_24_2082178683.1764600208161"
+
+------=_Part_24_2082178683.1764600208161
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Use Case 2.1.6.3: Admin Selects Landing Page for Creates Campaig=
+n Setup (Step-3)</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Use Case 2.1.6.3: Admin Selects Landing Page for Creates Campaign S=
+etup (Step-3)</h1>
+    <div class=3D"Section1">
+        <p><strong>User Story</strong></p>
+<p>As an Admin, I want to select a landing page template for my phishing ca=
+mpaign, apply filters to narrow down the choices, preview the selected temp=
+late, and finalize the landing page selection, so that I can configure the =
+appropriate landing page for the phishing campaign.</p>
+<p><strong>Description</strong></p>
+<p>This use case describes the process by which the Aspire Admin selects a =
+landing page template for the phishing campaign. The Admin can filter landi=
+ng page templates based on various criteria (e.g., category, difficulty lev=
+el) and preview the selected template before confirming it. The Admin has t=
+he option to select between different types of landing pages, including the=
+ <strong>Landing Page</strong>, <strong>Error/404 Page Not Found</strong>, =
+and <strong>Custom Landing Page</strong>.</p>
+<p>The Admin selects the relevant landing page template, and once selected,=
+ the Admin can move on to the next step in the campaign setup. Additionally=
+, the Admin can preview the landing page to ensure it meets the campaign's =
+objectives before proceeding.</p>
+<p><strong>Actors</strong></p>
+<ul>
+<li>
+<p><strong>Admin</strong>: Selects the landing page, applies filters, previ=
+ews the template, and proceeds to the next step.</p></li>
+<li>
+<p><strong>System</strong>: Displays available landing page templates based=
+ on applied filters, shows the preview of the selected template, and allows=
+ the Admin to confirm their choice.</p></li>
+</ul>
+<p><strong>Preconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>Admin is logged into the platform and has access to the <strong>Create N=
+ew Campaign</strong> wizard.</p></li>
+<li>
+<p>The Admin is in the <strong>Landing Page Selection</strong> step.</p></l=
+i>
+<li>
+<p>The system has available landing page templates to choose from.</p></li>
+<li>
+<p>The Admin has the option to select <strong>Landing Page</strong>, <stron=
+g>Error/404 Page Not Found</strong>, or <strong>Custom Landing Page</strong=
+>.</p></li>
+</ol>
+<p><strong>Postconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>The selected landing page is confirmed for the phishing campaign.</p></l=
+i>
+<li>
+<p>The <strong>Save &amp; Continue</strong> button is enabled to proceed to=
+ the next step in the campaign creation.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Main Flow (Normal Success Scenario)</strong></p>
+<p><strong>Step 1: Navigate to Landing Page Selection</strong></p>
+<ul>
+<li>
+<p>The Admin navigates to the <strong>Landing Page Selection</strong> step =
+in the campaign creation wizard.</p></li>
+<li>
+<p>The system displays the <strong>Landing Page Type</strong> options, incl=
+uding <strong>Landing Page</strong>, <strong>Error/404 Page Not Found</stro=
+ng>, and <strong>Custom Landing Page</strong>.</p></li>
+</ul>
+<p><strong>Step 2: Select Landing Page Type</strong></p>
+<ul>
+<li>
+<p>The Admin selects the <strong>Landing Page</strong> option from the radi=
+o button.</p>
+<ul>
+<li>
+<p>For <strong>Landing Page</strong>, the Admin can view available template=
+s for phishing campaigns. p tag; Use predefined training pages to educate e=
+mployees immediately after they fall for phishing. Shows what they should h=
+ave noticed and provides security recommendations.</p></li>
+<li>
+<p>Alternatively, the Admin can choose <strong>Error/404 Page Not Found</st=
+rong>. p tag: Use for "blind" phishing campaigns where users shouldn't know=
+ it's a test. Shows a 404 error page, making it harder to suspect it's a se=
+curity check.</p></li>
+<li>
+<p>Alternatively, the Admin can choose <strong>Custom Landing Page</strong>=
+ for different types of campaigns. p tag: Redirect users to your own custom=
+ training page. You take full responsibility for the content and availabili=
+ty of this page.</p></li>
+</ul></li>
+</ul>
+<p><strong>Step 3: Select Geo Location</strong></p>
+<ul>
+<li>
+<p>The Admin selects the <strong>Geo Location</strong> from drop down<stron=
+g>. </strong>Default Template Type is set to <strong>USA </strong>(United S=
+tates, Canada, Brazil, Bangladesh, Australia, United Kingdom, Singapore, Ge=
+rmany, Italy, Poland, Netherlands, Belgium, Mexico, Egypt, Algeria, Sudan, =
+Saudi Arabia, Morocco, Indonesia, India, China). Other Geo Location will be=
+ display in the list only if the Admin has added them dynamically from the =
+setting.</p></li>
+</ul>
+<p><strong>Step 4: Select Template Type</strong></p>
+<ul>
+<li>
+<p>The Admin selects the <strong>Template Type</strong> from drop down<stro=
+ng>. </strong>Default Template Type is set to <strong>All Templates </stron=
+g>(Credential Harvesting, Financial Fraud, Malware Distribution, Data Theft=
+, Account Takeover, Ransomware, Spyware, Business Email Compromise, Phishin=
+g for Information, CEO Fraud). Other Template Type will be display in the l=
+ist only if the Admin has added them dynamically from the setting.</p></li>
+</ul>
+<p><strong>Step 5: Search Template</strong></p>
+<ul>
+<li>
+<p>Admin can search the available Phishing Landing Page templates. placehol=
+der: Search templates...<br>
+Admin can search by keywords (e.g., "Holidays Offer").<br>
+Admin can sort templates by popularity (Most to Least).<br>
+Admin can search for templates using keywords.</p></li>
+</ul>
+<p><strong>Step 6: Apply Landing Page Filters</strong></p>
+<ul>
+<li>
+<p>The Admin clicks on the <strong>Apply Landing Page Filters</strong> butt=
+on to apply filters such as:</p>
+<ul>
+<li>
+<p>The Admin selects the relevant filters such as <strong>Category</strong>=
+ selected dropdown (Fake Login Page, Fake Payment Portal, Account Verificat=
+ion Page, Social Media Clone Page, Fake Survey or Prize Giveaway Page, Fake=
+ Technical Support Page, Fake E-commerce Checkout Page, Fake Invoice or Bil=
+ling Page, Fake File Download Page, Fake Shipping or Tracking Page, Fake Su=
+bscription Cancellation Page, Fake Security Alert Page, Fake Job Applicatio=
+n Page, Fake Donation Page, Fake Software Update Page).</p></li>
+<li>
+<p>The Admin selects the <strong>Language </strong>from drop down<strong>. =
+</strong>Default language is set to <strong>English</strong> (e.g., English=
+, Spanish, Arabic, Bengali, Portuguese, French, Russian, Indonesian, Hindi,=
+ Mandarin Chinese). Other language will be display in the list only if E-ma=
+il template available in that language.</p></li>
+<li>
+<p>The Admin selects the <strong>Difficulty Level</strong>: Filters templat=
+es based on difficulty (Easy, Medium, Hard).</p></li>
+</ul></li>
+<li>
+<p>After applying the filters, the system displays the available landing pa=
+ge templates that match the selected criteria.</p></li>
+</ul>
+<p><strong>Step 7: View Available Landing Page Templates</strong></p>
+<ul>
+<li>
+<p>The Admin reviews the available landing page templates under <strong>Ava=
+ilable Landing Page Templates</strong>.</p></li>
+<li>
+<p>Templates are displayed with the template name, preview, and associated =
+description (e.g., LinkedIn, Google Login, etc.).</p></li>
+<li>
+<p>The Admin can click <strong>Preview</strong> to view a preview of the la=
+nding page.</p></li>
+<li>
+<p>Use Pagination to Navigate Between Pages</p></li>
+</ul>
+<ol start=3D"1">
+<li>
+<p>The Admin can view the first page of 9 <strong>Available Landing Page</s=
+trong>. After that it will show as pagination</p></li>
+<li>
+<p>The system displays pagination controls at the bottom of the campaign li=
+st with the following options:</p>
+<ul>
+<li>
+<p><strong>Previous</strong>: Navigate to the previous page.</p></li>
+<li>
+<p><strong>Next</strong>: Navigate to the next page.</p></li>
+<li>
+<p>The page number (e.g., "1", "2", "3", etc.) is highlighted to indicate t=
+he current page.</p></li>
+</ul></li>
+<li>
+<p>The Admin clicks <strong>Next</strong> or <strong>Previous</strong> to n=
+avigate between pages of <strong>Available Landing Page</strong>.</p></li>
+<li>
+<p>The system updates the page content and displays the <strong>Available L=
+anding Page </strong>from the selected page.</p></li>
+</ol>
+<p><strong>Step 8: Preview Landing Page</strong></p>
+<ul>
+<li>
+<p>The Admin clicks the <strong>Preview</strong> button next to a template.=
+</p></li>
+<li>
+<p>The system displays a preview of the selected landing page, such as the =
+LinkedIn login page example shown in the screenshot.</p></li>
+<li>
+<p>The Admin can review the page to ensure it fits the campaign's needs.</p=
+></li>
+</ul>
+<p><strong>Step 9: Close Preview</strong></p>
+<ul>
+<li>
+<p>After reviewing the preview, the Admin can close the preview window by c=
+licking the <strong>Close</strong> button.</p></li>
+</ul>
+<p><strong>Step 10: Select Landing Page</strong></p>
+<ul>
+<li>
+<p>After previewing and reviewing the landing page, the Admin clicks <stron=
+g>Select</strong> to confirm the selection of the landing page template for=
+ the campaign.</p></li>
+</ul>
+<p><strong>Step 11: Proceed to Next Step</strong></p>
+<ul>
+<li>
+<p>Once the landing page is selected, the Admin can proceed to the next ste=
+p by clicking <strong>Save &amp; Continue</strong>.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Frontend Form Validation</strong></p>
+<p><strong>Field Validation Rules</strong></p>
+<ol start=3D"1">
+<li>
+<p><strong>Landing Page Type</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory.</p></li>
+<li>
+<p><strong>Validation</strong>: The Admin must select one of the three land=
+ing page types (<strong>Landing Page</strong>, <strong>Error/404 Page Not F=
+ound</strong>, or <strong>Custom Landing Page</strong>).</p></li>
+<li>
+<p><strong>Error Message</strong>: "Please select a valid landing page type=
+."</p></li>
+</ul></li>
+<li>
+<p><strong>Available Landing Page Templates</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory after applying filter=
+s.</p></li>
+<li>
+<p><strong>Validation</strong>: At least one template must be selected from=
+ the list after applying filters.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Please select a landing page template."=
+</p></li>
+</ul></li>
+<li>
+<p><strong>Preview</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: Admin can preview any selected template.</p><=
+/li>
+<li>
+<p><strong>Validation</strong>: Admin must click <strong>Preview</strong> t=
+o review the selected template before selecting it.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Please preview the selected template be=
+fore proceeding."</p></li>
+</ul></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Business Rules</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"fb=
+c6e98c-d639-42b8-a095-9a04125bcfc4" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Rule</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-1</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must choose a <strong>Landing Page Type</strong> before selecting =
+a template.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-2</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can filter available landing page templates based on <strong>Categ=
+ory</strong> and <strong>Difficulty Level</strong>.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-3</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must <strong>Preview</strong> the selected template before confirm=
+ing the selection.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-4</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Preview</strong> button must show an accurate representation=
+ of the selected landing page.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-5</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must select one of the landing page types (Landing Page, <strong>E=
+rror/</strong>404 Page Not Found, or Custom Landing Page).</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-6</p></td>
+<td class=3D"confluenceTd">
+<p>The system must show only the relevant templates after applying filters =
+(e.g., <strong>Category</strong>, <strong>Difficulty Level</strong>).</p></=
+td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-7</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must be able to <strong>Close</strong> the preview and return to t=
+he selection screen.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-8</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must confirm their landing page selection by clicking <strong>Sele=
+ct</strong>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>Acceptance Criteria</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"dd=
+2b03e6-9496-40dd-8f32-8d1d892fdfbb" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Acceptance Criteria</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Pass/Fail Condition</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-01</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select a <strong>Landing Page Type</strong> (Landing Page, <st=
+rong>Error/</strong>404 Page Not Found, Custom Landing Page).</p></td>
+<td class=3D"confluenceTd">
+<p>One of the three options must be selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-02</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can apply <strong>Landing Page Filters</strong> (Category, Difficu=
+lty Level) to narrow down available templates.</p></td>
+<td class=3D"confluenceTd">
+<p>Filters must correctly narrow down the templates displayed.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-03</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can preview a landing page template by clicking the <strong>Previe=
+w</strong> button.</p></td>
+<td class=3D"confluenceTd">
+<p>Preview of the selected landing page is displayed correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-04</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can close the preview window by clicking <strong>Close</strong>.</=
+p></td>
+<td class=3D"confluenceTd">
+<p>The preview window closes and returns to the template list.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-05</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can confirm their selection by clicking <strong>Select</strong>.</=
+p></td>
+<td class=3D"confluenceTd">
+<p>The selected template is confirmed and saved for the campaign.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-06</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can proceed to the next step after confirming the landing page sel=
+ection.</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Save &amp; Continue</strong> button is enabled after selecti=
+on.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-07</p></td>
+<td class=3D"confluenceTd">
+<p>The system displays only relevant templates after applying the selected =
+filters (Category, Difficulty Level).</p></td>
+<td class=3D"confluenceTd">
+<p>Only templates matching the filter criteria are shown.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-08</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select a <strong>Custom Landing Page</strong> if that option i=
+s chosen.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can enter a custom URL for the landing page if required.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-09</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must select a <strong>Landing Page Type</strong> before the <stron=
+g>Save &amp; Continue</strong> button is enabled.</p></td>
+<td class=3D"confluenceTd">
+<p>The button is disabled until a valid template is selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-10</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select multiple templates if they are eligible to do so based =
+on filters.</p></td>
+<td class=3D"confluenceTd">
+<p>Multiple templates can be selected if permitted.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-11</p></td>
+<td class=3D"confluenceTd">
+<p>The system prevents the Admin from proceeding without selecting a landin=
+g page template.</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Save &amp; Continue</strong> is only enabled once a valid templa=
+te is selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-12</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can apply filters (Category, Difficulty Level) and clear them usin=
+g the <strong>Clear</strong> button.</p></td>
+<td class=3D"confluenceTd">
+<p>The filters are applied and cleared successfully.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-13</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can view template names, descriptions, and preview images.</p></td=
+>
+<td class=3D"confluenceTd">
+<p>Template details are visible in the list.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-14</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can search for templates using the <strong>Search</strong> feature=
+.</p></td>
+<td class=3D"confluenceTd">
+<p>The search feature filters templates based on the entered search term.</=
+p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-15</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select the <strong>Error/404 Page Not Found</strong> template.=
+</p></td>
+<td class=3D"confluenceTd">
+<p>The template for <strong>Error/404 Page Not Found</strong> should be sel=
+ectable.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-16</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select the <strong>Custom Landing Page</strong> option.</p></t=
+d>
+<td class=3D"confluenceTd">
+<p>Admin can provide a custom landing page URL.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-17</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can choose templates based on their <strong>Difficulty Level</stro=
+ng>.</p></td>
+<td class=3D"confluenceTd">
+<p>The available templates match the selected difficulty level.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-18</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can proceed without selecting filters but will see all available t=
+emplates.</p></td>
+<td class=3D"confluenceTd">
+<p>The system displays all templates when no filters are applied.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-19</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can edit <strong>Custom Landing Page</strong> templates after sele=
+cting them.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can modify the URL or settings of the custom landing page.</p></td=
+>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-20</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select templates based on <strong>Geolocation</strong> if the =
+filter is applied.</p></td>
+<td class=3D"confluenceTd">
+<p>Templates display according to the selected location filter.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>System Behavior &amp; Validation</strong></p>
+<ul>
+<li>
+<p><strong>Landing Page Filters</strong>: Admin can filter templates by <st=
+rong>Category</strong>, <strong>Language </strong>and <strong>Difficulty Le=
+vel</strong>. The system ensures that the templates displayed match the sel=
+ected criteria.</p></li>
+<li>
+<p><strong>Preview</strong>: Admin can preview the template, which shows a =
+fully functional representation of the selected landing page.</p></li>
+<li>
+<p><strong>Template Selection</strong>: Admin must click <strong>Select</st=
+rong> to confirm the landing page template. The system ensures only one val=
+id template can be selected at a time.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Security Handling</strong></p>
+<ul>
+<li>
+<p><strong>Data Integrity</strong>: All landing page selections and preview=
+s are stored securely. Only authorized Admins can modify landing page templ=
+ates.</p></li>
+<li>
+<p><strong>Audit Logs</strong>: The system logs all actions related to temp=
+late selection and filtering for audit purposes.</p></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_24_2082178683.1764600208161--

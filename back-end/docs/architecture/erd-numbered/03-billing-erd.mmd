@@ -1,0 +1,90 @@
+erDiagram
+    CLIENT_INFO {
+        string id PK
+        string clientAdminId FK
+        string name
+    }
+
+    INVOICE {
+        string id PK
+        string clientAdminId FK
+        string invoiceNo
+        string status
+    }
+
+    PAYMENT {
+        string id PK
+        string invoiceId FK
+        string clientAdminId FK
+        string status
+    }
+
+    REFUND {
+        string id PK
+        string paymentId FK
+        string invoiceId FK
+        string status
+    }
+
+    CREDIT {
+        string id PK
+        string clientAdminId FK
+        decimal balance
+    }
+
+    CREDIT_TRANSACTION {
+        string id PK
+        string creditId FK
+        string clientAdminId FK
+        decimal amount
+    }
+
+    COUPON {
+        string id PK
+        string code
+        string status
+    }
+
+    COMMISSION_RATE {
+        string id PK
+        string clientId FK
+        decimal rate
+    }
+
+    VAT_CONFIGURATION {
+        string id PK
+        string countryId
+        decimal rate
+    }
+
+    COMMENT_LOG {
+        string id PK
+        string invoiceId FK
+        string comment
+    }
+
+    ACTION {
+        string id PK
+        string invoiceId FK
+        string action
+    }
+
+    NEXT_STEP {
+        string id PK
+        string invoiceId FK
+        string nextStep
+    }
+
+    CLIENT_INFO ||--o{ INVOICE : "clientAdminId"
+    CLIENT_INFO ||--o{ PAYMENT : "clientAdminId"
+    CLIENT_INFO ||--o{ CREDIT : "clientAdminId"
+    CLIENT_INFO ||--o{ COMMISSION_RATE : "clientId"
+    INVOICE ||--o{ PAYMENT : "payments"
+    PAYMENT ||--o{ REFUND : "refunds"
+    INVOICE ||--o{ REFUND : "invoice refunds"
+    CREDIT ||--o{ CREDIT_TRANSACTION : "transactions"
+    INVOICE ||--o{ COMMENT_LOG : "comments"
+    INVOICE ||--o{ ACTION : "actions"
+    INVOICE ||--o{ NEXT_STEP : "next steps"
+    COUPON }o--o{ INVOICE : "applied coupon"
+    VAT_CONFIGURATION }o--o{ INVOICE : "tax config"

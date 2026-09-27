@@ -1,0 +1,31 @@
+flowchart TD
+    FE[Frontend / Client] --> GW[API Gateway]
+
+    GW --> AUTH[Auth Service]
+    GW --> REG[Registration Service]
+    GW --> BILL[Billing Service]
+    GW --> CMS[CMS Service]
+    GW --> NOTIF[Notification Service]
+    GW --> PHISH[Phishing Service]
+
+    AUTH --> REG
+    AUTH --> BILL
+    AUTH --> CMS
+    AUTH --> NOTIF
+
+    REG --> AUTH
+    REG --> BILL
+    REG --> CMS
+    REG --> NOTIF
+    REG --> PHISH
+
+    BILL --> REG
+    BILL --> CMS
+    BILL --> NOTIF
+
+    AUTH -.uses.-> COMMON[Common Module]
+    REG -.uses.-> COMMON
+    BILL -.uses.-> COMMON
+    CMS -.uses.-> COMMON
+    NOTIF -.uses.-> COMMON
+    PHISH -.uses.-> COMMON

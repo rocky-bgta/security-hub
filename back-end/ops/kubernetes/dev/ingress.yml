@@ -1,0 +1,58 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: asat-ingress
+  namespace: dev
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:636499496141:certificate/debd4fe5-6a81-467b-876c-b4aab800c9e8
+
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          #          - path: /registration
+          #            pathType: Prefix
+          #            backend:
+          #              service:
+          #                name: asat-registration-service
+          #                port:
+          #                  number: 80
+          #          - path: /cms
+          #            pathType: Prefix
+          #            backend:
+          #              service:
+          #                name: asat-cms-service
+          #                port:
+          #                  number: 80
+          #          - path: /billing
+          #            pathType: Prefix
+          #            backend:
+          #              service:
+          #                name: asat-billing-service
+          #                port:
+          #                  number: 80
+          #          - path: /notification
+          #            pathType: Prefix
+          #            backend:
+          #              service:
+          #                name: asat-notification-service
+          #                port:
+          #                  number: 80
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: asat-gateway-service
+                port:
+                  number: 80
+#          - path: /auth
+#            pathType: Prefix
+#            backend:
+#              service:
+#                name: asat-auth-service
+#                port:
+#                  number: 80

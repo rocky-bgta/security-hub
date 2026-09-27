@@ -1,0 +1,100 @@
+erDiagram
+    ASPIRE_USER {
+        UUID id PK
+        UUID userId
+        string email
+        string username
+        string userType
+        string status
+        string clientAdminId FK
+        string mspId FK
+        string[] roles FK
+    }
+
+    ROLE {
+        string id PK
+        string roleName
+        string status
+    }
+
+    ROLE_PERMISSION {
+        string id PK
+        string roleId FK
+        string roleName
+        object[] menuPermissions
+    }
+
+    CLIENT_ADMIN {
+        string id PK
+        string email
+        string clientAdminId
+        string mspId
+    }
+
+    AUTH_SESSION {
+        string id PK
+        string userId FK
+        string tokenId
+        string status
+    }
+
+    REFRESH_TOKEN {
+        string id PK
+        string userId FK
+        string token
+    }
+
+    AUTH_TEMP_TOKEN {
+        string id PK
+        string userId FK
+        string token
+    }
+
+    PASSWORD_RESET_TOKEN {
+        string id PK
+        string userId FK
+        string token
+    }
+
+    USER_PASSWORD_HISTORY {
+        string id PK
+        string userId FK
+        string password
+    }
+
+    USER_LOGIN_HISTORY {
+        string id PK
+        string userId FK
+        string username
+    }
+
+    USER_MFA_METHOD {
+        string id PK
+        string userId FK
+        string method
+    }
+
+    MFA_CODE {
+        string id PK
+        string userId FK
+        string code
+    }
+
+    MFA_AUDIT_LOG {
+        string id PK
+        string userId FK
+        string eventType
+    }
+
+    ASPIRE_USER }o--o{ ROLE : "roles[]"
+    ROLE ||--o| ROLE_PERMISSION : "permissions"
+    ASPIRE_USER ||--o{ AUTH_SESSION : "sessions"
+    ASPIRE_USER ||--o{ REFRESH_TOKEN : "refresh tokens"
+    ASPIRE_USER ||--o{ AUTH_TEMP_TOKEN : "temporary tokens"
+    ASPIRE_USER ||--o{ PASSWORD_RESET_TOKEN : "password reset"
+    ASPIRE_USER ||--o{ USER_PASSWORD_HISTORY : "password history"
+    ASPIRE_USER ||--o{ USER_LOGIN_HISTORY : "login history"
+    ASPIRE_USER ||--o{ USER_MFA_METHOD : "mfa methods"
+    ASPIRE_USER ||--o{ MFA_CODE : "mfa codes"
+    ASPIRE_USER ||--o{ MFA_AUDIT_LOG : "mfa audit"
+    CLIENT_ADMIN ||--o{ ASPIRE_USER : "clientAdminId"

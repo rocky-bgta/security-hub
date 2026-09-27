@@ -1,0 +1,82 @@
+{
+  "organization": {
+    "organizationName": "Acme Corporation",
+    "organizationType": "org-type-uuid-123",
+    "contactEmail": "contact@acmecorp.com",
+    "phoneNumber": "+1-555-123-4567",
+    "country": "United States",
+    "stateProvince": "California",
+    "timeZone": "America/Los_Angeles",
+    "language": "English",
+    "industry": "Information Technology",
+    "domain": "acmecorp.com",
+    "organizationSize": "Medium",
+    "adminEmail": "admin@acmecorp.com",
+    "streetAddress": "123 Business Park Drive",
+    "streetAddressLine2": "Suite 500",
+    "city": "San Francisco",
+    "zipPostalCode": "94105"
+  },
+  "billing": {
+    "billingEmail": "billing@acmecorp.com",
+    "billingName": "John Doe",
+    "useSameAsOrganizationAddress": true
+  },
+  "mspId": "msp-uuid-12345",
+  "mspName": "MSP Solutions Inc",
+  "productSelections": [
+    {
+      "productId": "product-uuid-001",
+      "productName": "Enterprise Security Suite",
+      "packageId": "package-uuid-001",
+      "packageName": "Premium Package",
+      "licenseCount": 50,
+      "validityUnit": "MONTHS",
+      "validityValue": 12,
+      "unitPrice": 25.00
+    },
+    {
+      "productId": "product-uuid-002",
+      "productName": "Cloud Storage Pro",
+      "packageId": "package-uuid-002",
+      "packageName": "Standard Package",
+      "licenseCount": 100,
+      "validityUnit": "MONTHS",
+      "validityValue": 12,
+      "unitPrice": 10.00
+    }
+  ],
+  "invoice": {
+    "subtotal": 2250.00,
+    "discountType": "PERCENTAGE",
+    "discountPercentage": 10.0,
+    "discountAmount": 225.00,
+    "couponCode": "WELCOME10",
+    "vatRate": 8.5,
+    "vatAmount": 172.13,
+    "totalAmount": 2197.13,
+    "paymentStatus": "COMPLETED",
+    "completedPayment": {
+      "paymentMethod": "BANK_TRANSFER",
+      "bankTransferDetails": {
+        "bankName": "Chase Bank",
+        "accountNumber": "1234567890",
+        "routingNumber": "021000021",
+        "swiftCode": "CHASUS33",
+        "accountHolderName": "Acme Corporation",
+        "transferDate": "2025-01-15T10:30:00Z",
+        "transactionReference": "TXN-2025-001234",
+        "amount": 2197.13,
+        "currency": "USD",
+        "notes": "Payment for Q1 2025 subscription"
+      },
+      "commentLog": {
+        "invoiceId": "",
+        "comment": "Bank transfer payment received and verified. Invoice approved for processing.",
+        "actionTakenId": "action-uuid-001",
+        "nextStepId": "nextstep-uuid-001"
+      }
+    }
+  }
+}
+

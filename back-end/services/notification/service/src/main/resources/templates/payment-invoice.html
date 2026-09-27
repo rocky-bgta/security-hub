@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice from Your Company</title>
+    <style>
+        @media screen and (max-width: 600px) {
+            .container { width: 100% !important; }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f8f9fa; font-family: Arial, sans-serif;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td style="padding: 20px 0;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" class="container" style="border-collapse: collapse; background-color: #ffffff; border: 1px solid #dee2e6; border-radius: 8px; overflow: hidden;">
+                <!-- Header -->
+                <tr>
+                    <td style="padding: 30px; background-color: #f8f9fa;">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <td>
+                                    <!-- Logo can be hardcoded here -->
+                                    <img src="https://i.imgur.com/your-secure-logo.png" alt="Company Logo" width="150" style="display: block;" />
+                                </td>
+                                <td align="right" style="font-size: 24px; color: #495057; font-weight: bold;">
+                                    INVOICE
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- Invoice Details & Billing Info -->
+                <tr>
+                    <td style="padding: 30px;">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <td valign="top" style="font-size: 14px; color: #495057; line-height: 1.6;">
+                                    <strong th:text="${company.name}">Your Company Inc.</strong>
+                                </td>
+                                <td align="right" valign="top" style="font-size: 14px; color: #495057; line-height: 1.6;">
+                                    <strong>Invoice #</strong> <span th:text="${invoice.id}">123-ABC</span><br>
+                                    <strong>Date:</strong> <span th:text="${invoice.date}">July 29, 2025</span><br><br>
+                                    <strong>Bill To:</strong><br>
+                                    <strong th:text="${customer.name}">Customer Name</strong>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- Line Items Table -->
+                <tr>
+                    <td style="padding: 0 30px;">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <!-- Table Header -->
+                            <thead style="background-color: #e9ecef;">
+                            <tr>
+                                <th style="padding: 12px; text-align: left; font-size: 14px; color: #495057;">Description</th>
+                                <th style="padding: 12px; text-align: right; font-size: 14px; color: #495057;">Total</th>
+                            </tr>
+                            </thead>
+                            <!-- Table Body -->
+                            <tbody>
+                            <tr th:each="item : ${invoice.lineItems}">
+                                <td style="padding: 12px; border-bottom: 1px solid #dee2e6;" th:text="${item.description}">Service Description</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #dee2e6; text-align: right;" th:text="${item.total}">$100.00</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- Totals Section -->
+                <tr>
+                    <td style="padding: 30px;">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <td width="60%"></td>
+                                <td width="40%">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-size: 14px; color: #495057;">
+                                        <tr style="font-weight: bold; font-size: 18px; color: #212529;">
+                                            <td style="padding: 10px 0; border-top: 2px solid #212529;">Amount Due</td>
+                                            <td style="padding: 10px 0; border-top: 2px solid #212529; text-align: right;" th:text="${invoice.totalDue}">$165.00</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- Call to Action Button -->
+                <tr>
+                    <td align="center" style="padding: 20px 30px 40px 30px;">
+                        <a th:href="${invoice.paymentLink}" style="font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; color: #ffffff; text-decoration: none; background-color: #28a745; padding: 15px 30px; border-radius: 5px; display: inline-block;">Pay Invoice Now</a>
+                    </td>
+                </tr>
+
+                <!-- Footer -->
+                <tr style="background-color: #f8f9fa;">
+                    <td style="padding: 20px 30px; font-size: 12px; color: #6c757d; text-align: center;">
+                        <!-- Contact email can be hardcoded here -->
+                        <p style="margin: 0;">If you have any questions, please contact us at <a href="mailto:billing@securecyber.com" style="color: #007bff;">billing@securecyber.com</a></p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

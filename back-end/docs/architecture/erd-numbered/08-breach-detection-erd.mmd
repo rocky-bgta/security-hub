@@ -1,0 +1,61 @@
+erDiagram
+    BREACH_DETECTION_CONFIG {
+        string id PK
+        string clientAdminId FK
+        boolean enabled
+    }
+
+    BREACH_RECORD {
+        string id PK
+        string email
+        string source
+    }
+
+    RECIPIENT_BREACH {
+        string id PK
+        string recipientId
+        string breachId FK
+    }
+
+    INSECUREWEB_ORGANIZATION {
+        string id PK
+        string clientAdminId FK
+        string organizationId
+    }
+
+    INSECUREWEB_BREACH_FINDING {
+        string id PK
+        string organizationId FK
+        string email
+    }
+
+    INSECUREWEB_SYNC_RUN {
+        string id PK
+        string organizationId FK
+        string status
+    }
+
+    SHODAN_MONITOR {
+        string id PK
+        string clientAdminId FK
+        string monitorId
+    }
+
+    SHODAN_ALERT {
+        string id PK
+        string monitorId FK
+        string severity
+    }
+
+    SHODAN_SYNC_RUN {
+        string id PK
+        string monitorId FK
+        string status
+    }
+
+    BREACH_DETECTION_CONFIG ||--o{ INSECUREWEB_ORGANIZATION : "config"
+    INSECUREWEB_ORGANIZATION ||--o{ INSECUREWEB_BREACH_FINDING : "findings"
+    INSECUREWEB_ORGANIZATION ||--o{ INSECUREWEB_SYNC_RUN : "sync runs"
+    BREACH_RECORD ||--o{ RECIPIENT_BREACH : "recipient matches"
+    SHODAN_MONITOR ||--o{ SHODAN_ALERT : "alerts"
+    SHODAN_MONITOR ||--o{ SHODAN_SYNC_RUN : "sync runs"

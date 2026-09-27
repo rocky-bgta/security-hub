@@ -1,0 +1,5 @@
+questionText,questionType,option1Text,option1IsCorrect,option2Text,option2IsCorrect,option3Text,option3IsCorrect,option4Text,option4IsCorrect
+What are the secured protocols?,MULTIPLE_CHOICE,https,TRUE,tls,TRUE,http,FALSE,udp,FALSE
+Who is the inventor of SpaceX?,SINGLE_CHOICE,jone,FALSE,elonmask,TRUE,,,,
+https is the secured protocol,TRUE_FALSE,TRUE,TRUE,FALSE,FALSE,,,,
+is http secured protocol?,YES_NO,Yes,FALSE,No,TRUE,,,,

@@ -1,0 +1,11 @@
+package com.aspire.asat.auth.serializer;
+
+import com.fasterxml.jackson.databind.util.StdConverter;
+
+
+public class LowercaseSerializer extends StdConverter<String, String> {
+    @Override
+    public String convert(String content) {
+        return content != null ? content.toLowerCase() : null;
+    }
+}

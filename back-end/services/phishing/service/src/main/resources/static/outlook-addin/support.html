@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASAT Outlook Add-in Support</title>
+  <link rel="stylesheet" href="support.css">
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <h1>ASAT Outlook Add-in Support</h1>
+      <p>
+        This page helps end users and administrators troubleshoot installation and reporting
+        issues quickly for the ASAT Phishing Reporter add-in.
+      </p>
+      <p class="meta">Last updated: May 2026</p>
+    </header>
+
+    <section class="panel">
+      <h2>Quick Health Check</h2>
+      <ol>
+        <li>Confirm you are signed in to the intended Microsoft 365 account.</li>
+        <li>Update Outlook to the latest available version.</li>
+        <li>Verify internet connectivity and any VPN/proxy restrictions.</li>
+        <li>Restart Outlook and reopen the message, then try again.</li>
+        <li>Check whether your administrator has deployed and allowed the add-in.</li>
+      </ol>
+    </section>
+
+    <section class="panel">
+      <h2>Install or Reinstall Guide</h2>
+      <div class="grid">
+        <article>
+          <h3>Outlook Desktop (Windows/Mac)</h3>
+          <ul>
+            <li>Go to <strong>Home</strong> &rarr; <strong>Get Add-ins</strong>.</li>
+            <li>Search for <strong>ASAT Phishing Reporter</strong>.</li>
+            <li>Select <strong>Add</strong>, then restart Outlook.</li>
+            <li>Open an email and use the <strong>Report A Phishing</strong> button.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Outlook on the Web / New Outlook</h3>
+          <ul>
+            <li>Open Settings &rarr; <strong>Manage add-ins</strong>.</li>
+            <li>Find and enable <strong>ASAT Phishing Reporter</strong>.</li>
+            <li>Reload the browser/app if the add-in does not appear immediately.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Common Issues and Fixes</h2>
+      <details>
+        <summary>Add-in is not visible</summary>
+        <ul>
+          <li>Ensure your IT admin deployed the add-in to your account or group.</li>
+          <li>Check Outlook client compatibility and mailbox type.</li>
+          <li>Sign out/in and restart Outlook.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Add-in stuck on loading spinner</summary>
+        <ul>
+          <li>Clear Office cache and restart Outlook.</li>
+          <li>Disable conflicting VPN/proxy or allow ASAT domains.</li>
+          <li>Retry with a stable internet connection.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Sign-in or session expiration loop</summary>
+        <ul>
+          <li>Check system time and timezone are correct.</li>
+          <li>Sign out from Office and sign in again.</li>
+          <li>Ask IT to review Conditional Access or SSO policy restrictions.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Reporting action fails</summary>
+        <ul>
+          <li>Retry from another message to isolate message-specific issues.</li>
+          <li>Capture the error text and timestamp, then contact support.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="panel">
+      <h2>Administrator Troubleshooting</h2>
+      <ul>
+        <li>Confirm centralized deployment assignment in Microsoft 365 Admin Center.</li>
+        <li>Validate users have appropriate Outlook license and mailbox type.</li>
+        <li>Allow required ASAT endpoints in firewall/proxy/content filters.</li>
+        <li>Review Conditional Access rules that can block Office add-ins.</li>
+        <li>Check service health if users report broad outage patterns.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>Collect Diagnostics Before Contacting Support</h2>
+      <ul>
+        <li>User email and organization/tenant name</li>
+        <li>Outlook client (Windows/Mac/Web/New Outlook) and version</li>
+        <li>Add-in version and exact error message</li>
+        <li>Date/time of issue and timezone</li>
+        <li>Screenshot or screen recording (if possible)</li>
+      </ul>
+      <p class="tip">
+        Tip: include correlation/request ID when available to speed up investigation.
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>Service Status and Security Notes</h2>
+      <ul>
+        <li>Status: <strong>Operational</strong> (update this label when incidents occur).</li>
+        <li>Security: reports are processed only for phishing simulation workflows.</li>
+        <li>Privacy: share only minimum required user data when opening support tickets.</li>
+      </ul>
+    </section>
+
+    <section class="panel contact">
+      <h2>Contact Support</h2>
+      <p>Email: <a href="mailto:support@aspireelearning.com">support@aspireelearning.com</a></p>
+      <p>When contacting support, include the diagnostics listed above.</p>
+    </section>
+  </main>
+</body>
+</html>

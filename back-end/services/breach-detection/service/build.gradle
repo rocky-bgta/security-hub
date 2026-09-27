@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.0'
+    id 'io.spring.dependency-management' version '1.1.5'
+    id 'application'
+}
+
+application {
+    mainClass = 'com.aspire.asat.breachdetection.BreachDetectionApplication'
+}
+
+group 'com.aspire.asat.breachdetection'
+
+dependencies {
+    implementation project(':services:breach-detection:api')
+    implementation project(':services:breach-detection:core')
+    implementation project(':common:core')
+
+    implementation project.rootProject.ext.libraries.development.springDocUi
+    implementation project.rootProject.ext.libraries.core.springBootStarter
+    implementation project.rootProject.ext.libraries.core.springBootStarterWeb
+    implementation project.rootProject.ext.libraries.core.springBootStarterThymeLeaf
+    implementation project.rootProject.ext.libraries.core.springBootStarterDataMongo
+    implementation project.rootProject.ext.libraries.core.webflux
+
+    testImplementation platform(project.rootProject.ext.libraries.test.junitBom)
+    testImplementation project.rootProject.ext.libraries.test.junitJupiter
+}
+
+tasks.test {
+    useJUnitPlatform()
+}

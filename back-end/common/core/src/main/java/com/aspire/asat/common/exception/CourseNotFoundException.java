@@ -1,0 +1,9 @@
+package com.aspire.asat.common.exception;
+
+import org.springframework.http.HttpStatus;
+
+public class CourseNotFoundException extends ServiceException {
+  public CourseNotFoundException(String message) {
+    super(message, HttpStatus.NOT_FOUND);
+  }
+}

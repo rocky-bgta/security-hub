@@ -1,0 +1,83 @@
+spring:
+  config:
+    import: "optional:classpath:common-defaults.yml,optional:classpath:common-defaults-dev.yml"
+  application:
+    name: asat-service
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/notification}
+      database: registration
+
+server:
+  port: 9090
+
+service:
+  cms:
+    url: http://asat-cms-service:5050/cms/api/v1
+  billing:
+    url: http://asat-billing-service:6060/billing/api/v1
+  phishing:
+    url: ${PHISHING_SERVICE_URL:http://asat-phishing-service:5002/phishing/api/v1}
+  auth:
+    url: http://asat-auth-service:9093/auth/api/v1/auth
+    password-reset-token-expiration-second: 28800
+    password-reset: https://dev.aspireelearning.com/auth/set-password
+
+# Internal service-to-service auth (billing invoice create)
+# SSM (shared): /asat/common/dev/internal.service.api-key
+# Env override: INTERNAL_SERVICE_API_KEY
+internal:
+  service:
+    api-key: ${INTERNAL_SERVICE_API_KEY:}
+
+azure:
+  storage:
+    connection-string: DefaultEndpointsProtocol=https;AccountName=${AZURE_STORAGE_ACCOUNT_NAME};AccountKey=${AZURE_STORAGE_ACCOUNT_KEY};EndpointSuffix=core.windows.net
+    container-name: strgblobstandardasatv2
+
+aws:
+  region: "us-east-1"
+  credentials:
+    # From SSM: /asat/local/asat-service/aws.credentials.access-key (or env); do not commit real values
+    access-key: ${AWS_CREDENTIALS_ACCES_KEY:}
+    # From SSM: /asat/local/asat-service/aws.credentials.secret-key (or env); do not commit real values
+    secret-key: ${AWS_CREDENTIALS_SECRET_KEY:}
+  s3:
+    bucket-name: "asatv2-media-bucket"
+
+client:
+  notification:
+    url: http://asat-notification-service:5656/notification
+#    url: http://localhost:5656/notification
+
+
+link:
+  logo: https://aspiretss.s3.us-east-1.amazonaws.com/public/Image.png
+  login: https://dev.aspireelearning.com/auth/login
+  help: https://dev.aspireelearning.com/auth/login
+  support-email: support@securityawarenesstraining.ai
+
+system:
+  user:
+    email: superadmin01@yopmail.com
+const:
+  leaderboard:
+    max-active-size: 2
+
+trial:
+  otp:
+    validity-seconds: 300
+  allow-onboarding-with-existing-domain: true
+
+aspire:
+  admin:
+    email: aspireadmin@yopmail.com
+
+microsoft:
+  entra:
+    client-id: ${MICROSOFT_CLIENT_ID:addbed08-efa7-4e8e-a9e7-fee49b483ffe}
+    client-secret: ${MICROSOFT_CLIENT_SECRET:}
+    tenant-id: ${MICROSOFT_TENANT_ID:common}
+    redirect-uri: ${MICROSOFT_REDIRECT_URI:https://dev.aspireelearning.com/gateway/registration/api/v1/microsoft/callback}
+    scopes: https://graph.microsoft.com/User.Read.All https://graph.microsoft.com/Group.Read.All offline_access
+    frontend-redirect-url: ${FRONTEND_REDIRECT_URL:https://dev.aspireelearning.com/user-management/sync-users}

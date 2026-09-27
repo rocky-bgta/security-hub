@@ -1,0 +1,194 @@
+{
+  "universal": [
+    {
+      "path": "/api/v1/auth/",
+      "method": "GET",
+      "permissions": []
+    },
+    {
+      "path": "/api/v1/auth/logout",
+      "method": "DELETE",
+      "permissions": []
+    },
+    {
+      "path": "/api/v1/auth/refresh",
+      "method": "POST",
+      "permissions": []
+    },
+    {
+      "path": "/api/polls",
+      "method": "GET",
+      "permissions": []
+    },
+    {
+      "path": "/api/polls",
+      "method": "POST",
+      "permissions": []
+    },
+    {
+      "path": "/api/polls/active",
+      "method": "GET",
+      "permissions": []
+    },
+    {
+      "path": "/api/polls/{id}",
+      "method": "PUT",
+      "permissions": []
+    },
+    {
+      "path": "/api/polls/{pollId}/vote",
+      "method": "POST",
+      "permissions": []
+    },
+    {
+      "path": "/api/polls/{pollId}/votes",
+      "method": "POST",
+      "permissions": []
+    },
+    {
+      "path": "/api/polls/{pollId}/status",
+      "method": "PUT",
+      "permissions": []
+    },
+    {
+      "path": "/api/polls/{pollId}/summary",
+      "method": "GET",
+      "permissions": []
+    },
+    {
+      "path": "/api/categories",
+      "method": "GET",
+      "permissions": []
+    },
+    {
+      "path": "/api/categories",
+      "method": "POST",
+      "permissions": []
+    },
+    {
+      "path": "/api/categories/active",
+      "method": "GET",
+      "permissions": []
+    },
+    {
+      "path": "/api/categories/{id}",
+      "method": "GET",
+      "permissions": []
+    },
+    {
+      "path": "/api/categories/{id}",
+      "method": "PUT",
+      "permissions": []
+    },
+    {
+      "path": "/api/categories/{id}",
+      "method": "DELETE",
+      "permissions": []
+    },
+    {
+      "path": "/api/latest-news",
+      "method": "GET",
+      "permissions": []
+    },
+    {
+      "path": "/api/latest-news",
+      "method": "POST",
+      "permissions": []
+    },
+    {
+      "path": "/api/latest-news/active",
+      "method": "GET",
+      "permissions": []
+    },
+    {
+      "path": "/api/latest-news/{id}",
+      "method": "GET",
+      "permissions": []
+    },
+    {
+      "path": "/api/latest-news/{id}",
+      "method": "PUT",
+      "permissions": []
+    },
+    {
+      "path": "/api/latest-news/{id}",
+      "method": "DELETE",
+      "permissions": []
+    },
+    {
+      "path": "/api/latest-news/{id}",
+      "method": "PATCH",
+      "permissions": []
+    },
+    {
+      "path": "/api/latest-news/slug/{slug}",
+      "method": "GET",
+      "permissions": []
+    },
+    {
+      "path": "/api/latest-news/sequence",
+      "method": "PUT",
+      "permissions": []
+    },
+    {
+      "path": "/api/latest-news/{id}/like",
+      "method": "POST",
+      "permissions": []
+    },
+    {
+      "path": "/api/latest-news/{id}/comments",
+      "method": "GET",
+      "permissions": []
+    },
+    {
+      "path": "/api/latest-news/{id}/comments",
+      "method": "POST",
+      "permissions": []
+    },
+    {
+      "path": "/api/latest-news/{id}/status",
+      "method": "PATCH",
+      "permissions": []
+    },
+    {
+      "path": "/api/v1/leaderboards",
+      "method": "GET",
+      "permissions": []
+    },
+    {
+      "path": "/api/v1/leaderboards",
+      "method": "POST",
+      "permissions": []
+    },
+    {
+      "path": "/api/v1/leaderboards/active-web",
+      "method": "GET",
+      "permissions": []
+    },
+    {
+      "path": "/api/v1/leaderboards/{id}",
+      "method": "GET",
+      "permissions": []
+    },
+    {
+      "path": "/api/v1/leaderboards/{id}",
+      "method": "PUT",
+      "permissions": []
+    },
+    {
+      "path": "/api/v1/leaderboards/{id}",
+      "method": "DELETE",
+      "permissions": []
+    },
+    {
+      "path": "/api/v1/leaderboards/status",
+      "method": "PATCH",
+      "permissions": []
+    },
+    {
+      "path": "/api/v1/leaderboards/summary",
+      "method": "GET",
+      "permissions": []
+    }
+  ]
+}

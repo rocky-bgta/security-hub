@@ -1,0 +1,864 @@
+{
+  "phishing": [
+    {
+      "_comment": "Health Check"
+    },
+    {
+      "path": "/api/v1/phishing/health",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Analytics Endpoints"
+    },
+    {
+      "path": "/api/v1/phishing/analytics/phish-prone-percentage",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/analytics/phish-prone-percentage/{campaignId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/analytics/repeat-offenders",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/analytics/delivery-rate",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/analytics/compromise-rate",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/analytics/report-rate",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/analytics/user-risk/{userId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/analytics/recalculate-risk",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Breach Detection Config Endpoints"
+    },
+    {
+      "path": "/api/v1/phishing/breach-detection/config",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/breach-detection/config",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/breach-detection/sync",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Breach Endpoints"
+    },
+    {
+      "path": "/api/v1/phishing/breaches",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/breaches/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/breaches/{id}/status",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/breaches/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/breaches/export",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Recipient Breach Endpoints"
+    },
+    {
+      "path": "/api/v1/phishing/recipient-breaches",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/recipient-breaches/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/recipient-breaches/{id}/notify",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/recipient-breaches/{id}/reset-password",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/recipient-breaches/{id}/resolve",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Campaign Endpoints"
+    },
+    {
+      "path": "/api/v1/phishing/campaigns",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/is-first",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}/step/1",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}/step/2",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}/step/3",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}/step/4",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}/step/5",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}/step/6",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}/step/7",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}/step/8",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}/launch",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}/pause",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}/resume",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}/cancel",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}/recipients",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}/stats",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}/stats/refresh",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/{campaignId}/preview-email",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/me/statistics",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/campaigns/me/has-received-campaign",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Dashboard Endpoints"
+    },
+    {
+      "path": "/api/v1/phishing/dashboard/overview",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/dashboard/kpi-metrics",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/dashboard/campaigns",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/dashboard/email-stats",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/dashboard/user-risk",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/dashboard/trends",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/dashboard/trends/all",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/dashboard/breach-summary",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/dashboard/refresh",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/dashboard/phish-prone-data",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Phishing Course Dashboard Endpoints"
+    },
+    {
+      "path": "/api/v1/phishing/phishing-course/statistics",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/phishing-course/details",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Domain Endpoints"
+    },
+    {
+      "path": "/api/v1/phishing/domains",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/domains/{domainId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/domains/generate-verification-email",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/domains/verify",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/domains/{domainId}/lock",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/domains/{domainId}/unlock",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/domains/{domainId}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/domains/resend-verification-email",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Email Template Endpoints"
+    },
+    {
+      "path": "/api/v1/phishing/email-templates",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/email-templates/{templateId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/email-templates/{templateId}/preview",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/email-templates/{templateId}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/email-templates/{templateId}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/email-templates/{templateId}/duplicate",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/email-templates/tags",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/email-templates/filters",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/email-templates",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/email-templates/ai-generate",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/email-templates/transcribe",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/email-templates/{templateId}/attachments",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/email-templates/{templateId}/attachments/{attachmentId}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/email-templates/sanitize-html",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/email-templates/ai-options",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/email-templates/languages",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Landing Page Endpoints"
+    },
+    {
+      "path": "/api/v1/phishing/landing-pages",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/landing-pages/{pageId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/landing-pages/{pageId}/preview",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/landing-pages/{pageId}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/landing-pages/{pageId}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/landing-pages/{pageId}/duplicate",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/landing-pages",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/landing-pages/import",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/landing-pages/ai-generate",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/landing-pages/validate-html",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/landing-pages/{pageId}/thumbnail",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Report Endpoints"
+    },
+    {
+      "path": "/api/v1/phishing/reports/campaigns",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/reports/campaigns/{campaignId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/reports/campaigns/{campaignId}/export",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/reports/email-activity",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/reports/user-risk",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/reports/user-risk/export",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/reports/breach-summary",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Sender Profile Endpoints"
+    },
+    {
+      "path": "/api/v1/phishing/sender-profiles",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/sender-profiles/{profileId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/sender-profiles",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/sender-profiles/import",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/sender-profiles/{profileId}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/sender-profiles/{profileId}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/sender-profiles/{profileId}/duplicate",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/sender-profiles/{profileId}/test",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/sender-profiles/test",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/sender-profiles/verified",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/sender-profiles/check-domain",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Catalog Endpoints - Emotional Triggers"
+    },
+    {
+      "path": "/api/v1/phishing/emotional-triggers",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/emotional-triggers/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/emotional-triggers",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/emotional-triggers/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/emotional-triggers/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Catalog Endpoints - Attack Techniques"
+    },
+    {
+      "path": "/api/v1/phishing/attack-techniques",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/attack-techniques/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/attack-techniques",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/attack-techniques/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/attack-techniques/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Catalog Endpoints - Expected User Actions"
+    },
+    {
+      "path": "/api/v1/phishing/expected-user-actions",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/expected-user-actions/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/expected-user-actions",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/expected-user-actions/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/expected-user-actions/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Catalog Endpoints - Constraints Data"
+    },
+    {
+      "path": "/api/v1/phishing/constraints-data",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/constraints-data/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/constraints-data",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/constraints-data/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/constraints-data/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Catalog Endpoints - Trigger Events"
+    },
+    {
+      "path": "/api/v1/phishing/trigger-events",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/trigger-events/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/trigger-events",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/trigger-events/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/trigger-events/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Provider Credentials (deepfake voice cloning + video rendering)"
+    },
+    {
+      "path": "/api/v1/phishing/provider-credentials",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/provider-credentials/{id}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/provider-credentials",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/provider-credentials/{id}",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/provider-credentials/{id}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/provider-credentials/{id}/default",
+      "method": "PATCH",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/phishing/provider-credentials/{id}/status",
+      "method": "PATCH",
+      "permissions": ["ALL"]
+    },
+    {
+      "_comment": "Deepfake Video Endpoints"
+    },
+    {
+      "path": "/api/v1/deepfake/background",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/deepfake/backgrounds",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/deepfake/videos",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/deepfake/voices",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/deepfake/voices/{voiceCloneId}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/deepfake/videos/step/1",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/deepfake/videos/{videoId}",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/deepfake/videos/{videoId}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/deepfake/videos/{videoId}/step/1",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/deepfake/videos/{videoId}/step/2",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/deepfake/videos/{videoId}/step/3",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/deepfake/videos/{videoId}/step/4",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/deepfake/videos/{videoId}/step/5",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/deepfake/videos/{videoId}/step/6",
+      "method": "PUT",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/deepfake/videos/{videoId}/status",
+      "method": "GET",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/deepfake/micro-content",
+      "method": "POST",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/deepfake/micro-content/{videoId}",
+      "method": "DELETE",
+      "permissions": ["ALL"]
+    },
+    {
+      "path": "/api/v1/deepfake/micro-content/{jobId}/status",
+      "method": "GET",
+      "permissions": ["ALL"]
+    }
+  ]
+}

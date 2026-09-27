@@ -1,0 +1,68 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.0'
+    id 'io.spring.dependency-management' version '1.1.5'
+    id 'application'
+}
+
+group = 'com.aspire.asat.gateway'
+
+application {
+    mainClass = 'com.aspire.asat.gateway.GatewayApplication'
+}
+
+ext {
+    set('springCloudVersion', "2023.0.2")
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':common:core')
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
+
+    // Required by Spring Cloud Gateway's optional gRPC support (GrpcSslConfigurer).
+    // Without this, gateway fails with NoClassDefFoundError: io.grpc.netty.NettyChannelBuilder
+    // when common module (e.g. AWS SSM) changes classloading order.
+    runtimeOnly 'io.grpc:grpc-netty:1.59.0'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    implementation project.rootProject.ext.libraries.core.caffeine
+
+
+    // Swagger / OpenAPI - Using WebFlux version for reactive gateway
+    implementation project.rootProject.ext.libraries.development.springDocWebfluxUi
+
+    // JWT and Lombok
+    implementation project.rootProject.ext.libraries.core.lombok
+    annotationProcessor( project.rootProject.ext.libraries.core.lombok)
+
+    implementation project.rootProject.ext.libraries.core.jwtApi
+    implementation project.rootProject.ext.libraries.core.jwtImpl
+    implementation project.rootProject.ext.libraries.core.jwtJackson
+
+    implementation project.rootProject.ext.libraries.core.apacheCommonsPool2
+
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+tasks.named('bootJar') {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}

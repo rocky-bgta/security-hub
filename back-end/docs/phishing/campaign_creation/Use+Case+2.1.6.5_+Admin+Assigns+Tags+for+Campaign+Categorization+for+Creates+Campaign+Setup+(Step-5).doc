@@ -1,0 +1,694 @@
+Date: Mon, 1 Dec 2025 14:43:59 +0000 (UTC)
+Message-ID: <1135388217.291.1764600239612@5a24d0d7bf27>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_290_821238712.1764600239611"
+
+------=_Part_290_821238712.1764600239611
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Use Case 2.1.6.5: Admin Assigns Tags for Campaign Categorization=
+ for Creates Campaign Setup (Step-5)</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Use Case 2.1.6.5: Admin Assigns Tags for Campaign Categorization fo=
+r Creates Campaign Setup (Step-5)</h1>
+    <div class=3D"Section1">
+        <p><strong>User Story</strong></p>
+<p>As an Admin, I want to categorize my phishing simulation campaign using =
+tags, so that I can easily organize, search, and filter campaigns based on =
+various criteria.</p>
+<p><strong>Description</strong></p>
+<p>This use case outlines how the Admin assigns tags to a phishing simulati=
+on campaign. Tags are used to categorize campaigns, making it easier to sea=
+rch, filter, and manage campaigns based on their characteristics. The admin=
+ can enter custom tags or select from suggested tags. Tags can be based on =
+campaign type, department, target audience, or other relevant factors. This=
+ helps in the organization and tracking of campaigns in a structured manner=
+.</p>
+<p><strong>Actors</strong></p>
+<ul>
+<li>
+<p><strong>Admin</strong>: Assigns tags to categorize and organize the camp=
+aign.</p></li>
+<li>
+<p><strong>System</strong>: Displays the tags input section, validates tag =
+input, and provides suggested tags.</p></li>
+</ul>
+<p><strong>Preconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>The Admin is logged into the campaign creation interface.</p></li>
+<li>
+<p>The admin is at the <strong>Tags</strong> step in the campaign creation =
+process.</p></li>
+</ol>
+<p><strong>Postconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>Tags are assigned to the campaign and saved.</p></li>
+<li>
+<p>The campaign is categorized properly, making it easier to search and fil=
+ter based on the assigned tags.</p></li>
+<li>
+<p>The admin can continue to the next step in the campaign creation process=
+.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Main Flow (Normal Success Scenario)</strong></p>
+<p><strong>Step 1: Navigate to Tags Step</strong></p>
+<ul>
+<li>
+<p>The Aspire navigates to the <strong>Tags</strong> step in the <strong>Cr=
+eate New Campaign</strong> wizard.</p></li>
+<li>
+<p>The system displays the <strong>Campaign Tags</strong> interface with an=
+ input field for entering tags, along with a list of <strong>Suggested Tags=
+</strong>.</p></li>
+</ul>
+<p><strong>Step 2: Enter Custom Tags</strong></p>
+<ul>
+<li>
+<p>The Admin clicks in the <strong>Add Tags</strong> input field.</p></li>
+<li>
+<p>The Admin types the desired tag (e.g., "Phishing", "New Employees") and =
+presses <strong>Enter</strong> or the <strong>comma</strong> key to add the=
+ tag.</p></li>
+<li>
+<p>The system validates the tag input to ensure it follows the rules (alpha=
+numeric characters only, no special characters).</p></li>
+<li>
+<p>If the tag is valid, it is added to the list of tags for the campaign.</=
+p></li>
+</ul>
+<p><strong>Step 3: Select Suggested Tags</strong></p>
+<ul>
+<li>
+<p>The system displays a list of <strong>Suggested Tags</strong> such as:</=
+p>
+<ul>
+<li>
+<p><strong>Security</strong></p></li>
+<li>
+<p><strong>Awareness</strong></p></li>
+<li>
+<p><strong>Phishing</strong></p></li>
+<li>
+<p><strong>Training</strong></p></li>
+<li>
+<p><strong>New Employees</strong></p></li>
+<li>
+<p><strong>GDPR</strong></p></li>
+<li>
+<p><strong>Compliance</strong></p></li>
+</ul></li>
+<li>
+<p>The Admin can click on any of these <strong>Suggested Tags</strong> to a=
+dd them to the campaign=E2=80=99s tags list.</p></li>
+</ul>
+<p><strong>Step 4: Review Tags</strong></p>
+<ul>
+<li>
+<p>The Admin can review all the tags added to the campaign.</p></li>
+<li>
+<p>The system displays the tags in the <strong>Tags</strong> section, confi=
+rming that they are properly formatted.</p></li>
+<li>
+<p>Tags are displayed with a visual check mark and may be removed by clicki=
+ng a <strong>delete icon</strong> next to each tag.</p></li>
+</ul>
+<p><strong>Step 5: Tag Guidelines</strong></p>
+<ul>
+<li>
+<p>The system provides a guideline for the tags:</p>
+<ul>
+<li>
+<p>Tags must be <strong>alphanumeric</strong> (letters and numbers only).</=
+p></li>
+<li>
+<p>Multiple tags can be separated by commas or <strong>Enter</strong>.</p><=
+/li>
+<li>
+<p>Tags are <strong>case-insensitive</strong>, and duplicates are automatic=
+ally removed.</p></li>
+<li>
+<p>The recommended tagging convention includes department, campaign type, q=
+uarter (Q1, Q2, etc.), or risk level.</p></li>
+</ul></li>
+</ul>
+<p><strong>Step 6: Save Tags</strong></p>
+<ul>
+<li>
+<p>After assigning the tags, the Admin clicks <strong>Save &amp; Continue</=
+strong> to save the tags and proceed to the next step in the campaign creat=
+ion process.</p></li>
+<li>
+<p>The tags are now saved and attached to the campaign, and the Admin can m=
+ove to the next step in the wizard.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Frontend Form Validation</strong></p>
+<p><strong>Field Validation Rules</strong></p>
+<ol start=3D"1">
+<li>
+<p><strong>Tag Input</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is optional, but at least one tag =
+must be added.</p></li>
+<li>
+<p><strong>Validation</strong>:</p>
+<ul>
+<li>
+<p>Tags must be alphanumeric.</p></li>
+<li>
+<p>Tags are separated by commas or Enter.</p></li>
+<li>
+<p>Special characters are not allowed.</p></li>
+</ul></li>
+<li>
+<p><strong>Error Message</strong>: "Tag must contain only alphanumeric char=
+acters. Special characters are not allowed."</p></li>
+</ul></li>
+<li>
+<p><strong>Suggested Tags</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: The Admin can choose tags from the <strong>Su=
+ggested Tags</strong> section.</p></li>
+<li>
+<p><strong>Validation</strong>:</p>
+<ul>
+<li>
+<p>Clicking on any suggested tag automatically adds it to the campaign.</p>=
+</li>
+</ul></li>
+<li>
+<p><strong>Error Message</strong>: "No errors for suggested tags."</p></li>
+</ul></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Business Rules</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"14=
+3c53fa-6d12-45d9-baba-a3ee07abac60" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Rule</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-1</p></td>
+<td class=3D"confluenceTd">
+<p>Tags must be alphanumeric and cannot contain special characters.</p></td=
+>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-2</p></td>
+<td class=3D"confluenceTd">
+<p>Tags must be separated by commas or <strong>Enter</strong> key.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-3</p></td>
+<td class=3D"confluenceTd">
+<p>Tags are case-insensitive, and duplicates are automatically removed.</p>=
+</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-4</p></td>
+<td class=3D"confluenceTd">
+<p>At least one tag must be assigned to a campaign before it can be saved.<=
+/p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-5</p></td>
+<td class=3D"confluenceTd">
+<p>Suggested tags are provided by the system and are meant for easier categ=
+orization.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>Acceptance Criteria</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"8a=
+39d17d-3fb1-4dcc-8469-848f07ce7ebe" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Acceptance Criteria</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Pass/Fail Condition</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-01</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can enter custom tags in the <strong>Add Tags</strong> field.</p><=
+/td>
+<td class=3D"confluenceTd">
+<p>Tags can be entered and added by pressing <strong>Enter</strong> or <str=
+ong>comma</strong>.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-02</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select tags from the <strong>Suggested Tags</strong> list.</p>=
+</td>
+<td class=3D"confluenceTd">
+<p>Suggested tags can be selected and added to the campaign tags list.</p><=
+/td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-03</p></td>
+<td class=3D"confluenceTd">
+<p>Tags must be alphanumeric and separated by commas or Enter.</p></td>
+<td class=3D"confluenceTd">
+<p>Tags are validated, and errors are displayed if invalid characters are u=
+sed.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-04</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Add Tags</strong> field allows entering multiple tags, with =
+each tag separated by a comma or Enter.</p></td>
+<td class=3D"confluenceTd">
+<p>Multiple tags can be added by pressing <strong>Enter</strong> or typing =
+a comma.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-05</p></td>
+<td class=3D"confluenceTd">
+<p>The Admin can delete any tag from the list by clicking the <strong>delet=
+e</strong> icon next to the tag.</p></td>
+<td class=3D"confluenceTd">
+<p>Tags can be removed successfully by clicking the delete icon.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-06</p></td>
+<td class=3D"confluenceTd">
+<p>Tags are displayed correctly below the input field in the <strong>Availa=
+ble Tags</strong> list.</p></td>
+<td class=3D"confluenceTd">
+<p>Tags appear correctly under the <strong>Available Tags</strong> section.=
+</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-07</p></td>
+<td class=3D"confluenceTd">
+<p>Tags are case-insensitive, and duplicates are automatically removed.</p>=
+</td>
+<td class=3D"confluenceTd">
+<p>Duplicates are removed, and tags are treated as case-insensitive.</p></t=
+d>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-08</p></td>
+<td class=3D"confluenceTd">
+<p>The Admin can proceed to the next step once tags are assigned to the cam=
+paign.</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Save &amp; Continue</strong> button is enabled after tags ar=
+e added.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-09</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can filter tags by category, such as <strong>Security</strong>, <s=
+trong>Awareness</strong>, <strong>Phishing</strong>, <strong>GDPR</strong>,=
+ etc.</p></td>
+<td class=3D"confluenceTd">
+<p>Tags are filtered and displayed correctly based on category.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-10</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can add tags for any type of campaign, including those related to =
+<strong>Training</strong> or <strong>Phishing</strong>.</p></td>
+<td class=3D"confluenceTd">
+<p>Tags for campaign types are correctly added and displayed.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-11</p></td>
+<td class=3D"confluenceTd">
+<p>The system prevents tags with special characters from being added.</p></=
+td>
+<td class=3D"confluenceTd">
+<p>Special characters trigger an error message.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-12</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Save &amp; Continue</strong> button is only enabled after at=
+ least one valid tag is added.</p></td>
+<td class=3D"confluenceTd">
+<p>The button is enabled once a tag is entered or selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-13</p></td>
+<td class=3D"confluenceTd">
+<p>Admin receives an error message if invalid characters (e.g., symbols) ar=
+e used in the tag input.</p></td>
+<td class=3D"confluenceTd">
+<p>Error message "Invalid characters in tag" is shown.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-14</p></td>
+<td class=3D"confluenceTd">
+<p>The tags are saved successfully and categorized for future reference.</p=
+></td>
+<td class=3D"confluenceTd">
+<p>Tags are saved and applied to the campaign.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-15</p></td>
+<td class=3D"confluenceTd">
+<p>The Admin can see a list of suggested tags and easily add them to the ca=
+mpaign.</p></td>
+<td class=3D"confluenceTd">
+<p>Suggested tags are displayed correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-16</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Add Tags</strong> field accepts a maximum of 100 characters =
+per tag.</p></td>
+<td class=3D"confluenceTd">
+<p>Tag length validation is applied to ensure no more than 100 characters.<=
+/p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-17</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can filter tags by difficulty level, such as <strong>Easy</strong>=
+, <strong>Medium</strong>, <strong>Hard</strong>, etc.</p></td>
+<td class=3D"confluenceTd">
+<p>Tags are filtered and categorized by difficulty level.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-18</p></td>
+<td class=3D"confluenceTd">
+<p>Tags are displayed in a clear and organized manner under the <strong>Ava=
+ilable Tags</strong> section.</p></td>
+<td class=3D"confluenceTd">
+<p>Tags appear clearly in the <strong>Available Tags</strong> section.</p><=
+/td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-19</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select multiple tags for categorization (e.g., <strong>New Emp=
+loyees</strong>, <strong>High Risk</strong>, etc.).</p></td>
+<td class=3D"confluenceTd">
+<p>Multiple tags can be selected from the list.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-20</p></td>
+<td class=3D"confluenceTd">
+<p>The system automatically removes duplicate tags from the list.</p></td>
+<td class=3D"confluenceTd">
+<p>Duplicate tags are detected and removed automatically.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>System Behavior &amp; Validation</strong></p>
+<ul>
+<li>
+<p><strong>Tag Input</strong>: Admin can enter alphanumeric tags, which wil=
+l be validated before being added to the campaign.</p></li>
+<li>
+<p><strong>Tag Suggestions</strong>: Suggested tags are displayed for quick=
+ categorization.</p></li>
+<li>
+<p><strong>Tag Deletion</strong>: Admin can delete any tag by clicking the =
+delete icon next to the tag.</p></li>
+<li>
+<p><strong>Filtering</strong>: Admin can filter tags by category, difficult=
+y level, or other criteria.</p></li>
+<li>
+<p><strong>Validation</strong>: The system ensures that only valid tags are=
+ accepted.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Security Handling</strong></p>
+<ul>
+<li>
+<p><strong>Tag Validation</strong>: Tags must adhere to alphanumeric rules =
+and cannot include special characters.</p></li>
+<li>
+<p><strong>Data Privacy</strong>: Tags are stored securely and are accessib=
+le only to authorized users.</p></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_290_821238712.1764600239611--

@@ -1,0 +1,433 @@
+{
+  "description": "Client Onboarding API - All Payment Method Examples",
+  "endpoint": "POST /registration/api/v1/client/admin/onboard",
+  "examples": {
+    "1_pending_payment": {
+      "description": "Pending Payment - Invoice created as PENDING, client will pay later",
+      "request": {
+        "organization": {
+          "organizationName": "Aspire Digital Solutions Ltd.",
+          "organizationType": "b9663d7e-9a75-427b-bb61-96833934b835",
+          "contactEmail": "info@aspiredigital.com",
+          "phoneNumber": "+8801700000000",
+          "country": "Bangladesh",
+          "stateProvince": "Dhaka",
+          "timeZone": "Asia/Dhaka",
+          "language": "English",
+          "industry": "abacb73f-3041-40e3-8b89-b735c221983f",
+          "domain": "aspiredigital.com",
+          "organizationSize": "abacb73f-3041-40e3-8b89-b735c221983g",
+          "adminEmail": "admin@aspiredigital.com",
+          "streetAddress": "123 Gulshan Avenue",
+          "streetAddressLine2": "Suite 400",
+          "city": "Dhaka",
+          "zipPostalCode": "1212",
+          "logoUrl": "https://cdn.aspire.com/logos/aspire.png"
+        },
+        "billing": {
+          "useSameAsOrganizationAddress": true,
+          "billingEmail": "billing@aspiredigital.com",
+          "billingName": "John Doe"
+        },
+        "mspId": "a6d2c4e1-da0c-404b-bc69-bc4085c3af21",
+        "productSelections": [
+          {
+            "productId": "224b847c-f2cc-4ded-95f7-74fc14f61d05",
+            "packageId": "1fe8b111-3b42-4b43-adfe-b840286b3c04",
+            "licenseCount": 50,
+            "pricePerLicense": 99.99,
+            "validityPeriod": 12,
+            "validityUnit": "MONTH",
+            "productName": "Cybersecurity Essentials",
+            "packageName": "Cyber Pro Monthly Package"
+          }
+        ],
+        "invoice": {
+          "subtotal": 4999.50,
+          "discountType": "PERCENTAGE",
+          "discountPercentage": 10.0,
+          "discountAmount": 499.95,
+          "couponCode": null,
+          "vatRate": 5.0,
+          "vatAmount": 224.98,
+          "totalAmount": 4724.53,
+          "paymentStatus": "PENDING",
+          "completedPayment": null
+        }
+      },
+      "notes": "Invoice will be created as PENDING. Client admin can complete payment later using manual payment API from pending invoice list."
+    },
+    "2_completed_payment_bank_transfer": {
+      "description": "Completed Payment with Bank Transfer - Invoice created as PENDING, payment details stored for reference",
+      "request": {
+        "organization": {
+          "organizationName": "Global Enterprises Inc.",
+          "organizationType": "b9663d7e-9a75-427b-bb61-96833934b835",
+          "contactEmail": "info@globalenterprises.com",
+          "phoneNumber": "+442071234567",
+          "country": "United Kingdom",
+          "stateProvince": "London",
+          "timeZone": "Europe/London",
+          "language": "English",
+          "industry": "abacb73f-3041-40e3-8b89-b735c221983f",
+          "domain": "globalenterprises.com",
+          "organizationSize": "abacb73f-3041-40e3-8b89-b735c221983g",
+          "adminEmail": "admin@globalenterprises.com",
+          "streetAddress": "789 Canary Wharf",
+          "streetAddressLine2": "Tower 42, Level 15",
+          "city": "London",
+          "zipPostalCode": "E14 5AB",
+          "logoUrl": "https://cdn.aspire.com/logos/global.png"
+        },
+        "billing": {
+          "useSameAsOrganizationAddress": true,
+          "billingEmail": "billing@globalenterprises.com",
+          "billingName": "Robert Williams"
+        },
+        "mspId": "a6d2c4e1-da0c-404b-bc69-bc4085c3af21",
+        "productSelections": [
+          {
+            "productId": "224b847c-f2cc-4ded-95f7-74fc14f61d05",
+            "packageId": "1fe8b111-3b42-4b43-adfe-b840286b3c04",
+            "licenseCount": 25,
+            "pricePerLicense": 199.99,
+            "validityPeriod": 12,
+            "validityUnit": "MONTH",
+            "productName": "Enterprise Security Suite",
+            "packageName": "GOLD"
+          }
+        ],
+        "invoice": {
+          "subtotal": 4999.75,
+          "discountType": "PERCENTAGE",
+          "discountPercentage": 15.0,
+          "discountAmount": 749.96,
+          "couponCode": null,
+          "vatRate": 20.0,
+          "vatAmount": 849.96,
+          "totalAmount": 5099.75,
+          "paymentStatus": "COMPLETED",
+          "completedPayment": {
+            "paymentMethod": "BANK_TRANSFER",
+            "bankTransferDetails": {
+              "bankName": "Chase Bank",
+              "accountNumber": "123456789",
+              "bankBranchName": "Main Branch",
+              "transactionNumber": "TXN-123456",
+              "paymentDate": "2025-12-07",
+              "paymentAmount": 5099.75,
+              "transactionReceiptUrl": "https://s3.amazonaws.com/receipts/txn-123456.pdf"
+            },
+            "checkPaymentDetails": null
+          }
+        }
+      },
+      "notes": "Invoice will still be created as PENDING. Payment details are stored for reference. Client admin must use manual payment API with BANK_TRANSFER method and matching transactionNumber to complete payment."
+    },
+    "3_completed_payment_check": {
+      "description": "Completed Payment with Check Payment - Invoice created as PENDING, payment details stored for reference",
+      "request": {
+        "organization": {
+          "organizationName": "Small Business Solutions",
+          "organizationType": "b9663d7e-9a75-427b-bb61-96833934b835",
+          "contactEmail": "info@smallbiz.com",
+          "phoneNumber": "+14155551234",
+          "country": "United States",
+          "stateProvince": "New York",
+          "timeZone": "America/New_York",
+          "language": "English",
+          "industry": "abacb73f-3041-40e3-8b89-b735c221983f",
+          "domain": "smallbiz.com",
+          "organizationSize": "abacb73f-3041-40e3-8b89-b735c221983g",
+          "adminEmail": "admin@smallbiz.com",
+          "streetAddress": "321 Main Street",
+          "streetAddressLine2": null,
+          "city": "New York",
+          "zipPostalCode": "10001",
+          "logoUrl": null
+        },
+        "billing": {
+          "useSameAsOrganizationAddress": false,
+          "billingEmail": "billing@smallbiz.com",
+          "billingName": "Sarah Johnson",
+          "streetAddress": "321 Main Street",
+          "streetAddressLine2": "PO Box 100",
+          "city": "New York",
+          "zipPostalCode": "10001",
+          "country": "United States",
+          "stateProvince": "New York"
+        },
+        "mspId": "a6d2c4e1-da0c-404b-bc69-bc4085c3af21",
+        "productSelections": [
+          {
+            "productId": "224b847c-f2cc-4ded-95f7-74fc14f61d05",
+            "packageId": "1fe8b111-3b42-4b43-adfe-b840286b3c04",
+            "licenseCount": 10,
+            "pricePerLicense": 79.99,
+            "validityPeriod": 3,
+            "validityUnit": "MONTH",
+            "productName": "Basic Security Package",
+            "packageName": "Starter Package"
+          }
+        ],
+        "invoice": {
+          "subtotal": 799.90,
+          "discountType": "FLAT",
+          "discountPercentage": 0.0,
+          "discountAmount": 50.0,
+          "couponCode": "STARTER50",
+          "vatRate": 8.0,
+          "vatAmount": 59.99,
+          "totalAmount": 809.89,
+          "paymentStatus": "COMPLETED",
+          "completedPayment": {
+            "paymentMethod": "CHECK_PAYMENT",
+            "bankTransferDetails": null,
+            "checkPaymentDetails": {
+              "checkNumber": "CHK-789012",
+              "bankName": "Bank of America",
+              "branchName": "Downtown Branch",
+              "paymentDate": "2025-12-07",
+              "checkImageUrl": "https://s3.amazonaws.com/checks/chk-789012.jpg"
+            }
+          }
+        }
+      },
+      "notes": "Invoice will still be created as PENDING. Payment details are stored for reference. Client admin must use manual payment API with CHECK_PAYMENT method and matching checkNumber to complete payment."
+    },
+    "4_pending_with_flat_discount": {
+      "description": "Pending Payment with Flat Discount Amount",
+      "request": {
+        "organization": {
+          "organizationName": "TechCorp International",
+          "organizationType": "b9663d7e-9a75-427b-bb61-96833934b835",
+          "contactEmail": "contact@techcorp.com",
+          "phoneNumber": "+12125551234",
+          "country": "United States",
+          "stateProvince": "California",
+          "timeZone": "America/Los_Angeles",
+          "language": "English",
+          "industry": "abacb73f-3041-40e3-8b89-b735c221983f",
+          "domain": "techcorp.com",
+          "organizationSize": "abacb73f-3041-40e3-8b89-b735c221983g",
+          "adminEmail": "admin@techcorp.com",
+          "streetAddress": "456 Silicon Valley Blvd",
+          "streetAddressLine2": "Building 2, Floor 5",
+          "city": "San Francisco",
+          "zipPostalCode": "94105",
+          "logoUrl": "https://cdn.aspire.com/logos/techcorp.png"
+        },
+        "billing": {
+          "useSameAsOrganizationAddress": false,
+          "billingEmail": "billing@techcorp.com",
+          "billingName": "Jane Smith",
+          "streetAddress": "789 Billing Avenue",
+          "streetAddressLine2": "Accounting Department",
+          "city": "San Jose",
+          "zipPostalCode": "95110",
+          "country": "United States",
+          "stateProvince": "California"
+        },
+        "mspId": "a6d2c4e1-da0c-404b-bc69-bc4085c3af21",
+        "productSelections": [
+          {
+            "productId": "224b847c-f2cc-4ded-95f7-74fc14f61d05",
+            "packageId": "1fe8b111-3b42-4b43-adfe-b840286b3c04",
+            "licenseCount": 100,
+            "pricePerLicense": 149.99,
+            "validityPeriod": 6,
+            "validityUnit": "MONTH",
+            "productName": "ASAT-SECURITY",
+            "packageName": "GOLD"
+          }
+        ],
+        "invoice": {
+          "subtotal": 14999.00,
+          "discountType": "FLAT",
+          "discountPercentage": 0.0,
+          "discountAmount": 500.0,
+          "couponCode": "WELCOME500",
+          "vatRate": 8.5,
+          "vatAmount": 1232.42,
+          "totalAmount": 15731.42,
+          "paymentStatus": "PENDING",
+          "completedPayment": null
+        }
+      },
+      "notes": "Flat discount of $500 applied. Invoice created as PENDING."
+    },
+    "5_completed_bank_transfer_with_coupon": {
+      "description": "Completed Payment with Bank Transfer and Coupon Code",
+      "request": {
+        "organization": {
+          "organizationName": "Premium Services Ltd.",
+          "organizationType": "b9663d7e-9a75-427b-bb61-96833934b835",
+          "contactEmail": "info@premiumservices.com",
+          "phoneNumber": "+442071234567",
+          "country": "United Kingdom",
+          "stateProvince": "London",
+          "timeZone": "Europe/London",
+          "language": "English",
+          "industry": "abacb73f-3041-40e3-8b89-b735c221983f",
+          "domain": "premiumservices.com",
+          "organizationSize": "abacb73f-3041-40e3-8b89-b735c221983g",
+          "adminEmail": "admin@premiumservices.com",
+          "streetAddress": "100 Premium Street",
+          "streetAddressLine2": "Office Suite 200",
+          "city": "London",
+          "zipPostalCode": "SW1A 1AA",
+          "logoUrl": "https://cdn.aspire.com/logos/premium.png"
+        },
+        "billing": {
+          "useSameAsOrganizationAddress": true,
+          "billingEmail": "billing@premiumservices.com",
+          "billingName": "Michael Brown"
+        },
+        "mspId": "a6d2c4e1-da0c-404b-bc69-bc4085c3af21",
+        "productSelections": [
+          {
+            "productId": "224b847c-f2cc-4ded-95f7-74fc14f61d05",
+            "packageId": "1fe8b111-3b42-4b43-adfe-b840286b3c04",
+            "licenseCount": 75,
+            "pricePerLicense": 249.99,
+            "validityPeriod": 12,
+            "validityUnit": "MONTH",
+            "productName": "Premium Security Suite",
+            "packageName": "PLATINUM"
+          }
+        ],
+        "invoice": {
+          "subtotal": 18749.25,
+          "discountType": "PERCENTAGE",
+          "discountPercentage": 20.0,
+          "discountAmount": 3749.85,
+          "couponCode": "PREMIUM20",
+          "vatRate": 20.0,
+          "vatAmount": 2999.88,
+          "totalAmount": 17999.28,
+          "paymentStatus": "COMPLETED",
+          "completedPayment": {
+            "paymentMethod": "BANK_TRANSFER",
+            "bankTransferDetails": {
+              "bankName": "HSBC Bank",
+              "accountNumber": "987654321",
+              "bankBranchName": "City of London Branch",
+              "transactionNumber": "TXN-789456",
+              "paymentDate": "2025-12-07",
+              "paymentAmount": 17999.28,
+              "transactionReceiptUrl": "https://s3.amazonaws.com/receipts/txn-789456.pdf"
+            },
+            "checkPaymentDetails": null
+          }
+        }
+      },
+      "notes": "Includes coupon code and bank transfer payment details. Invoice created as PENDING, payment details stored."
+    },
+    "6_completed_check_with_flat_discount": {
+      "description": "Completed Payment with Check and Flat Discount",
+      "request": {
+        "organization": {
+          "organizationName": "Local Business Inc.",
+          "organizationType": "b9663d7e-9a75-427b-bb61-96833934b835",
+          "contactEmail": "info@localbusiness.com",
+          "phoneNumber": "+14155551234",
+          "country": "United States",
+          "stateProvince": "Texas",
+          "timeZone": "America/Chicago",
+          "language": "English",
+          "industry": "abacb73f-3041-40e3-8b89-b735c221983f",
+          "domain": "localbusiness.com",
+          "organizationSize": "abacb73f-3041-40e3-8b89-b735c221983g",
+          "adminEmail": "admin@localbusiness.com",
+          "streetAddress": "500 Business Park Drive",
+          "streetAddressLine2": "Unit 10",
+          "city": "Houston",
+          "zipPostalCode": "77001",
+          "logoUrl": null
+        },
+        "billing": {
+          "useSameAsOrganizationAddress": true,
+          "billingEmail": "billing@localbusiness.com",
+          "billingName": "David Wilson"
+        },
+        "mspId": "a6d2c4e1-da0c-404b-bc69-bc4085c3af21",
+        "productSelections": [
+          {
+            "productId": "224b847c-f2cc-4ded-95f7-74fc14f61d05",
+            "packageId": "1fe8b111-3b42-4b43-adfe-b840286b3c04",
+            "licenseCount": 15,
+            "pricePerLicense": 89.99,
+            "validityPeriod": 6,
+            "validityUnit": "MONTH",
+            "productName": "Business Security Package",
+            "packageName": "STANDARD"
+          }
+        ],
+        "invoice": {
+          "subtotal": 1349.85,
+          "discountType": "FLAT",
+          "discountPercentage": 0.0,
+          "discountAmount": 100.0,
+          "couponCode": "FLAT100",
+          "vatRate": 8.25,
+          "vatAmount": 103.11,
+          "totalAmount": 1352.96,
+          "paymentStatus": "COMPLETED",
+          "completedPayment": {
+            "paymentMethod": "CHECK_PAYMENT",
+            "bankTransferDetails": null,
+            "checkPaymentDetails": {
+              "checkNumber": "CHK-456789",
+              "bankName": "Wells Fargo",
+              "branchName": "Main Street Branch",
+              "paymentDate": "2025-12-07",
+              "checkImageUrl": "https://s3.amazonaws.com/checks/chk-456789.jpg"
+            }
+          }
+        }
+      },
+      "notes": "Flat discount of $100 with check payment. Invoice created as PENDING, check details stored."
+    }
+  },
+  "paymentMethodSummary": {
+    "PENDING": {
+      "description": "No payment method selected. Invoice created as PENDING status.",
+      "completedPayment": "Must be null",
+      "nextSteps": "Client admin will see invoice in pending list and can complete payment later using manual payment API."
+    },
+    "BANK_TRANSFER": {
+      "description": "Bank transfer payment method. Payment details stored for reference.",
+      "requiredFields": {
+        "bankName": "Name of the bank",
+        "accountNumber": "Bank account number",
+        "bankBranchName": "Branch name (optional but recommended)",
+        "transactionNumber": "Unique transaction number (REQUIRED for validation)",
+        "paymentDate": "Date of payment in YYYY-MM-DD format",
+        "paymentAmount": "Amount transferred",
+        "transactionReceiptUrl": "URL to receipt document (optional)"
+      },
+      "validation": "When completing payment via manual payment API, transactionNumber must match the stored value.",
+      "nextSteps": "Client admin must use manual payment API with BANK_TRANSFER method and matching transactionNumber."
+    },
+    "CHECK_PAYMENT": {
+      "description": "Check payment method. Check details stored for reference.",
+      "requiredFields": {
+        "checkNumber": "Check number (REQUIRED for validation)",
+        "bankName": "Name of the bank",
+        "branchName": "Branch name (optional but recommended)",
+        "paymentDate": "Date of payment in YYYY-MM-DD format",
+        "checkImageUrl": "URL to check image (optional)"
+      },
+      "validation": "When completing payment via manual payment API, checkNumber must match the stored value.",
+      "nextSteps": "Client admin must use manual payment API with CHECK_PAYMENT method and matching checkNumber."
+    }
+  },
+  "importantNotes": {
+    "invoiceStatus": "IMPORTANT: Even when paymentStatus is COMPLETED, the invoice is ALWAYS created as PENDING. Payment details are stored for reference only.",
+    "paymentCompletion": "To mark invoice as PAID, client admin must use the manual payment API (/billing/api/v1/payment/manual-entry) with matching payment details.",
+    "validation": "Payment details (transactionNumber for bank transfer, checkNumber for check) are validated when completing payment via manual payment API.",
+    "addressFields": "All address fields use new structured format. Old 'address' and 'billingAddress' fields are no longer accepted.",
+    "billingAddress": "When useSameAsOrganizationAddress is true, billing address fields can be null. When false, streetAddress, city, zipPostalCode, and country are required."
+  }
+}
+

@@ -1,0 +1,54 @@
+spring:
+  config:
+    import: "optional:classpath:common-defaults.yml,optional:classpath:common-defaults-prod.yml"
+  application:
+    name: universal-service
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:}
+      database: universal
+
+server:
+  port: 9099
+
+service:
+  cms:
+    url: http://asat-cms-service:5050/cms/api/v1
+  billing:
+    url: http://asat-billing-service:6060/billing/api/v1
+  registration:
+    url: http://asat-registration-service:9090/registration/api/v1
+azure:
+  storage:
+    connection-string: DefaultEndpointsProtocol=https;AccountName=${AZURE_STORAGE_ACCOUNT_NAME};AccountKey=${AZURE_STORAGE_ACCOUNT_KEY};EndpointSuffix=core.windows.net
+    container-name: strgblobstandardasatv2
+
+aws:
+  region: "us-east-1"
+  credentials:
+    # From SSM: /asat/prod/universal-service/aws.credentials.access-key
+    access-key: ${AWS_CREDENTIALS_ACCES_KEY:}
+    # From SSM: /asat/prod/universal-service/aws.credentials.secret-key
+    secret-key: ${AWS_CREDENTIALS_SECRET_KEY:}
+  s3:
+    bucket-name: "asatv2-media-bucket"
+
+client:
+  notification:
+    url: http://asat-notification-service:5656/notification
+  cms:
+    url: http://asat-cms-service:5050/cms/api/v1
+  registration:
+    url: http://asat-registration-service:9090/registration/api/v1
+
+link:
+  logo: https://aspiretss.s3.us-east-1.amazonaws.com/public/Image.png
+  login: https://portal.securityawarenesstraining.ai/auth/login
+  help: https://portal.securityawarenesstraining.ai/auth/login
+
+system:
+  user:
+    email: superadmin01@yopmail.com
+const:
+  leaderboard:
+    max-active-size: 2

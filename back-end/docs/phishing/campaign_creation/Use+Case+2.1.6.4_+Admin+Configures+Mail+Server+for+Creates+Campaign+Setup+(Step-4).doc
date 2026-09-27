@@ -1,0 +1,985 @@
+Date: Mon, 1 Dec 2025 14:43:52 +0000 (UTC)
+Message-ID: <1971588507.7.1764600232633@5506487dc7b8>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_6_1834352023.1764600232633"
+
+------=_Part_6_1834352023.1764600232633
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Use Case 2.1.6.4: Admin Configures Mail Server for Creates Campa=
+ign Setup (Step-4)</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Use Case 2.1.6.4: Admin Configures Mail Server for Creates Campaign=
+ Setup (Step-4)</h1>
+    <div class=3D"Section1">
+        <p><strong>User Story</strong></p>
+<p>As an Admin, I want to configure the mail server for a phishing simulati=
+on campaign by selecting an available mail server from the list or configur=
+ing my own mail server, so that I can send phishing emails through the chos=
+en mail server.</p>
+<p><strong>Description</strong></p>
+<p>This use case outlines the process by which an Admin either selects an e=
+xisting mail server from the list or configures their own custom mail serve=
+r for use in a phishing simulation campaign. The Admin can preview the deta=
+ils of an existing mail server and input the required configurations for th=
+eir own mail server. After setting up the mail server, the Admin proceeds w=
+ith the campaign setup. The mail server must be correctly configured for em=
+ail sending to ensure proper delivery of phishing emails.</p>
+<p><strong>Actors</strong></p>
+<ul>
+<li>
+<p><strong>Admin</strong>: Selects a mail server from the list or configure=
+s a custom mail server.</p></li>
+<li>
+<p><strong>System</strong>: Displays the list of available mail servers, al=
+lows for custom mail server configuration, validates inputs, and saves the =
+mail server configuration.</p></li>
+</ul>
+<p><strong>Preconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>Admin is logged into the platform and has access to the <strong>Create N=
+ew Campaign</strong> wizard.</p></li>
+<li>
+<p>The Admin is at the <strong>Mail Server Configuration</strong> step in t=
+he campaign creation process.</p></li>
+<li>
+<p>The system displays a list of <strong>Available Mail Servers</strong> as=
+ well as the option to <strong>Configure Your Own Mail Server</strong>.</p>=
+</li>
+</ol>
+<p><strong>Postconditions</strong></p>
+<ol start=3D"1">
+<li>
+<p>The selected or configured mail server is saved and available for use in=
+ the phishing campaign.</p></li>
+<li>
+<p>The Admin can proceed to the next step in the campaign setup after confi=
+guring the mail server.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Main Flow (Normal Success Scenario)</strong></p>
+<p><strong>Step 1: Navigate to Mail Server Configuration</strong></p>
+<ul>
+<li>
+<p>The Admin navigates to the <strong>Mail Server</strong> configuration st=
+ep in the campaign creation wizard.</p></li>
+<li>
+<p>The system displays a list of <strong>Available Mail Servers</strong>, w=
+hich are preconfigured mail servers the Admin can choose from.</p></li>
+</ul>
+<p><strong>Step 2: Select a Mail Server </strong></p>
+<ul>
+<li>
+<p>The Admin can choose an available mail server from the list (e.g., <stro=
+ng>Client Office 365</strong>, <strong>Client Exchange Server</strong>, etc=
+.).</p></li>
+<li>
+<p>The Admin clicks the <strong>Preview</strong> button to view the configu=
+ration details of the selected mail server.</p></li>
+<li>
+<p>The system displays the mail server's details in a preview window, showi=
+ng the <strong>Server Address</strong>, <strong>Domain</strong>, <strong>Tr=
+ansport</strong>, <strong>Port</strong>, Username, Password (password shoul=
+d show in hidden) and the <strong>Mail Server Status</strong> (Active/Inact=
+ive).</p></li>
+<li>
+<p>The Admin can view whether the server is active and check its configurat=
+ions (e.g., <a class=3D"external-link" href=3D"http://smtp.office365.com" r=
+el=3D"nofollow"><strong>smtp.office365.com</strong></a>, <a class=3D"extern=
+al-link" data-card-appearance=3D"inline" href=3D"http://microsoft.com" rel=
+=3D"nofollow">http://microsoft.com</a> , <strong>SMTP</strong>, <strong>Por=
+t 587</strong>).</p></li>
+<li>
+<p>The Admin can select the <strong>Close</strong> button to exit the previ=
+ew and confirm the mail server selection.</p></li>
+<li>
+<p>The Admin clicks the <strong>Save</strong> button to save the custom mai=
+l server configuration.</p></li>
+</ul>
+<p><strong>Step 3: Confirmation and Exit</strong></p>
+<ul>
+<li>
+<p>After the mail server configuration is completed (either by selecting an=
+ existing server or adding a custom one), the system confirms that the mail=
+ server is ready for use in the phishing campaign.</p></li>
+<li>
+<p>The Admin can click <strong>Save &amp; Continue</strong> to proceed to t=
+he next step in the campaign creation process.</p></li>
+</ul>
+<p><strong>Step 4: Configure a Custom Mail Server</strong></p>
+<ul>
+<li>
+<p>If the Admin decides to configure a custom mail server, they click on th=
+e option to <strong>Configure Your Own Mail Server</strong>.</p></li>
+<li>
+<p>A modal window opens, prompting the Admin to enter the required configur=
+ation details:</p>
+<ul>
+<li>
+<p><strong>Mail Server Name</strong>: The name of the custom mail server (e=
+.g., <a class=3D"external-link" data-card-appearance=3D"inline" href=3D"htt=
+p://office365.com" rel=3D"nofollow">http://office365.com</a> ).</p></li>
+<li>
+<p><strong>Description</strong>: A brief description of the mail server (e.=
+g., <strong>SMTP server for client=E2=80=99s Office 365</strong>).</p></li>
+<li>
+<p><strong>Server Address</strong>: The mail server's address (e.g., <a cla=
+ss=3D"external-link" href=3D"http://smtp.office365.com" rel=3D"nofollow"><s=
+trong>smtp.office365.com</strong></a>).</p></li>
+<li>
+<p><strong>Domain</strong>: The domain associated with the server (e.g., <a=
+ class=3D"external-link" data-card-appearance=3D"inline" href=3D"http://mic=
+rosoft.com" rel=3D"nofollow">http://microsoft.com</a> ).</p></li>
+<li>
+<p><strong>Transport</strong>: The transport protocol used for the connecti=
+on (e.g., <strong>SMTP</strong>).</p></li>
+<li>
+<p><strong>Port</strong>: The port used for the mail server connection (e.g=
+., <strong>587</strong>).</p></li>
+<li>
+<p><strong>Username</strong>: The username for authenticating the mail serv=
+er (e.g., <a class=3D"external-link" href=3D"mailto:admin@office365.com" re=
+l=3D"nofollow"><strong>admin@office365.com</strong></a>).</p></li>
+<li>
+<p><strong>Password</strong>: The password for the username (encrypted for =
+security).</p></li>
+</ul></li>
+<li>
+<p>The Admin can also choose to test the mail server connection by checking=
+ the <strong>Test Mail Server Connection</strong> box before clicking <stro=
+ng>Save</strong>.</p></li>
+<li>
+<p>The system validates the inputs to ensure that all required fields are f=
+illed.</p></li>
+</ul>
+<p><strong>Step 5: Test Mail Server Configuration</strong></p>
+<ul>
+<li>
+<p>After entering the mail server details, the Admin clicks the <strong>Tes=
+t Mail Server Connection</strong> button.</p></li>
+<li>
+<p>The system attempts to connect to the configured mail server to verify t=
+he settings.</p></li>
+<li>
+<p>If the connection is successful, the system displays a message: "Mail Se=
+rver Connection Successful".</p></li>
+<li>
+<p>If the connection fails, the system displays an error message and prompt=
+s the Admin to check the configuration.</p></li>
+</ul>
+<p><strong>Step 6: Save Mail Server Configuration</strong></p>
+<ul>
+<li>
+<p>Once the custom mail server is successfully configured and tested, the A=
+dmin clicks the <strong>Save</strong> button to save the configuration.</p>=
+</li>
+<li>
+<p>The system saves the custom mail server configuration and makes it avail=
+able for use in the phishing campaign.</p></li>
+</ul>
+<p><strong>Step 7: Proceed to Next Step</strong></p>
+<ul>
+<li>
+<p>After saving the mail server configuration, the Admin can click <strong>=
+Save &amp; Continue</strong> to proceed to the next step in the campaign cr=
+eation process.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Frontend Form Validation</strong></p>
+<p><strong>Field Validation Rules</strong></p>
+<ol start=3D"1">
+<li>
+<p><strong>Mail Server Name</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory.</p></li>
+<li>
+<p><strong>Validation</strong>: The Admin must provide a valid name for the=
+ mail server.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Mail Server Name is required."</p></li>
+</ul></li>
+<li>
+<p><strong>Server Address</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory.</p></li>
+<li>
+<p><strong>Validation</strong>: The Admin must enter a valid mail server ad=
+dress (e.g., <a class=3D"external-link" href=3D"http://smtp.office365.com" =
+rel=3D"nofollow"><strong>smtp.office365.com</strong></a>).</p></li>
+<li>
+<p><strong>Error Message</strong>: "Server Address is required."</p></li>
+</ul></li>
+<li>
+<p><strong>Domain</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory.</p></li>
+<li>
+<p><strong>Validation</strong>: The Admin must enter a valid domain (e.g., =
+<a class=3D"external-link" data-card-appearance=3D"inline" href=3D"http://m=
+icrosoft.com" rel=3D"nofollow">http://microsoft.com</a> ).</p></li>
+<li>
+<p><strong>Error Message</strong>: "Domain is required."</p></li>
+</ul></li>
+<li>
+<p><strong>Transport</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory.</p></li>
+<li>
+<p><strong>Validation</strong>: The Admin must select a valid transport pro=
+tocol (e.g., <strong>SMTP</strong>).</p></li>
+<li>
+<p><strong>Error Message</strong>: "Transport is required."</p></li>
+</ul></li>
+<li>
+<p><strong>Port</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory.</p></li>
+<li>
+<p><strong>Validation</strong>: The Admin must enter a valid port number (e=
+.g., <strong>587</strong>).</p></li>
+<li>
+<p><strong>Error Message</strong>: "Port is required."</p></li>
+</ul></li>
+<li>
+<p><strong>Username</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory.</p></li>
+<li>
+<p><strong>Validation</strong>: The Admin must enter a valid username for t=
+he mail server.</p></li>
+<li>
+<p><strong>Error Message</strong>: "Username is required."</p></li>
+</ul></li>
+<li>
+<p><strong>Password</strong>:</p>
+<ul>
+<li>
+<p><strong>Required</strong>: This field is mandatory.</p></li>
+<li>
+<p><strong>Validation</strong>: The Admin must enter a valid password (encr=
+ypted for security).</p></li>
+<li>
+<p><strong>Error Message</strong>: "Password is required.=E2=80=9D</p></li>
+</ul></li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Business Rules</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"5b=
+72da49-afa2-4294-ab50-e5cbd64829ac" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Rule</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-1</p></td>
+<td class=3D"confluenceTd">
+<p>The Admin must select an available mail server or configure a custom mai=
+l server for the campaign.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-2</p></td>
+<td class=3D"confluenceTd">
+<p>If the Admin configures a custom mail server, the <strong>Mail Server Na=
+me</strong>, <strong>Server Address</strong>, <strong>Domain</strong>, <str=
+ong>Transport</strong>, <strong>Port, username </strong>and<strong> passwor=
+d</strong> must be provided.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-3</p></td>
+<td class=3D"confluenceTd">
+<p>The Admin can <strong>Preview</strong> the mail server details before se=
+lecting it for the campaign.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-4</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Mail Server Status</strong> must be displayed for each avail=
+able mail server (Active/Inactive).</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-5</p></td>
+<td class=3D"confluenceTd">
+<p>The Admin can choose a mail server from the list or configure their own =
+mail server using the <strong>Configure Your Own Mail Server</strong> optio=
+n.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-6</p></td>
+<td class=3D"confluenceTd">
+<p>The Admin must provide all necessary details (Mail Server Name, Server A=
+ddress, Domain, etc.) for configuring the custom mail server.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-7</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can test the mail server connection before saving the configuratio=
+n.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-8</p></td>
+<td class=3D"confluenceTd">
+<p>The system ensures that only <strong>Active</strong> mail servers can be=
+ selected for use in the campaign.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-9</p></td>
+<td class=3D"confluenceTd">
+<p>Admin must click <strong>Save &amp; Continue</strong> after selecting or=
+ configuring a mail server to proceed to the next step.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>BR-10</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Test Mail Server Connection</strong> option is available for=
+ custom mail servers to verify the connection before saving.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>Acceptance Criteria</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"9e=
+68d8f2-b5c8-4669-a7fd-c2cf67794861" class=3D"confluenceTable">
+<tbody>
+<tr>
+<td class=3D"confluenceTd">
+<p><strong>ID</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Acceptance Criteria</strong></p></td>
+<td class=3D"confluenceTd">
+<p><strong>Pass/Fail Condition</strong></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-01</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can view a list of available mail servers.</p></td>
+<td class=3D"confluenceTd">
+<p>Available servers are displayed correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-02</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can preview the configuration details of a selected mail server.</=
+p></td>
+<td class=3D"confluenceTd">
+<p>Mail server details (Server Address, Domain, Port, username, passwordetc=
+.) are shown.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-03</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can configure a custom mail server by entering the necessary infor=
+mation (Name, Server Address, etc.).</p></td>
+<td class=3D"confluenceTd">
+<p>Custom mail server configuration is successfully saved.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-04</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select a mail server from the list and use it for the campaign=
+.</p></td>
+<td class=3D"confluenceTd">
+<p>The selected mail server is saved for the campaign.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-05</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can choose to configure their own mail server by clicking on <stro=
+ng>Configure Your Own Mail Server</strong>.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can configure a new server.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-06</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can <strong>Preview</strong> the mail server configuration before =
+selecting it.</p></td>
+<td class=3D"confluenceTd">
+<p>Preview details are displayed correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-07</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can save the mail server configuration (either selected or custom)=
+.</p></td>
+<td class=3D"confluenceTd">
+<p>The mail server configuration is saved and ready for use.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-08</p></td>
+<td class=3D"confluenceTd">
+<p>The system validates the mail server configuration inputs (Name, Address=
+, Domain, etc.).</p></td>
+<td class=3D"confluenceTd">
+<p>Validation messages are shown for any missing or incorrect inputs.</p></=
+td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-09</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can cancel the configuration process and return to the previous st=
+ep.</p></td>
+<td class=3D"confluenceTd">
+<p>Clicking <strong>Cancel</strong> exits the process without saving any ch=
+anges.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-10</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can view the <strong>Mail Server Status</strong> (Active/Inactive)=
+ for each available mail server.</p></td>
+<td class=3D"confluenceTd">
+<p>Mail server status is displayed correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-11</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can add a custom <strong>Mail Server Name</strong> for the server =
+configuration.</p></td>
+<td class=3D"confluenceTd">
+<p>A custom <strong>Mail Server Name</strong> is accepted.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-12</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can configure the <strong>Server Address</strong> and <strong>Port=
+</strong> for the custom mail server.</p></td>
+<td class=3D"confluenceTd">
+<p>Server Address and Port are validated correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-13</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can configure the <strong>Domain</strong> for the custom mail serv=
+er.</p></td>
+<td class=3D"confluenceTd">
+<p>Domain is validated and saved correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-14</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can preview and confirm the <strong>Mail Server Configuration</str=
+ong> before saving it.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can confirm the details before finalizing.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-15</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can enable or disable the <strong>Mail Server Status</strong> (Act=
+ive/Inactive).</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Mail Server Status</strong> is editable.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-16</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can use an <strong>Active</strong> mail server for phishing email =
+campaigns.</p></td>
+<td class=3D"confluenceTd">
+<p>Only <strong>Active</strong> servers can be selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-17</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can view the list of <strong>Available Mail Servers</strong> in a =
+sorted order.</p></td>
+<td class=3D"confluenceTd">
+<p>Servers are listed and sorted properly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-19</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can click <strong>Save &amp; Continue</strong> to move to the next=
+ step after configuring the mail server.</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Save &amp; Continue</strong> button works once the mail serv=
+er is selected.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-20</p></td>
+<td class=3D"confluenceTd">
+<p>Admin is informed if the <strong>Mail Server Status</strong> is <strong>=
+Inactive</strong> and cannot be used for email delivery.</p></td>
+<td class=3D"confluenceTd">
+<p>The system prevents selection of inactive servers.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-21</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can configure a custom mail server by entering the necessary infor=
+mation (Name, Server Address, etc.).</p></td>
+<td class=3D"confluenceTd">
+<p>Custom mail server configuration is successfully saved.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-22</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can test the mail server configuration before saving it.</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can see "Mail Server Connection Successful" if the test passes.</p=
+></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-23</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can save the configured mail server and move to the next step in t=
+he campaign creation process.</p></td>
+<td class=3D"confluenceTd">
+<p>Mail server configuration is saved successfully.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-24</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can configure custom mail server settings such as <strong>Mail Ser=
+ver Name</strong>, <strong>Server Address</strong>, <strong>Domain</strong>=
+, <strong>Transport</strong>, and <strong>Port</strong>.</p></td>
+<td class=3D"confluenceTd">
+<p>All fields must be filled correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-25</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can use the <strong>Test Mail Server Connection</strong> feature t=
+o verify the mail server settings before saving.</p></td>
+<td class=3D"confluenceTd">
+<p>Connection test is successful or provides error feedback.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-26</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can cancel the mail server configuration and return to the previou=
+s step.</p></td>
+<td class=3D"confluenceTd">
+<p>Clicking <strong>Cancel</strong> returns the Admin to the previous page =
+without saving.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-27</p></td>
+<td class=3D"confluenceTd">
+<p>The system validates the <strong>Mail Server Name</strong>, <strong>Serv=
+er Address</strong>, <strong>Domain</strong>, <strong>Transport</strong>, a=
+nd <strong>Port</strong> fields before allowing the Admin to save the confi=
+guration.</p></td>
+<td class=3D"confluenceTd">
+<p>Validation errors are displayed for missing or invalid inputs.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-28</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can proceed to the next step in the campaign creation process afte=
+r configuring the mail server.</p></td>
+<td class=3D"confluenceTd">
+<p>The <strong>Save &amp; Continue</strong> button is enabled once all requ=
+ired fields are completed.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-29</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can click the <strong>Preview</strong> button to see the configura=
+tion details for an available mail server.</p></td>
+<td class=3D"confluenceTd">
+<p>The configuration details are displayed correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-30</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can view whether the mail server is <strong>Active</strong> or <st=
+rong>Inactive</strong> for selection.</p></td>
+<td class=3D"confluenceTd">
+<p>Only <strong>Active</strong> servers can be selected for the campaign.</=
+p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-12</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can enter a custom mail server <strong>Username</strong> and <stro=
+ng>Password</strong> for authentication.</p></td>
+<td class=3D"confluenceTd">
+<p>Valid authentication details are accepted.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-31</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can enter a custom mail server <strong>Description</strong> for fu=
+rther clarification.</p></td>
+<td class=3D"confluenceTd">
+<p>The description is saved and displayed correctly.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-32</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can choose the <strong>Transport</strong> protocol (e.g., SMTP) fo=
+r the custom mail server.</p></td>
+<td class=3D"confluenceTd">
+<p>The selected transport is saved and used for the configuration.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-33</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can save the mail server settings and proceed with the rest of the=
+ campaign setup.</p></td>
+<td class=3D"confluenceTd">
+<p>The configuration is successfully saved and the next step is enabled.</p=
+></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-34</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can select either an available mail server or configure a custom o=
+ne.</p></td>
+<td class=3D"confluenceTd">
+<p>Both options are available, and the Admin can choose either.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-35</p></td>
+<td class=3D"confluenceTd">
+<p>The system ensures that only <strong>Active</strong> mail servers can be=
+ used to send phishing emails.</p></td>
+<td class=3D"confluenceTd">
+<p><strong>Inactive</strong> mail servers cannot be selected for use in the=
+ campaign.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-36</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can view the <strong>Mail Server Status</strong> and <strong>Serve=
+r Address</strong> in the <strong>Preview</strong> section.</p></td>
+<td class=3D"confluenceTd">
+<p>The mail server's status and address are displayed accurately.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-37</p></td>
+<td class=3D"confluenceTd">
+<p>Admin can configure multiple mail servers for different campaigns, if re=
+quired.</p></td>
+<td class=3D"confluenceTd">
+<p>Multiple mail server configurations are supported.</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>AC-38</p></td>
+<td class=3D"confluenceTd">
+<p>Admin receives a confirmation message after successfully saving the mail=
+ server configuration.</p></td>
+<td class=3D"confluenceTd">
+<p>A message appears confirming the server has been saved.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><strong>System Behavior &amp; Validation</strong></p>
+<ul>
+<li>
+<p><strong>Mail Server List</strong>: Displays available preconfigured mail=
+ servers for selection.</p></li>
+<li>
+<p><strong>Custom Mail Server Configuration</strong>: Admin can manually in=
+put server details if needed.</p></li>
+<li>
+<p><strong>Preview</strong>: Admin can view detailed configuration before f=
+inalizing the mail server.</p></li>
+<li>
+<p><strong>Mail Server Status</strong>: The system displays whether the sel=
+ected server is active or inactive.</p></li>
+<li>
+<p><strong>Validation</strong>: All fields (Name, Address, Domain, username=
+, password etc.) must be validated before saving.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Security Handling</strong></p>
+<ul>
+<li>
+<p><strong>Mail Server Details Security</strong>: All mail server configura=
+tions must be securely stored.</p></li>
+<li>
+<p><strong>Inactive Servers</strong>: Inactive servers cannot be used for p=
+hishing campaigns, ensuring integrity.</p></li>
+<li>
+<p><strong>Data Protection</strong>: Any configurations or data submitted m=
+ust comply with security and privacy standards.</p></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_6_1834352023.1764600232633--

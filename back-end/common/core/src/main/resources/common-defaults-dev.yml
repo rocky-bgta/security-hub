@@ -1,0 +1,24 @@
+app:
+  aws:
+    bucket: asatv2-media-bucket
+    region: us-east-1
+    accessKeyId: ${APP_AWS_CLOUD_ACCESS_KEY_ID:}
+    secretAccessKey: ${APP_AWS_SECRET_ACCESS_KEY:}
+    cloudFront:
+      distributionDomain: content.aspireelearning.com
+      distributionMainDomain: .aspireelearning.com
+      keyPairId: ${APP_AWS_CLOUD_FRONT_KEY_PAIR_ID:}
+      privateKeyPem: ${APP_AWS_CLOUD_FRONT_PRIVATE_KEY_PEM:}
+  azures:
+    storage:
+      connection-string: <your-conn-string>
+      container-name: <your-container>
+  gcp:
+    projectId: your-gcp-project-id
+    bucket: your-gcs-bucket
+  storage:
+    active: s3
+
+notification:
+  service:
+    url: ${NOTIFICATION_SERVICE_URL:http://asat-notification-service:5656}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Invoice</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 0 20px;
+            position: relative;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .header-image {
+            width: 100%;
+            display: block;
+        }
+        .header-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .content {
+            padding: 20px 20px 120px 20px;
+        }
+        .details {
+            margin-bottom: 30px;
+        }
+        .details p {
+            margin: 5px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+        .totals-wrapper {
+            width: 100%;
+            margin-bottom: 30px;
+            clear: both;
+        }
+        .totals-block {
+            width: 300px;
+            margin-left: auto;
+        }
+        .totals {
+            width: 100%;
+        }
+        .totals td {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+        }
+        .totals td:first-child {
+            text-align: left;
+            font-weight: bold;
+            width: 60%;
+        }
+        .totals td:last-child {
+            text-align: right;
+            width: 40%;
+        }
+        .footer-image {
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .footer-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        a {
+            color: #4aa3df;
+            text-decoration: underline;
+        }
+        h1 {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        .amount-in-words {
+            width: 100%;
+            margin-top: 8px;
+            font-size: 11px;
+            line-height: 1.4;
+            text-align: right;
+            white-space: nowrap;
+        }
+        .amount-in-words p {
+            margin: 0;
+            text-align: right;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+<!-- Header Image -->
+<div class="header-image">
+    <img src="Header.png" alt="Header" />
+</div>
+
+<div class="container">
+    <div class="content">
+        <h1>Invoice</h1>
+
+        <!-- Invoice details -->
+        <div class="details">
+            <p><strong>Invoice ID:</strong> {{invoiceId}}</p>
+            <p><strong>Client Name:</strong> {{clientName}}</p>
+            <p><strong>Date Issued:</strong> {{date}}</p>
+            <p><strong>Expiry Date:</strong> {{expireDate}}</p>
+            <p><strong>Status:</strong> {{status}}</p>
+        </div>
+
+        <!-- Product table -->
+        <table>
+            <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Package</th>
+                <th>Licenses</th>
+                <th>Price/License</th>
+                <th>Validity</th>
+                <th>Subtotal</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{productRows}}
+            </tbody>
+        </table>
+
+        <!-- Totals -->
+        <div class="totals-wrapper">
+            <div class="totals-block">
+                <table class="totals">
+                    <tr>
+                        <td>Subtotal:</td>
+                        <td>${{subtotal}}</td>
+                    </tr>
+                    {{couponDiscountRow}}
+                    <tr>
+                        <td>Discount:</td>
+                        <td>${{discount}}</td>
+                    </tr>
+                    <tr>
+                        <td>VAT:</td>
+                        <td>${{vat}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total:</td>
+                        <td><strong>${{total}}</strong></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="amount-in-words">
+                <p><strong>Amount in words:</strong> {{totalInWords}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Image -->
+<div class="footer-image">
+    <img src="Footer.png" alt="Footer" />
+</div>
+</body>
+</html>
+

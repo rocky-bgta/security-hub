@@ -3,7 +3,7 @@ spring:
     import: "optional:classpath:common-defaults.yml,optional:classpath:common-defaults-local.yml"
   data:
     mongodb:
-      uri: ${MONGODB_URI}
+      uri: ${MONGODB_URI:mongodb://localhost:27017/notification}
       database: notification
   task:
     scheduling:
@@ -21,10 +21,11 @@ aws:
   region: "us-east-1"
   credentials:
     # From SSM: /asat/dev/notification-service/aws.credentials.access-key (or env)
-    access-key: ${AWS_CREDENTIALS_ACCESS_KEY:}}
+    access-key: ${AWS_CREDENTIALS_ACCESS_KEY:}
     # From SSM: /asat/dev/notification-service/aws.credentials.secret-key (or env)
     secret-key: ${AWS_CREDENTIALS_SECRET_KEY:}
   sqs:
+    enabled: ${AWS_SQS_ENABLED:false}
     queue-name: asatv2-main-queue
     queue-url: https://sqs.us-east-1.amazonaws.com/636499496141/asatv2-main-queue
 #    queue-url: https://sqs.us-east-1.amazonaws.com/636499496141/asatv2-prod-queue
@@ -39,11 +40,11 @@ aws:
   ses:
     sender-email: "info@aspiretss.com" # IMPORTANT: Must be a verified SES identity
     sandbox-mode: false # Set to false in production when SES is out of sandbox
-    fallback-to-console: false # Log emails to console when SES fails in dev mode
+    fallback-to-console: true # Log emails to console when SMTP/SES is not configured locally
     smtp:
       host: "email-smtp.us-east-1.amazonaws.com"
       port: 587
-      username: ${aws_ses_smtp_username:${AWS_ACCESS_KEY_ID}} # SMTP username (same as access key)
+      username: ${aws_ses_smtp_username:} # SMTP username
       password: ${aws_ses_smtp_password:}  # SMTP password (same as secret key)
       from-name: "AspireLMS Support"
 

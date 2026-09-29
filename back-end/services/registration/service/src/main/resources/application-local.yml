@@ -64,6 +64,7 @@ const:
 trial:
   otp:
     validity-seconds: 300
+    console-enabled: true
   allow-onboarding-with-existing-domain: true
 
 aspire:

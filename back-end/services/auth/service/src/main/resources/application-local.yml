@@ -98,3 +98,5 @@ mfa:
   temp-token-expiration-minutes: ${MFA_TEMP_TOKEN_EXPIRATION_MINUTES:}  # MFA temp token TTL covering progressive cooldowns
   ip-verify-limit: ${MFA_IP_VERIFY_LIMIT:30}  # Max OTP verify attempts per IP per lock window
   encryption-key: ${MFA_ENCRYPTION_KEY:}  # Encryption key for TOTP secrets (CHANGE IN PRODUCTION!)
+  otp:
+    console-enabled: true

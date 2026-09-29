@@ -14,6 +14,11 @@ public class AwsCredentialsAvailableCondition implements Condition {
 
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+        boolean sqsEnabled = context.getEnvironment().getProperty("aws.sqs.enabled", Boolean.class, true);
+        if (!sqsEnabled) {
+            return false;
+        }
+
         String accessKey = context.getEnvironment().getProperty("aws.credentials.access-key");
         String secretKey = context.getEnvironment().getProperty("aws.credentials.secret-key");
         if (StringUtils.hasText(accessKey) && StringUtils.hasText(secretKey)) {

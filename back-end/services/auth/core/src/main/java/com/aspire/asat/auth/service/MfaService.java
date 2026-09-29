@@ -38,6 +38,7 @@ import com.aspire.asat.common.enums.notification.NotificationPriority;
 import com.aspire.asat.common.enums.notification.NotificationType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -67,6 +68,9 @@ public class MfaService extends BaseService {
     private final NotificationClient notificationClient;
     private final OtpSecurityService otpSecurityService;
     private final MfaAuditService mfaAuditService;
+
+    @Value("${mfa.otp.console-enabled:false}")
+    private boolean otpConsoleEnabled;
 
     /**
      * Check if MFA is enabled globally
@@ -384,6 +388,7 @@ public class MfaService extends BaseService {
             } else {
                 channel = NotificationChannel.EMAIL;
                 recipient = user.getEmail();
+                logOtpForLocalVerification(recipient, otp);
             }
 
             NotificationRequestDto.NotificationRequestDtoBuilder requestBuilder = NotificationRequestDto.builder()
@@ -409,6 +414,12 @@ public class MfaService extends BaseService {
         } catch (Exception e) {
             log.error("Error sending OTP notification: {}", e.getMessage(), e);
             // Don't throw exception - OTP is already saved, user can request another one
+        }
+    }
+
+    private void logOtpForLocalVerification(String email, String otp) {
+        if (otpConsoleEnabled) {
+            log.warn("LOCAL MFA EMAIL OTP for {}: {}", email, otp);
         }
     }
 

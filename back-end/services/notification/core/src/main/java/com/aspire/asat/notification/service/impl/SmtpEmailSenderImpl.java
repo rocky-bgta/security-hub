@@ -18,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import software.amazon.awssdk.core.ResponseInputStream;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
@@ -54,6 +55,9 @@ public class SmtpEmailSenderImpl implements SmtpEmailSender {
     @Value("${aws.ses.smtp.from-name}")
     private String fromName;
 
+    @Value("${aws.ses.fallback-to-console:false}")
+    private boolean fallbackToConsole;
+
     @Override
     public void sendEmail(String to, String subject, String htmlBody) throws IOException, MessagingException {
         log.info("Sending email via SMTP to: {}, subject: {}", to, subject);
@@ -75,28 +79,7 @@ public class SmtpEmailSenderImpl implements SmtpEmailSender {
         msg.setSubject(subject);
         msg.setContent(htmlBody, "text/html; charset=UTF-8");
 
-        // Create a transport
-        Transport transport = session.getTransport();
-
-        try {
-            log.info("Connecting to SMTP server - Host: {}, Port: {}, Username: {}", smtpHost, smtpPort, smtpUsername);
-            
-            // Connect to Amazon SES using the SMTP username and password
-            transport.connect(smtpHost, smtpUsername, smtpPassword);
-            log.info("SMTP connection established successfully");
-            
-            // Send the email
-            transport.sendMessage(msg, msg.getAllRecipients());
-            log.info("Email sent successfully via SMTP to: {}", to);
-            
-        } catch (Exception ex) {
-            log.error("Failed to send email via SMTP: {}", ex.getMessage(), ex);
-            log.error("SMTP Configuration - Host: {}, Port: {}, Username: {}", smtpHost, smtpPort, smtpUsername);
-            throw ex;
-        } finally {
-            // Close and terminate the connection
-            transport.close();
-        }
+        deliverMessage(msg, to, "email");
     }
 
     @Override
@@ -180,27 +163,61 @@ public class SmtpEmailSenderImpl implements SmtpEmailSender {
 
         msg.setContent(multipart);
 
-        // Create a transport
-        Transport transport = session.getTransport();
+        deliverMessage(msg, emailDto.getTo(), "email with attachments");
+    }
+
+    private void deliverMessage(MimeMessage msg, String to, String description) throws MessagingException {
+        if (fallbackToConsole && !hasSmtpCredentials()) {
+            logEmailToConsole(msg, "SMTP credentials are not configured");
+            return;
+        }
+
+        Transport transport = msg.getSession().getTransport();
 
         try {
             log.info("Connecting to SMTP server - Host: {}, Port: {}, Username: {}", smtpHost, smtpPort, smtpUsername);
-            
-            // Connect to Amazon SES using the SMTP username and password
             transport.connect(smtpHost, smtpUsername, smtpPassword);
             log.info("SMTP connection established successfully");
-            
-            // Send the email
+
             transport.sendMessage(msg, msg.getAllRecipients());
-            log.info("Email with attachments sent successfully via SMTP to: {}", emailDto.getTo());
-            
+            log.info("{} sent successfully via SMTP to: {}", description, to);
+
         } catch (Exception ex) {
-            log.error("Failed to send email with attachments via SMTP: {}", ex.getMessage(), ex);
+            log.error("Failed to send {} via SMTP: {}", description, ex.getMessage(), ex);
             log.error("SMTP Configuration - Host: {}, Port: {}, Username: {}", smtpHost, smtpPort, smtpUsername);
-            throw ex;
+
+            if (fallbackToConsole) {
+                logEmailToConsole(msg, "SMTP delivery failed: " + ex.getMessage());
+                return;
+            }
+
+            if (ex instanceof MessagingException messagingException) {
+                throw messagingException;
+            }
+            throw new MessagingException("Failed to send " + description + " via SMTP", ex);
         } finally {
-            // Close and terminate the connection
             transport.close();
+        }
+    }
+
+    private boolean hasSmtpCredentials() {
+        return StringUtils.hasText(smtpUsername) && StringUtils.hasText(smtpPassword);
+    }
+
+    private void logEmailToConsole(MimeMessage msg, String reason) {
+        try {
+            log.warn("=== SMTP EMAIL FALLBACK ({}) ===", reason);
+            log.warn("To: {}", java.util.Arrays.toString(msg.getRecipients(Message.RecipientType.TO)));
+            log.warn("From: {}", java.util.Arrays.toString(msg.getFrom()));
+            log.warn("Subject: {}", msg.getSubject());
+            log.warn("Content-Type: {}", msg.getContentType());
+            Object content = msg.getContent();
+            if (content instanceof String body) {
+                log.warn("Body: {}", body);
+            }
+            log.warn("=== END SMTP EMAIL FALLBACK ===");
+        } catch (Exception e) {
+            log.error("Error logging SMTP fallback email to console: {}", e.getMessage(), e);
         }
     }
 

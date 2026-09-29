@@ -98,6 +98,9 @@ public class TrialSignupServiceImpl implements TrialSignupService {
     @Value("${trial.otp.validity-seconds:300}")
     private Integer otpValiditySeconds;
 
+    @Value("${trial.otp.console-enabled:false}")
+    private boolean otpConsoleEnabled;
+
     @Value("${trial.allow-onboarding-with-existing-domain:false}")
     private Boolean allowTrialOnboardingWithExistingDomain;
 
@@ -939,10 +942,12 @@ public class TrialSignupServiceImpl implements TrialSignupService {
 
     private void sendVerificationEmail(String email, String otp, String firstName) {
         try {
+            logOtpForLocalVerification(email, otp);
+
             Map<String, Object> templateModel = new HashMap<>();
             templateModel.put("otp", otp);
-            String userName = firstName;
-            if( !userName.isEmpty()){
+            String userName = firstName == null ? "" : firstName;
+            if (!userName.isEmpty()) {
                 userName = " " + userName;
             } else {
                 userName = "" ;
@@ -965,6 +970,12 @@ public class TrialSignupServiceImpl implements TrialSignupService {
         } catch (Exception e) {
             log.error("Error sending verification email to {}: {}", email, e.getMessage(), e);
             // Don't throw exception - OTP is already saved, user can request another one
+        }
+    }
+
+    private void logOtpForLocalVerification(String email, String otp) {
+        if (otpConsoleEnabled) {
+            log.warn("LOCAL SIGNUP EMAIL OTP for {}: {}", email, otp);
         }
     }
 

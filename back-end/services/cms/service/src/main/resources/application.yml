@@ -42,8 +42,8 @@ aws:
   access-key-id: ${AWS_ACCESS_KEY_ID:}}
   secret-access-key: ${AWS_SECRET_ACCESS_KEY:}
   ssm:
-    enabled: ${AWS_SSM_ENABLED:true}
-    kms-enabled: ${AWS_SSM_KMS_ENABLED:true}
+    enabled: ${AWS_SSM_ENABLED:false}
+    kms-enabled: ${AWS_SSM_KMS_ENABLED:false}
     parameter-path-prefix: ${AWS_SSM_PARAMETER_PATH_PREFIX:/asat}
     kms-key-id: ${AWS_KMS_KEY_ID:}
     region: ${AWS_REGION:us-east-1}

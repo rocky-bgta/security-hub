@@ -20,8 +20,8 @@ service:
 
 azure:
   storage:
-    connection-string: DefaultEndpointsProtocol=https;AccountName=${AZURE_STORAGE_ACCOUNT_NAME};AccountKey=${AZURE_STORAGE_ACCOUNT_KEY};EndpointSuffix=core.windows.net
-    container-name: strgblobstandardasatv2
+    connection-string: ${AZURE_STORAGE_CONNECTION_STRING:UseDevelopmentStorage=true}
+    container-name: ${AZURE_STORAGE_CONTAINER_NAME:strgblobstandardasatv2}
 
 aws:
   region: "us-east-1"

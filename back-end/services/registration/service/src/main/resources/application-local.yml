@@ -29,7 +29,7 @@ service:
 
 azure:
   storage:
-    connection-string: DefaultEndpointsProtocol=https;AccountName=${AZURE_STORAGE_ACCOUNT_NAME};AccountKey=${AZURE_STORAGE_ACCOUNT_KEY};EndpointSuffix=core.windows.net
+    connection-string: ${AZURE_STORAGE_CONNECTION_STRING:UseDevelopmentStorage=true}
     container-name: strgblobstandardasatv2
 
 aws:

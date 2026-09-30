@@ -294,3 +294,15 @@ Expected response contains a new token response:
 
 4. Use Authorization: Bearer ACCESS_TOKEN_HERE
 ```
+হ্যাঁ, তোমার ওই Auth Swagger-এ access token পেতে তিনটা কল পরপর দিতে হবে। আগে POST /api/v1/auth/login-এ username, password আর deviceInfo দেবে—এতে tempToken আসবে। তারপর POST /api/v1/auth/mfa/generate-otp-
+হ্যাঁ। তোমার ওই Auth Swagger-এ access token পাওয়ার জন্য ৩টা API ধারাবাহিকভাবে hit করতে হবে:
+1. POST /api/v1/auth/login
+   Username/password এবং deviceInfo দেবে। Response-এ tempToken পাবে। এটা final access token না।
+2. POST /api/v1/auth/mfa/generate-otp
+   এখানে method = EMAIL এবং আগের tempToken দেবে। এরপর email-এ OTP যাবে এবং response-এ sessionId পাবে।
+3. POST /api/v1/auth/mfa/verify-otp
+   এখানে আগের tempToken + sessionId + email-এ পাওয়া OTP code দেবে। Successful হলে response-এ final accessToken এবং refreshToken পাবে।
+   তোমার local Auth Swagger ছিল http://localhost:9093/auth/swagger-ui.html। তাই Swagger খুলে sequenceটা মনে রাখো:
+   login → generate-otp → verify-otp → accessToken
+   চাইলে এখন আমরা প্রথম /login endpoint থেকেই আস্তে আস্তে শুরু করতে পারি—Swagger-এ কোন field-এ কী value দিতে হবে সেটা একটার পর একটা।
+   এ method = EMAIL এবং আগের tempToken পাঠাবে। তাতে তোমার ইমেইলে একটা OTP যাবে, আর response-এ sessionId পাবে। শেষে POST /api/v1/auth/mfa/verify-otp-তে ওই tempToken, sessionId, আর ইমেইলে পাওয়া OTP কোড পাঠাবে—সফল হলে তখনই ফাইনাল accessToken এবং refreshToken পেয়ে যাবে। ইচ্ছা করলে এখন আমরা একদম প্রথম login endpoint থেকেই আস্তে আস্তে শুরু করতে পারি, ধাপে ধাপে দেখে নেব কোন ফিল্ডে কী ভ্যালু দিতে হবে।

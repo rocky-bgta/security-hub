@@ -11,6 +11,7 @@ import com.aspire.asat.notification.enums.ChannelStatus;
 import com.aspire.asat.notification.model.NotificationTemplate;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.Year;
@@ -29,11 +30,15 @@ public class NotificationDeliveryService {
     private final NotificationPreferenceResolver preferenceResolver;
     private final NotificationTemplateService templateService;
     private final NotificationProducerService producerService;
+    private final ConsumerService consumerService;
     private final InAppNotificationService inAppService;
     private final NotificationBrandingProperties brandingProperties;
     private final NotificationHistoryService notificationHistoryService;
     private final SmsService smsService;
     private final PhoneCallService phoneCallService;
+
+    @Value("${notification.email.direct-delivery-enabled:false}")
+    private boolean directEmailDeliveryEnabled;
     
     /**
      * Deliver notification through requested channels
@@ -194,11 +199,13 @@ public class NotificationDeliveryService {
                 emailDto.getMetadata().put("notificationLogId", logId);
             }
             
-            // Send email via an existing producer service
-            producerService.queueEmailNotification(emailDto);
-            
-            // Note: Email status will be updated in ConsumerService after actual send
-            log.info("Email notification queued successfully for {}", request.getTo());
+            if (directEmailDeliveryEnabled) {
+                consumerService.processEmailRequest(emailDto);
+                log.info("Email notification delivered directly for {}", request.getTo());
+            } else {
+                producerService.queueEmailNotification(emailDto);
+                log.info("Email notification queued successfully for {}", request.getTo());
+            }
             
         } catch (Exception e) {
             log.error("Failed to deliver email notification: type={}, to={}, error={}", 

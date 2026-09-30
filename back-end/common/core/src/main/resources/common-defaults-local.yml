@@ -21,4 +21,4 @@ app:
 
 notification:
   service:
-    url: ${NOTIFICATION_SERVICE_URL:http://asat-notification-service:5656}
+    url: ${NOTIFICATION_SERVICE_URL:http://localhost:5656}

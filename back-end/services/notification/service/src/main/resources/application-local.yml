@@ -109,6 +109,8 @@ phone-call:
 
  # Data initialization configuration
 notification:
+  email:
+    direct-delivery-enabled: true
   branding:
     company-name: "ASAT Learning Platform"
     support-email: "support@securityawarenesstraining.ai"

@@ -17,7 +17,7 @@ internal:
 
 service:
   cms:
-    url: http://asat-cms-service:5050/cms/api/v1
+    url: http://localhost:5050/cms/api/v1
   billing:
     url: http://asat-billing-service:6060/billing/api/v1
   phishing:
@@ -44,8 +44,12 @@ aws:
 
 client:
   notification:
-    url: http://asat-notification-service:5656/notification
-#    url: http://localhost:5656/notification
+    url: http://localhost:5656/notification
+
+notification:
+  service:
+    url: http://localhost:5656
+    api-path: /notification/api/v1
 
 
 link:

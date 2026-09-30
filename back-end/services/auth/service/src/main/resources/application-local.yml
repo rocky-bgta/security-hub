@@ -38,6 +38,11 @@ client:
     url: http://localhost:5656/notification
     send-email-api: /api/v1/send
 
+notification:
+  service:
+    url: http://localhost:5656
+    api-path: /notification/api/v1
+
 jwt:
   secret: "WwiLCJzY29wZSI6WyWwiLCJzY29wZSI6WyWwiLCJzY29wZSI6WyWwiLCJzY29wZSI6WyWwiLCJzY29wZSI6WyWwiLCJzY29wZSI6WyWwiLCJzY29wZSI6Wy"
   expiration: 20  # 5 minutes (local - for testing refresh token flow)

@@ -1,0 +1,588 @@
+{
+  "info": {
+    "name": "JWT + Dynamic Current Context Demo V4",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "jwtToken",
+      "value": ""
+    },
+    {
+      "key": "roomAContextId",
+      "value": ""
+    },
+    {
+      "key": "roomCContextId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "01 - Login - Get JWT",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"rocky\",\n  \"password\": \"demo123\"\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const j=pm.response.json();",
+              "pm.collectionVariables.set('jwtToken', j.accessToken);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 - Create ROOM-A Context",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwtToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/contexts",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "contexts"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"roomId\": \"ROOM-A\"\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const j=pm.response.json();",
+              "pm.collectionVariables.set('roomAContextId', j.contextId);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "03 - Access ROOM-A - Success",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwtToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/rooms/a/enter",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rooms",
+            "a",
+            "enter"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contextId\": \"{{roomAContextId}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "04 - Access ROOM-B - JWT Only Success",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwtToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/rooms/b/enter",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rooms",
+            "b",
+            "enter"
+          ]
+        }
+      }
+    },
+    {
+      "name": "05 - Create ROOM-C Context",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwtToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/contexts",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "contexts"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"roomId\": \"ROOM-C\"\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const j=pm.response.json();",
+              "pm.collectionVariables.set('roomCContextId', j.contextId);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "06 - Access ROOM-C - Success",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwtToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/rooms/c/enter",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rooms",
+            "c",
+            "enter"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contextId\": \"{{roomCContextId}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "07 - ROOM-A Context Cannot Access ROOM-C - 403",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwtToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/rooms/c/enter",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rooms",
+            "c",
+            "enter"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contextId\": \"{{roomAContextId}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "08 - Revoke ROOM-C Context",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwtToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/contexts/revoke",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "contexts",
+            "revoke"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contextId\": \"{{roomCContextId}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "09 - ROOM-C After Context Revoke - 403",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwtToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/rooms/c/enter",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rooms",
+            "c",
+            "enter"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contextId\": \"{{roomCContextId}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "10 - ROOM-A Still Works - 200",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwtToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/rooms/a/enter",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rooms",
+            "a",
+            "enter"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contextId\": \"{{roomAContextId}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "11 - ROOM-B Still Works - 200",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwtToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/rooms/b/enter",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rooms",
+            "b",
+            "enter"
+          ]
+        }
+      }
+    },
+    {
+      "name": "12 - Revoke ROOM-A Context",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwtToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/contexts/revoke",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "contexts",
+            "revoke"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contextId\": \"{{roomAContextId}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "13 - ROOM-A After Context Revoke - 403",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwtToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/rooms/a/enter",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rooms",
+            "a",
+            "enter"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contextId\": \"{{roomAContextId}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "14 - Create New ROOM-A Context Before JWT Logout",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwtToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/contexts",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "contexts"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"roomId\": \"ROOM-A\"\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const j=pm.response.json();",
+              "pm.collectionVariables.set('roomAContextId', j.contextId);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "15 - Logout - Revoke JWT",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwtToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/logout",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "logout"
+          ]
+        }
+      }
+    },
+    {
+      "name": "16 - ROOM-A After JWT Revoke - 401",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwtToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/rooms/a/enter",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rooms",
+            "a",
+            "enter"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contextId\": \"{{roomAContextId}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "17 - ROOM-B After JWT Revoke - 401",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwtToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/rooms/b/enter",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "rooms",
+            "b",
+            "enter"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -37,6 +37,8 @@ public interface EndUserPackageRepository extends MongoRepository<EndUserPackage
      */
     long countByClientAdminId(String clientAdminId);
 
+    long countByStatus(String status);
+
     /**
      * Find all active sub-packages assigned to a specific user with a specific status
      * @param userId the user ID

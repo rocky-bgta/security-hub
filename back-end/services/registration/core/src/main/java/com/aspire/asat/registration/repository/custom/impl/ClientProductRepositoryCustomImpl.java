@@ -4,6 +4,7 @@ import com.aspire.asat.registration.data.OrganizationLicenseStatistics;
 import com.aspire.asat.registration.model.ClientProduct;
 import com.aspire.asat.registration.repository.custom.ClientProductRepositoryCustom;
 import lombok.RequiredArgsConstructor;
+import org.bson.Document;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -142,6 +143,29 @@ public class ClientProductRepositoryCustomImpl implements ClientProductRepositor
                 totalActiveLicenses,
                 totalExpiredLicenses
         );
+    }
+
+    @Override
+    public long sumActiveValidLicenseCount(Instant now) {
+        Aggregation aggregation = Aggregation.newAggregation(
+                Aggregation.match(Criteria.where("licenseStatus").is("ACTIVE")
+                        .and("expiryDate").gte(now)),
+                Aggregation.group().sum("licenseCount").as("totalLicenseCount")
+        );
+
+        AggregationResults<Document> results = mongoTemplate.aggregate(
+                aggregation,
+                "client_products",
+                Document.class
+        );
+
+        Document result = results.getUniqueMappedResult();
+        if (result == null) {
+            return 0L;
+        }
+
+        Number totalLicenseCount = result.get("totalLicenseCount", Number.class);
+        return totalLicenseCount == null ? 0L : totalLicenseCount.longValue();
     }
 
     @Override

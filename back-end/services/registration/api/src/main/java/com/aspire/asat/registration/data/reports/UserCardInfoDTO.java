@@ -1,12 +1,9 @@
 package com.aspire.asat.registration.data.reports;
 
-import com.aspire.asat.registration.data.apiResponses.AllResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 /**
  * Composite payload for the User Summary Report endpoint. Bundles the summary
@@ -17,10 +14,10 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserSummaryReportDTO {
-
-    private UserSummaryTotalsDTO totals;
-    private List<UserGrowthTrendPointDTO> growthTrend;
-    private AllResponseDto<List<UserDetailRowDTO>> details;
-    private UserCardInfoDTO userCardInfo;
+public class UserCardInfoDTO {
+    private Long totalMsp;
+    private Long totalClientAdmin;
+    private Long totalLicenseUser;
+    private Long totalActiveUser;
+    private Long totalSuspendedUser;
 }

@@ -3,13 +3,20 @@ package com.aspire.asat.registration.service.impl;
 import com.aspire.asat.common.dto.files.CurrentUserContext;
 import com.aspire.asat.common.enums.UserType;
 import com.aspire.asat.registration.data.apiResponses.AllResponseDto;
+import com.aspire.asat.registration.data.enums.PackageStatus;
 import com.aspire.asat.registration.data.enums.RiskGroup;
+import com.aspire.asat.registration.data.enums.UserStatus;
+import com.aspire.asat.registration.data.reports.UserCardInfoDTO;
 import com.aspire.asat.registration.data.reports.UserDetailRowDTO;
 import com.aspire.asat.registration.data.reports.UserGrowthTrendPointDTO;
 import com.aspire.asat.registration.data.reports.UserSummaryReportDTO;
 import com.aspire.asat.registration.data.reports.UserSummaryTotalsDTO;
 import com.aspire.asat.registration.model.AspireUser;
 import com.aspire.asat.registration.repository.AspireUserRepository;
+import com.aspire.asat.registration.repository.ClientAdminRepository;
+import com.aspire.asat.registration.repository.EndUserPackageRepository;
+import com.aspire.asat.registration.repository.custom.ClientProductRepositoryCustom;
+import com.aspire.asat.registration.repository.msp.MspUsersRepository;
 import com.aspire.asat.registration.service.ReportService;
 import com.aspire.asat.registration.utils.UserCurrentContextService;
 import lombok.RequiredArgsConstructor;
@@ -34,13 +41,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ReportServiceImpl implements ReportService {
 
-    private static final String STATUS_ACTIVE = "ACTIVE";
-    private static final String STATUS_SUSPENDED = "SUSPEND";
     private static final int DEFAULT_TREND_MONTHS = 6;
     private static final int EXPORT_PAGE_SIZE = 1000;
     private static final int EXPORT_MAX_PAGES = 1000;
 
     private final AspireUserRepository aspireUserRepository;
+    private final ClientAdminRepository clientAdminRepository;
+    private final ClientProductRepositoryCustom clientProductRepositoryCustom;
+    //use to count total Active users in UserCardInfoDTO
+    private final EndUserPackageRepository endUserPackageRepository;
+    private final MspUsersRepository mspUsersRepository;
     private final UserCurrentContextService userCurrentContextService;
 
     @Override
@@ -104,6 +114,7 @@ public class ReportServiceImpl implements ReportService {
                 .totals(totals)
                 .growthTrend(trend)
                 .details(details)
+                .userCardInfo(buildUserCardInfo())
                 .build();
     }
 
@@ -195,14 +206,25 @@ public class ReportServiceImpl implements ReportService {
                         .build())
                 .growthTrend(List.of())
                 .details(new AllResponseDto<>(safeOffset, safePageSize, 0L, List.of()))
+                .userCardInfo(buildUserCardInfo())
+                .build();
+    }
+
+    private UserCardInfoDTO buildUserCardInfo() {
+        return UserCardInfoDTO.builder()
+                .totalMsp(mspUsersRepository.count())
+                .totalClientAdmin(clientAdminRepository.count())
+                .totalLicenseUser(clientProductRepositoryCustom.sumActiveValidLicenseCount(Instant.now()))
+                .totalActiveUser(endUserPackageRepository.countByStatus(PackageStatus.ASSIGNED.name()))
+                .totalSuspendedUser(aspireUserRepository.countByStatus(UserStatus.SUSPEND.name()))
                 .build();
     }
 
     private UserSummaryTotalsDTO buildTotals(ReportScope scope) {
         if (scope.isMulti()) {
             long totalUsers = aspireUserRepository.countAllScoped(scope.clientAdminIds());
-            long activeUsers = aspireUserRepository.countByStatusScoped(STATUS_ACTIVE, scope.clientAdminIds());
-            long suspendedUsers = aspireUserRepository.countByStatusScoped(STATUS_SUSPENDED, scope.clientAdminIds());
+            long activeUsers = aspireUserRepository.countByStatusScoped(UserStatus.ACTIVE.name(), scope.clientAdminIds());
+            long suspendedUsers = aspireUserRepository.countByStatusScoped(UserStatus.SUSPEND.name(), scope.clientAdminIds());
             Instant since = Instant.now().minus(30, ChronoUnit.DAYS);
             long newSignupsLast30Days = aspireUserRepository.countUsersCreatedSince(since, scope.clientAdminIds());
             return UserSummaryTotalsDTO.builder()
@@ -218,11 +240,11 @@ public class ReportServiceImpl implements ReportService {
                 ? aspireUserRepository.count()
                 : aspireUserRepository.countAllScoped(scope.clientAdminId(), scope.mspId());
         long activeUsers = systemWide
-                ? aspireUserRepository.countByStatus(STATUS_ACTIVE)
-                : aspireUserRepository.countByStatusScoped(STATUS_ACTIVE, scope.clientAdminId(), scope.mspId());
+                ? aspireUserRepository.countByStatus(UserStatus.ACTIVE.name())
+                : aspireUserRepository.countByStatusScoped(UserStatus.ACTIVE.name(), scope.clientAdminId(), scope.mspId());
         long suspendedUsers = systemWide
-                ? aspireUserRepository.countByStatus(STATUS_SUSPENDED)
-                : aspireUserRepository.countByStatusScoped(STATUS_SUSPENDED, scope.clientAdminId(), scope.mspId());
+                ? aspireUserRepository.countByStatus(UserStatus.SUSPEND.name())
+                : aspireUserRepository.countByStatusScoped(UserStatus.SUSPEND.name(), scope.clientAdminId(), scope.mspId());
         Instant since = Instant.now().minus(30, ChronoUnit.DAYS);
         long newSignupsLast30Days = aspireUserRepository.countUsersCreatedSince(since, scope.clientAdminId(), scope.mspId());
 

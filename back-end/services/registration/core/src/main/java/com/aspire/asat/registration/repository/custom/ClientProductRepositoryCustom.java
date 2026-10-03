@@ -48,6 +48,8 @@ public interface ClientProductRepositoryCustom {
      */
     OrganizationLicenseStatistics getOrganizationLicenseStatisticsByClientAdminId(String clientAdminId);
 
+    long sumActiveValidLicenseCount(Instant now);
+
     /**
      * Find all client products with optional filters.
      * Always aggregates ClientProduct with ClientAdmin; filters by clientAdminId, productId, packageId,

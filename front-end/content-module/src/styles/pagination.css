@@ -1,0 +1,68 @@
+.content-pagination-container {
+  @apply content-flex content-w-full content-items-center content-justify-between content-px-10;
+}
+
+.content-pagination-size-selector {
+  @apply content-flex content-items-center content-gap-x-5;
+}
+
+.content-pagination-numbers {
+  @apply content-flex content-flex-1 content-flex-col content-items-end;
+}
+.content-pagination-numbers.user {
+  @apply content-items-center;
+}
+
+.content-pagination-number {
+  @apply content-flex content-items-center content-justify-center content-border content-border-transparent content-bg-transparent content-px-4 content-py-2 content-text-sm;
+}
+.content-pagination-number.user {
+  @apply content-rounded content-border-white content-border-opacity-50 content-text-white content-text-opacity-75;
+}
+
+.content-pagination-number.content-btn-auto {
+  @apply content-min-w-10 content-from-transparent content-to-transparent content-text-white;
+}
+
+.content-pagination-number.content-is-active {
+  @apply content-rounded content-bg-primary content-from-red-500 content-to-yellow-500 content-px-4 content-py-2 content-text-white;
+}
+
+.content-pagination-number.content-is-active.user {
+  @apply content-border-primary content-bg-primary content-opacity-100;
+}
+
+.content-pagination-number:disabled {
+  @apply content-cursor-not-allowed content-opacity-60;
+}
+
+.content-pagination-number:first-child,
+.content-pagination-number:last-child {
+  @apply content-rounded content-p-1 content-text-white md:content-p-3;
+}
+
+.content-pagination-number.user:first-child,
+.content-pagination-number.user:last-child {
+  @apply content-border-white content-text-white content-opacity-25;
+}
+
+.content-pagination-number:not(:disabled):hover {
+  @apply content-rounded content-border content-border-primary content-bg-transparent content-text-white content-transition-none;
+}
+.content-pagination-number:not(:disabled):hover.user {
+  @apply content-border-primary content-bg-primary content-text-white content-opacity-100;
+}
+
+.content-pagination-number:first-child:not(:disabled):hover,
+.content-pagination-number:last-child:not(:disabled):hover {
+  @apply content-border-ash-gray content-bg-transparent content-text-white content-transition-all content-duration-300 content-ease-in-out;
+}
+
+.content-pagination-number.user:first-child:not(:disabled):hover,
+.content-pagination-number.user:last-child:not(:disabled):hover {
+  @apply content-border-primary content-bg-primary content-text-white content-opacity-100;
+}
+
+.content-number-range {
+  @apply content-mx-2 content-font-bold;
+}

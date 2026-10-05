@@ -1,0 +1,98 @@
+.modal {
+  @apply fixed left-0 top-0 z-50 h-screen w-screen overflow-auto bg-black bg-opacity-50;
+}
+
+.modal.modal-visible {
+  @apply flex flex-col;
+}
+
+.modal.modal-hidden {
+  @apply hidden;
+}
+
+.modal-content {
+  @apply relative m-auto rounded bg-white outline-none;
+  min-width: 250px;
+}
+
+.modal-content .modal-header {
+  @apply flex items-center border-b border-gray-200 px-4;
+}
+
+.modal-content .modal-header.left {
+  @apply flex-row-reverse justify-between text-right;
+}
+
+.modal-content .modal-header .modal-close {
+  @apply flex cursor-pointer items-center justify-center rounded-sm leading-none transition duration-300 ease-in;
+}
+
+.modal-content .modal-header .modal-close:hover {
+  @apply text-red-700;
+}
+
+.modal-content .modal-header .modal-header-content {
+  @apply flex-1;
+}
+
+.modal-content .modal-body {
+  @apply px-4 lg:px-10;
+}
+
+.modal-animate-fade {
+  animation: modal-fade 1s;
+}
+
+@keyframes modal-fade {
+  from {
+    @apply opacity-0;
+  }
+  to {
+    @apply opacity-100;
+  }
+}
+
+.modal-animate-top {
+  @apply relative;
+
+  animation: modal-top 0.3s;
+}
+@keyframes modal-top {
+  from {
+    top: -20vh;
+
+    @apply opacity-0;
+  }
+  to {
+    @apply top-0 opacity-100;
+  }
+}
+
+.modal-animate-bottom {
+  @apply relative;
+
+  animation: modal-bottom 0.3s;
+}
+@keyframes modal-bottom {
+  from {
+    bottom: -20vh;
+
+    @apply opacity-0;
+  }
+  to {
+    @apply bottom-0 opacity-100;
+  }
+}
+
+.modal-animate-zoom {
+  animation: modal-zoom 0.3s;
+}
+
+@keyframes modal-zoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}

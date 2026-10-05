@@ -1,0 +1,121 @@
+.content-modal {
+  @apply content-fixed content-left-0 content-top-0 content-z-50 content-h-full content-w-full content-overflow-auto;
+}
+
+.content-modal-bg {
+  @apply content-bg-black content-bg-opacity-50;
+}
+
+.content-user-modal-bg {
+  @apply content-bg-white content-bg-opacity-20;
+}
+
+.content-modal.content-modal-visible {
+  @apply content-flex content-flex-col content-overflow-x-hidden;
+}
+
+.content-modal.content-modal-hidden {
+  @apply content-hidden;
+}
+
+.content-modal-content {
+  @apply content-relative content-m-auto content-min-w-64 content-rounded content-bg-white content-outline-none;
+}
+
+.content-modal-content .content-modal-header {
+  @apply content-flex content-items-center content-border-b content-border-card-border content-px-4 content-text-white;
+}
+
+.content-modal-content .content-modal-header.content-left {
+  @apply content-flex-row-reverse content-justify-between content-text-right;
+}
+
+.content-modal-content .content-modal-header .content-modal-close {
+  @apply content-flex content-cursor-pointer content-items-center content-justify-center content-rounded-sm content-leading-none content-transition content-duration-300 content-ease-in;
+}
+
+.content-modal-content .content-modal-header .content-modal-close:hover {
+  @apply content-text-red-700;
+}
+
+.content-modal-content .content-modal-header .content-modal-header-content {
+  @apply content-flex-1;
+}
+
+.content-modal-content .content-modal-body {
+  @apply content-px-4 lg:content-px-10;
+}
+
+.content-modal-animate-fade {
+  animation: modal-fade 1s ease-in-out;
+}
+
+@keyframes modal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.content-modal-animate-zoom {
+  animation: modal-zoom 0.3s ease-in-out;
+}
+
+@keyframes modal-zoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.content-modal-animate-top {
+  @apply content-relative;
+  animation: modal-top 0.3s ease-in-out;
+}
+
+@keyframes modal-top {
+  from {
+    top: -20vh;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.content-modal-animate-bottom {
+  @apply content-relative;
+  animation: modal-bottom 0.3s ease-in-out;
+}
+
+@keyframes modal-bottom {
+  from {
+    bottom: -20vh;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+.content-modal-animate-right {
+  @apply content-relative;
+  animation: modal-right 0.3s ease-in-out;
+}
+
+@keyframes modal-right {
+  from {
+    right: -20vh;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}

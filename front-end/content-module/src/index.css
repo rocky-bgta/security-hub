@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('react-toastify/dist/ReactToastify.css');
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/scrollbar';
+@import 'react-day-picker/style.css';
+
+@import 'react-loading-skeleton/dist/skeleton.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f0f0f000;
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #384451;
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #384451;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply content-font-semibold content-leading-tight content-text-white;
+  }
+
+  h1 {
+    @apply content-text-2xl md:content-text-3xl lg:content-text-4xl;
+  }
+
+  h2 {
+    @apply content-text-xl md:content-text-2xl lg:content-text-3xl;
+  }
+
+  h3 {
+    @apply content-text-lg md:content-text-xl lg:content-text-2xl;
+  }
+
+  h4 {
+    @apply content-text-base md:content-text-lg lg:content-text-xl;
+  }
+}
+
+@layer components {
+  input[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+
+  .content-rotate-up-indicator .select__dropdown-indicator svg {
+    transform: rotate(180deg);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .content-rotate-down-indicator .select__dropdown-indicator svg {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .content-active-menu-icon {
+    @apply content-fill-[#37BE99] content-stroke-[#37BE99] content-opacity-100;
+
+    path {
+      @apply content-fill-[#37BE99] content-stroke-[#37BE99];
+    }
+  }
+
+  .content-tooltip {
+    position: relative;
+    display: inline-block;
+
+    .content-tooltip-text {
+      visibility: hidden;
+      width: 160px;
+      background-color: #192129;
+      color: hsla(0, 0%, 100%, 0.75);
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px;
+      position: absolute;
+      z-index: 9999;
+      bottom: 150%;
+      left: 50%;
+      margin-left: -60px;
+      font-size: 14px;
+
+      &.dashboard-card-tooltip {
+        width: 180px;
+        bottom: 112%;
+        text-align: left;
+        padding: 12px;
+        margin-left: -90px;
+      }
+
+      &.sub-package-card-tooltip {
+        width: 250px;
+        bottom: 120%;
+        text-align: left;
+        padding: 12px;
+        margin-left: -125px;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -10px;
+        border-width: 10px;
+        border-style: solid;
+        border-color: #192129 transparent transparent transparent;
+      }
+    }
+
+    &:hover {
+      .content-tooltip-text {
+        visibility: visible;
+      }
+    }
+  }
+
+  .content-custom-datepicker {
+    display: block;
+  }
+
+  .custom-phone-input-container {
+    .custom-phone-input {
+      @apply !content-h-[38px] !content-w-full !content-rounded-md !content-border !content-border-card-border !content-bg-transparent !content-pl-20 content-ring-offset-transparent placeholder:!content-text-muted-foreground focus-visible:!content-border-transparent focus-visible:!content-ring-1 focus-visible:!content-ring-offset-1 disabled:!content-cursor-not-allowed disabled:!content-opacity-50;
+    }
+
+    .custom-flag-button {
+      @apply !content-w-16 !content-border-none !content-bg-transparent;
+
+      .selected-flag {
+        @apply content-flex content-w-full content-items-center content-justify-center content-border-r content-border-r-card-border !content-bg-transparent content-pl-0 content-pr-4;
+
+        .flag {
+          @apply content-scale-150;
+
+          .arrow {
+            @apply content-ml-1;
+          }
+        }
+      }
+    }
+
+    .custom-dropdown {
+      @apply !content-w-80 !content-rounded-md !content-border !content-bg-secondary !content-text-secondary-foreground !content-shadow-md;
+
+      .country {
+        @apply content-flex content-items-center content-gap-x-2 !content-bg-transparent;
+
+        &.highlight {
+          @apply !content-bg-green-400 !content-text-black;
+        }
+      }
+    }
+  }
+}
+
+@layer utilities {
+}
+.slider-arrow svg path {
+  @apply content-transition-all content-duration-300;
+}
+.slider-arrow:hover svg path {
+  @apply content-stroke-white;
+}
+
+@keyframes quiz-drag-wiggle {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}
+
+.quiz-drag-hint {
+  animation-name: quiz-drag-wiggle;
+  animation-duration: 0.4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 2;
+  animation-delay: 1.2s;
+  animation-fill-mode: both;
+}

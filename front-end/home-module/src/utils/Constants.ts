@@ -1,0 +1,31 @@
+export const RADIAN = Math.PI / 180;
+
+export const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+export const PUBLIC_URL = import.meta.env.VITE_PUBLIC_URL;
+
+export const TINYMCE_URL = import.meta.env.VITE_TINYMCE_URL;
+
+export const DOT = -1;
+
+export const DEFAULT_PAGINATION_OFFSET = 0;
+
+export const DEFAULT_PAGINATION_LIMIT = 10;
+
+export const InitGetListParams = {
+  offset: DEFAULT_PAGINATION_OFFSET,
+  pageSize: DEFAULT_PAGINATION_LIMIT,
+};
+
+export const FILE_PATH_PREFIX = 'https://content.aspireelearning.com/';
+
+export const BULK_IMPORT_TEMPLATE_URL = 'https://aspiretss.s3.us-east-1.amazonaws.com/a-sat-v2.0/Bulk+Import/Bulk_user_import_template_data.csv';
+
+export enum LocalStorageKey {
+  ACCESS_TOKEN = 'KEYA',
+  REFRESH_TOKEN = 'KEYB',
+  ROLE = 'KEYR',
+  DEVICE_ID = 'KEYD',
+  QUICK_START = 'KEYQ',
+  REMEMBERED_USERNAME = 'KEYU',
+}

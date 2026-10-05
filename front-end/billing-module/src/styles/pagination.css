@@ -1,0 +1,68 @@
+.pagination-container {
+  @apply flex w-full items-center justify-between px-10;
+}
+
+.pagination-size-selector {
+  @apply flex items-center gap-x-5;
+}
+
+.pagination-numbers {
+  @apply flex flex-1 flex-col items-end;
+}
+.pagination-numbers.user {
+  @apply items-center;
+}
+
+.pagination-number {
+  @apply flex items-center justify-center border border-transparent bg-transparent px-4 py-2 text-sm text-primary;
+}
+.pagination-number.user {
+  @apply rounded border-white border-opacity-50 text-white text-opacity-75;
+}
+
+.pagination-number.btn-auto {
+  @apply min-w-10 from-transparent to-transparent text-primary;
+}
+
+.pagination-number.is-active {
+  @apply rounded bg-primary from-red-500 to-yellow-500 px-4 py-2 text-white;
+}
+
+.pagination-number.is-active.user {
+  @apply border-primary bg-primary opacity-100;
+}
+
+.pagination-number:disabled {
+  @apply cursor-not-allowed opacity-60;
+}
+
+.pagination-number:first-child,
+.pagination-number:last-child {
+  @apply rounded p-1 text-primary md:p-3;
+}
+
+.pagination-number.user:first-child,
+.pagination-number.user:last-child {
+  @apply border-white text-white opacity-25;
+}
+
+.pagination-number:not(:disabled):hover {
+  @apply rounded border border-primary bg-transparent text-primary transition-none;
+}
+.pagination-number:not(:disabled):hover.user {
+  @apply border-primary bg-primary text-white opacity-100;
+}
+
+.pagination-number:first-child:not(:disabled):hover,
+.pagination-number:last-child:not(:disabled):hover {
+  @apply border-primary bg-transparent text-primary transition-all duration-300 ease-in-out;
+}
+
+.pagination-number.user:first-child:not(:disabled):hover,
+.pagination-number.user:last-child:not(:disabled):hover {
+  @apply border-primary bg-primary text-white opacity-100;
+}
+
+.number-range {
+  @apply mx-2 font-bold;
+}

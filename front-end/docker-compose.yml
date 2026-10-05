@@ -1,0 +1,98 @@
+services:
+  host:
+    image: ${ECR_REGISTRY}/aspire-ui-host-service:${TAG}
+    ports:
+      - "5000:5000"
+    restart: always
+    environment:
+      - VITE_HOME_MODULE_URL=/home-module
+      - VITE_USER_MODULE_URL=/user-module
+      - VITE_CONTENT_MODULE_URL=/content-module
+    networks:
+      - asat_network
+
+  home:
+    image: ${ECR_REGISTRY}/aspire-ui-home-service:${TAG}
+    ports:
+      - "5010:5010"
+    restart: always
+    environment:
+      - VITE_PUBLIC_URL=/home-module
+    networks:
+      - asat_network
+
+  user:
+    image: ${ECR_REGISTRY}/aspire-ui-user-service:${TAG}
+    ports:
+      - "5020:5020"
+    restart: always
+    environment:
+      - VITE_PUBLIC_URL=/user-module
+    networks:
+      - asat_network
+
+  content:
+    image: ${ECR_REGISTRY}/aspire-ui-content-service:${TAG}
+    ports:
+      - "5030:5030"
+    restart: always
+    environment:
+      - VITE_PUBLIC_URL=/content-module
+    networks:
+      - asat_network
+
+  miscellaneous:
+    image: ${ECR_REGISTRY}/aspire-ui-miscellaneous-service:${TAG}
+    ports:
+      - "5040:5040"
+    restart: always
+    environment:
+      - VITE_PUBLIC_URL=/miscellaneous-module
+    networks:
+      - asat_network
+
+  billing:
+    image: ${ECR_REGISTRY}/aspire-ui-billing-service:${TAG}
+    ports:
+      - "5050:5050"
+    restart: always
+    environment:
+      - VITE_PUBLIC_URL=/billing-module
+    networks:
+      - asat_network
+
+  phishing:
+    image: ${ECR_REGISTRY}/aspire-ui-phishing-service:${TAG}
+    ports:
+      - "5070:5070"
+    restart: always
+    environment:
+      - VITE_PUBLIC_URL=/phishing-module
+    networks:
+      - asat_network
+
+  account:
+    image: ${ECR_REGISTRY}/aspire-ui-account-service:${TAG}
+    ports:
+      - "5090:5090"
+    restart: always
+    environment:
+      - VITE_PUBLIC_URL=/account-module
+    networks:
+      - asat_network
+
+  # nginx:
+  #   image: nginx:latest
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  #   networks:
+  #     - asat_network
+  #   depends_on:
+  #     - host
+  #   restart: always
+
+networks:
+  asat_network:
+    external: true

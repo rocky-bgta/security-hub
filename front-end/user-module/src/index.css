@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+@import url('react-phone-input-2/lib/style.css');
+@import url('react-toastify/dist/ReactToastify.css');
+@import url('react-loading-skeleton/dist/skeleton.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: #0f1419;
+  color: #ffffff;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background-color: #f0f0f000;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #384451;
+
+  &:hover {
+    background-color: #384451;
+  }
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-semibold text-foreground;
+  }
+
+  h1 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  h2 {
+    @apply text-xl md:text-2xl lg:text-3xl;
+  }
+
+  h3 {
+    @apply text-lg md:text-xl lg:text-2xl;
+  }
+
+  h4 {
+    @apply text-base md:text-lg lg:text-xl;
+  }
+
+  :root {
+    --radius: 0.5rem;
+  }
+}
+
+@layer components {
+  input[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+
+  .custom-phone-input-container {
+    .custom-phone-input {
+      @apply !h-[38px] !w-full !rounded-md !border-steel-gray !bg-transparent !pl-20 ring-offset-transparent placeholder:!text-muted-foreground focus-visible:!border-transparent focus-visible:!ring-1 focus-visible:!ring-offset-1 disabled:!cursor-not-allowed disabled:!opacity-50;
+    }
+
+    .custom-flag-button {
+      @apply !w-16 !border-none !bg-transparent;
+
+      .selected-flag {
+        @apply flex w-full items-center justify-center border-r border-r-card-border !bg-transparent pl-0 pr-4;
+
+        .flag {
+          @apply scale-150;
+
+          .arrow {
+            @apply ml-1;
+          }
+        }
+      }
+    }
+
+    .custom-dropdown {
+      @apply !w-80 !rounded-md !border !bg-secondary !text-secondary-foreground !shadow-md;
+
+      .country {
+        @apply flex items-center gap-x-2 !bg-transparent;
+
+        &.highlight {
+          @apply !bg-green-400 !text-black;
+        }
+      }
+
+      .search {
+        @apply !bg-dark;
+      }
+
+      input.search-box {
+        @apply !bg-transparent !text-white;
+      }
+    }
+  }
+
+  .text-editor-manual-preview {
+    p {
+      margin-block: 1rem;
+    }
+  }
+}
+
+@layer utilities {
+  .custom-disable-section {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

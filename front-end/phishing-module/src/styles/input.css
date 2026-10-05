@@ -1,0 +1,14 @@
+.input-default,
+.select-default {
+  @apply flex w-full appearance-none rounded-md border border-card-border bg-transparent px-2.5 py-2 text-sm ring-offset-transparent file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-transparent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50;
+
+  /* Edge injects a native password-reveal (eye) button; hide it so only our SVG toggle shows */
+  &::-ms-reveal,
+  &::-ms-clear {
+    display: none;
+  }
+
+  &.has-error {
+    @apply border-vibrant-red placeholder:text-vibrant-red focus-visible:border-transparent;
+  }
+}

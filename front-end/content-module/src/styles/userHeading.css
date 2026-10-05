@@ -1,0 +1,6 @@
+.title {
+  @apply content-text-xl sm:content-text-2xl;
+}
+.subtitle {
+  @apply content-text-lg sm:content-text-xl;
+}

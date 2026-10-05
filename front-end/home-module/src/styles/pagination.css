@@ -1,0 +1,68 @@
+.home-pagination-container {
+  @apply home-flex home-w-full home-items-center home-justify-center home-px-2 md:home-px-6 lg:home-justify-between lg:home-px-10;
+}
+
+.home-pagination-size-selector {
+  @apply home-flex home-items-center home-gap-x-5;
+}
+
+.home-pagination-numbers {
+  @apply home-flex home-flex-1 home-flex-col home-items-center lg:home-items-end;
+}
+.home-pagination-numbers.user {
+  @apply home-items-center;
+}
+
+.home-pagination-number {
+  @apply home-flex home-min-w-8 home-items-center home-justify-center home-border home-border-transparent home-bg-transparent home-px-2 home-py-1 home-text-xs md:home-min-w-10 md:home-px-3 md:home-py-2 md:home-text-sm;
+}
+.home-pagination-number.user {
+  @apply home-rounded home-border-white home-border-opacity-50 home-text-white home-text-opacity-75;
+}
+
+.home-pagination-number.home-btn-auto {
+  @apply home-min-w-10 home-from-transparent home-to-transparent home-text-white;
+}
+
+.home-pagination-number.home-is-active {
+  @apply home-rounded home-bg-primary home-from-red-500 home-to-yellow-500 home-px-2 home-py-1 home-text-white md:home-px-4 md:home-py-2;
+}
+
+.home-pagination-number.home-is-active.user {
+  @apply home-border-primary home-bg-primary home-opacity-100;
+}
+
+.home-pagination-number:disabled {
+  @apply home-cursor-not-allowed home-opacity-60;
+}
+
+.home-pagination-number:first-child,
+.home-pagination-number:last-child {
+  @apply home-rounded home-p-1 home-text-white md:home-p-3;
+}
+
+.home-pagination-number.user:first-child,
+.home-pagination-number.user:last-child {
+  @apply home-border-white home-text-white home-opacity-25;
+}
+
+.home-pagination-number:not(:disabled):hover {
+  @apply home-rounded home-border home-border-primary home-bg-transparent home-text-white home-transition-none;
+}
+.home-pagination-number:not(:disabled):hover.user {
+  @apply home-border-primary home-bg-primary home-text-white home-opacity-100;
+}
+
+.home-pagination-number:first-child:not(:disabled):hover,
+.home-pagination-number:last-child:not(:disabled):hover {
+  @apply home-border-white/50 home-bg-transparent home-text-white home-transition-all home-duration-300 home-ease-in-out;
+}
+
+.home-pagination-number.user:first-child:not(:disabled):hover,
+.home-pagination-number.user:last-child:not(:disabled):hover {
+  @apply home-border-primary home-bg-primary home-text-white home-opacity-100;
+}
+
+.home-number-range {
+  @apply home-mx-1 home-font-bold md:home-mx-2;
+}

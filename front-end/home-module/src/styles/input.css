@@ -1,0 +1,14 @@
+.home-input-default,
+.home-select-default {
+  @apply home-flex home-w-full home-appearance-none home-rounded-md home-border home-border-steel-gray home-bg-transparent home-px-2.5 home-py-2 home-text-sm home-ring-offset-transparent file:home-border-0 file:home-bg-transparent file:home-text-sm file:home-font-medium file:home-text-foreground placeholder:home-text-muted-foreground focus-visible:home-border-transparent focus-visible:home-outline-none focus-visible:home-ring-1 focus-visible:home-ring-primary focus-visible:home-ring-offset-1 disabled:home-cursor-not-allowed disabled:home-opacity-50;
+
+  /* Edge injects a native password-reveal (eye) button; hide it so only our SVG toggle shows */
+  &::-ms-reveal,
+  &::-ms-clear {
+    display: none;
+  }
+
+  &.has-error {
+    @apply home-border-vibrant-red placeholder:home-text-vibrant-red;
+  }
+}

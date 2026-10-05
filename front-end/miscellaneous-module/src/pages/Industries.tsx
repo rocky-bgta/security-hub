@@ -1,0 +1,217 @@
+import { Edit, Plus, Trash2 } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+
+import { Badge } from 'common/Badge';
+import { Button } from 'common/Button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from 'common/Card';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from 'common/Table';
+import ActionIndustries from 'features/industries/ActionIndustries';
+import DeleteIndustries from 'features/industries/DeleteIndustries';
+import { useAPI } from 'hooks/UseAPI';
+import { IResponse } from 'models/Global';
+import { IIndustries } from 'models/Industries';
+import { API_END_POINTS } from 'routes/APIEndpoints';
+import { formateDateAndTime } from 'utils/Helper';
+
+const Industries = () => {
+  const [loading, setLoading] = useState<boolean>(true);
+  const [data, setData] = useState<Array<IIndustries>>([]);
+  const [selectedIndustries, setSelectedIndustries] =
+    useState<IIndustries | null>(null);
+  const [actionType, setActionType] = useState<'create' | 'edit' | null>(null);
+  const [showDeleteDialog, setShowDeleteDialog] = useState<boolean>(false);
+
+  const apiClient = useAPI();
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response: IResponse<Array<IIndustries>> = await apiClient.get(
+        API_END_POINTS.GET_INDUSTRIES_LIST,
+      );
+      setData(response.data);
+    } catch (error) {
+      console.error('Error fetching industries data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSubmitIndustries = (industries: IIndustries) => {
+    setData(prevData => {
+      if (actionType === 'create') {
+        return [...prevData, industries];
+      } else {
+        return [
+          ...prevData.map(r => (r.id === industries.id ? industries : r)),
+        ];
+      }
+    });
+
+    setSelectedIndustries(null);
+    setActionType(null);
+  };
+
+  const handleDeleteIndustries = () => {
+    toast.success(
+      `Industry ${selectedIndustries?.name} has been successfully deleted.`,
+    );
+    setData(prevData => [
+      ...prevData.filter(r => r.id !== selectedIndustries?.id),
+    ]);
+    setSelectedIndustries(null);
+    setShowDeleteDialog(false);
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-bold text-foreground">
+          Industries Management
+        </h1>
+        <Button
+          onClick={() => setActionType('create')}
+          className="bg-primary text-primary-foreground hover:bg-primary/90"
+        >
+          <Plus className="mr-2 size-4" />
+          Add Industries
+        </Button>
+      </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            Industries List
+          </CardTitle>
+          <CardDescription>View and manage all industries</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="font-semibold text-foreground">
+                  Industries Name
+                </TableHead>
+                <TableHead className="font-semibold text-foreground">
+                  Industries Code
+                </TableHead>
+                <TableHead className="font-semibold text-foreground">
+                  Status
+                </TableHead>
+                <TableHead className="font-semibold text-foreground">
+                  Created
+                </TableHead>
+                <TableHead className="font-semibold text-foreground">
+                  Updated
+                </TableHead>
+                <TableHead className="text-center font-semibold text-foreground">
+                  Actions
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {loading || data.length === 0 ? (
+                <TableRow>
+                  <TableCell
+                    colSpan={5}
+                    className="text-center text-muted-foreground"
+                  >
+                    {loading ? 'Loading...' : 'No industries found'}
+                  </TableCell>
+                </TableRow>
+              ) : (
+                data?.map(industries => (
+                  <TableRow key={industries.id}>
+                    <TableCell className="font-medium text-foreground">
+                      {industries.name}
+                    </TableCell>
+                    <TableCell className="max-w-xs text-muted-foreground">
+                      {industries.code}
+                    </TableCell>
+                    <TableCell>
+                      <Badge
+                        variant={industries.active ? 'default' : 'secondary'}
+                      >
+                        {industries.active ? 'Active' : 'Inactive'}
+                      </Badge>
+                    </TableCell>
+                    <TableCell className="text-muted-foreground">
+                      {formateDateAndTime(industries.createdAt as string)}
+                    </TableCell>
+                    <TableCell className="text-muted-foreground">
+                      {formateDateAndTime(industries.updatedAt as string)}
+                    </TableCell>
+                    <TableCell>
+                      <div className="flex items-center justify-center gap-2">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => {
+                            setSelectedIndustries(industries);
+                            setActionType('edit');
+                          }}
+                          className="hover:bg-muted"
+                        >
+                          <Edit className="size-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => {
+                            setSelectedIndustries(industries);
+                            setShowDeleteDialog(true);
+                          }}
+                          className="hover:bg-destructive/20 hover:text-destructive"
+                        >
+                          <Trash2 className="size-4" />
+                        </Button>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))
+              )}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
+
+      <ActionIndustries
+        isOpen={actionType !== null}
+        onClose={() => {
+          setActionType(null);
+          setSelectedIndustries(null);
+        }}
+        industries={selectedIndustries}
+        onSubmit={handleSubmitIndustries}
+      />
+
+      {selectedIndustries && (
+        <DeleteIndustries
+          isOpen={showDeleteDialog}
+          setIsOpen={setShowDeleteDialog}
+          industries={selectedIndustries}
+          onDeleteIndustries={handleDeleteIndustries}
+        />
+      )}
+    </div>
+  );
+};
+
+export default Industries;

@@ -1,0 +1,23 @@
+.content-loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.content-blur {
+  background-color: #ffffff88;
+}
+
+.content-screen-size {
+  width: 100vw;
+  height: 100vh;
+}
+
+.content-container-size {
+  width: 100%;
+  height: 100%;
+}

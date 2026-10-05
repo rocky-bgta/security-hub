@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #0f1419;
+    --foreground: #ffffff;
+    --card: #0f1419;
+    --card-foreground: #ffffff;
+    --popover: #0f1419;
+    --popover-foreground: #ffffff;
+    --primary: #00d4aa;
+    --primary-foreground: #000000;
+    --secondary: #1a2332;
+    --secondary-foreground: #ffffff;
+    --muted: #1a2332;
+    --muted-foreground: #94a3b8;
+    --accent: #1a2332;
+    --accent-foreground: #ffffff;
+    --destructive: #d32f2f;
+    --destructive-foreground: #f8fafc;
+    --border: #7c7c7c;
+    --input: #1a2332;
+    --ring: #00d4aa;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-card-border;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1 {
+    @apply text-3xl font-bold tracking-tight;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+
+  h3 {
+    @apply text-xl font-semibold;
+  }
+}
+
+@layer components {
+  input[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+
+  input[type='datetime-local']::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+}
+
+[data-stepper-scrollbar] {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 212, 170, 0.5) transparent;
+}
+
+[data-stepper-scrollbar]::-webkit-scrollbar {
+  height: 8px;
+}
+
+[data-stepper-scrollbar]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+[data-stepper-scrollbar]::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 170, 0.45);
+  border-radius: 9999px;
+}
+
+[data-stepper-scrollbar]:hover::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 170, 0.75);
+}
+
+/* Form error state */
+.has-error {
+  @apply border-vibrant-red focus:ring-vibrant-red;
+}

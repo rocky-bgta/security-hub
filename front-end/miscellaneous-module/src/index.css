@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+@import url('react-day-picker/style.css');
+@import url('react-toastify/dist/ReactToastify.css');
+@import 'react-loading-skeleton/dist/skeleton.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: #0f1419;
+  color: #ffffff;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background-color: #f0f0f000;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #384451;
+
+  &:hover {
+    background-color: #384451;
+  }
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-semibold text-foreground;
+  }
+
+  h1 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  h2 {
+    @apply text-xl md:text-2xl lg:text-3xl;
+  }
+
+  h3 {
+    @apply text-lg md:text-xl lg:text-2xl;
+  }
+
+  h4 {
+    @apply text-base md:text-lg lg:text-xl;
+  }
+
+  :root {
+    --radius: 0.5rem;
+  }
+}
+
+@layer components {
+  .rotate-up-indicator .select__dropdown-indicator svg {
+    transform: rotate(180deg);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .rotate-down-indicator .select__dropdown-indicator svg {
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+@layer utilities {
+}
+
+.tox.tox-tinymce.tox-fullscreen {
+  right: 0 !important;
+  width: auto !important;
+}
+
+.tox .tox-edit-area::before {
+  border: none !important;
+}
+
+.tox-tinymce-aux,
+.tox-dialog-wrap,
+.tox-dialog,
+.tox-silver-sink {
+  z-index: 9999 !important;
+}
+
+.tox-dialog-wrap {
+  pointer-events: auto !important;
+}
+
+.tox-tinymce-aux,
+.tox-silver-sink {
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+
+.tox-dialog-wrap {
+  pointer-events: auto !important;
+}

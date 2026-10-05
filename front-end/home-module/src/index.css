@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+@import url('react-phone-input-2/lib/style.css');
+@import url('react-toastify/dist/ReactToastify.css');
+@import 'react-loading-skeleton/dist/skeleton.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background-color: #f0f0f000;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #384451;
+}
+
+@media (max-width: 1023px) {
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  *::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply home-font-semibold home-text-foreground;
+  }
+
+  h1 {
+    @apply home-text-2xl md:home-text-3xl lg:home-text-4xl;
+  }
+
+  h2 {
+    @apply home-text-xl md:home-text-2xl lg:home-text-3xl;
+  }
+
+  h3 {
+    @apply home-text-lg md:home-text-xl lg:home-text-2xl;
+  }
+
+  h4 {
+    @apply home-text-base md:home-text-lg lg:home-text-xl;
+  }
+
+  :root {
+    --background: #0f1419;
+    --foreground: #ffffff;
+
+    --primary: #00d4aa;
+    --primary-foreground: #000000;
+
+    --secondary: #1a2332;
+    --secondary-foreground: #ffffff;
+
+    --muted: #1a2332;
+    --muted-foreground: #94a3b8;
+
+    --destructive: #d32f2f;
+    --destructive-foreground: #f8fafc;
+
+    --card: #00000000;
+    --card-background: #1a2332;
+    --card-foreground: #ffffff;
+    --card-border: #6f7781;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer components {
+  .home-active-menu-icon {
+    @apply home-text-[#37BE99] !home-opacity-100;
+  }
+
+  .custom-phone-input-container {
+    .custom-phone-input {
+      @apply !home-h-[38px] !home-w-full !home-rounded-md !home-border !home-border-steel-gray !home-bg-transparent !home-pl-20 home-ring-offset-transparent placeholder:!home-text-muted-foreground focus-visible:!home-border-transparent focus-visible:!home-ring-1 focus-visible:!home-ring-offset-1 disabled:!home-cursor-not-allowed disabled:!home-opacity-50;
+    }
+
+    .custom-flag-button {
+      @apply !home-w-16 !home-border-none !home-bg-transparent;
+
+      .selected-flag {
+        @apply home-flex home-w-full home-items-center home-justify-center home-border-r home-border-r-card-border !home-bg-transparent home-pl-0 home-pr-4;
+
+        .flag {
+          @apply home-scale-150;
+
+          .arrow {
+            @apply home-ml-1;
+          }
+        }
+      }
+    }
+
+    .custom-dropdown {
+      @apply !home-w-80 !home-rounded-md !home-border !home-bg-secondary !home-text-secondary-foreground !home-shadow-md;
+
+      .search {
+        @apply !home-bg-dark;
+
+        input {
+          @apply !home-bg-transparent !home-text-white;
+        }
+      }
+
+      .country {
+        @apply home-flex home-items-center home-gap-x-2 !home-bg-transparent;
+
+        &.highlight {
+          @apply !home-bg-green-400 !home-text-black;
+        }
+      }
+    }
+  }
+}
+
+@layer utilities {
+  @media (max-width: 767px) {
+    .home-hide-scrollbar-mobile {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .home-hide-scrollbar-mobile::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+  }
+}

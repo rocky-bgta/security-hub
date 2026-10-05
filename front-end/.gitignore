@@ -20,7 +20,9 @@ dist-ssr
 edge-debug-profile
 
 # Editor directories and files
-.idea
+.idea/*
+!.idea/runConfigurations/
+!.idea/runConfigurations/**
 .DS_Store
 *.suo
 *.ntvs*
